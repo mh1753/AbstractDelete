@@ -1,4 +1,4 @@
-<!doctype html>
+
 AbstractDelete
 Damn ain't that cool
 
