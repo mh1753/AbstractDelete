@@ -6,6 +6,23 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
 body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 <body class="w3-light-grey">
@@ -40,7 +57,13 @@ and is wrapped around the whole page content, except for the footer in this exam
         </div>
       </div>
     </div>
-	  <img src="https://mh1753.github.io/AbstractDelete/Pages/Assets/concept.png" style="width:100%">
+	<div class="dropdown">
+	  <img src="https://mh1753.github.io/AbstractDelete/Pages/Assets/concept.png" width="20%">
+	  <div class="dropdown-content">
+		<img src="https://mh1753.github.io/AbstractDelete/Pages/Assets/concept.png">
+		<div class="desc">Concept art</div>
+	  </div>
+    </div>
   </div>
   <hr>
 
@@ -76,7 +99,7 @@ and is wrapped around the whole page content, except for the footer in this exam
 <div class="w3-col l4">
   <!-- About Card -->
   <div class="w3-card w3-margin w3-margin-top">
-  <img src="we need a logo" style="width:100%">
+  <img src="https://mh1753.github.io/AbstractDelete/Pages/Assets/logo.jpg" style="width:100%">
     <div class="w3-container w3-white">
       <h4><b>Abstract Delete</b></h4>
       <p>We are the best 6 people you'll ever meet.</p>
