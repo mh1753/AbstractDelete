@@ -1,3 +1,2 @@
 # Abstract Delete
-## help
-### why
+This is the VCS for our project.
