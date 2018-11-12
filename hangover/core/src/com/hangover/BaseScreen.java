@@ -1,0 +1,98 @@
+package com.hangover;
+
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+
+public abstract class BaseScreen implements Screen, InputProcessor {
+	
+	public Game g;
+	public Stage backStage;
+	public Stage entityStage;
+	public Stage uiStage;
+	public boolean paused;
+	
+	public final int viewWidth = 1024;
+	public final int viewHeight = 640;
+	
+	public BaseScreen(Game g) {
+		this.g = g;
+		paused = false;
+		backStage = new Stage(new FitViewport(viewWidth, viewHeight));
+		entityStage = new Stage(new FitViewport(viewWidth, viewHeight));
+		uiStage = new Stage(new FitViewport(viewWidth, viewHeight));
+		
+		InputMultiplexer im = new InputMultiplexer(this, backStage, entityStage, uiStage);
+		Gdx.input.setInputProcessor(im);
+		
+		create();
+	}
+	
+	public abstract void create() ;
+	
+	public abstract void update(float dt) ;
+	
+	
+
+	@Override
+	public void show() {
+		
+	}
+
+	@Override
+	public void render(float dt) {
+		uiStage.act(dt);
+		if(!paused) {
+			backStage.act(dt);
+			entityStage.act(dt);
+			update(dt);
+		}
+		
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		backStage.draw();
+		entityStage.draw();
+		uiStage.draw();
+
+		
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		
+		
+	}
+
+	@Override
+	public void pause() {
+		paused = true;
+		
+	}
+
+	@Override
+	public void resume() {
+		paused = false;
+		
+	}
+
+	@Override
+	public void hide() {
+		
+		
+	}
+
+	@Override
+	public void dispose() {
+		System.out.println("Disposing");
+		backStage.dispose();
+		entityStage.dispose();
+		uiStage.dispose();
+		
+	}
+
+}
