@@ -4,14 +4,17 @@ import com.badlogic.gdx.Game;
 
 public class TestScreen extends BaseScreen {
 	
-	ImageActor im;
+	MovingActor im;
 	
 	public TestScreen(Game g) {
 		super(g);
 	}
 
 	public void create() {
-		im = new ImageActor("assets//badlogic.jpg");
+		im = new MovingActor("assets//badlogic.jpg", 10, 20);
+		im.setVelocity(0, 0);
+		im.setAcceleration(0, 0);
+		im.setAngularVel(0);
 		entityStage.addActor(im);
 	}
 
@@ -27,7 +30,6 @@ public class TestScreen extends BaseScreen {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		
 		return false;
 	}
 
