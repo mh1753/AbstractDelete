@@ -2,6 +2,7 @@ package com.hangover;
 
 public class MovingActor extends AnimatedActor {
 	
+	//all variables required for movement
 	private float velX = 0;
 	private float velY = 0;
 	private float accX = 0;
@@ -10,10 +11,6 @@ public class MovingActor extends AnimatedActor {
 	
 	public MovingActor() {
 		super();
-	}
-	
-	public MovingActor(String url, float fr, float fw) {
-		super(url, fr, fw);
 	}
 	
 	public void setVelocity(float vx, float vy) {
@@ -38,6 +35,8 @@ public class MovingActor extends AnimatedActor {
 		vrot = a;
 	}
 	
+	
+	//calculates movement
 	public void act(float dt) {
 		super.act(dt);
 		setX(getX() + (velX * dt));

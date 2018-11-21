@@ -1,70 +1,62 @@
 package com.hangover;
 
+import java.util.HashMap;
+
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class AnimatedActor extends ImageActor {
-
-	private float framerate;
-	private float timing;
-	private TextureRegion[][] frames;
-	private float frameTime;
+	
+	//Stores animations
+	HashMap<String, Animation<TextureRegion>> anims = new HashMap<String, Animation<TextureRegion>>();
+	
+	Animation<TextureRegion> currentAnim;
+	
+	//Stores current time
+	float timing;
 	
 	public AnimatedActor() {
 		super();
-		setFramerate(1);
+		currentAnim = null;
 		setFrameSize(1, 1);
 		timing = 0;
 	}
 	
-	public AnimatedActor(String url) {
-		super(url);
-		setFramerate(1);
-		setFrameSize(this.getWidth(), this.getHeight());
-		timing = 0;
-	}
+
 	
-	public AnimatedActor(String url, float fr, float fw) {
-		super(url);
-		setFramerate(fr);
-		setFrameSize(fw, this.getHeight());
-		frames = t.split((int)(this.getWidth()), (int)(this.getHeight()));
-		timing = 0;
-	}
-	
-	public void setFramerate(float f) {
-		framerate = f;
-		frameTime = 1/f;
-	}
-	
-	public float getFramerate() {
-		return framerate;
-	}
-	
+	//Sets the size of the frame
 	public void setFrameSize(float x, float y) {
 		setWidth(x);
 		setHeight(y);
 	}
 	
+	//Returns size of frame
 	public Vector2 getFramesize() {
 		return new Vector2(getWidth(), getHeight());
 	}
 	
-	public void setAnim(String url, float width) {
+	//Sets the animation. Works by taking an image url and then splitting this into frames
+	public void storeAnim(String url, String name , float width, float fr) {
 		setImage(url);
 		setFrameSize(width, t.getRegionHeight());
-		setWidth(width);
-		frames = t.split((int)(this.getWidth()), (int)(this.getHeight()));
+		TextureRegion[][] frames = t.split((int)(this.getWidth()), (int)(this.getHeight()));
+		Animation<TextureRegion> a = new Animation<TextureRegion>(1/fr, frames[0]);
+		a.setPlayMode(Animation.PlayMode.LOOP);
+		anims.put(name, a);
 		setRectBounds();
 	}
 	
-	public void draw(Batch b, float parentAlpha) {
-		if(timing >= (frameTime * frames[0].length)){
-			timing -= frameTime * frames[0].length;
+	public void setAnim(String name) {
+		if(anims.containsKey(name)) {
+			currentAnim = anims.get(name);
 		}
-		int currentFrame = (int) Math.floor(timing / frameTime);
-		b.draw(frames[0][currentFrame], getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+	}
+	
+	//draws the animation by deciding which frame to display based on time
+	public void draw(Batch b, float dt) {
+		b.draw(currentAnim.getKeyFrame(timing), getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
 	
 	public void act(float dt) {

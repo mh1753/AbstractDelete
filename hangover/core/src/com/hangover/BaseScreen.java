@@ -11,22 +11,33 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public abstract class BaseScreen implements Screen, InputProcessor {
 	
+	//The game that is running this screen
 	public Game g;
+	
+	//Stages for actors
 	public Stage backStage;
 	public Stage entityStage;
 	public Stage uiStage;
+	
+	//Decides whether actors should act or not
 	public boolean paused;
 	
+	
+	//Screen size
 	public final int viewWidth = 1024;
 	public final int viewHeight = 640;
 	
 	public BaseScreen(Game g) {
 		this.g = g;
+		
 		paused = false;
+		
+		//inialises stages so they're the size of the screen
 		backStage = new Stage(new FitViewport(viewWidth, viewHeight));
 		entityStage = new Stage(new FitViewport(viewWidth, viewHeight));
 		uiStage = new Stage(new FitViewport(viewWidth, viewHeight));
 		
+		//Handles input
 		InputMultiplexer im = new InputMultiplexer(this, backStage, entityStage, uiStage);
 		Gdx.input.setInputProcessor(im);
 		
@@ -43,7 +54,9 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 	public void show() {
 		
 	}
-
+	
+	
+	//handles the drawing and acting of the stages
 	@Override
 	public void render(float dt) {
 		uiStage.act(dt);
@@ -86,6 +99,8 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 		
 	}
 
+	
+	//Clears up when screen disposed of
 	@Override
 	public void dispose() {
 		System.out.println("Disposing");

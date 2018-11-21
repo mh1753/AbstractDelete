@@ -2,6 +2,8 @@ package com.hangover;
 
 import com.badlogic.gdx.Game;
 
+
+//Screen for both demonstrating how to use BaseScreen
 public class TestScreen extends BaseScreen {
 	
 	MovingActor im;
@@ -11,10 +13,16 @@ public class TestScreen extends BaseScreen {
 	}
 
 	public void create() {
-		im = new MovingActor("assets//badlogic.jpg", 10, 20);
+		
+		//This is how to initialise a moving actor
+		im = new MovingActor();
+		im.storeAnim("assets//badlogic.jpg", "standard", 10, 10);
+		im.setAnim("standard");
 		im.setVelocity(0, 0);
 		im.setAcceleration(0, 0);
 		im.setAngularVel(0);
+		
+		//Actors need to be added to the stage to be drawn
 		entityStage.addActor(im);
 	}
 
