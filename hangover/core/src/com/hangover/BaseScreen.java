@@ -14,6 +14,9 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 	//The game that is running this screen
 	public Game g;
 	
+	//The resource manger
+	public ResourceManager r;
+	
 	//Stages for actors
 	public Stage backStage;
 	public Stage entityStage;
@@ -27,8 +30,10 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 	public final int viewWidth = 1024;
 	public final int viewHeight = 640;
 	
-	public BaseScreen(Game g) {
+	public BaseScreen(Game g, ResourceManager r) {
 		this.g = g;
+		
+		this.r = r;
 		
 		paused = false;
 		

@@ -45,6 +45,9 @@ public class AnimatedActor extends ImageActor {
 		Animation<TextureRegion> a = new Animation<TextureRegion>(1/fr, frames[0]);
 		a.setPlayMode(Animation.PlayMode.LOOP);
 		anims.put(name, a);
+		if(currentAnim == null) {
+			currentAnim = a;
+		}
 		setRectBounds();
 	}
 	
@@ -62,6 +65,14 @@ public class AnimatedActor extends ImageActor {
 	public void act(float dt) {
 		super.act(dt);
 		timing += dt;
+	}
+	
+	public void clone(AnimatedActor a) {
+		super.clone(a);
+		anims = a.anims;
+		currentAnim = a.currentAnim;
+		setWidth(currentAnim.getKeyFrame(0).getRegionWidth());
+		setHeight(currentAnim.getKeyFrame(0).getRegionHeight());
 	}
 	
 }

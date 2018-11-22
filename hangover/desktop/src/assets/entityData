@@ -1,0 +1,5 @@
+badlogic:
+	Data:
+		speed = 1
+	Anim:
+		assets//badlogic.jpg badlogic 10 10

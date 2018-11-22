@@ -6,21 +6,17 @@ import com.badlogic.gdx.Game;
 //Screen for both demonstrating how to use BaseScreen
 public class TestScreen extends BaseScreen {
 	
-	MovingActor im;
+	Entity im;
 	
-	public TestScreen(Game g) {
-		super(g);
+	public TestScreen(Game g, ResourceManager r) {
+		super(g, r);
 	}
 
 	public void create() {
 		
 		//This is how to initialise a moving actor
-		im = new MovingActor();
-		im.storeAnim("assets//badlogic.jpg", "standard", 10, 10);
-		im.setAnim("standard");
-		im.setVelocity(0, 0);
-		im.setAcceleration(0, 0);
-		im.setAngularVel(0);
+		im = new Entity();
+		im.clone(r.getEntity("badlogic"));
 		
 		//Actors need to be added to the stage to be drawn
 		entityStage.addActor(im);

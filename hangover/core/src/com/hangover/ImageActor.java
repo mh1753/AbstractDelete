@@ -60,4 +60,11 @@ public class ImageActor extends Actor {
 		b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
 	
+	public void clone(ImageActor a) {
+		t = a.getImage();
+		setWidth(t.getRegionWidth());
+		setHeight(t.getRegionHeight());
+		setRectBounds();
+	}
+	
 }
