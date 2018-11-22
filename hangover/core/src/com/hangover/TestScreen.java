@@ -1,10 +1,12 @@
 package com.hangover;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Input;
 
 
 //Screen for both demonstrating how to use BaseScreen
-public class TestScreen extends BaseScreen {
+public class
+TestScreen extends BaseScreen {
 	
 	MovingActor im;
 	
@@ -16,7 +18,7 @@ public class TestScreen extends BaseScreen {
 		
 		//This is how to initialise a moving actor
 		im = new MovingActor();
-		im.storeAnim("assets//badlogic.jpg", "standard", 10, 10);
+		im.storeAnim("assets/badlogic.jpg", "standard", 10, 10);
 		im.setAnim("standard");
 		im.setVelocity(0, 0);
 		im.setAcceleration(0, 0);
@@ -33,7 +35,14 @@ public class TestScreen extends BaseScreen {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		return false;
+		if (keycode == Input.Keys.ESCAPE){
+		    g.setScreen(new StartScreen(g));
+        }
+
+        if (keycode == Input.Keys.P){
+            togglePaused();
+        }
+	    return false;
 	}
 
 	@Override
