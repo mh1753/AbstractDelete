@@ -1,10 +1,12 @@
 package com.hangover;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Input;
 
 
 //Screen for both demonstrating how to use BaseScreen
-public class TestScreen extends BaseScreen {
+public class
+TestScreen extends BaseScreen {
 	
 	Entity im;
 	
@@ -29,7 +31,14 @@ public class TestScreen extends BaseScreen {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		return false;
+		if (keycode == Input.Keys.ESCAPE){
+		    g.setScreen(new StartScreen(g));
+        }
+
+        if (keycode == Input.Keys.P){
+            togglePaused();
+        }
+	    return false;
 	}
 
 	@Override

@@ -86,6 +86,18 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 		
 	}
 
+	public boolean isPaused(){
+	    return paused;
+    }
+
+    public void setPaused(boolean b){
+	    paused = b;
+    }
+
+    public void togglePaused(){
+	    paused = !paused;
+    }
+
 	@Override
 	public void pause() {
 		paused = true;
