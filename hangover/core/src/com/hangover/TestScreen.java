@@ -18,12 +18,13 @@ public class TestScreen extends PlayScreen {
 		super.create();
 		
 		//The entity gotten depends on which character is being used.
-		c.clone(r.getEntity("badlogic"));
-		c.setSpeed(100);
+		c.setType("badlogic");
+		loadCharacter();
 		for(ImageActor i: background) {
 			backStage.addActor(i);
 		}
 		entityStage.addActor(c);
+		
 		/*This is how to initialise a moving actor
 		im = new Entity();
 		im.clone(r.getEntity("badlogic"));

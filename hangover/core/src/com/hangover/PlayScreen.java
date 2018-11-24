@@ -137,6 +137,15 @@ public class PlayScreen extends BaseScreen {
 	public boolean scrolled(int amount) {
 		return false;
 	}
+	
+	public void loadCharacter() {
+		try {
+			c.clone(r.getEntity(c.getType()));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 
 }

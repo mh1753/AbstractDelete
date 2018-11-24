@@ -1,5 +1,5 @@
 badlogic:
 	Data:
-		speed = 1
+		speed = 100
 	Anim:
 		assets//badlogic.jpg badlogic 10 10
