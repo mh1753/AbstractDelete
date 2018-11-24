@@ -2,6 +2,7 @@ package com.hangover;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Vector2;
 
 
 //Screen for both demonstrating how to use BaseScreen
@@ -15,26 +16,12 @@ public class TestScreen extends PlayScreen {
 
 	public void create() {
 		//This is how to initialise a class when using PlayScreen
-		super.create();
+		super.create("badlogic", new Vector2(100, 100));
 		
-		//The entity gotten depends on which character is being used.
-		c.setType("badlogic");
-		loadCharacter();
 		for(ImageActor i: background) {
 			backStage.addActor(i);
 		}
 		entityStage.addActor(c);
-		
-		/*This is how to initialise a moving actor
-		im = new Entity();
-		im.clone(r.getEntity("badlogic"));
-		im.setSpeed(100);
-		im.setAngle((float) Math.PI/2);
-		im.setMoving(true);
-		
-		//Actors need to be added to the stage to be drawn
-		entityStage.addActor(im);
-		*/
 	}
 
 	@Override

@@ -17,6 +17,18 @@ public class Entity extends MovingActor{
 		angle = 0;
 	}
 	
+	public Entity(String t, ResourceManager r) {
+		super();
+		type = t;
+		try {
+			clone(r.getEntity(t));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public void setSpeed(float s) {
 		speed = s;
 	}
@@ -27,6 +39,7 @@ public class Entity extends MovingActor{
 	
 	public void setAngle(float a) {
 		angle = a;
+		setRotation((float) (a * 180/Math.PI));
 	}
 	
 	public float getAngle() {

@@ -49,6 +49,7 @@ public class AnimatedActor extends ImageActor {
 			currentAnim = a;
 		}
 		setRectBounds();
+		setOrigin();
 	}
 	
 	public void setAnim(String name) {
@@ -73,6 +74,7 @@ public class AnimatedActor extends ImageActor {
 		currentAnim = a.currentAnim;
 		setWidth(currentAnim.getKeyFrame(0).getRegionWidth());
 		setHeight(currentAnim.getKeyFrame(0).getRegionHeight());
+		setOrigin(a.getOriginX(),a.getOriginY());
 	}
 	
 }

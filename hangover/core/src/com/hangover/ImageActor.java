@@ -36,6 +36,7 @@ public class ImageActor extends Actor {
 		setWidth(t.getRegionWidth());
 		setHeight(t.getRegionHeight());
 		setRectBounds();
+		setOrigin();
 	}
 	
 	//returns image
@@ -65,6 +66,10 @@ public class ImageActor extends Actor {
 		setWidth(t.getRegionWidth());
 		setHeight(t.getRegionHeight());
 		setRectBounds();
+	}
+	
+	public void setOrigin() {
+		setOrigin(getWidth()/2, getHeight()/2);
 	}
 	
 }

@@ -4,26 +4,28 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.Vector2;
 
-public class PlayScreen extends BaseScreen {
+public abstract class PlayScreen extends BaseScreen {
 	
 	public ArrayList<ImageActor> background;
 	
 	public ArrayList<Integer> keysPressed;
 	
 	public Character c;
-
+	
 	public PlayScreen(Game g, ResourceManager r) {
 		super(g, r);
-		
 	}
 	
 
-	@Override
-	public void create() {
+	public void create(String charName, Vector2 playerLoc) {
 		background = new ArrayList<ImageActor>();
 		keysPressed = new ArrayList<Integer>();
-		c = new Character();
+		c = new Character(charName, r);
+		if (playerLoc != null) {
+			c.setPosition(playerLoc.x, playerLoc.y);
+		}
 	}
 
 	@Override
