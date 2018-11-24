@@ -9,8 +9,18 @@ public class MovingActor extends AnimatedActor {
 	private float accY = 0;
 	private float vrot = 0;
 	
+	boolean moving = true;
+	
 	public MovingActor() {
 		super();
+	}
+	
+	public void setMoving(boolean m) {
+		moving = m;
+	}
+	
+	public boolean getMoving() {
+		return moving;
 	}
 	
 	public void setVelocity(float vx, float vy) {
@@ -39,13 +49,14 @@ public class MovingActor extends AnimatedActor {
 	//calculates movement
 	public void act(float dt) {
 		super.act(dt);
-		setX(getX() + (velX * dt));
-		setY(getY() + (velY*dt));
-		velX += (accX*dt);
-		velY += (accY*dt);
-		setRotation(getRotation() + (vrot * dt));
-		bounds.setX(getX());
-		bounds.setY(getY());
-		
+		if(moving) {
+			setX(getX() + (velX * dt));
+			setY(getY() + (velY*dt));
+			velX += (accX*dt);
+			velY += (accY*dt);
+			setRotation(getRotation() + (vrot * dt));
+			bounds.setX(getX());
+			bounds.setY(getY());
+		}
 	}
 }

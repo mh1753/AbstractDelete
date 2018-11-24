@@ -5,8 +5,7 @@ import com.badlogic.gdx.Input;
 
 
 //Screen for both demonstrating how to use BaseScreen
-public class
-TestScreen extends BaseScreen {
+public class TestScreen extends BaseScreen {
 	
 	Entity im;
 	
@@ -19,6 +18,9 @@ TestScreen extends BaseScreen {
 		//This is how to initialise a moving actor
 		im = new Entity();
 		im.clone(r.getEntity("badlogic"));
+		im.setSpeed(100);
+		im.setAngle((float) Math.PI/2);
+		im.setMoving(true);
 		
 		//Actors need to be added to the stage to be drawn
 		entityStage.addActor(im);
@@ -32,7 +34,7 @@ TestScreen extends BaseScreen {
 	@Override
 	public boolean keyDown(int keycode) {
 		if (keycode == Input.Keys.ESCAPE){
-		    g.setScreen(new StartScreen(g));
+		    g.setScreen(new StartScreen(g, r));
         }
 
         if (keycode == Input.Keys.P){

@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 public class StartScreen extends BaseScreen {
 
     // constructor for screen
-    public StartScreen (Game g) { super (g); }
+    public StartScreen (Game g, ResourceManager r) { super (g, r); }
 
     @Override
     public void create() {
@@ -32,7 +32,7 @@ public class StartScreen extends BaseScreen {
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.ENTER){
-            g.setScreen(new TestScreen(g));
+            g.setScreen(new TestScreen(g, r));
         }
         return false;
     }
