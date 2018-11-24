@@ -9,7 +9,7 @@ public class MovingActor extends AnimatedActor {
 	private float accY = 0;
 	private float vrot = 0;
 	
-	boolean moving = true;
+	boolean moving = false;
 	
 	public MovingActor() {
 		super();
