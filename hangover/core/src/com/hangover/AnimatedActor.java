@@ -48,7 +48,6 @@ public class AnimatedActor extends ImageActor {
 		if(currentAnim == null) {
 			currentAnim = a;
 		}
-		setRectBounds();
 		setOrigin();
 	}
 	

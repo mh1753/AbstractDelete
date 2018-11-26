@@ -23,12 +23,15 @@ public class ImageActor extends Actor {
 		setHeight(0);
 		setX(0);
 		setY(0);
+		boundingPolygon = null;
 	}
 	
 	public ImageActor(String url) {
 		//loads image from url
+		super();
 		setX(0);
 		setY(0);
+		boundingPolygon = null;
 		setImage(url);
 	}
 	
@@ -55,6 +58,7 @@ public class ImageActor extends Actor {
 		t = a.getImage();
 		setWidth(t.getRegionWidth());
 		setHeight(t.getRegionHeight());
+		boundingPolygon = a.getBoundingPolygon();
 	}
 
 	//sets origin to centre of the actor
@@ -85,11 +89,13 @@ public class ImageActor extends Actor {
 		}
 	}
 
+	//set the collision boundary from an array of vertices
 	public void setBoundingPolygon(float[] vertices){
 		boundingPolygon = new Polygon(vertices);
 		boundingPolygon.setOrigin(getOriginX(), getOriginY());
 	}
 
+	//return the current collision boundary
 	public Polygon getBoundingPolygon(){
 		boundingPolygon.setPosition(getX(), getY());
 		boundingPolygon.setRotation(getRotation());
