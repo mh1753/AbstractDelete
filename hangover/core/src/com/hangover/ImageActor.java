@@ -58,7 +58,9 @@ public class ImageActor extends Actor {
 		t = a.getImage();
 		setWidth(t.getRegionWidth());
 		setHeight(t.getRegionHeight());
-		boundingPolygon = a.getBoundingPolygon();
+		if(boundingPolygon != null) {
+			boundingPolygon = a.getBoundingPolygon();
+		}
 	}
 
 	//sets origin to centre of the actor

@@ -75,7 +75,9 @@ public abstract class PlayScreen extends BaseScreen {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		keysPressed.remove(keysPressed.indexOf(keycode));
+		if(keysPressed.contains(keycode)) {
+			keysPressed.remove(keysPressed.indexOf(keycode));
+		}
 		if(keysPressed.contains(Keys.W)) {
 			if(keysPressed.contains(Keys.D)) {
 				c.setAngle((float) (Math.PI/4));
