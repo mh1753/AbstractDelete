@@ -55,8 +55,6 @@ public class MovingActor extends AnimatedActor {
 			velX += (accX*dt);
 			velY += (accY*dt);
 			setRotation(getRotation() + (vrot * dt));
-			bounds.setX(getX());
-			bounds.setY(getY());
 		}
 	}
 }
