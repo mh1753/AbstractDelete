@@ -12,10 +12,10 @@ public class AnimatedActor extends ImageActor {
 	//Stores animations
 	HashMap<String, Animation<TextureRegion>> anims = new HashMap<String, Animation<TextureRegion>>();
 	
-	Animation<TextureRegion> currentAnim;
+	public Animation<TextureRegion> currentAnim;
 	
 	//Stores current time
-	float timing;
+	public float timing;
 	
 	public AnimatedActor() {
 		super();
@@ -33,7 +33,7 @@ public class AnimatedActor extends ImageActor {
 	}
 	
 	//Returns size of frame
-	public Vector2 getFramesize() {
+	public Vector2 getFrameSize() {
 		return new Vector2(getWidth(), getHeight());
 	}
 	
@@ -49,6 +49,10 @@ public class AnimatedActor extends ImageActor {
 			currentAnim = a;
 		}
 		setOrigin();
+	}
+	
+	public HashMap<String, Animation<TextureRegion>> getAnims(){
+		return anims;
 	}
 	
 	public void setAnim(String name) {

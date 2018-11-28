@@ -48,6 +48,7 @@ public class Entity extends MovingActor{
 	
 	public void setMaxHealth(int h) {
 		maxHealth = h;
+		currentHealth = h;
 	}
 	
 	public int getMaxHealth() {
@@ -95,6 +96,7 @@ public class Entity extends MovingActor{
 		speed = e.speed;
 		currentHealth = e.maxHealth;
 		maxHealth = e.maxHealth;
+		type = e.getType();
 	}
 	
 	public void setVelocityFromAngle() {

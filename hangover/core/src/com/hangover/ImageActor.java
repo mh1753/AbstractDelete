@@ -51,7 +51,9 @@ public class ImageActor extends Actor {
 	//handles drawing of the image
 	@Override
 	public void draw(Batch b, float dt) {
-		b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		if(t != null) {
+			b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		}
 	}
 	
 	public void clone(ImageActor a) {
@@ -99,8 +101,10 @@ public class ImageActor extends Actor {
 
 	//return the current collision boundary
 	public Polygon getBoundingPolygon(){
-		boundingPolygon.setPosition(getX(), getY());
-		boundingPolygon.setRotation(getRotation());
+		if(boundingPolygon != null) {
+			boundingPolygon.setPosition(getX(), getY());
+			boundingPolygon.setRotation(getRotation());
+		}
 		return boundingPolygon;
 	}
 

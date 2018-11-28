@@ -1,5 +1,7 @@
 package com.hangover;
 
+import com.badlogic.gdx.math.Vector2;
+
 public class MovingActor extends AnimatedActor {
 	
 	//all variables required for movement
@@ -28,6 +30,11 @@ public class MovingActor extends AnimatedActor {
 		velY = vy;
 	}
 	
+	public Vector2 getVelocity() {
+		return new Vector2(velX, velY);
+		
+	}
+	
 	public void setVelX(float vx) {
 		velX = vx;
 	}
@@ -41,8 +48,16 @@ public class MovingActor extends AnimatedActor {
 		accY = ay;
 	}
 	
+	public Vector2 getAcceleration() {
+		return new Vector2(accY, accY);
+	}
+	
 	public void setAngularVel(float a) {
 		vrot = a;
+	}
+	
+	public float getAngularVel() {
+		return vrot;
 	}
 	
 	
