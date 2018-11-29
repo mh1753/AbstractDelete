@@ -16,7 +16,7 @@ public class FirstAreaDemo extends PlayScreen {
 
 	@Override
 	public void create() {
-		super.create("badlogic", new Vector2(160, 640 - 160));
+		super.create("badlogic", new Vector2(160, 640 - 160), null);
 		try {
 			FileHandle fh = Gdx.files.internal("assets//FirstAreaDemo.txt");
 			BufferedReader f = new BufferedReader(fh.reader());
@@ -27,31 +27,30 @@ public class FirstAreaDemo extends PlayScreen {
 				for(int i = 0; i < tiles.length; i++) {
 					ImageActor block = new ImageActor();
 					tiles[i] = tiles[i].replace("\n", "");
-					System.out.print(tiles[i]);
 					if(tiles[i].equals("t")) {
 						block.clone(r.getImageActor("flatt"));
 					}
-					//else if(tiles[i].equals("tr")) {
-					//	block.clone(r.getImageActor("flattr"));
-					//}
-					//else if(tiles[i].equals("r")) {
-					//	block.clone(r.getImageActor("flatr"));
-					//}
-					//else if(tiles[i].equals("br")) {
-					//	block.clone(r.getImageActor("flatbr"));
-					//}
-					//else if(tiles[i].equals("b")) {
-					//	block.clone(r.getImageActor("flatb"));
-					//}
-					//else if(tiles[i].equals("bl")) {
-					//	block.clone(r.getImageActor("flatbl"));
-					//}
-					//else if(tiles[i].equals("l")) {
-					//	block.clone(r.getImageActor("flatl"));
-					//}
-					//else if(tiles[i].equals("tl")) {
-					//	block.clone(r.getImageActor("flattl"));
-					//}
+					else if(tiles[i].equals("tr")) {
+						block.clone(r.getImageActor("flattr"));
+					}
+					else if(tiles[i].equals("r")) {
+						block.clone(r.getImageActor("flatr"));
+					}
+					else if(tiles[i].equals("br")) {
+						block.clone(r.getImageActor("flatbr"));
+					}
+					else if(tiles[i].equals("b")) {
+						block.clone(r.getImageActor("flatb"));
+					}
+					else if(tiles[i].equals("bl")) {
+						block.clone(r.getImageActor("flatbl"));
+					}
+					else if(tiles[i].equals("l")) {
+						block.clone(r.getImageActor("flatl"));
+					}
+					else if(tiles[i].equals("tl")) {
+						block.clone(r.getImageActor("flattl"));
+					}
 					else if(tiles[i].equals("m")) {
 						block.clone(r.getImageActor("flatm"));
 					}

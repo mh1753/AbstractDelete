@@ -16,7 +16,7 @@ public class TestScreen extends PlayScreen {
 
 	public void create() {
 		//This is how to initialise a class when using PlayScreen
-		super.create("badlogic", new Vector2(100, 100));
+		super.create("badlogic", new Vector2(100, 100), null);
 		
 		for(ImageActor i: background) {
 			backStage.addActor(i);

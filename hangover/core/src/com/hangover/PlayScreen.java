@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class PlayScreen extends BaseScreen {
@@ -12,6 +16,18 @@ public abstract class PlayScreen extends BaseScreen {
 	
 	public ArrayList<Integer> keysPressed;
 	
+	public TiledMap tilemap;
+	
+	public TileMapRendererActor renderer;
+	
+	public AssetManager manager;
+	
+	public boolean tiling = false;
+	
+	public int tileWidth, tileHeight, mapWidthTiles, mapHeightTiles, mapWidthPixels, mapHeightPixels;
+	
+	public OrthographicCamera camera;
+	
 	public Character c;
 	
 	public PlayScreen(Game g, ResourceManager r) {
@@ -19,13 +35,38 @@ public abstract class PlayScreen extends BaseScreen {
 	}
 	
 
-	public void create(String charName, Vector2 playerLoc) {
+	public void create(String charName, Vector2 playerLoc, String tileMap) {
 		background = new ArrayList<ImageActor>();
 		keysPressed = new ArrayList<Integer>();
+		
+		
 		c = new Character(charName, r);
 		c.setOrigin();
 		if (playerLoc != null) {
 			c.setPosition(playerLoc.x, playerLoc.y);
+		}
+		
+		if(tileMap != null) {
+			manager = new AssetManager();
+	    	manager.setLoader(TiledMap.class, new TmxMapLoader());
+	    	manager.load("maps/level.tmx", TiledMap.class);
+	    	manager.finishLoading();
+	 
+	    	this.tilemap = manager.get("maps/level.tmx", TiledMap.class);
+			if(tilemap != null) {
+				tiling = true;
+				tileWidth = tilemap.getProperties().get("tilewidth", Integer.class);
+				tileHeight = tilemap.getProperties().get("tileheight", Integer.class);
+	        	mapWidthTiles = tilemap.getProperties().get("width", Integer.class);
+	        	mapHeightTiles = tilemap.getProperties().get("height", Integer.class);
+	        	mapWidthPixels = mapWidthTiles  * tileWidth;
+	        	mapHeightPixels = mapHeightTiles * tileHeight;
+	        	camera = new OrthographicCamera(1024,640);
+	        	camera.position.x = c.getX();
+	        	camera.position.y = c.getY();
+	        	renderer = new TileMapRendererActor(tilemap);
+	        	renderer.setView(camera);
+			}
 		}
 	}
 
@@ -150,6 +191,11 @@ public abstract class PlayScreen extends BaseScreen {
 		catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+	
+	public void dispose() {
+		super.dispose();
+		manager.dispose();
 	}
 
 
