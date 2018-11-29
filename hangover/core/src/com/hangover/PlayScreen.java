@@ -23,6 +23,7 @@ public abstract class PlayScreen extends BaseScreen {
 		background = new ArrayList<ImageActor>();
 		keysPressed = new ArrayList<Integer>();
 		c = new Character(charName, r);
+		c.setOrigin();
 		if (playerLoc != null) {
 			c.setPosition(playerLoc.x, playerLoc.y);
 		}
