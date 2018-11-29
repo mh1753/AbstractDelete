@@ -18,3 +18,13 @@ flatl:
 	assets//floor//flatl.jpg
 flattl:
 	assets//floor//flattl.jpg
+player1:
+	assets//characters//Player1.jpg
+zombie:
+	assets//characters//zombie64.jpg
+speedup:
+	assets//powers//SpeedBoost.jpg
+speeddown:
+	assets//powers//speedDown.jpg
+healthboost:
+	assets//powers//healthBoost.jpg

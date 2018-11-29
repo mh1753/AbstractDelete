@@ -3,3 +3,17 @@ badlogic:
 		speed = 100
 	Anim:
 		assets//badlogic.jpg badlogic 10 10
+		
+player1: 
+	Data: 
+		speed = 100
+		health = 100
+	Anim:
+		assets//Player1.jpg player1 64 64 
+		
+zombie:
+	Data:
+		speed = 100 
+		health = 100
+	Anim:
+		assets//Player1.jpg player1 64 64 
