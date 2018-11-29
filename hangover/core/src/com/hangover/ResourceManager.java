@@ -92,6 +92,10 @@ public class ResourceManager {
 							line = line.replaceAll("speed = ", "");
 							e.setSpeed(Integer.parseInt(line));
 						}
+						else if(line.contains("health")) {
+							line = line.replaceAll("health = ", "");
+							e.setMaxHealth(Integer.parseInt(line));
+						}
 					}
 					else if(anim) {
 						String[] v = line.split(" ");

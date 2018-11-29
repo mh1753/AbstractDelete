@@ -1,2 +1,20 @@
 badlogic:
 	assets//badlogic.jpg
+flatm:
+	assets//floor//flatm.jpg
+flatt:
+	assets//floor//flatt.jpg
+flattr:
+	assets//floor//flattr.jpg
+flatr:
+	assets//floor//flatr.jpg
+flatbr:
+	assets//floor//flatbr.jpg
+flatb:
+	assets//floor//flatb.jpg
+flatbl:
+	assets//floor//flatbl.jpg
+flatl:
+	assets//floor//flatl.jpg
+flattl:
+	assets//floor//flattl.jpg
