@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 public abstract class PlayScreen extends BaseScreen {
@@ -46,13 +48,12 @@ public abstract class PlayScreen extends BaseScreen {
 			c.setPosition(playerLoc.x, playerLoc.y);
 		}
 		
+		tilemap = new TiledMap();
+		TmxMapLoader loader = new TmxMapLoader();
+		
 		if(tileMap != null) {
-			manager = new AssetManager();
-	    	manager.setLoader(TiledMap.class, new TmxMapLoader());
-	    	manager.load("maps/level.tmx", TiledMap.class);
-	    	manager.finishLoading();
-	 
-	    	this.tilemap = manager.get("maps/level.tmx", TiledMap.class);
+			
+	    	tilemap = loader.load(tileMap);
 			if(tilemap != null) {
 				tiling = true;
 				tileWidth = tilemap.getProperties().get("tilewidth", Integer.class);
@@ -61,18 +62,23 @@ public abstract class PlayScreen extends BaseScreen {
 	        	mapHeightTiles = tilemap.getProperties().get("height", Integer.class);
 	        	mapWidthPixels = mapWidthTiles  * tileWidth;
 	        	mapHeightPixels = mapHeightTiles * tileHeight;
-	        	camera = new OrthographicCamera(1024,640);
-	        	camera.position.x = c.getX();
-	        	camera.position.y = c.getY();
+	        	camera = (OrthographicCamera) entityStage.getCamera();
+	        	camera.position.set( c.getX() + c.getOriginX(),
+	        			c.getY() + c.getOriginY(), 0 );
 	        	renderer = new TileMapRendererActor(tilemap);
 	        	renderer.setView(camera);
+	        	renderer.setOrigin(renderer.getWidth()/2, renderer.getHeight()/2);
+	        	backStage.addActor(renderer);
 			}
 		}
 	}
 
 	@Override
 	public void update(float dt) {
-		
+		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), c.getOriginX(), mapWidthPixels - c.getOriginX()),
+    			MathUtils.clamp(c.getY() + c.getOriginY(), 0, mapHeightPixels - c.getOriginY()), 0 );
+		camera.update();
+		renderer.setView(camera);
 	}
 
 	@Override

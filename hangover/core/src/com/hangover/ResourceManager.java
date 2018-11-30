@@ -90,16 +90,18 @@ public class ResourceManager {
 						line = line.replace("/t", "");
 						if(line.contains("speed")) {
 							line = line.replaceAll("speed = ", "");
-							e.setSpeed(Integer.parseInt(line));
+							e.setSpeed(Integer.parseInt(line.replace(" ", "")));
 						}
 						else if(line.contains("health")) {
 							line = line.replaceAll("health = ", "");
-							e.setMaxHealth(Integer.parseInt(line));
+							e.setMaxHealth(Integer.parseInt(line.replace(" ", "")));
 						}
 					}
 					else if(anim) {
 						String[] v = line.split(" ");
-						e.storeAnim(v[0], v[1], Integer.parseInt(v[2]), Integer.parseInt(v[3]));
+						if(v.length > 3) {
+							e.storeAnim(v[0], v[1], Integer.parseInt(v[2]), Integer.parseInt(v[3]));
+						}
 					}
 				}
 				line = f.readLine();
