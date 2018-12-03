@@ -39,7 +39,7 @@ public class Entity extends MovingActor{
 	
 	public void setAngle(float a) {
 		angle = a;
-		setRotation((float) (a * 180/Math.PI));
+		setRotation((float) -(a * 180/Math.PI));
 	}
 	
 	public float getAngle() {

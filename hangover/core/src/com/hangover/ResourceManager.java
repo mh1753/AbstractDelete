@@ -81,6 +81,7 @@ public class ResourceManager {
 							entities.put(entityName, e);
 						}
 						entityName = line.replace(":", "");
+						entityName = entityName.replace(" ", "");
 						e = new Entity();
 					}
 				}

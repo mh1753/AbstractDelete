@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 public abstract class PlayScreen extends BaseScreen {
 	
@@ -43,6 +43,7 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		
 		c = new Character(charName, r);
+		c.setType(charName);
 		c.setOrigin();
 		if (playerLoc != null) {
 			c.setPosition(playerLoc.x, playerLoc.y);
@@ -79,6 +80,7 @@ public abstract class PlayScreen extends BaseScreen {
     			MathUtils.clamp(c.getY() + c.getOriginY(), 0, mapHeightPixels - c.getOriginY()), 0 );
 		camera.update();
 		renderer.setView(camera);
+		c.updateAnimation();
 	}
 
 	@Override
@@ -182,6 +184,10 @@ public abstract class PlayScreen extends BaseScreen {
 
 	@Override
 	public boolean mouseMoved(int screenX, int screenY) {
+		Vector3 v = new Vector3(screenX, screenY, 0);
+		camera.unproject(v, backStage.getViewport().getScreenX(), backStage.getViewport().getScreenY(),
+				backStage.getViewport().getScreenWidth(), backStage.getViewport().getScreenHeight());
+		c.updatePlayerRot(v.x, v.y);
 		return false;
 	}
 

@@ -50,6 +50,7 @@ public class NPC extends Entity {
 			setAngle(0);
 			setMoving(false);
 		}
+
 		
 		
 

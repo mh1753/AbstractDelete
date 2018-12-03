@@ -1,11 +1,7 @@
 package com.hangover;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.math.Vector2;
 
 public class FirstAreaDemo extends PlayScreen {
@@ -16,7 +12,7 @@ public class FirstAreaDemo extends PlayScreen {
 
 	@Override
 	public void create() {
-		super.create("zombie", new Vector2(0, 0), "assets//maps//OtherTest.tmx");
+		super.create("player1", new Vector2(0, 0), "assets//maps//OtherTest.tmx");
 		
 		
 		
