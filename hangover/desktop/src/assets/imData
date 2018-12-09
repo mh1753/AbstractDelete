@@ -28,3 +28,5 @@ speeddown:
 	assets//powers//speedDown.jpg
 healthboost:
 	assets//powers//healthBoost.jpg
+bullet:
+	assets//bullet.png

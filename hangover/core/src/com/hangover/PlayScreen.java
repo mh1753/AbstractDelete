@@ -19,6 +19,8 @@ public abstract class PlayScreen extends BaseScreen {
 	public ArrayList<MovingActor> bullets;
 	public float timeSinceShot = 0;
 	
+	public ArrayList<NPC> enemies;
+	
 	public ArrayList<Integer> keysPressed;
 	
 	public TiledMap tilemap;
@@ -43,6 +45,7 @@ public abstract class PlayScreen extends BaseScreen {
 	public void create(String charName, Vector2 playerLoc, String tileMap) {
 		background = new ArrayList<ImageActor>();
 		bullets = new ArrayList<MovingActor>();
+		enemies = new ArrayList<NPC>();
 		keysPressed = new ArrayList<Integer>();
 		
 		c = new Character(charName, r);
@@ -80,6 +83,31 @@ public abstract class PlayScreen extends BaseScreen {
 	@Override
 	public void update(float dt) {
 		
+		ArrayList<MovingActor> deadBullets = new ArrayList<MovingActor>();
+		ArrayList<NPC> deadEnemies = new ArrayList<NPC>();
+		
+		for(MovingActor b : bullets) {
+			for(NPC e : enemies) {
+				if(e.overlaps(b, false)) {
+					e.takeHealth(30);
+					if(e.getHealth() <= 0) {
+						entityStage.getActors().removeValue(b, true);
+						deadBullets.add(b);
+						deadEnemies.add(e);
+					}
+				}
+			}
+		}
+		bullets.removeAll(deadBullets);
+		enemies.removeAll(deadEnemies);
+		
+		for(NPC e : enemies) {
+			if( c.overlaps(e, true)){
+				c.takeHealth(30);
+			}
+			e.simpleChasePlayer(c.getX(), c.getY());
+		}
+		
 		timeSinceShot += dt;
 		
 		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), c.getOriginX(), mapWidthPixels - c.getOriginX()),
@@ -94,7 +122,9 @@ public abstract class PlayScreen extends BaseScreen {
 		if(!keysPressed.contains(keycode)) {
 			keysPressed.add(keycode);
 		}
-		c.setMoving(true);
+		if(c.getHealth() > 0) {
+			c.setMoving(true);
+		}
 		if(keysPressed.contains(Keys.W)) {
 			if(keysPressed.contains(Keys.D)) {
 				c.setAngle((float) (Math.PI/4));
@@ -131,14 +161,13 @@ public abstract class PlayScreen extends BaseScreen {
 		if(keysPressed.contains(Keys.SPACE)) {
 			if(timeSinceShot > 1) {
 				MovingActor bullet = new MovingActor();
-				bullet.clone(r.getImageActor("flatm"));
+				bullet.clone(r.getImageActor("bullet"));
 				Vector2 bPos = new Vector2();
 				bPos.x = c.getX() - 32 * MathUtils.sin(c.getRotation() * MathUtils.degreesToRadians);
 				bPos.y = c.getY() + 32 * MathUtils.cos(c.getRotation() * MathUtils.degreesToRadians);
-				System.out.println(bPos.x + " " + bPos.y);
 				bullet.setVelocity(-300 * MathUtils.sin(c.getRotation()* MathUtils.degreesToRadians),
 						300 * MathUtils.cos(c.getRotation()* MathUtils.degreesToRadians));
-				bullet.setOrigin();
+				bullet.setOrigin(3, 0);
 				bullet.setPosition(bPos.x, bPos.y);
 				bullet.setRotation(c.getRotation());
 				bullet.setMoving(true);

@@ -106,6 +106,9 @@ public class Entity extends MovingActor{
 	}
 	
 	public void act(float dt) {
+		if(currentHealth <= 0) {
+			setMoving(false);
+		}
 		super.act(dt);
 		setVelocityFromAngle();
 	}

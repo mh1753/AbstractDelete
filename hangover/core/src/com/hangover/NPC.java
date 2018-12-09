@@ -6,9 +6,14 @@ public class NPC extends Entity {
 	
 	public NPC() {
 		super();
-		friendly = true;
+		friendly = false;
 	}
 	
+	public NPC(String string, ResourceManager r) {
+		super(string, r);
+		friendly = false;
+	}
+
 	public void setFriendly(boolean f) {
 		friendly = f;
 	}

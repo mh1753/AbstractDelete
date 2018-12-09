@@ -23,7 +23,7 @@ public class ImageActor extends Actor {
 		setHeight(0);
 		setX(0);
 		setY(0);
-		boundingPolygon = null;
+		setRectangleBoundary();
 	}
 	
 	public ImageActor(String url) {
@@ -41,6 +41,7 @@ public class ImageActor extends Actor {
 		setWidth(t.getRegionWidth());
 		setHeight(t.getRegionHeight());
 		setOrigin();
+		setRectangleBoundary();
 	}
 	
 	//returns image

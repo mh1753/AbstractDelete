@@ -17,4 +17,5 @@ zombie:
 		speed = 100 
 		health = 100
 	Anim:
-		assets//characters//Player1.png player1 64 1
+		assets//characters//Zombie.png player1 64 1
+		assets//characters//Zombiewalking.png 64 6
