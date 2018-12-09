@@ -36,6 +36,7 @@ public class Entity extends MovingActor{
 	public float getSpeed() {
 		return speed;
 	}
+
 	
 	public void setAngle(float a) {
 		angle = a;

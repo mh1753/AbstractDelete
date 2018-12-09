@@ -16,6 +16,9 @@ public abstract class PlayScreen extends BaseScreen {
 	
 	public ArrayList<ImageActor> background;
 	
+	public ArrayList<MovingActor> bullets;
+	public float timeSinceShot = 0;
+	
 	public ArrayList<Integer> keysPressed;
 	
 	public TiledMap tilemap;
@@ -39,8 +42,8 @@ public abstract class PlayScreen extends BaseScreen {
 
 	public void create(String charName, Vector2 playerLoc, String tileMap) {
 		background = new ArrayList<ImageActor>();
+		bullets = new ArrayList<MovingActor>();
 		keysPressed = new ArrayList<Integer>();
-		
 		
 		c = new Character(charName, r);
 		c.setType(charName);
@@ -76,6 +79,9 @@ public abstract class PlayScreen extends BaseScreen {
 
 	@Override
 	public void update(float dt) {
+		
+		timeSinceShot += dt;
+		
 		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), c.getOriginX(), mapWidthPixels - c.getOriginX()),
     			MathUtils.clamp(c.getY() + c.getOriginY(), 0, mapHeightPixels - c.getOriginY()), 0 );
 		camera.update();
@@ -119,6 +125,27 @@ public abstract class PlayScreen extends BaseScreen {
 		}
 		else {
 			c.setMoving(false);
+		}
+		
+		//Deals with shooting
+		if(keysPressed.contains(Keys.SPACE)) {
+			if(timeSinceShot > 1) {
+				MovingActor bullet = new MovingActor();
+				bullet.clone(r.getImageActor("flatm"));
+				Vector2 bPos = new Vector2();
+				bPos.x = c.getX() - 32 * MathUtils.sin(c.getRotation() * MathUtils.degreesToRadians);
+				bPos.y = c.getY() + 32 * MathUtils.cos(c.getRotation() * MathUtils.degreesToRadians);
+				System.out.println(bPos.x + " " + bPos.y);
+				bullet.setVelocity(-300 * MathUtils.sin(c.getRotation()* MathUtils.degreesToRadians),
+						300 * MathUtils.cos(c.getRotation()* MathUtils.degreesToRadians));
+				bullet.setOrigin();
+				bullet.setPosition(bPos.x, bPos.y);
+				bullet.setRotation(c.getRotation());
+				bullet.setMoving(true);
+				bullets.add(bullet);
+				entityStage.addActor(bullet);
+				timeSinceShot = 0;
+			}
 		}
 		return false;
 	}
