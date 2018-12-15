@@ -1,12 +1,12 @@
 package com.hangover;
 
 
-import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.math.Vector2;
 
 public class FirstAreaDemo extends PlayScreen {
 
-	public FirstAreaDemo(Game g, ResourceManager r) {
+	public FirstAreaDemo(AKillerHangover g, ResourceManager r) {
 		super(g, r);
 	}
 

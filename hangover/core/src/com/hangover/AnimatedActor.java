@@ -63,11 +63,13 @@ public class AnimatedActor extends ImageActor {
 	
 	//draws the animation by deciding which frame to display based on time
 	public void draw(Batch b, float dt) {
-		if(currentAnim == null) {
-			b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
-		}
-		else {
-			b.draw(currentAnim.getKeyFrame(timing), getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		if(isLiving()) {
+			if(currentAnim == null) {
+				b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+			}
+			else {
+				b.draw(currentAnim.getKeyFrame(timing), getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+			}
 		}
 	}
 	

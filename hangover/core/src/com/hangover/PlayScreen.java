@@ -2,15 +2,17 @@ package com.hangover;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public abstract class PlayScreen extends BaseScreen {
 	
@@ -35,19 +37,32 @@ public abstract class PlayScreen extends BaseScreen {
 	
 	public OrthographicCamera camera;
 	
+	public Label currentPoints;
+	
 	public Character c;
 	
-	public PlayScreen(Game g, ResourceManager r) {
+	public PlayScreen(AKillerHangover g, ResourceManager r) {
 		super(g, r);
 	}
 	
 
 	public void create(String charName, Vector2 playerLoc, String tileMap) {
+		
+		//Initialise all arraylists
 		background = new ArrayList<ImageActor>();
 		bullets = new ArrayList<MovingActor>();
 		enemies = new ArrayList<NPC>();
 		keysPressed = new ArrayList<Integer>();
 		
+		BitmapFont font = new BitmapFont();
+        Label.LabelStyle style = new Label.LabelStyle(font, Color.WHITE);
+        currentPoints = new Label("Points: " + String.valueOf(g.points), style);
+        currentPoints.setFontScale(2);
+        currentPoints.setPosition(800,600);
+        uiStage.addActor(currentPoints);
+		
+		
+		//Character initialisation
 		c = new Character(charName, r);
 		c.setType(charName);
 		c.setOrigin();
@@ -55,9 +70,13 @@ public abstract class PlayScreen extends BaseScreen {
 			c.setPosition(playerLoc.x, playerLoc.y);
 		}
 		
+		
+		//initialise tilemap
 		tilemap = new TiledMap();
 		TmxMapLoader loader = new TmxMapLoader();
 		
+		
+		//load tilemap
 		if(tileMap != null) {
 			
 	    	tilemap = loader.load(tileMap);
@@ -91,9 +110,12 @@ public abstract class PlayScreen extends BaseScreen {
 				if(e.overlaps(b, false)) {
 					e.takeHealth(30);
 					if(e.getHealth() <= 0) {
+						g.addPoints(100);
 						entityStage.getActors().removeValue(b, true);
 						deadBullets.add(b);
+						b.setLiving(false);
 						deadEnemies.add(e);
+						e.setLiving(false);
 					}
 				}
 			}
@@ -105,10 +127,14 @@ public abstract class PlayScreen extends BaseScreen {
 			if( c.overlaps(e, true)){
 				c.takeHealth(30);
 			}
-			e.simpleChasePlayer(c.getX(), c.getY());
+			if(c.isLiving()) {
+				e.simpleChasePlayer(c.getX(), c.getY());
+			}
 		}
 		
 		timeSinceShot += dt;
+		
+		currentPoints.setText("Points: " + String.valueOf(g.points));
 		
 		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), c.getOriginX(), mapWidthPixels - c.getOriginX()),
     			MathUtils.clamp(c.getY() + c.getOriginY(), 0, mapHeightPixels - c.getOriginY()), 0 );
@@ -163,8 +189,8 @@ public abstract class PlayScreen extends BaseScreen {
 				MovingActor bullet = new MovingActor();
 				bullet.clone(r.getImageActor("bullet"));
 				Vector2 bPos = new Vector2();
-				bPos.x = c.getX() - 32 * MathUtils.sin(c.getRotation() * MathUtils.degreesToRadians);
-				bPos.y = c.getY() + 32 * MathUtils.cos(c.getRotation() * MathUtils.degreesToRadians);
+				bPos.x = c.getX() + 32 - 32 * MathUtils.sin(c.getRotation() * MathUtils.degreesToRadians);
+				bPos.y = c.getY() + 32 + 32 * MathUtils.cos(c.getRotation() * MathUtils.degreesToRadians);
 				bullet.setVelocity(-300 * MathUtils.sin(c.getRotation()* MathUtils.degreesToRadians),
 						300 * MathUtils.cos(c.getRotation()* MathUtils.degreesToRadians));
 				bullet.setOrigin(3, 0);

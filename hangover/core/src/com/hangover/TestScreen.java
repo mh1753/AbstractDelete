@@ -1,6 +1,6 @@
 package com.hangover;
 
-import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector2;
 
@@ -10,7 +10,7 @@ public class TestScreen extends PlayScreen {
 	
 	Entity im;
 	
-	public TestScreen(Game g, ResourceManager r) {
+	public TestScreen(AKillerHangover g, ResourceManager r) {
 		super(g, r);
 	}
 

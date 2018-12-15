@@ -64,7 +64,7 @@ public class MovingActor extends AnimatedActor {
 	//calculates movement
 	public void act(float dt) {
 		super.act(dt);
-		if(moving) {
+		if(moving && isLiving()) {
 			setX(getX() + (velX * dt));
 			setY(getY() + (velY*dt));
 			velX += (accX*dt);

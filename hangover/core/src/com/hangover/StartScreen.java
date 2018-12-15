@@ -1,6 +1,6 @@
 package com.hangover;
 
-import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 public class StartScreen extends BaseScreen {
 
     // constructor for screen
-    public StartScreen (Game g, ResourceManager r) { super (g, r); }
+    public StartScreen (AKillerHangover g, ResourceManager r) { super (g, r); }
 
     @Override
     public void create() {

@@ -1,6 +1,7 @@
 package com.tests;
 
 import com.badlogic.gdx.Game;
+import com.hangover.AKillerHangover;
 import com.hangover.AnimatedActor;
 import com.hangover.BaseScreen;
 import com.hangover.Entity;
@@ -35,7 +36,7 @@ public class JUnitTester extends BaseScreen {
 	public NPCTests ntester;
 	
 	
-	public JUnitTester(Game g, ResourceManager r) {
+	public JUnitTester(AKillerHangover g, ResourceManager r) {
 		super(g, r);
 	}
 

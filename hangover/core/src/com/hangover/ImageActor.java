@@ -17,8 +17,12 @@ public class ImageActor extends Actor {
 	//Actor's boundary for use in collision detection
 	protected Polygon boundingPolygon;
 	
+	//Is actor living?
+	protected boolean living;
+	
 	public ImageActor() {
 		super();
+		living = true;
 		setWidth(0);
 		setHeight(0);
 		setX(0);
@@ -29,6 +33,7 @@ public class ImageActor extends Actor {
 	public ImageActor(String url) {
 		//loads image from url
 		super();
+		living = true;
 		setX(0);
 		setY(0);
 		boundingPolygon = null;
@@ -52,7 +57,7 @@ public class ImageActor extends Actor {
 	//handles drawing of the image
 	@Override
 	public void draw(Batch b, float dt) {
-		if(t != null) {
+		if(t != null && isLiving()) {
 			b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 		}
 	}
@@ -108,6 +113,14 @@ public class ImageActor extends Actor {
 		}
 		return boundingPolygon;
 	}
+	
+	public void setLiving(boolean l) {
+		living = l;
+	}
+	
+	public boolean isLiving() {
+		return living;
+	}
 
 	/**
 	 * Determine if 2 collision polygons overlap
@@ -116,6 +129,9 @@ public class ImageActor extends Actor {
 	 * vector until there is no longer overlap.
 	 */
 	public boolean overlaps(ImageActor o, boolean resolve){
+		if(!isLiving() || !o.isLiving()) {
+			return false;
+		}
 		Polygon poly1 = this.getBoundingPolygon();
 		Polygon poly2 = o.getBoundingPolygon();
 		if (!poly1.getBoundingRectangle().overlaps(poly2.getBoundingRectangle())){

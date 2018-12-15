@@ -1,6 +1,6 @@
 package com.hangover;
 
-import com.badlogic.gdx.Game;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 public abstract class BaseScreen implements Screen, InputProcessor {
 	
 	//The game that is running this screen
-	public Game g;
+	public AKillerHangover g;
 	
 	//The resource manger
 	public ResourceManager r;
@@ -30,7 +30,7 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 	public final int viewWidth = 1024;
 	public final int viewHeight = 640;
 	
-	public BaseScreen(Game g, ResourceManager r) {
+	public BaseScreen(AKillerHangover g, ResourceManager r) {
 		this.g = g;
 		
 		this.r = r;
