@@ -7,9 +7,13 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -19,6 +23,7 @@ public abstract class PlayScreen extends BaseScreen {
 	public int maxEnemyNo;
 	
 	public ArrayList<ImageActor> background;
+	public ArrayList<Rectangle> obstacles;
 	
 	public ArrayList<MovingActor> bullets;
 	public float timeSinceShot = 0;
@@ -99,6 +104,15 @@ public abstract class PlayScreen extends BaseScreen {
 	        	renderer.setView(camera);
 	        	renderer.setOrigin(renderer.getWidth()/2, renderer.getHeight()/2);
 	        	backStage.addActor(renderer);
+	        	
+	        	if (tilemap.getLayers().size() > 1) {
+	        		obstacles = new ArrayList<Rectangle>();
+	        		TiledMapTileLayer layer = (TiledMapTileLayer) tilemap.getLayers().get(1);
+	        		MapObjects layerObjects = layer.getObjects();
+	        		for(RectangleMapObject o : layerObjects.getByType(RectangleMapObject.class)) {
+	        			obstacles.add(o.getRectangle());
+	        		}
+	        	}
 			}
 		}
 	}
@@ -128,13 +142,28 @@ public abstract class PlayScreen extends BaseScreen {
 				}
 			}
 		}
+		
+		if(obstacles != null) {
+			for(Rectangle r : obstacles) {
+				for(NPC e : enemies) {
+					e.overlaps(r, true);
+				}
+				c.overlaps(r, true);
+				for(MovingActor b: bullets) {
+					if(b.overlaps(r, false)) {
+						deadBullets.add(b);
+						b.setLiving(false);
+					}
+				}
+			}
+		}
+		
 		for(MovingActor b : bullets) {
 			for(NPC e : enemies) {
 				if(e.overlaps(b, false)) {
 					e.takeHealth(30);
 					if(e.getHealth() <= 0) {
 						g.addPoints(100);
-						entityStage.getActors().removeValue(b, true);
 						deadBullets.add(b);
 						b.setLiving(false);
 						deadEnemies.add(e);
@@ -145,6 +174,8 @@ public abstract class PlayScreen extends BaseScreen {
 		}
 		bullets.removeAll(deadBullets);
 		enemies.removeAll(deadEnemies);
+		deadBullets.clear();
+		enemies.clear();
 		
 		for(NPC e : enemies) {
 			if( c.overlaps(e, true)){

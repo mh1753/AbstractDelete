@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
@@ -141,6 +142,28 @@ public class ImageActor extends Actor {
 
 		MinimumTranslationVector mtv = new MinimumTranslationVector();
 		boolean polyOverlap = Intersector.overlapConvexPolygons(poly1, poly2, mtv);
+		if (polyOverlap && resolve){
+			this.moveBy(mtv.normal.x * mtv.depth, mtv.normal.y * mtv.depth);
+		}
+		float significant = 0.5f;
+		return (polyOverlap && (mtv.depth > significant));
+	}
+	
+	public boolean overlaps(Rectangle rect, boolean resolve){
+		if(!isLiving()) {
+			return false;
+		}
+		Polygon poly1 = this.getBoundingPolygon();
+		if (!poly1.getBoundingRectangle().overlaps(rect)){
+			return false;
+		}
+
+		MinimumTranslationVector mtv = new MinimumTranslationVector();
+		Polygon p = new Polygon();
+		p.setVertices(new float[] {rect.getX(), rect.getY(), rect.getX() + rect.getWidth(), rect.getY(),
+			rect.getX() + rect.getWidth(), rect.getY() + rect.getHeight(), rect.getX(), rect.getY() + rect.getHeight()
+		});
+		boolean polyOverlap = Intersector.overlapConvexPolygons(poly1, p, mtv);
 		if (polyOverlap && resolve){
 			this.moveBy(mtv.normal.x * mtv.depth, mtv.normal.y * mtv.depth);
 		}
