@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public abstract class PlayScreen extends BaseScreen {
 	
+	public int maxEnemyNo;
+	
 	public ArrayList<ImageActor> background;
 	
 	public ArrayList<MovingActor> bullets;
@@ -53,6 +55,8 @@ public abstract class PlayScreen extends BaseScreen {
 		bullets = new ArrayList<MovingActor>();
 		enemies = new ArrayList<NPC>();
 		keysPressed = new ArrayList<Integer>();
+		
+		maxEnemyNo = 0;
 		
 		BitmapFont font = new BitmapFont();
         Label.LabelStyle style = new Label.LabelStyle(font, Color.WHITE);
@@ -105,6 +109,25 @@ public abstract class PlayScreen extends BaseScreen {
 		ArrayList<MovingActor> deadBullets = new ArrayList<MovingActor>();
 		ArrayList<NPC> deadEnemies = new ArrayList<NPC>();
 		
+		if(enemies.size() - maxEnemyNo < 0) {
+			for(int i = 0; i < maxEnemyNo - enemies.size(); i++) {
+				int spawn = MathUtils.random(0, 10000);
+				float range = 1 * (dt * 1000);
+				if(spawn <= range) {
+					float x = renderer.getX() + (MathUtils.random(0, mapWidthPixels));
+					float y = renderer.getY() + (MathUtils.random(0, mapHeightPixels));
+					while((c.getX() - x < 200 && c.getX() - x > -200 &&
+							c.getY() - y < 200 && c.getY() - y > -200)){
+						x = renderer.getX() + (MathUtils.random(0, mapWidthPixels));
+						y = renderer.getY() + (MathUtils.random(0, mapHeightPixels));
+					}
+					NPC z = new NPC("zombie", r);
+					z.setPosition(x, y);
+					entityStage.addActor(z);
+					enemies.add(z);
+				}
+			}
+		}
 		for(MovingActor b : bullets) {
 			for(NPC e : enemies) {
 				if(e.overlaps(b, false)) {

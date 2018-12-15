@@ -82,6 +82,7 @@ public class ImageActor extends Actor {
 		float h = getHeight();
 		float[] vertices = {0,0, w,0, w,h, 0,h};
 		boundingPolygon = new Polygon(vertices);
+		boundingPolygon.setOrigin(getOriginX(), getOriginY());
 	}
 
 	//set the collision boundary to an ellipse around the actor

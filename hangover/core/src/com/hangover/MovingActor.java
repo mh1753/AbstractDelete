@@ -70,6 +70,10 @@ public class MovingActor extends AnimatedActor {
 			velX += (accX*dt);
 			velY += (accY*dt);
 			setRotation(getRotation() + (vrot * dt));
+			if(boundingPolygon != null) {
+				boundingPolygon.setPosition(getX(), getY());
+				boundingPolygon.setRotation(getRotation());
+			}
 		}
 	}
 }
