@@ -59,6 +59,10 @@ public class AnimatedActor extends ImageActor {
 	public void setAnim(String name) {
 		if(anims.containsKey(name)) {
 			currentAnim = anims.get(name);
+			setWidth(currentAnim.getKeyFrame(0).getRegionWidth());
+			setHeight(currentAnim.getKeyFrame(0).getRegionHeight());
+			t = currentAnim.getKeyFrame(0);
+			setRectangleBoundary();
 		}
 	}
 	

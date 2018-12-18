@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
@@ -83,7 +84,7 @@ public class ImageActor extends Actor {
 		float h = getHeight();
 		float[] vertices = {0,0, w,0, w,h, 0,h};
 		boundingPolygon = new Polygon(vertices);
-		boundingPolygon.setOrigin(getOriginX(), getOriginY());
+		boundingPolygon.setOrigin(getWidth()/2, getHeight()/2);
 	}
 
 	//set the collision boundary to an ellipse around the actor
@@ -149,19 +150,37 @@ public class ImageActor extends Actor {
 		return (polyOverlap && (mtv.depth > significant));
 	}
 	
+	public boolean overlaps(Polygon poly, boolean resolve){
+		if(!isLiving()) {
+			return false;
+		}
+		Polygon poly1 = this.getBoundingPolygon();
+		if (!Intersector.overlapConvexPolygons(boundingPolygon, poly)){
+			return false;
+		}
+
+		MinimumTranslationVector mtv = new MinimumTranslationVector();
+		boolean polyOverlap = Intersector.overlapConvexPolygons(poly1, poly, mtv);
+		if (polyOverlap && resolve){
+			this.moveBy(mtv.normal.x * mtv.depth, mtv.normal.y * mtv.depth);
+		}
+		float significant = 0.5f;
+		return (polyOverlap && (mtv.depth > significant));
+	}
+	
 	public boolean overlaps(Rectangle rect, boolean resolve){
 		if(!isLiving()) {
 			return false;
 		}
 		Polygon poly1 = this.getBoundingPolygon();
-		if (!poly1.getBoundingRectangle().overlaps(rect)){
+		if ( !poly1.getBoundingRectangle().overlaps(rect)){
 			return false;
 		}
 
 		MinimumTranslationVector mtv = new MinimumTranslationVector();
 		Polygon p = new Polygon();
-		p.setVertices(new float[] {rect.getX(), rect.getY(), rect.getX() + rect.getWidth(), rect.getY(),
-			rect.getX() + rect.getWidth(), rect.getY() + rect.getHeight(), rect.getX(), rect.getY() + rect.getHeight()
+		p.setVertices(new float[] {rect.x, rect.y, rect.x + rect.width, rect.y,
+				rect.x + rect.width, rect.y + rect.height, rect.x, rect.y + rect.height	
 		});
 		boolean polyOverlap = Intersector.overlapConvexPolygons(poly1, p, mtv);
 		if (polyOverlap && resolve){

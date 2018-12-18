@@ -7,10 +7,10 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -26,7 +26,7 @@ public abstract class PlayScreen extends BaseScreen {
 	public ArrayList<Rectangle> obstacles;
 	
 	public ArrayList<MovingActor> bullets;
-	public float timeSinceShot = 0;
+	public float timeSinceShot = 1;
 	
 	public ArrayList<NPC> enemies;
 	
@@ -107,7 +107,7 @@ public abstract class PlayScreen extends BaseScreen {
 	        	
 	        	if (tilemap.getLayers().size() > 1) {
 	        		obstacles = new ArrayList<Rectangle>();
-	        		TiledMapTileLayer layer = (TiledMapTileLayer) tilemap.getLayers().get(1);
+	        		MapLayer layer = tilemap.getLayers().get("collision");
 	        		MapObjects layerObjects = layer.getObjects();
 	        		for(RectangleMapObject o : layerObjects.getByType(RectangleMapObject.class)) {
 	        			obstacles.add(o.getRectangle());
@@ -115,6 +115,7 @@ public abstract class PlayScreen extends BaseScreen {
 	        	}
 			}
 		}
+		
 	}
 
 	@Override
@@ -125,7 +126,7 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		if(enemies.size() - maxEnemyNo < 0) {
 			for(int i = 0; i < maxEnemyNo - enemies.size(); i++) {
-				int spawn = MathUtils.random(0, 10000);
+				int spawn = MathUtils.random(0, 50000);
 				float range = 1 * (dt * 1000);
 				if(spawn <= range) {
 					float x = renderer.getX() + (MathUtils.random(0, mapWidthPixels));
@@ -145,6 +146,7 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		if(obstacles != null) {
 			for(Rectangle r : obstacles) {
+								
 				for(NPC e : enemies) {
 					e.overlaps(r, true);
 				}
@@ -156,6 +158,7 @@ public abstract class PlayScreen extends BaseScreen {
 					}
 				}
 			}
+
 		}
 		
 		for(MovingActor b : bullets) {
@@ -175,10 +178,10 @@ public abstract class PlayScreen extends BaseScreen {
 		bullets.removeAll(deadBullets);
 		enemies.removeAll(deadEnemies);
 		deadBullets.clear();
-		enemies.clear();
+		deadEnemies.clear();
 		
 		for(NPC e : enemies) {
-			if( c.overlaps(e, true)){
+			if( e.overlaps(c, true)){
 				c.takeHealth(30);
 			}
 			if(c.isLiving()) {
@@ -190,8 +193,8 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		currentPoints.setText("Points: " + String.valueOf(g.points));
 		
-		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), c.getOriginX(), mapWidthPixels - c.getOriginX()),
-    			MathUtils.clamp(c.getY() + c.getOriginY(), 0, mapHeightPixels - c.getOriginY()), 0 );
+		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), 512, mapWidthPixels - 512),
+    			MathUtils.clamp(c.getY() + c.getOriginY(), 320, mapHeightPixels - 320), 0 );
 		camera.update();
 		renderer.setView(camera);
 		c.updateAnimation();

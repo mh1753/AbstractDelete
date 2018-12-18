@@ -12,10 +12,9 @@ public class FirstAreaDemo extends PlayScreen {
 
 	@Override
 	public void create() {
-		super.create("player1", new Vector2(0, 0), "assets//maps//OtherTest.tmx");
+		super.create("player1", new Vector2(1520, 64), "assets//maps//Goodricke.tmx");
 		
-		maxEnemyNo = 3;
-		
+		maxEnemyNo = 0;
 		NPC zombie1 = new NPC("zombie", r);
 		zombie1.setPosition(400, 600);
 		enemies.add(zombie1);
