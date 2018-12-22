@@ -24,24 +24,18 @@ public class ResourceManager {
 			BufferedReader f = new BufferedReader(fh.reader());
 			String line = f.readLine();
 			String imName = "#";
-			ImageActor image = new ImageActor();
 			while(line != null) {
+				ImageActor image = new ImageActor();
 				line = line.replace("/n",  "");
 				if(line.contains(":")) {
-					if (imName != "#") {
-						im.put(imName, image);
-					}
 					imName = line.replace(":", "");
-				}
-				else if(!line.contains("#")){
+					line = f.readLine();
 					line = line.replace(String.valueOf(line.toCharArray()[0]), "").replace(" ", "");
 					image.setImage(line);
+					im.put(imName, image);
 				}
 				
 				line = f.readLine();
-			}
-			if(imName != null) {
-				im.put(imName, image);
 			}
 			f.close();
 		} catch (FileNotFoundException e) {

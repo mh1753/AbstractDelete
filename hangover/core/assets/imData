@@ -30,3 +30,5 @@ healthboost:
 	assets//powers//healthBoost.jpg
 bullet:
 	assets//bullet.png
+logo:
+	assets//logo.jpg
