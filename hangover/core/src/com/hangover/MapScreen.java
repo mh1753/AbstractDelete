@@ -26,12 +26,12 @@ public class MapScreen extends BaseScreen {
 		}
 		
         BitmapFont font = new BitmapFont();
-        String instructionText = " Goodricke ";
+        String destText = " Goodricke ";
         Label.LabelStyle style = new Label.LabelStyle(font, Color.GREEN);
-        Label instructions = new Label(instructionText, style);
-        instructions.setFontScale(2);
-        instructions.setPosition(20,600);
-        instructions.addListener(new ClickListener() {
+        Label goodricke = new Label(destText, style);
+        goodricke.setFontScale(2);
+        goodricke.setPosition(20,600);
+        goodricke.addListener(new ClickListener() {
         	@Override
         	public void clicked(InputEvent event, float x, float y){
         		if(event.getButton() == Input.Buttons.LEFT) {
@@ -40,7 +40,25 @@ public class MapScreen extends BaseScreen {
         		}
         	}
         });
-        uiStage.addActor(instructions);
+        
+        
+        destText = " Flat ";
+        style = new Label.LabelStyle(font, Color.BLUE);
+        Label flat = new Label(destText, style);
+        flat.setFontScale(2);
+        flat.setPosition(20,570);
+        flat.addListener(new ClickListener() {
+        	@Override
+        	public void clicked(InputEvent event, float x, float y){
+        		if(event.getButton() == Input.Buttons.LEFT) {
+        		StartingFlat f = new StartingFlat(g, r);
+        		g.setScreen(f, true);
+        		}
+        	}
+        });
+        
+        uiStage.addActor(flat);
+        uiStage.addActor(goodricke);
 	}
 
 	@Override

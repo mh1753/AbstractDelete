@@ -2,7 +2,7 @@ package com.hangover;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -79,6 +79,14 @@ public abstract class PlayScreen extends BaseScreen {
 		if (playerLoc != null) {
 			c.setPosition(playerLoc.x, playerLoc.y);
 		}
+		if(g.playerHealth == null) {
+			g.playerHealth = new HealthBar(c.getMaxHealth(), c.getHealth());
+		}
+		else {
+			c.takeHealth(g.playerHealth.maxHealth - g.playerHealth.currentHealth);
+		}
+		
+		uiStage.addActor(g.playerHealth);
 		
 		
 		//initialise tilemap
@@ -122,8 +130,8 @@ public abstract class PlayScreen extends BaseScreen {
 	@Override
 	public void update(float dt) {
 		
-		if(c.getX() <= 0 || c.getX() - c.getWidth() >= mapWidthPixels || c.getY() <= 0 
-				|| c.getY() - c.getHeight() >= mapHeightPixels) {
+		if(c.getX() <= 0 || c.getX() + c.getWidth() >= mapWidthPixels || c.getY() <= 0 
+				|| c.getY() + c.getHeight() >= mapHeightPixels) {
 			MapScreen mapscreen = new MapScreen(g, r);
 			g.setScreen(mapscreen, false);
 		}
@@ -190,6 +198,7 @@ public abstract class PlayScreen extends BaseScreen {
 		for(NPC e : enemies) {
 			if( e.overlaps(c, true)){
 				c.takeHealth(30);
+				g.playerHealth.updateHealth(c.getHealth());
 			}
 			if(c.isLiving()) {
 				e.simpleChasePlayer(c.getX(), c.getY());

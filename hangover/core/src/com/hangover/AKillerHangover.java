@@ -10,12 +10,17 @@ public class AKillerHangover extends Game {
 	
 	public int points = 0;
 	
+	public HealthBar playerHealth;
+	
 	public ArrayList<Screen> screens = new ArrayList<Screen>();
 	
 	public void create () {
+		playerHealth = null;
+		
 		Pixmap pm = new Pixmap(Gdx.files.internal("assets//cursor.png"));
 		Gdx.graphics.setCursor(Gdx.graphics.newCursor(pm, 8, 8));
 		pm.dispose();
+		Gdx.graphics.setWindowedMode(1024, 640);
 		GroupLogo t = new GroupLogo(this, new ResourceManager());
 		setScreen(t, true);
 	}

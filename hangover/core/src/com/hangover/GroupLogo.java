@@ -50,8 +50,8 @@ public class GroupLogo extends BaseScreen {
 			logo.setColor(1, 1, 1, 0);
 		}
 		if(time > 3) {
-			FirstAreaDemo test = new FirstAreaDemo(g, r);
-			g.setScreen(test, true);
+			StartingFlat start = new StartingFlat(g, r);
+			g.setScreen(start, true);
 		}
 	}
 
