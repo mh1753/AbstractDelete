@@ -1,11 +1,11 @@
 package com.hangover;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
@@ -22,8 +22,12 @@ public class ImageActor extends Actor {
 	//Is actor living?
 	protected boolean living;
 	
+	//Is actor's image subject to a filter?
+	protected boolean filteredImage;
+	
 	public ImageActor() {
 		super();
+		filteredImage = false;
 		living = true;
 		setWidth(0);
 		setHeight(0);
@@ -56,11 +60,28 @@ public class ImageActor extends Actor {
 		return t;
 	}
 	
+	public void setFiltered(boolean f) {
+		filteredImage = f;
+	}
+	
+	public boolean isFiltered() {
+		return filteredImage;
+	}
+	
 	//handles drawing of the image
 	@Override
 	public void draw(Batch b, float dt) {
 		if(t != null && isLiving()) {
-			b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+			Color prev;
+			if(isFiltered()) {
+				prev = b.getColor();
+				b.setColor(getColor());
+				b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+				b.setColor(prev);
+			}
+			else {
+				b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+			}
 		}
 	}
 	

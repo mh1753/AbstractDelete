@@ -2,6 +2,7 @@ package com.hangover;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -120,6 +121,12 @@ public abstract class PlayScreen extends BaseScreen {
 
 	@Override
 	public void update(float dt) {
+		
+		if(c.getX() <= 0 || c.getX() - c.getWidth() >= mapWidthPixels || c.getY() <= 0 
+				|| c.getY() - c.getHeight() >= mapHeightPixels) {
+			MapScreen mapscreen = new MapScreen(g, r);
+			g.setScreen(mapscreen, false);
+		}
 		
 		ArrayList<MovingActor> deadBullets = new ArrayList<MovingActor>();
 		ArrayList<NPC> deadEnemies = new ArrayList<NPC>();
