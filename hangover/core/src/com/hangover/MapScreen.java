@@ -35,7 +35,7 @@ public class MapScreen extends BaseScreen {
         	@Override
         	public void clicked(InputEvent event, float x, float y){
         		if(event.getButton() == Input.Buttons.LEFT) {
-        		FirstAreaDemo f = new FirstAreaDemo(g, r);
+        		Goodricke f = new Goodricke(g, r);
         		g.setScreen(f, true);
         		}
         	}

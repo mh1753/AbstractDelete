@@ -64,12 +64,15 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		maxEnemyNo = 0;
 		
+		
 		BitmapFont font = new BitmapFont();
         Label.LabelStyle style = new Label.LabelStyle(font, Color.WHITE);
         currentPoints = new Label("Points: " + String.valueOf(g.points), style);
         currentPoints.setFontScale(2);
-        currentPoints.setPosition(800,600);
+        currentPoints.setPosition(800, 600);
+        currentPoints.setVisible(true);
         uiStage.addActor(currentPoints);
+		
 		
 		
 		//Character initialisation
@@ -79,6 +82,8 @@ public abstract class PlayScreen extends BaseScreen {
 		if (playerLoc != null) {
 			c.setPosition(playerLoc.x, playerLoc.y);
 		}
+		
+		
 		if(g.playerHealth == null) {
 			g.playerHealth = new HealthBar(c.getMaxHealth(), c.getHealth());
 		}
@@ -87,6 +92,7 @@ public abstract class PlayScreen extends BaseScreen {
 		}
 		
 		uiStage.addActor(g.playerHealth);
+		
 		
 		
 		//initialise tilemap
@@ -124,7 +130,6 @@ public abstract class PlayScreen extends BaseScreen {
 	        	}
 			}
 		}
-		
 	}
 
 	@Override
@@ -152,6 +157,7 @@ public abstract class PlayScreen extends BaseScreen {
 						y = renderer.getY() + (MathUtils.random(0, mapHeightPixels));
 					}
 					NPC z = new NPC("zombie", r);
+					z.setType("zombie");
 					z.setPosition(x, y);
 					entityStage.addActor(z);
 					enemies.add(z);
@@ -196,6 +202,7 @@ public abstract class PlayScreen extends BaseScreen {
 		deadEnemies.clear();
 		
 		for(NPC e : enemies) {
+			e.updateAnimation();
 			if( e.overlaps(c, true)){
 				c.takeHealth(30);
 				g.playerHealth.updateHealth(c.getHealth());

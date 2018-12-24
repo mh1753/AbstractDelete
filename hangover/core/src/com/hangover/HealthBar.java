@@ -21,6 +21,7 @@ public class HealthBar extends Actor {
 	
 	@Override
 	public void draw(Batch b, float a) {
+		b.end();
 		s.begin();
 		s.set(ShapeType.Filled);
 		s.setColor(Color.RED);
@@ -28,6 +29,7 @@ public class HealthBar extends Actor {
 		s.setColor(Color.GREEN);
 		s.rect(40, 600, (currentHealth) * 2, 10);
 		s.end();
+		b.begin();
 	}
 	
 	public void updateHealth(int ch) {

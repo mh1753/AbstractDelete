@@ -105,6 +105,15 @@ public class Entity extends MovingActor{
 		setVelY((float) (speed * Math.cos(angle)));
 	}
 	
+	public void updateAnimation() {
+		if(moving) {
+			setAnim(getType().toLowerCase() + "walking");
+		}
+		else {
+			setAnim(getType().toLowerCase());
+		}
+	}
+	
 	public void act(float dt) {
 		if(currentHealth <= 0) {
 			setMoving(false);

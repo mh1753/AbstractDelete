@@ -1,6 +1,5 @@
 package com.tests;
 
-import com.badlogic.gdx.Game;
 import com.hangover.AKillerHangover;
 import com.hangover.AnimatedActor;
 import com.hangover.BaseScreen;

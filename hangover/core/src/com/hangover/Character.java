@@ -14,15 +14,6 @@ public class Character extends Entity {
 		angle = a;
 	}
 	
-	public void updateAnimation() {
-		if(moving) {
-			setAnim(getType().toLowerCase() + "walking");
-		}
-		else {
-			setAnim(getType().toLowerCase());
-		}
-	}
-	
 	public void updatePlayerRot(float mx, float my) {
 		float xdiff = mx - getX() - 32;
 		float ydiff = my - getY() - 32;

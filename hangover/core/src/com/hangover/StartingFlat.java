@@ -12,6 +12,8 @@ public class StartingFlat extends PlayScreen {
 	public void create() {
 		super.create("player1", new Vector2(128, 192), "assets//maps//Flat.tmx");
 		
+		maxEnemyNo = 5;
+		
 		entityStage.addActor(c);
 	}
 	
