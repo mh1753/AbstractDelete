@@ -81,4 +81,9 @@ public class TestScreen extends PlayScreen {
 		return false;
 	}
 
+	@Override
+	public void enterDoor() {
+		
+	}
+
 }

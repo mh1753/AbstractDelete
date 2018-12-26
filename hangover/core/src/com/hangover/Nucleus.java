@@ -2,23 +2,25 @@ package com.hangover;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class StartingFlat extends PlayScreen {
+public class Nucleus extends SafeArea {
 
-	public StartingFlat(AKillerHangover g, ResourceManager r) {
+	public Nucleus(AKillerHangover g, ResourceManager r) {
 		super(g, r);
 	}
 
 	@Override
 	public void create() {
-		super.create("player1", new Vector2(128, 192), "assets//maps//Flat.tmx");
+		super.create("player1", new Vector2(37 * 32, 27 * 32), "assets//maps//Nucleus.tmx");
 		
-		maxEnemyNo = 5;
+		points = 1000;
 		
 		entityStage.addActor(c);
+		
 	}
 
 	@Override
 	public void enterDoor() {
+		
 		
 	}
 

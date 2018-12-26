@@ -23,8 +23,11 @@ public abstract class PlayScreen extends BaseScreen {
 	
 	public int maxEnemyNo;
 	
+	public int spawnRate;
+	
 	public ArrayList<ImageActor> background;
 	public ArrayList<Rectangle> obstacles;
+	public ArrayList<Rectangle> doors;
 	
 	public ArrayList<MovingActor> bullets;
 	public float timeSinceShot = 1;
@@ -63,6 +66,7 @@ public abstract class PlayScreen extends BaseScreen {
 		keysPressed = new ArrayList<Integer>();
 		
 		maxEnemyNo = 0;
+		spawnRate = 50000;
 		
 		
 		BitmapFont font = new BitmapFont();
@@ -127,6 +131,15 @@ public abstract class PlayScreen extends BaseScreen {
 	        		for(RectangleMapObject o : layerObjects.getByType(RectangleMapObject.class)) {
 	        			obstacles.add(o.getRectangle());
 	        		}
+	        		
+	        		doors = new ArrayList<Rectangle>();
+	        		layer = tilemap.getLayers().get("door");
+	        		if(layer != null) {
+	        			layerObjects = layer.getObjects();
+	        			for(RectangleMapObject o : layerObjects.getByType(RectangleMapObject.class)) {
+	        				doors.add(o.getRectangle());
+	        			}
+	        		}
 	        	}
 			}
 		}
@@ -146,8 +159,8 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		if(enemies.size() - maxEnemyNo < 0) {
 			for(int i = 0; i < maxEnemyNo - enemies.size(); i++) {
-				int spawn = MathUtils.random(0, 50000);
-				float range = 1 * (dt * 1000);
+				int spawn = MathUtils.random(0, spawnRate);
+				float range = (dt * 1000);
 				if(spawn <= range) {
 					float x = renderer.getX() + (MathUtils.random(0, mapWidthPixels));
 					float y = renderer.getY() + (MathUtils.random(0, mapHeightPixels));
@@ -180,6 +193,14 @@ public abstract class PlayScreen extends BaseScreen {
 				}
 			}
 
+		}
+		
+		if(doors != null) {
+			for(Rectangle r: doors) {
+				if(c.overlaps(r, false)) {
+					enterDoor();
+				}
+			}
 		}
 		
 		for(MovingActor b : bullets) {
@@ -366,6 +387,8 @@ public abstract class PlayScreen extends BaseScreen {
 			e.printStackTrace();
 		}
 	}
+	
+	public abstract void enterDoor();
 	
 	public void dispose() {
 		super.dispose();

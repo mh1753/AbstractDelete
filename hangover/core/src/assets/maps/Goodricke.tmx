@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="57">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="58">
  <tileset firstgid="1" source="tiles.tsx"/>
  <layer id="4" name="Tile Layer 1" width="64" height="64">
   <data encoding="csv">
@@ -163,5 +163,8 @@
   <object id="54" x="1670" y="1" width="35" height="406"/>
   <object id="55" x="261" y="1" width="1411" height="311"/>
   <object id="56" x="261" y="312" width="341" height="128"/>
+ </objectgroup>
+ <objectgroup id="7" name="door">
+  <object id="57" x="1052" y="1488" width="3" height="162"/>
  </objectgroup>
 </map>

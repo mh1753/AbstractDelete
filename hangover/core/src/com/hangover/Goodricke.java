@@ -32,4 +32,11 @@ public class Goodricke extends PlayScreen {
 		super.update(dt);
 	}
 
+	@Override
+	public void enterDoor() {
+		Nucleus nucleus = new Nucleus(g, r);
+		g.setScreen(nucleus, false);
+		
+	}
+
 }
