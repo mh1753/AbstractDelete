@@ -10,14 +10,19 @@ import com.badlogic.gdx.files.FileHandle;
 
 public class ResourceManager {
 	
+	//Stores all imageActors
 	HashMap<String, ImageActor> im = new HashMap<String, ImageActor>();
+	
+	//Stores all entities
 	HashMap<String, Entity> entities = new HashMap<String, Entity>();
 
+	//Initialise imageActor and Entity stores
 	public ResourceManager() {
 		loadImages();
 		loadEntities();
 	}
 	
+	//Loads all imageActors from imData
 	public void loadImages() {
 		try {
 			FileHandle fh = Gdx.files.internal("assets//imData");
@@ -45,10 +50,12 @@ public class ResourceManager {
 		}
 	}
 	
+	//Gets imageActor from store based on name
 	public ImageActor getImageActor(String name) {
 		return im.get(name);
 	}
 	
+	//Loads all entities from entityData file
 	public void loadEntities() {
 		try {
 			BufferedReader f = new BufferedReader(Gdx.files.internal("assets//entityData").reader());
@@ -110,6 +117,7 @@ public class ResourceManager {
 		}
 	}
 	
+	//Gets entity from store based on name
 	public Entity getEntity(String name) {
 		return entities.get(name);
 	}

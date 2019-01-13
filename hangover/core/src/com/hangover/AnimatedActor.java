@@ -12,11 +12,13 @@ public class AnimatedActor extends ImageActor {
 	//Stores animations
 	HashMap<String, Animation<TextureRegion>> anims = new HashMap<String, Animation<TextureRegion>>();
 	
+	//Stores current animation
 	public Animation<TextureRegion> currentAnim;
 	
 	//Stores current time
 	public float timing;
 	
+	//Initialises AnimatedActor
 	public AnimatedActor() {
 		super();
 		currentAnim = null;
@@ -51,10 +53,12 @@ public class AnimatedActor extends ImageActor {
 		setOrigin();
 	}
 	
+	//Returns stores animations
 	public HashMap<String, Animation<TextureRegion>> getAnims(){
 		return anims;
 	}
 	
+	//Sets an animation from anims based on a name
 	public void setAnim(String name) {
 		if(anims.containsKey(name)) {
 			currentAnim = anims.get(name);
@@ -78,11 +82,13 @@ public class AnimatedActor extends ImageActor {
 		}
 	}
 	
+	//Updates the animation timing
 	public void act(float dt) {
 		super.act(dt);
 		timing += dt;
 	}
 	
+	//Takes an animated actor and makes this actor identical
 	public void clone(AnimatedActor a) {
 		super.clone(a);
 		anims = a.anims;
@@ -92,6 +98,7 @@ public class AnimatedActor extends ImageActor {
 		setOrigin(a.getOriginX(),a.getOriginY());
 	}
 	
+	//Makes this animated actor identical to the image actor provided
 	public void clone(ImageActor i) {
 		super.clone(i);
 	}

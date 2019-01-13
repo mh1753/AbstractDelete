@@ -4,8 +4,10 @@ import com.badlogic.gdx.Gdx;
 
 public class GroupLogo extends BaseScreen {
 
+	//Abstract Delete logo ImageActor
 	public ImageActor logo;
 	
+	//Counts current time
 	public float time = 0;
 	
 	public GroupLogo(AKillerHangover g, ResourceManager r) {
@@ -15,6 +17,7 @@ public class GroupLogo extends BaseScreen {
 	@Override
 	public void create() {
 		
+		//Sets background as blue tiles
 		for(int i = 0; i < Gdx.graphics.getHeight()/32; i++) {
 			for(int j = 0; j < Gdx.graphics.getWidth()/32; j++) {
 				ImageActor block = new ImageActor();
@@ -24,6 +27,7 @@ public class GroupLogo extends BaseScreen {
 			}
 		}
 		
+		//Puts logo on screen, initially transparent
 		logo = new ImageActor();
 		logo.clone(r.getImageActor("logo"));
 		logo.setOrigin();
@@ -31,11 +35,14 @@ public class GroupLogo extends BaseScreen {
 		logo.setFiltered(true);
 		logo.setColor(1, 1, 1, 0);
 		
+		//Adds logo to screen
 		entityStage.addActor(logo);
 	}
 
 	@Override
 	public void update(float dt) {
+		
+		//Makes the logo less transparent and then more transparent. Loads next screen afterwards.
 		time += dt;
 		if(time <= 0.5) {
 			logo.setColor(1, 1, 1, time);

@@ -10,8 +10,10 @@ public class StartingFlat extends PlayScreen {
 
 	@Override
 	public void create() {
+		//Sets player type to player1, starts player in their bedroom
 		super.create("player1", new Vector2(128, 192), "assets//maps//Flat.tmx");
 		
+		//Area tries to maintain a total of 5 zombies
 		maxEnemyNo = 5;
 		
 		entityStage.addActor(c);

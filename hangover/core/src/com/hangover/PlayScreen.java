@@ -28,8 +28,8 @@ public abstract class PlayScreen extends BaseScreen {
 	public ArrayList<ImageActor> background;
 	public ArrayList<Rectangle> obstacles;
 	public ArrayList<Rectangle> doors;
-	
 	public ArrayList<MovingActor> bullets;
+	
 	public float timeSinceShot = 1;
 	
 	public ArrayList<NPC> enemies;
@@ -65,10 +65,13 @@ public abstract class PlayScreen extends BaseScreen {
 		enemies = new ArrayList<NPC>();
 		keysPressed = new ArrayList<Integer>();
 		
+		
+		//Sets the number of enemies the game will try to maintain and the rate of spawning
 		maxEnemyNo = 0;
 		spawnRate = 50000;
 		
 		
+		//Displays the current number of points
 		BitmapFont font = new BitmapFont();
         Label.LabelStyle style = new Label.LabelStyle(font, Color.WHITE);
         currentPoints = new Label("Points: " + String.valueOf(g.points), style);
@@ -87,7 +90,7 @@ public abstract class PlayScreen extends BaseScreen {
 			c.setPosition(playerLoc.x, playerLoc.y);
 		}
 		
-		
+		//Keeps the player's health constant between screens
 		if(g.playerHealth == null) {
 			g.playerHealth = new HealthBar(c.getMaxHealth(), c.getHealth());
 		}
@@ -95,6 +98,7 @@ public abstract class PlayScreen extends BaseScreen {
 			c.takeHealth(g.playerHealth.maxHealth - g.playerHealth.currentHealth);
 		}
 		
+		//adds health bar to screen
 		uiStage.addActor(g.playerHealth);
 		
 		
@@ -110,12 +114,15 @@ public abstract class PlayScreen extends BaseScreen {
 	    	tilemap = loader.load(tileMap);
 			if(tilemap != null) {
 				tiling = true;
+				//get tilemap properties
 				tileWidth = tilemap.getProperties().get("tilewidth", Integer.class);
 				tileHeight = tilemap.getProperties().get("tileheight", Integer.class);
 	        	mapWidthTiles = tilemap.getProperties().get("width", Integer.class);
 	        	mapHeightTiles = tilemap.getProperties().get("height", Integer.class);
 	        	mapWidthPixels = mapWidthTiles  * tileWidth;
 	        	mapHeightPixels = mapHeightTiles * tileHeight;
+	        	
+	        	//get tilemap camera
 	        	camera = (OrthographicCamera) entityStage.getCamera();
 	        	camera.position.set( c.getX() + c.getOriginX(),
 	        			c.getY() + c.getOriginY(), 0 );
@@ -124,6 +131,7 @@ public abstract class PlayScreen extends BaseScreen {
 	        	renderer.setOrigin(renderer.getWidth()/2, renderer.getHeight()/2);
 	        	backStage.addActor(renderer);
 	        	
+	        	//get collision map and door map from tilemap
 	        	if (tilemap.getLayers().size() > 1) {
 	        		obstacles = new ArrayList<Rectangle>();
 	        		MapLayer layer = tilemap.getLayers().get("collision");
@@ -148,6 +156,7 @@ public abstract class PlayScreen extends BaseScreen {
 	@Override
 	public void update(float dt) {
 		
+		//If the player leaves the map, navigate to the map screen
 		if(c.getX() <= 0 || c.getX() + c.getWidth() >= mapWidthPixels || c.getY() <= 0 
 				|| c.getY() + c.getHeight() >= mapHeightPixels) {
 			MapScreen mapscreen = new MapScreen(g, r);
@@ -157,6 +166,8 @@ public abstract class PlayScreen extends BaseScreen {
 		ArrayList<MovingActor> deadBullets = new ArrayList<MovingActor>();
 		ArrayList<NPC> deadEnemies = new ArrayList<NPC>();
 		
+		
+		//Spawns more enemies if the number of enemies goes below a certain number
 		if(enemies.size() - maxEnemyNo < 0) {
 			for(int i = 0; i < maxEnemyNo - enemies.size(); i++) {
 				int spawn = MathUtils.random(0, spawnRate);
@@ -178,6 +189,7 @@ public abstract class PlayScreen extends BaseScreen {
 			}
 		}
 		
+		//Makes sure enemies and player don't pass through walls
 		if(obstacles != null) {
 			for(Rectangle r : obstacles) {
 								
@@ -195,6 +207,7 @@ public abstract class PlayScreen extends BaseScreen {
 
 		}
 		
+		//Allows player to use doors to go to new places
 		if(doors != null) {
 			for(Rectangle r: doors) {
 				if(c.overlaps(r, false)) {
@@ -203,6 +216,7 @@ public abstract class PlayScreen extends BaseScreen {
 			}
 		}
 		
+		//checks if a bullet has hit an enemy
 		for(MovingActor b : bullets) {
 			for(NPC e : enemies) {
 				if(e.overlaps(b, false)) {
@@ -217,11 +231,13 @@ public abstract class PlayScreen extends BaseScreen {
 				}
 			}
 		}
+		//removes all bullets that have hit an enemy and all enemies that have died
 		bullets.removeAll(deadBullets);
 		enemies.removeAll(deadEnemies);
 		deadBullets.clear();
 		deadEnemies.clear();
 		
+		//updates the enemy animation, checks if they've hit the player and sets the velocity
 		for(NPC e : enemies) {
 			e.updateAnimation();
 			if( e.overlaps(c, true)){
@@ -233,14 +249,19 @@ public abstract class PlayScreen extends BaseScreen {
 			}
 		}
 		
+		//Time elapsed since the last time the player fired a bullet
 		timeSinceShot += dt;
 		
+		//updates the points counter
 		currentPoints.setText("Points: " + String.valueOf(g.points));
 		
+		//updates the camera based on player's location
 		camera.position.set( MathUtils.clamp(c.getX() + c.getOriginX(), 512, mapWidthPixels - 512),
     			MathUtils.clamp(c.getY() + c.getOriginY(), 320, mapHeightPixels - 320), 0 );
 		camera.update();
 		renderer.setView(camera);
+		
+		//updates player's animation
 		c.updateAnimation();
 	}
 

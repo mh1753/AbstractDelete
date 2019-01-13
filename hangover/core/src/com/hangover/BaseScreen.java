@@ -35,6 +35,7 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 		
 		this.r = r;
 		
+		//Initialises paused
 		paused = false;
 		
 		//inialises stages so they're the size of the screen
@@ -46,6 +47,7 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 		InputMultiplexer im = new InputMultiplexer(this, backStage, entityStage, uiStage);
 		Gdx.input.setInputProcessor(im);
 		
+		//Runs create
 		create();
 	}
 	
@@ -64,15 +66,20 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 	//handles the drawing and acting of the stages
 	@Override
 	public void render(float dt) {
+		//Updates uistage
 		uiStage.act(dt);
 		if(!paused) {
+			//if not paused, update backstage and entities
 			backStage.act(dt);
 			entityStage.act(dt);
 			update(dt);
 		}
 		
+		//Clears screen
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		
+		//Draws stages in order
 		backStage.draw();
 		entityStage.draw();
 		uiStage.draw();
@@ -80,30 +87,36 @@ public abstract class BaseScreen implements Screen, InputProcessor {
 		
 	}
 
+	//Code to be run when resizing screen
 	@Override
 	public void resize(int width, int height) {
 		
 		
 	}
-
+	
+	//Returns paused
 	public boolean isPaused(){
 	    return paused;
     }
 
+	//Sets paused
     public void setPaused(boolean b){
 	    paused = b;
     }
 
+    //Toggles paused
     public void togglePaused(){
 	    paused = !paused;
     }
 
+    //pauses
 	@Override
 	public void pause() {
 		paused = true;
 		
 	}
 
+	//unpauses
 	@Override
 	public void resume() {
 		paused = false;

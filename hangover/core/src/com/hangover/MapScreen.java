@@ -16,6 +16,8 @@ public class MapScreen extends BaseScreen {
 	
 	@Override
 	public void create() {
+		
+		//Fills in background with blue tiles
 		for(int i = 0; i < Gdx.graphics.getHeight()/32; i++) {
 			for(int j = 0; j < Gdx.graphics.getWidth()/32; j++) {
 				ImageActor block = new ImageActor();
@@ -25,6 +27,7 @@ public class MapScreen extends BaseScreen {
 			}
 		}
 		
+		//Sets Goodricke button on map screen
         BitmapFont font = new BitmapFont();
         String destText = " Goodricke ";
         Label.LabelStyle style = new Label.LabelStyle(font, Color.GREEN);
@@ -41,7 +44,7 @@ public class MapScreen extends BaseScreen {
         	}
         });
         
-        
+        //sets Flat button on map screen
         destText = " Flat ";
         style = new Label.LabelStyle(font, Color.BLUE);
         Label flat = new Label(destText, style);
@@ -57,6 +60,7 @@ public class MapScreen extends BaseScreen {
         	}
         });
         
+        //Adds clickable text to the uistage
         uiStage.addActor(flat);
         uiStage.addActor(goodricke);
 	}

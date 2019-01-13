@@ -25,6 +25,7 @@ public class ImageActor extends Actor {
 	//Is actor's image subject to a filter?
 	protected boolean filteredImage;
 	
+	//Initialises ImageActor
 	public ImageActor() {
 		super();
 		filteredImage = false;
@@ -36,6 +37,7 @@ public class ImageActor extends Actor {
 		setRectangleBoundary();
 	}
 	
+	//Initialises image actor and loads image from url
 	public ImageActor(String url) {
 		//loads image from url
 		super();
@@ -60,10 +62,12 @@ public class ImageActor extends Actor {
 		return t;
 	}
 	
+	//Sets whether the image has a colour filter or not
 	public void setFiltered(boolean f) {
 		filteredImage = f;
 	}
 	
+	//Checks if image is filtered or not
 	public boolean isFiltered() {
 		return filteredImage;
 	}
@@ -74,9 +78,14 @@ public class ImageActor extends Actor {
 		if(t != null && isLiving()) {
 			Color prev;
 			if(isFiltered()) {
+				//Stores batch current filter
 				prev = b.getColor();
+				
+				//sets batch filter to this image's filter and draws image
 				b.setColor(getColor());
 				b.draw(t, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+				
+				//Restores batch's original filter
 				b.setColor(prev);
 			}
 			else {
@@ -85,6 +94,7 @@ public class ImageActor extends Actor {
 		}
 	}
 	
+	//Makes this imageActor a copy of the one given
 	public void clone(ImageActor a) {
 		t = a.getImage();
 		setWidth(t.getRegionWidth());
@@ -138,10 +148,12 @@ public class ImageActor extends Actor {
 		return boundingPolygon;
 	}
 	
+	//Sets if imageActor is living
 	public void setLiving(boolean l) {
 		living = l;
 	}
 	
+	//Checks if imageActor is living
 	public boolean isLiving() {
 		return living;
 	}
@@ -171,6 +183,7 @@ public class ImageActor extends Actor {
 		return (polyOverlap && (mtv.depth > significant));
 	}
 	
+	//Same overlaps function as above but with a polygon as parameter
 	public boolean overlaps(Polygon poly, boolean resolve){
 		if(!isLiving()) {
 			return false;
@@ -189,6 +202,7 @@ public class ImageActor extends Actor {
 		return (polyOverlap && (mtv.depth > significant));
 	}
 	
+	//Same as other overlaps but with rectangles
 	public boolean overlaps(Rectangle rect, boolean resolve){
 		if(!isLiving()) {
 			return false;
