@@ -1,0 +1,9 @@
+ground:
+0 0 0 0 0 0 0 0 0 0 0
+0 tl t t tr 0 tl t t tr 0
+0 l m m r 0 l m m r 0
+0 bl m m br 0 bl m m br 0
+0 0 l r 0 0 0 l r 0 0 
+0 tl m m t t t m m t t
+0 bl b b b b b b b b b
+0 0 0 0 0 0 0 0 0 0 0
