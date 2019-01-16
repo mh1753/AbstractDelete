@@ -25,6 +25,8 @@ public abstract class PlayScreen extends BaseScreen {
 	
 	public int spawnRate;
 	
+	public double hitCounter;
+	
 	public ArrayList<ImageActor> background;
 	public ArrayList<Rectangle> obstacles;
 	public ArrayList<Rectangle> doors;
@@ -69,6 +71,8 @@ public abstract class PlayScreen extends BaseScreen {
 		//Sets the number of enemies the game will try to maintain and the rate of spawning
 		maxEnemyNo = 0;
 		spawnRate = 50000;
+		
+		hitCounter = 0;
 		
 		
 		//Displays the current number of points
@@ -156,6 +160,9 @@ public abstract class PlayScreen extends BaseScreen {
 	@Override
 	public void update(float dt) {
 		
+		//Check if player has won.
+		g.checkWin();
+		
 		//If the player leaves the map, navigate to the map screen
 		if(c.getX() <= 0 || c.getX() + c.getWidth() >= mapWidthPixels || c.getY() <= 0 
 				|| c.getY() + c.getHeight() >= mapHeightPixels) {
@@ -240,8 +247,9 @@ public abstract class PlayScreen extends BaseScreen {
 		//updates the enemy animation, checks if they've hit the player and sets the velocity
 		for(NPC e : enemies) {
 			e.updateAnimation();
-			if( e.overlaps(c, true)){
+			if( e.overlaps(c, true) && hitCounter <= 0){
 				c.takeHealth(30);
+				hitCounter = 1.5;
 				g.playerHealth.updateHealth(c.getHealth());
 			}
 			if(c.isLiving()) {
@@ -251,6 +259,9 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		//Time elapsed since the last time the player fired a bullet
 		timeSinceShot += dt;
+		
+		//Counts down time until player can be hit again
+		hitCounter -= dt;
 		
 		//updates the points counter
 		currentPoints.setText("Points: " + String.valueOf(g.points));

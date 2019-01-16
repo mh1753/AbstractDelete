@@ -1,0 +1,34 @@
+badlogic:
+	badlogic.jpg
+flatm:
+	floor//flatm.jpg
+flatt:
+	floor//flatt.jpg
+flattr:
+	floor//flattr.jpg
+flatr:
+	floor//flatr.jpg
+flatbr:
+	floor//flatbr.jpg
+flatb:
+	floor//flatb.jpg
+flatbl:
+	floor//flatbl.jpg
+flatl:
+	floor//flatl.jpg
+flattl:
+	floor//flattl.jpg
+player1:
+	characters//Player1.png
+zombie:
+	characters//zombie64.jpg
+speedup:
+	powers//SpeedBoost.jpg
+speeddown:
+	powers//speedDown.jpg
+healthboost:
+	powers//healthBoost.jpg
+bullet:
+	bullet.png
+logo:
+	logo.jpg

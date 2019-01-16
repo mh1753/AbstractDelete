@@ -71,5 +71,13 @@ public class AKillerHangover extends Game {
 			points -= p;
 		}
 	}
+	
+	public void checkWin() {
+		for(Screen sc: screens) {
+			if(sc.getClass() == Nucleus.class && points >= 2000) {
+				setScreen(new WinScreen(this, new ResourceManager()), true);
+			}
+		}
+	}
 
 }
