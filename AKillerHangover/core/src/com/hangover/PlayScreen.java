@@ -2,7 +2,7 @@ package com.hangover;
 
 import java.util.ArrayList;
 
-
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
@@ -323,26 +323,6 @@ public abstract class PlayScreen extends BaseScreen {
 		else {
 			c.setMoving(false);
 		}
-		
-		//Deals with shooting
-		if(keysPressed.contains(Keys.SPACE)) {
-			if(timeSinceShot > 1) {
-				MovingActor bullet = new MovingActor();
-				bullet.clone(r.getImageActor("bullet"));
-				Vector2 bPos = new Vector2();
-				bPos.x = c.getX() + 32 - 32 * MathUtils.sin(c.getRotation() * MathUtils.degreesToRadians);
-				bPos.y = c.getY() + 32 + 32 * MathUtils.cos(c.getRotation() * MathUtils.degreesToRadians);
-				bullet.setVelocity(-300 * MathUtils.sin(c.getRotation()* MathUtils.degreesToRadians),
-						300 * MathUtils.cos(c.getRotation()* MathUtils.degreesToRadians));
-				bullet.setOrigin(3, 0);
-				bullet.setPosition(bPos.x, bPos.y);
-				bullet.setRotation(c.getRotation());
-				bullet.setMoving(true);
-				bullets.add(bullet);
-				entityStage.addActor(bullet);
-				timeSinceShot = 0;
-			}
-		}
 		return false;
 	}
 
@@ -392,6 +372,24 @@ public abstract class PlayScreen extends BaseScreen {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		if(button == Input.Buttons.LEFT) {
+			if(timeSinceShot > 1) {
+				MovingActor bullet = new MovingActor();
+				bullet.clone(r.getImageActor("bullet"));
+				Vector2 bPos = new Vector2();
+				bPos.x = c.getX() + 32 - 32 * MathUtils.sin(c.getRotation() * MathUtils.degreesToRadians);
+				bPos.y = c.getY() + 32 + 32 * MathUtils.cos(c.getRotation() * MathUtils.degreesToRadians);
+				bullet.setVelocity(-300 * MathUtils.sin(c.getRotation()* MathUtils.degreesToRadians),
+						300 * MathUtils.cos(c.getRotation()* MathUtils.degreesToRadians));
+				bullet.setOrigin(3, 0);
+				bullet.setPosition(bPos.x, bPos.y);
+				bullet.setRotation(c.getRotation());
+				bullet.setMoving(true);
+				bullets.add(bullet);
+				entityStage.addActor(bullet);
+				timeSinceShot = 0;
+			}
+		}
 		return false;
 	}
 
