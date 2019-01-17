@@ -35,3 +35,10 @@ zombie2:
 	Anim:
 		characters//Zombie2.png zombie2 64 1
 		characters//Zombie2walking.png zombie2walking 64 6
+		
+speedup:
+	Data:
+		speed = 0
+		health = 200
+	Anim:
+		powers//SpeedBoost.jpg speedup 64 1

@@ -60,9 +60,42 @@ public class MapScreen extends BaseScreen {
         	}
         });
         
+      //sets Langwith button on map screen
+        destText = "Langwith ";
+        style = new Label.LabelStyle(font, Color.YELLOW);
+        Label langwith = new Label(destText, style);
+        langwith.setFontScale(2);
+        langwith.setPosition(20,540);
+        langwith.addListener(new ClickListener() {
+        	@Override
+        	public void clicked(InputEvent event, float x, float y){
+        		if(event.getButton() == Input.Buttons.LEFT) {
+        		Langwith l = new Langwith(g, r);
+        		g.setScreen(l, true);
+        		}
+        	}
+        });
+        
+        destText = "Constantine ";
+        style = new Label.LabelStyle(font, Color.PINK);
+        Label constantine = new Label(destText, style);
+        constantine.setFontScale(2);
+        constantine.setPosition(20,510);
+        constantine.addListener(new ClickListener() {
+        	@Override
+        	public void clicked(InputEvent event, float x, float y){
+        		if(event.getButton() == Input.Buttons.LEFT) {
+        		Constantine l = new Constantine(g, r);
+        		g.setScreen(l, true);
+        		}
+        	}
+        });
+        
         //Adds clickable text to the uistage
         uiStage.addActor(flat);
         uiStage.addActor(goodricke);
+        uiStage.addActor(langwith);
+        uiStage.addActor(constantine);
 	}
 
 	@Override
