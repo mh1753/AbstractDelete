@@ -11,6 +11,12 @@ public class AKillerHangover extends Game {
 	//Allows points to be accessed from every screen
 	public int points = 0;
 	
+	//Stores the type of character being used
+	public String playerType = "";
+	
+	//Stores spawn rate of zombies in all levels
+	public int spawnrate = 50000;
+	
 	//Allows health to be constant between screens
 	public HealthBar playerHealth;
 	

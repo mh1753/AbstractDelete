@@ -20,7 +20,7 @@ public abstract class SafeArea extends PlayScreen {
 		//if area not visited, give points and make zombies spawn quicker
 		if(!visited) {
 			visited = true;
-			spawnRate *= 0.8;
+			g.spawnrate *= 0.8;
 			g.addPoints(points);
 		}
 	}

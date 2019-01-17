@@ -57,7 +57,7 @@ public class GroupLogo extends BaseScreen {
 			logo.setColor(1, 1, 1, 0);
 		}
 		if(time > 3) {
-			StartingFlat start = new StartingFlat(g, r);
+			PickCharScreen start = new PickCharScreen(g, r);
 			g.setScreen(start, true);
 		}
 	}

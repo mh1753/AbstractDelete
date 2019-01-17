@@ -11,7 +11,7 @@ public class Nucleus extends SafeArea {
 	@Override
 	public void create() {
 		//Sets player type as player1, puts the player at the east entrance to the nucleus
-		super.create("player1", new Vector2(37 * 32, 27 * 32), "maps//Nucleus.tmx");
+		super.create(g.playerType, new Vector2(37 * 32, 27 * 32), "maps//Nucleus.tmx");
 		
 		//Arriving here is worth 1000 points
 		points = 1000;
@@ -19,6 +19,10 @@ public class Nucleus extends SafeArea {
 		//Adds player to stage
 		entityStage.addActor(c);
 		
+	}
+	
+	public void update(float dt) {
+		super.update(dt);
 	}
 
 	@Override

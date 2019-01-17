@@ -70,7 +70,7 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		//Sets the number of enemies the game will try to maintain and the rate of spawning
 		maxEnemyNo = 0;
-		spawnRate = 50000;
+		spawnRate = g.spawnrate;
 		
 		hitCounter = 0;
 		
@@ -180,6 +180,7 @@ public abstract class PlayScreen extends BaseScreen {
 				int spawn = MathUtils.random(0, spawnRate);
 				float range = (dt * 1000);
 				if(spawn <= range) {
+					double zombietype = MathUtils.random();
 					float x = renderer.getX() + (MathUtils.random(0, mapWidthPixels));
 					float y = renderer.getY() + (MathUtils.random(0, mapHeightPixels));
 					while((c.getX() - x < 200 && c.getX() - x > -200 &&
@@ -187,8 +188,15 @@ public abstract class PlayScreen extends BaseScreen {
 						x = renderer.getX() + (MathUtils.random(0, mapWidthPixels));
 						y = renderer.getY() + (MathUtils.random(0, mapHeightPixels));
 					}
-					NPC z = new NPC("zombie", r);
-					z.setType("zombie");
+					NPC z;
+					if(zombietype < 0.5) {
+						z = new NPC("zombie", r);
+						z.setType("zombie");
+					}
+					else {
+						z = new NPC("zombie2", r);
+						z.setType("zombie2");
+					}
 					z.setPosition(x, y);
 					entityStage.addActor(z);
 					enemies.add(z);

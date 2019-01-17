@@ -13,7 +13,7 @@ public class Goodricke extends PlayScreen {
 	@Override
 	public void create() {
 		//Starts player with player1 type at the appropriate location
-		super.create("player1", new Vector2(1520, 64), "maps//Goodricke.tmx");
+		super.create(g.playerType, new Vector2(1520, 64), "maps//Goodricke.tmx");
 		
 		//Game tries to maintain 12 zombies
 		maxEnemyNo = 12;
