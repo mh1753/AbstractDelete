@@ -1,6 +1,8 @@
 package com.hangover;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
@@ -35,6 +37,9 @@ public abstract class PlayScreen extends BaseScreen {
 	public float timeSinceShot = 1;
 	
 	public ArrayList<NPC> enemies;
+
+	public Map<Entity, Float> pickups;
+	public Map<Entity, Float> buffs;
 	
 	public ArrayList<Integer> keysPressed;
 	
@@ -66,8 +71,10 @@ public abstract class PlayScreen extends BaseScreen {
 		bullets = new ArrayList<MovingActor>();
 		enemies = new ArrayList<NPC>();
 		keysPressed = new ArrayList<Integer>();
-		
-		
+		pickups = new HashMap<Entity, Float>();
+		buffs = new HashMap<Entity, Float>();
+
+
 		//Sets the number of enemies the game will try to maintain and the rate of spawning
 		maxEnemyNo = 0;
 		spawnRate = g.spawnrate;
@@ -172,6 +179,7 @@ public abstract class PlayScreen extends BaseScreen {
 		
 		ArrayList<MovingActor> deadBullets = new ArrayList<MovingActor>();
 		ArrayList<NPC> deadEnemies = new ArrayList<NPC>();
+		ArrayList<Entity> deadPickups = new ArrayList<Entity>();
 		
 		
 		//Spawns more enemies if the number of enemies goes below a certain number
@@ -240,17 +248,88 @@ public abstract class PlayScreen extends BaseScreen {
 						g.addPoints(100);
 						deadBullets.add(b);
 						b.setLiving(false);
+						int pickupSpawnChance = MathUtils.random(10);
+						if (c.getHealth() < c.getMaxHealth()*0.2){
+							pickupSpawnChance *= 1.5;
+						}
+						if (pickupSpawnChance >= 9) {
+							int pickupType = MathUtils.random(2);
+							Entity p = null;
+							if (pickupType == 0) {
+								p = new Entity("healthboost", r);
+								p.setType("healthboost");
+							}
+							if (pickupType == 1){
+								p = new Entity("speedup", r);
+								p.setType("speedup");
+							}
+							if (pickupType == 2){
+								p = new Entity("speeddown", r);
+								p.setType("speeddown");
+							}
+							p.setEllipseBoundary();
+							p.setPosition(e.getX(), e.getY());
+							entityStage.addActor(p);
+							pickups.put(p, (float) 0);
+						}
 						deadEnemies.add(e);
 						e.setLiving(false);
 					}
 				}
 			}
 		}
-		//removes all bullets that have hit an enemy and all enemies that have died
+
+		//checks if player collides with pickup and applies appropriate effects
+		for (Entity p : pickups.keySet()){
+			if (p.overlaps(c, false)){
+				if (p.getType() == "healthboost") {
+					c.addHealth(25);
+					g.playerHealth.updateHealth(c.getHealth());
+				} else if (p.getType() == "speedup"){
+					c.setSpeed((float) (c.getSpeed() * 1.5));
+					buffs.put(p, (float) 0);
+				} else if (p.getType() == "speeddown"){
+					c.setSpeed((float) (c.getSpeed() * 0.75));
+					buffs.put(p, (float) 0);
+				}
+				deadPickups.add(p);
+				p.setLiving(false);
+			}
+		}
+
+		//despawns pickups that have been on the stage for too long
+		for (Entity p : pickups.keySet()){
+			pickups.replace(p, pickups.get(p) + dt);
+			if (pickups.get(p) >= 10){
+				deadPickups.add(p);
+				p.setLiving(false);
+			}
+		}
+
+		//remove buffs after their use time
+		for (Entity b : buffs.keySet()){
+			buffs.replace(b, buffs.get(b) + dt);
+			if (buffs.get(b) >= 10){
+				if (b.getType() == "speedup"){
+					c.setSpeed((float) (c.getSpeed()/1.5));
+				} else if (b.getType() == "speeddown"){
+					c.setSpeed((float) (c.getSpeed()/0.75));
+				}
+				buffs.remove(b);
+			}
+		}
+
+		/*removes all bullets that have hit an enemy, all enemies that have died
+		  and pickups that have been grabbed or ignored
+		 */
 		bullets.removeAll(deadBullets);
 		enemies.removeAll(deadEnemies);
+		for (Entity p : deadPickups){
+			pickups.remove(p);
+		}
 		deadBullets.clear();
 		deadEnemies.clear();
+		deadPickups.clear();
 		
 		//updates the enemy animation, checks if they've hit the player and sets the velocity
 		for(NPC e : enemies) {
