@@ -21,7 +21,7 @@ flattl:
 player1:
 	characters//Player1.png
 zombie:
-	characters//zombie64.jpg
+	characters//Zombie64.jpg
 speedup:
 	powers//SpeedBoost.jpg
 speeddown:

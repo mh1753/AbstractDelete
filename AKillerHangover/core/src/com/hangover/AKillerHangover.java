@@ -27,6 +27,7 @@ public class AKillerHangover extends Game {
 		playerHealth = null;
 		
 		//sets cursor
+		System.out.println(Gdx.files.internal("cursor.png"));
 		Pixmap pm = new Pixmap(Gdx.files.internal("cursor.png"));
 		Gdx.graphics.setCursor(Gdx.graphics.newCursor(pm, 8, 8));
 		pm.dispose();

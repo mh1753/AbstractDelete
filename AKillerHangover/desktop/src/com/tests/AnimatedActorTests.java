@@ -76,6 +76,8 @@ public class AnimatedActorTests {
 	public void testGetAnims() {
 		aj = new AnimatedActor();
 		Assert.assertTrue(aj.getAnims().values().isEmpty());
+		aj.storeAnim("badlogic.jpg", "badlogic", 10, 10);
+		Assert.assertFalse(aj.getAnims().values().isEmpty());
 	}
 
 	@Test
