@@ -45,7 +45,7 @@ public class NPCTests {
 	@Test
 	public void testNPC() {
 		n = new NPC();
-		Assert.assertEquals(true, n.getFriendly());
+		Assert.assertEquals(false, n.getFriendly());
 		
 		System.out.println("    testNPC() : passed");
 	}

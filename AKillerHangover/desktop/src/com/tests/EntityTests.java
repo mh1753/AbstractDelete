@@ -127,8 +127,9 @@ public class EntityTests {
 	@Test
 	public void testAddHealth() {
         e = new Entity();
+        e.setMaxHealth(100);
 
-		e.addHealth(1);
+		e.addHealth(101);
 		Assert.assertEquals(100, e.getHealth(), 0);
 		e.addHealth(-1);
 		Assert.assertEquals(99, e.getHealth(), 0);
@@ -140,7 +141,7 @@ public class EntityTests {
 	@Test
 	public void testTakeHealth() {
         e = new Entity();
-
+        e.setMaxHealth(100);
 		e.takeHealth(101);
 		Assert.assertEquals(0, e.getHealth(), 0);
 		e.takeHealth(-1);

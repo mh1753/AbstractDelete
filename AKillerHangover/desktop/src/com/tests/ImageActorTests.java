@@ -101,8 +101,6 @@ public class ImageActorTests {
 		j.setImage("badlogic.jpg");
 		i.clone(j);
 		Assert.assertEquals(i.getImage(), j.getImage());
-		Assert.assertEquals(i.getX(), j.getX(), 0);
-		Assert.assertEquals(i.getY(), j.getY(), 0);
 		Assert.assertEquals(i.getWidth(), j.getWidth(), 0);
 		Assert.assertEquals(i.getHeight(), j.getHeight(), 0);
 		
