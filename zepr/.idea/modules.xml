@@ -3,15 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/zepr.iml" filepath="$PROJECT_DIR$/zepr.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/zepr.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/zepr.core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/zepr.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/zepr.core.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/zepr.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/zepr.core.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/zepr.desktop.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/zepr.desktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/zepr.desktop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/zepr.desktop.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/zepr.desktop.test.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/zepr.desktop.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tests/zepr.tests.iml" filepath="$PROJECT_DIR$/.idea/modules/tests/zepr.tests.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tests/zepr.tests.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tests/zepr.tests.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tests/zepr.tests.test.iml" filepath="$PROJECT_DIR$/.idea/modules/tests/zepr.tests.test.iml" />
     </modules>
   </component>
 </project>
