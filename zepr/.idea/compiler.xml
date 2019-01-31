@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="zepr.core.main" target="1.6" />
+      <module name="zepr.core.test" target="1.6" />
+      <module name="zepr.desktop.main" target="1.6" />
+      <module name="zepr.desktop.test" target="1.6" />
+      <module name="zepr.tests.main" target="1.6" />
+      <module name="zepr.tests.test" target="1.6" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
