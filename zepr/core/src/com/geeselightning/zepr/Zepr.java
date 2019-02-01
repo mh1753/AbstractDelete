@@ -9,6 +9,9 @@ public class Zepr extends Game {
 	private Level level;
 	private SelectLevelScreen selectLevelScreen;
 
+	//Stores number of points earned by player
+	private float points = 0;
+
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
 	public int progress = 3;
 
@@ -43,6 +46,16 @@ public class Zepr extends Game {
 				this.setScreen(level);
 				break;
 		}
+	}
+
+	//Increments points by p
+	public void addPoints(float p){
+		points += p;
+	}
+
+	//Returns current number of points
+	public int getPoints(){
+		return Math.round(points);
 	}
 
 	@Override

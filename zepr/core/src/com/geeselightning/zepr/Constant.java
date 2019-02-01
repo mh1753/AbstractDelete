@@ -24,4 +24,9 @@ public final class Constant {
     public static final int SPEEDUP = 50;
     public static final float SPEEDUPTIME = 10;
     public static final float IMMUNITYTIME = 5;
+    public static final int ZOMBIEKILLPOINTS = 100;
+    public static final int SAFEAREAPOINTS = 1000;
+    public static final int FINISHMINIGAMEPOINTS = 1000;
+    public static final int AVOIDPOINTS = 5;
+    public static final float AVOIDTIMER = 3;
 }

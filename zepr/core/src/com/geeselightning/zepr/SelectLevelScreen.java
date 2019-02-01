@@ -18,6 +18,7 @@ public class SelectLevelScreen implements Screen {
 
     private Zepr parent;
     private Stage stage;
+    private Label pointCounter;
     private Label stageDescription;
     private Label characterDescription;
     private int stageLink = -1;
@@ -39,6 +40,9 @@ public class SelectLevelScreen implements Screen {
 
         // Importing the necessary assets for the button textures.
         Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+
+        //Creating point counter label.
+        pointCounter = new Label("Points : " + Integer.toString(parent.getPoints()), skin, "subtitle");
 
         // Creating stage buttons.
         final TextButton town = new TextButton("Town", skin);
@@ -87,6 +91,7 @@ public class SelectLevelScreen implements Screen {
         menuBar.add(back).pad(10);
         menuBar.add(save).pad(10);
         menuBar.add(load).pad(10);
+        menuBar.add(pointCounter).pad(10);
 
         // Adding stage selector buttons.
         Table stageSelect = new Table();
@@ -207,6 +212,11 @@ public class SelectLevelScreen implements Screen {
         // Clears the screen to black.
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        //Updates the pointCounter if the number of points has changed
+        if(Integer.toString(parent.getPoints()).equals(pointCounter.getText().substring("Points : ".length() - 1))){
+            pointCounter.setText("Points : " + Integer.toString(parent.getPoints()));
+        }
 
         // Draws the stage.
         this.stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));

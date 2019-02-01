@@ -20,6 +20,7 @@ public class Zombie extends Character {
         if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
             player.takeDamage(attackDamage);
             hitRefresh = 0;
+            currentLevel.avoidTimer = Constant.AVOIDTIMER;
         } else {
             hitRefresh += delta;
         }
@@ -40,6 +41,7 @@ public class Zombie extends Character {
         if (health <= 0) {
             currentLevel.zombiesRemaining--;
             currentLevel.aliveZombies.remove(this);
+            currentLevel.parent.addPoints(Constant.ZOMBIEKILLPOINTS);
             this.getTexture().dispose();
         }
     }

@@ -45,9 +45,14 @@ public class Level implements Screen {
     Vector2 powerSpawn;
     PowerUp currentPowerUp = null;
 
+    //Create labels for displaying info that player needs
     Label progressLabel = new Label("", skin);
     Label healthLabel = new Label("", skin);
     Label powerupLabel = new Label("", skin);
+    Label pointCounter = new Label("", skin);
+
+    //Timer until player gains points for avoiding zombies
+    public float avoidTimer = 0;
 
     public Level(Zepr zepr, String mapLocation, Vector2 playerSpawn, ArrayList<Vector2> zombieSpawnPoints, int[] waves, Vector2 powerSpawn) {
         parent = zepr;
@@ -322,6 +327,14 @@ public class Level implements Screen {
                 renderer.getBatch().setColor(Color.WHITE);
             }
 
+            // if Player hasn't been hit lately, grant points. Else, decrease timer
+            if(avoidTimer <= 0){
+                parent.addPoints(Constant.AVOIDPOINTS * delta);
+            }
+            else{
+                avoidTimer -= delta;
+            }
+
             if (currentPowerUp != null) {
                 // Activate the powerup up if the player moves over it and it's not already active
                 if (currentPowerUp.overlapsPlayer() && !currentPowerUp.active) {
@@ -339,14 +352,18 @@ public class Level implements Screen {
 
             String progressString = ("Wave " + Integer.toString(currentWave) + ", " + Integer.toString(zombiesRemaining) + " zombies remaining.");
             String healthString = ("Health: " + Integer.toString(player.health) + "HP");
+            String pointString = ("Points: " + Integer.toString(parent.getPoints()));
 
             progressLabel.setText(progressString);
             healthLabel.setText(healthString);
+            pointCounter.setText(pointString);
 
             table.top().left();
             table.add(progressLabel).pad(10);
             table.row().pad(10);
             table.add(healthLabel).pad(10).left();
+            table.row();
+            table.add(pointCounter).pad(10).left();
             table.row();
             table.add(powerupLabel);
             stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
