@@ -2,6 +2,7 @@ package com.geeselightning.zepr;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -13,6 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.graphics.Color;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 
 public class SelectLevelScreen implements Screen {
 
@@ -139,6 +145,40 @@ public class SelectLevelScreen implements Screen {
             }
         });
 
+        // Defining actions for the save button.
+        save.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                try {
+                    FileHandle file = (Gdx.files.external("PlayerRecord.txt"));
+                    BufferedWriter writer = new BufferedWriter(file.writer(false));
+                    writer.write(Integer.toString(parent.getPoints()));
+                    writer.newLine();
+                    writer.write(Integer.toString(parent.progress));
+                    writer.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Defining actions for the load button.
+        load.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                try {
+                    FileHandle file = (Gdx.files.external("PlayerRecord.txt"));
+                    BufferedReader reader = new BufferedReader(file.reader());
+                    parent.setPoints(Integer.valueOf(reader.readLine()));
+                    parent.progress = Integer.parseInt(reader.readLine());
+                    pointCounter.setText("Points : " + parent.getPoints());
+                    reader.close();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
         // Defining actions for the town button.
         town.addListener(new ChangeListener() {
             @Override
@@ -214,7 +254,8 @@ public class SelectLevelScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         //Updates the pointCounter if the number of points has changed
-        if(Integer.toString(parent.getPoints()).equals(pointCounter.getText().substring("Points : ".length() - 1))){
+        if(Integer.toString(parent.getPoints()).equals(pointCounter.getText()
+                .substring("Points : ".length() - 1))){
             pointCounter.setText("Points : " + Integer.toString(parent.getPoints()));
         }
 

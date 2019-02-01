@@ -48,6 +48,9 @@ public class Zepr extends Game {
 		}
 	}
 
+	//Sets points to p
+	public void setPoints(float p) { points = p;}
+
 	//Increments points by p
 	public void addPoints(float p){
 		points += p;
