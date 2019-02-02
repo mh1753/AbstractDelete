@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -54,7 +55,8 @@ public class Level implements Screen {
     //Timer until player gains points for avoiding zombies
     public float avoidTimer = 0;
 
-    public Level(Zepr zepr, String mapLocation, Vector2 playerSpawn, ArrayList<Vector2> zombieSpawnPoints, int[] waves, Vector2 powerSpawn) {
+    public Level(Zepr zepr, String mapLocation, Vector2 playerSpawn, ArrayList<Vector2> zombieSpawnPoints,
+                 int[] waves, Vector2 powerSpawn) {
         parent = zepr;
         this.mapLocation = mapLocation;
         this.playerSpawn = playerSpawn;
@@ -124,9 +126,20 @@ public class Level implements Screen {
         int notSpawned = 0;
 
         for (int i = 0; i < amount; i++) {
-
-            Zombie zombie = (new Zombie(new Sprite(new Texture("zombie01.png")),
-                    spawnPoints.get(i % spawnPoints.size()), this));
+            //Gets a random number from 0 to 1 for deciding on zombie type
+            float decider = MathUtils.random();
+            Zombie zombie;
+            //If statement to choose zombie type
+            if(decider <= 0.5){
+                zombie = (new Zombie(new Sprite(new Texture("zombie01.png")),
+                        spawnPoints.get(i % spawnPoints.size()), this));
+            }
+            else{
+                zombie = (new Zombie(new Sprite(new Texture("zombie02.png")),
+                        spawnPoints.get(i % spawnPoints.size()), this));
+                zombie.health /= Constant.ZOMBIESTATMODIFIER;
+                zombie.speed *= Constant.ZOMBIESTATMODIFIER;
+            }
 
             // Check there isn't already a zombie there, or they will be stuck
             boolean collides = false;
@@ -261,14 +274,16 @@ public class Level implements Screen {
 
             // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
             if (zombiesRemaining == 0 && currentPowerUp == null) {
-                int random = (int )(Math.random() * 3 + 1);
+                int random = (int )(Math.random() * 4 + 1);
                 if (random == 1) {
                     currentPowerUp = new PowerUpHeal(this);
                 } else if (random == 2){
                     // random == 2
                     currentPowerUp = new PowerUpSpeed(this);
-                } else {
+                } else if (random == 3) {
                     currentPowerUp = new PowerUpImmunity(this);
+                } else {
+                    currentPowerUp = new PowerUpSlow(this);
                 }
             }
 
@@ -319,11 +334,13 @@ public class Level implements Screen {
                 zombie.draw(renderer.getBatch());
 
                 // Draw zombie health bars
-                int fillAmount = (int) (zombie.getHealth() / 100) * 30;
+                int fillAmount = (int)( (zombie.getHealth() / 100) * 30);
                 renderer.getBatch().setColor(Color.BLACK);
-                renderer.getBatch().draw(blank, zombie.getX(), zombie.getY()+32, 32, 3);
+                renderer.getBatch().draw(blank, Math.round(zombie.getX() - (32/100f * zombie.getHealth() - 32)/2f)
+                        , zombie.getY()+32, fillAmount + 2, 3);
                 renderer.getBatch().setColor(Color.RED);
-                renderer.getBatch().draw(blank, zombie.getX()+1, zombie.getY()+33, fillAmount, 1);
+                renderer.getBatch().draw(blank, Math.round(zombie.getX() - (32/100f * zombie.getHealth() - 32)/2f +1),
+                        zombie.getY()+33, fillAmount, 1);
                 renderer.getBatch().setColor(Color.WHITE);
             }
 
