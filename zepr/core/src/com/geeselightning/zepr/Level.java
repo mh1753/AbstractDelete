@@ -164,7 +164,7 @@ public class Level implements Screen {
      * Used to spawn the first boss of the game
      */
     public void spawnFirstBoss(ArrayList<Vector2> spawnPoints){
-        Zombie zombie = new Zombie(new Sprite(new Texture("zombie02.png")),
+        Zombie zombie = new Zombie(new Sprite(new Texture("zomboss.png")),
                 spawnPoints.get(1), this);
         zombie.health *= Constant.FIRSTBOSSSTATMODIFIER;
         zombie.speed *= Constant.FIRSTBOSSSTATMODIFIER;
