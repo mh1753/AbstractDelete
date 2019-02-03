@@ -45,6 +45,7 @@ public class Level implements Screen {
     Texture blank;
     Vector2 powerSpawn;
     PowerUp currentPowerUp = null;
+    boolean bossSpawned = false;
 
     //Create labels for displaying info that player needs
     Label progressLabel = new Label("", skin);
@@ -157,6 +158,18 @@ public class Level implements Screen {
         }
 
         return notSpawned;
+    }
+
+    /**
+     * Used to spawn the first boss of the game
+     */
+    public void spawnFirstBoss(ArrayList<Vector2> spawnPoints){
+        Zombie zombie = new Zombie(new Sprite(new Texture("zombie02.png")),
+                spawnPoints.get(1), this);
+        zombie.health *= Constant.FIRSTBOSSSTATMODIFIER;
+        zombie.speed *= Constant.FIRSTBOSSSTATMODIFIER;
+        aliveZombies.add(zombie);
+        bossSpawned = true;
     }
 
     /**
@@ -274,7 +287,7 @@ public class Level implements Screen {
 
             // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
             if (zombiesRemaining == 0 && currentPowerUp == null) {
-                int random = (int )(Math.random() * 4 + 1);
+                int random = (int )(Math.random() * 5 + 1);
                 if (random == 1) {
                     currentPowerUp = new PowerUpHeal(this);
                 } else if (random == 2){
@@ -282,8 +295,10 @@ public class Level implements Screen {
                     currentPowerUp = new PowerUpSpeed(this);
                 } else if (random == 3) {
                     currentPowerUp = new PowerUpImmunity(this);
-                } else {
+                } else if (random == 4) {
                     currentPowerUp = new PowerUpSlow(this);
+                } else{
+                    currentPowerUp = new PowerUpDamage(this);
                 }
             }
 
@@ -291,6 +306,12 @@ public class Level implements Screen {
                 // Wave complete, increment wave number
                 currentWave++;
                 if (currentWave > waves.length) {
+                    // Spawn Boss if current level is level 3 or level 6.
+                    if(this.getClass().equals(CourtyardLevel.class)){
+                        if(!bossSpawned){
+                            spawnFirstBoss(this.zombieSpawnPoints);
+                        }
+                    }
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
                     isPaused = true;

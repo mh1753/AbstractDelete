@@ -2,25 +2,25 @@ package com.geeselightning.zepr;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public class PowerUpSlow extends PowerUp {
+public class PowerUpDamage extends PowerUp {
 
-    public float timeRemaining = Constant.SLOWTIME;
+    public float timeRemaining = Constant.DAMAGEUPTIME;
 
-    public PowerUpSlow(Level currentLevel) {
-        super(2, new Texture("slow.png"), currentLevel);
+    public PowerUpDamage(Level currentLevel) {
+        super(2, new Texture("damage.png"), currentLevel);
     }
 
     @Override
     public void activate() {
         super.activate();
-        super.player.speed -= Constant.SLOW;
+        super.player.attackDamage += Constant.DAMAGEUP;
         this.getTexture().dispose();
     }
 
     @Override
     public void deactivate() {
         super.deactivate();
-        super.player.speed += Constant.SLOW;
+        super.player.attackDamage -= Constant.DAMAGEUP;
     }
 
     @Override
