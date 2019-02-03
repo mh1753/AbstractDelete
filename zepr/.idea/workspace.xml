@@ -38,10 +38,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="171" column="27" selection-start-line="171" selection-start-column="27" selection-end-line="171" selection-end-column="27" />
+            <state relative-caret-position="296">
+              <caret line="166" column="66" selection-start-line="166" selection-start-column="66" selection-end-line="166" selection-end-column="66" />
               <folding>
-                <element signature="e#16166#16167#0" expanded="true" />
+                <element signature="e#16184#16185#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -272,8 +272,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="4" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -449,10 +448,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="171" column="27" selection-start-line="171" selection-start-column="27" selection-end-line="171" selection-end-column="27" />
+        <state relative-caret-position="296">
+          <caret line="166" column="66" selection-start-line="166" selection-start-column="66" selection-end-line="166" selection-end-column="66" />
           <folding>
-            <element signature="e#16166#16167#0" expanded="true" />
+            <element signature="e#16184#16185#0" expanded="true" />
           </folding>
         </state>
       </provider>
