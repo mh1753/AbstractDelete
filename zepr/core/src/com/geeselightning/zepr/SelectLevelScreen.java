@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.graphics.Color;
 
+import javax.xml.soap.Text;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -54,10 +55,14 @@ public class SelectLevelScreen implements Screen {
         final TextButton town = new TextButton("Town", skin);
         TextButton halifax = new TextButton("Halifax", skin);
         TextButton courtyard = new TextButton("Courtyard", skin);
+        TextButton busStop = new TextButton("Bus Stop", skin);
+        TextButton computerScience = new TextButton("Computer Science", skin);
+        TextButton glasshouse = new TextButton("Glasshouse", skin);
 
         // Creating character buttons.
         TextButton nerdy = new TextButton("Nerdy",skin);
         TextButton sporty = new TextButton("Sporty",skin);
+        TextButton stJohn = new TextButton("St John", skin);
 
         // Creating other buttons.
         TextButton play = new TextButton("Play", skin);
@@ -70,6 +75,9 @@ public class SelectLevelScreen implements Screen {
         final String townDescription = "You wake up hungover in town to discover there is a zombie apocalypse.";
         final String halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
         final String courtyardDescription = "You should go to Courtyard and get some breakfast.";
+        final String bustStopDescription = "Haven't done this yet lol.";
+        final String computerScienceDescription = "Haven't done this yet lol.";
+        final String glasshouseDecription = "Haven't done this yet lol";
         final String lockedDescription = "This stage is locked until you complete the previous one.";
         final String defaultDescription ="Select a stage from the buttons above.";
         stageDescription = new Label(defaultDescription, skin);
@@ -78,8 +86,9 @@ public class SelectLevelScreen implements Screen {
         stageDescription.setAlignment(Align.center);
 
         // Creating character descriptions.
-        final String nerdyDescription = "Construct a mech suit for yourself so you can take more hits.";
-        final String sportyDescripton = "Work out so you run faster.";
+        final String nerdyDescription = "All that studying let's you take more damage, for some reason.";
+        final String sportyDescripton = "All that working out helps you run faster.";
+        final String stJohnDescription = "You might be good at something. Probably not.";
         final String defaultCharacterDescription = "Select a type of student from the buttons above.";
         characterDescription = new Label(defaultCharacterDescription,skin);
         characterDescription.setWrap(true);
@@ -108,12 +117,17 @@ public class SelectLevelScreen implements Screen {
         stageSelect.center();
 
         stageSelect.row();
-        stageSelect.add(title).colspan(3);
+        stageSelect.add(title).padTop(50).colspan(3);
 
-        stageSelect.row().pad(50,0,100,0);
+        stageSelect.row().pad(50,0,5,0);
         stageSelect.add(town).pad(10);
         stageSelect.add(halifax).pad(10);
         stageSelect.add(courtyard).pad(10);
+
+        stageSelect.row().pad(0, 0, 100, 0);
+        stageSelect.add(busStop).pad(10);
+        stageSelect.add(computerScience).pad(10);
+        stageSelect.add(glasshouse).pad(10);
 
         stageSelect.row();
         stageSelect.add(stageDescription).width(1000f).colspan(3);
@@ -122,6 +136,7 @@ public class SelectLevelScreen implements Screen {
         stageSelect.row().center();
         stageSelect.add(nerdy).pad(10);
         stageSelect.add(sporty).pad(10);
+        stageSelect.add(stJohn).pad(10);
 
         stageSelect.row().center();
         stageSelect.add(characterDescription).width(1000f).colspan(3);
@@ -132,8 +147,8 @@ public class SelectLevelScreen implements Screen {
         // bottomTable.setDebug(true); // Adds borders for the table.
         stage.addActor(bottomTable);
 
-        bottomTable.bottom();
-        bottomTable.add(play).pad(10).center();
+        bottomTable.right().bottom();
+        bottomTable.add(play).pad(10);
 
         // Adding button logic.
 
@@ -216,6 +231,46 @@ public class SelectLevelScreen implements Screen {
             });
         }
 
+        if (parent.progress <= parent.COURTYARD) {
+            busStop.setColor(Color.DARK_GRAY);
+            busStop.getLabel().setColor(Color.DARK_GRAY);
+        } else {
+            // Defining actions for the bus stop button.
+            busStop.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    stageDescription.setText(bustStopDescription);
+                    stageLink = Zepr.BUSSTOP;
+                }
+            });
+        }
+
+        if (parent.progress <= parent.BUSSTOP) {
+            computerScience.setColor(Color.DARK_GRAY);
+            computerScience.getLabel().setColor(Color.DARK_GRAY);
+        } else {
+            computerScience.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    stageDescription.setText(computerScienceDescription);
+                    stageLink = Zepr.COMPUTERSCIENCE;
+                }
+            });
+        }
+
+        if (parent.progress <= parent.COMPUTERSCIENCE) {
+            glasshouse.setColor(Color.DARK_GRAY);
+            glasshouse.getLabel().setColor(Color.DARK_GRAY);
+        } else {
+            glasshouse.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    stageDescription.setText(glasshouseDecription);
+                    stageLink = Zepr.GLASSHOUSE;
+                }
+            });
+        }
+
         //Defining actions for the nerdy button.
 
         nerdy.addListener(new ChangeListener() {
@@ -234,6 +289,15 @@ public class SelectLevelScreen implements Screen {
                 playerSet = true;
             }
         });
+        stJohn.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                characterDescription.setText(stJohnDescription);
+                player.setType("stJohn");
+                playerSet = true;
+            }
+        });
+
 
         // Defining actions for the play button.
         play.addListener(new ChangeListener() {

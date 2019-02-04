@@ -13,14 +13,17 @@ public class Zepr extends Game {
 	private float points = 0;
 
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
-	public int progress = 3;
+	public int progress = 9;
 
 	public final static int MENU = 0;
 	public final static int SELECT = 2;
 	public final static int TOWN = 3;
 	public final static int HALIFAX = 4;
 	public final static int COURTYARD = 5;
-	public final static int COMPLETE = 6;
+	public final static int BUSSTOP = 6;
+	public final static int COMPUTERSCIENCE = 7;
+	public final static int GLASSHOUSE = 8;
+	public final static int COMPLETE = 9;
 
 
 	public void changeScreen(int screen) {
@@ -45,6 +48,20 @@ public class Zepr extends Game {
 				level = new CourtyardLevel(this);
 				this.setScreen(level);
 				break;
+			case BUSSTOP:
+				level = new BusStopLevel(this);
+				this.setScreen(level);
+				break;
+			case COMPUTERSCIENCE:
+				level = new ComputerScienceLevel(this);
+				this.setScreen(level);
+				break;
+				/*
+			case GLASSHOUSE:
+				level = new GlasshouseLevel(this);
+				this.setScreen(level);
+				break;
+				*/
 		}
 	}
 
