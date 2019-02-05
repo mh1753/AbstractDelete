@@ -328,11 +328,10 @@ public class Level implements Screen {
                         spawnFirstBoss(this.zombieSpawnPoints);
                         bossSpawned = true;
                     }
-<<<<<<< Updated upstream
-                    else if(this.getClass().equals(GlasshouseLevel.class) && !bossSpawned){
+                    else if(this.getClass().equals(GlasshouseLevel.class) && !bossSpawned) {
                         spawnFinalBoss(this.zombieSpawnPoints);
                         bossSpawned = true;
-=======
+                    }
                     // On computer science level, wait for a while until completion is triggered
                     else if (this.getClass().equals(ComputerScienceLevel.class)){
                         table.setVisible(false);
@@ -340,7 +339,6 @@ public class Level implements Screen {
                             parent.addPoints(Constant.SAFEAREAPOINTS);
                             levelComplete();
                         }
->>>>>>> Stashed changes
                     }
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
