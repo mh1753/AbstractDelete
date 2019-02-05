@@ -186,8 +186,8 @@ public class SelectLevelScreen implements Screen {
                     BufferedReader reader = new BufferedReader(file.reader());
                     parent.setPoints(Integer.valueOf(reader.readLine()));
                     parent.progress = Integer.parseInt(reader.readLine());
-                    pointCounter.setText("Points : " + parent.getPoints());
                     reader.close();
+                    parent.changeScreen(Zepr.SELECT);
                 }catch(IOException e){
                     e.printStackTrace();
                 }

@@ -168,7 +168,9 @@ public class Level implements Screen {
                 spawnPoints.get(1), this);
         zombie.health *= Constant.FIRSTBOSSSTATMODIFIER;
         zombie.speed *= Constant.FIRSTBOSSSTATMODIFIER;
+        zombie.hitRange *= Constant.FIRSTBOSSRANGEMODIFIER;
         aliveZombies.add(zombie);
+        zombiesRemaining++;
         bossSpawned = true;
     }
 
@@ -307,19 +309,20 @@ public class Level implements Screen {
                 currentWave++;
                 if (currentWave > waves.length) {
                     // Spawn Boss if current level is level 3 or level 6.
-                    if(this.getClass().equals(CourtyardLevel.class)){
-                        if(!bossSpawned){
-                            spawnFirstBoss(this.zombieSpawnPoints);
-                        }
+                    if(this.getClass().equals(CourtyardLevel.class) && !bossSpawned){
+                        spawnFirstBoss(this.zombieSpawnPoints);
+                        bossSpawned = true;
                     }
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
-                    isPaused = true;
-                    complete();
-                    if (parent.progress == parent.COMPLETE) {
-                        parent.setScreen(new TextScreen(parent, "Game completed."));
-                    } else {
-                        parent.setScreen(new TextScreen(parent, "Level completed."));
+                    else {
+                        isPaused = true;
+                        complete();
+                        if (parent.progress == parent.COMPLETE) {
+                            parent.setScreen(new TextScreen(parent, "Game completed."));
+                        } else {
+                            parent.setScreen(new TextScreen(parent, "Level completed."));
+                        }
                     }
                 } else {
                     // Update zombiesRemaining with the number of zombies of the new wave
@@ -357,11 +360,13 @@ public class Level implements Screen {
                 // Draw zombie health bars
                 int fillAmount = (int)( (zombie.getHealth() / 100) * 30);
                 renderer.getBatch().setColor(Color.BLACK);
-                renderer.getBatch().draw(blank, Math.round(zombie.getX() - (32/100f * zombie.getHealth() - 32)/2f)
-                        , zombie.getY()+32, fillAmount + 2, 3);
+                renderer.getBatch().draw(blank, Math.round(zombie.getX() -
+                                (32/100f * zombie.getHealth() - 32)/2f),
+                        zombie.getY()+zombie.getHeight(), fillAmount + 2, 3);
                 renderer.getBatch().setColor(Color.RED);
-                renderer.getBatch().draw(blank, Math.round(zombie.getX() - (32/100f * zombie.getHealth() - 32)/2f +1),
-                        zombie.getY()+33, fillAmount, 1);
+                renderer.getBatch().draw(blank, Math.round(zombie.getX() -
+                        (32/100f * zombie.getHealth() - 32)/2f +1),
+                        zombie.getY()+zombie.getHeight() + 1, fillAmount, 1);
                 renderer.getBatch().setColor(Color.WHITE);
             }
 
