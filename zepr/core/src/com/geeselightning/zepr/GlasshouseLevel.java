@@ -8,11 +8,12 @@ public class GlasshouseLevel extends Level {
 
     private static final String mapLocation = "maps/glasshouse.tmx";
     private static final Vector2 playerSpawn = new Vector2(400, 240);
-    private static final Vector2 powerSPawn = new Vector2();
+    private static final Vector2 powerSPawn = new Vector2(576, 688);
 
     // Defining possible zombie spawning locations on this map
     public static final ArrayList<Vector2> zombieSpawnPoints = new ArrayList<Vector2>(
-            Arrays.asList(new Vector2())
+            Arrays.asList(new Vector2(80, 80), new Vector2(720, 80),
+                    new Vector2(80, 496), new Vector2(720, 400))
     );
 
     // Defining the number of zombies to be spawned for each wave

@@ -75,9 +75,9 @@ public class SelectLevelScreen implements Screen {
         final String townDescription = "You wake up hungover in town to discover there is a zombie apocalypse.";
         final String halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
         final String courtyardDescription = "You should go to Courtyard and get some breakfast.";
-        final String bustStopDescription = "Haven't done this yet lol.";
-        final String computerScienceDescription = "Haven't done this yet lol.";
-        final String glasshouseDecription = "Haven't done this yet lol";
+        final String bustStopDescription = "Lab time. Better head to campus east.";
+        final String computerScienceDescription = "No one's here! Oh well, at least you got the work done.";
+        final String glasshouseDecription = "Go to the pub, have a pint, and wait for all this to blow over.";
         final String lockedDescription = "This stage is locked until you complete the previous one.";
         final String defaultDescription ="Select a stage from the buttons above.";
         stageDescription = new Label(defaultDescription, skin);

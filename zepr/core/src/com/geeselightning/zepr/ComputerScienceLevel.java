@@ -8,7 +8,7 @@ public class ComputerScienceLevel extends Level {
 
     private static final String mapLocation = "maps/computer_science.tmx";
     private static final Vector2 playerSpawn = new Vector2(400, 400);
-    private static final Vector2 powerSPawn = new Vector2(0,0);
+    private static final Vector2 powerSPawn = new Vector2(1000,1000);
 
     // Defining possible zombie spawning locations on this map
     public static final ArrayList<Vector2> zombieSpawnPoints = new ArrayList<Vector2>(
