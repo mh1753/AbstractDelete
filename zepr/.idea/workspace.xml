@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="01f558be-f0a2-4c64-a49b-8f7a6e4473e3" name="Default Changelist" comment="" />
 =======
+=======
+>>>>>>> master
     <list default="true" id="4f0c3306-2be9-4541-ac8a-7439a08b9703" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java" afterDir="false" />
@@ -12,7 +15,13 @@
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+    <list default="true" id="01f558be-f0a2-4c64-a49b-8f7a6e4473e3" name="Default Changelist" comment="" />
+>>>>>>> master
+>>>>>>> master
     <ignored path="$PROJECT_DIR$/core/.gradle/" />
     <ignored path="$PROJECT_DIR$/core/build/" />
     <ignored path="$PROJECT_DIR$/core/out/" />
@@ -37,18 +46,35 @@
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpDamage.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="68">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
 =======
             <state relative-caret-position="255">
               <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
 >>>>>>> ConflictBranch
+=======
+            <state relative-caret-position="255">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+=======
+            <state relative-caret-position="68">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+=======
+>>>>>>> master
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="181">
@@ -57,22 +83,36 @@
                 <element signature="e#10756#11029#0" expanded="true" />
                 <element signature="e#11028#11029#0" expanded="true" />
               </folding>
+<<<<<<< HEAD
 =======
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+=======
+>>>>>>> master
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="164">
               <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+<<<<<<< HEAD
 =======
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
@@ -80,54 +120,93 @@
             <state relative-caret-position="241">
               <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSpeed.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="33" selection-end-column="5" />
+=======
+>>>>>>> master
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+<<<<<<< HEAD
 =======
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSpeed.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="33" selection-end-column="5" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+=======
+>>>>>>> master
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/TownLevel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+<<<<<<< HEAD
 =======
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
               <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+=======
+>>>>>>> master
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
               <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+<<<<<<< HEAD
 =======
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="223">
               <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -136,9 +215,12 @@
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/CourtyardLevel.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="102">
               <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
 =======
+=======
+>>>>>>> master
             <state relative-caret-position="68">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
@@ -174,7 +256,14 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+            <state relative-caret-position="102">
+              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+>>>>>>> master
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -184,17 +273,28 @@
   <component name="FindInProjectRecents">
     <findStrings>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <find>placeholder</find>
       <find>nerdy</find>
       <find>placehol</find>
 =======
+=======
+>>>>>>> master
       <find>health</find>
       <find>progress</find>
       <find>spawn</find>
       <find>power</find>
       <find>isBlocked</find>
       <find>coll</find>
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+      <find>placeholder</find>
+      <find>nerdy</find>
+      <find>placehol</find>
+>>>>>>> master
+>>>>>>> master
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -203,11 +303,19 @@
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java" />
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java" />
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpDamage.java" />
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java" />
 >>>>>>> ConflictBranch
+=======
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpDamage.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java" />
+=======
+>>>>>>> master
+>>>>>>> master
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java" />
         <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Player.java" />
@@ -215,11 +323,21 @@
     </option>
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="5" />
+    <option name="y" value="4" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+=======
+>>>>>>> master
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
     <option name="width" value="1385" />
     <option name="height" value="745" />
+<<<<<<< HEAD
 =======
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="5" />
@@ -227,6 +345,9 @@
     <option name="width" value="1382" />
     <option name="height" value="744" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -292,12 +413,21 @@
   </component>
   <component name="PropertiesComponent">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549293638889" />
 =======
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549300095749" />
 >>>>>>> ConflictBranch
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549300095749" />
+=======
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549293638889" />
+>>>>>>> master
+>>>>>>> master
     <property name="last_opened_file_path" value="$PROJECT_DIR$/core/assets" />
   </component>
   <component name="RunDashboard">
@@ -353,6 +483,35 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" order="0" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25642964" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="2" weight="0.3289689" />
+      <window_info anchor="bottom" id="Messages" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Gradle" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+=======
+>>>>>>> master
     <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -379,6 +538,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+<<<<<<< HEAD
 =======
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
@@ -406,6 +566,9 @@
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -434,6 +597,12 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/core/assets/playerhand.png">
+      <provider selected="true" editor-type-id="images" />
+=======
+>>>>>>> master
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/CourtyardLevel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -443,10 +612,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/assets/maps/courtyard.tmx">
       <provider selected="true" editor-type-id="text-editor" />
+<<<<<<< HEAD
 =======
     <entry file="file://$PROJECT_DIR$/core/assets/playerhand.png">
       <provider selected="true" editor-type-id="images" />
 >>>>>>> ConflictBranch
+=======
+>>>>>>> master
+>>>>>>> master
     </entry>
     <entry file="file://$PROJECT_DIR$/core/assets/maps/Bus_stop.tmx">
       <provider selected="true" editor-type-id="text-editor" />
@@ -466,6 +639,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -475,6 +649,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/TownLevel.java">
 =======
+=======
+>>>>>>> master
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Character.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2044">
@@ -489,7 +665,12 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+    <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
+>>>>>>> master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
@@ -497,7 +678,12 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
+=======
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/TownLevel.java">
+>>>>>>> master
+>>>>>>> master
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="88" column="102" selection-start-line="88" selection-start-column="102" selection-end-line="88" selection-end-column="102" />
@@ -515,11 +701,15 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
 =======
+=======
+<<<<<<< HEAD
+>>>>>>> master
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -551,7 +741,19 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="88" column="102" selection-start-line="88" selection-start-column="102" selection-end-line="88" selection-end-column="102" />
+          <folding>
+            <element signature="e#10756#11029#0" expanded="true" />
+            <element signature="e#11028#11029#0" expanded="true" />
+          </folding>
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -563,6 +765,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/core/assets/player02_attack.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -572,6 +775,19 @@
     <entry file="file://$PROJECT_DIR$/core/assets/player03.png">
       <provider selected="true" editor-type-id="images" />
 =======
+=======
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
+>>>>>>> master
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+>>>>>>> master
         <state relative-caret-position="68">
           <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
         </state>
@@ -611,7 +827,25 @@
           <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
         </state>
       </provider>
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+        <state relative-caret-position="238">
+          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/player02_attack.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/player02.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/assets/player03.png">
+      <provider selected="true" editor-type-id="images" />
+>>>>>>> master
+>>>>>>> master
     </entry>
     <entry file="file://$PROJECT_DIR$/core/assets/player01_attack.png">
       <provider selected="true" editor-type-id="images" />
@@ -619,15 +853,25 @@
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Player.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="164">
           <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
 =======
+=======
+>>>>>>> master
         <state relative-caret-position="178">
           <caret line="170" column="50" selection-start-line="170" selection-start-column="50" selection-end-line="170" selection-end-column="50" />
           <folding>
             <element signature="e#16427#16428#0" expanded="true" />
           </folding>
+<<<<<<< HEAD
 >>>>>>> ConflictBranch
+=======
+=======
+        <state relative-caret-position="164">
+          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
+>>>>>>> master
+>>>>>>> master
         </state>
       </provider>
     </entry>
