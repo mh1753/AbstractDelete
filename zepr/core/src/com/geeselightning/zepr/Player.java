@@ -3,6 +3,7 @@ package com.geeselightning.zepr;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
 public class Player extends Character {
 
@@ -59,6 +60,11 @@ public class Player extends Character {
             HPMult = Constant.SPORTYHPMULT;
             speedMult = Constant.SPORTYSPEEDMULT;
         }
+        else if (playertype == "stJohn"){
+            dmgMult = Constant.STJOHNDMGMULT;
+            HPMult = Constant.STJOHNHPMULT;
+            speedMult = Constant.STJOHNSPEEDMULT;
+        }
         else if (playertype == null){
             dmgMult =1;
             HPMult = 1;
@@ -73,10 +79,14 @@ public class Player extends Character {
             mainTexture = new Texture("player01.png");
             attackTexture = new Texture("player01_attack.png");
             this.setTexture(mainTexture);
-        } else {
-            // playertype == sporty
+        } else if (playertype == "sporty") {
             mainTexture = new Texture("player02.png");
             attackTexture = new Texture("player02_attack.png");
+            this.setTexture(mainTexture);
+        } else {
+            // playertype == "stJohn"
+            mainTexture = new Texture("player03.png");
+            attackTexture = new Texture("player03_attack.png");
             this.setTexture(mainTexture);
         }
     }
