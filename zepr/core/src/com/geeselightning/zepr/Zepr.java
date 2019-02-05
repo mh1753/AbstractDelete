@@ -56,12 +56,10 @@ public class Zepr extends Game {
 				level = new ComputerScienceLevel(this);
 				this.setScreen(level);
 				break;
-				/*
 			case GLASSHOUSE:
 				level = new GlasshouseLevel(this);
 				this.setScreen(level);
 				break;
-				*/
 		}
 	}
 

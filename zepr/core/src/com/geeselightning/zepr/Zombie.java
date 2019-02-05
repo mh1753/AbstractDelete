@@ -12,8 +12,13 @@ public class Zombie extends Character {
 
     public Zombie(Sprite sprite, Vector2 zombieSpawn, Level currentLevel) {
         super(sprite, zombieSpawn, currentLevel);
-        this.speed = Constant.ZOMBIEBASESPEED;
-        this.health = Constant.ZOMBIEBASEMAXHP;
+        if (currentLevel.parent.progress > currentLevel.parent.COMPUTERSCIENCE) {
+            this.speed = (int) (1.5 * Constant.ZOMBIEBASESPEED);
+            this.health = (int) (1.5 * Constant.ZOMBIEBASEMAXHP);
+        } else {
+            this.speed = Constant.ZOMBIEBASESPEED;
+            this.health = Constant.ZOMBIEBASEMAXHP;
+        }
     }
 
     public void attack(Player player, float delta) {

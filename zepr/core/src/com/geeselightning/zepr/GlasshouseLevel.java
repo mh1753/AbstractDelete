@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 public class GlasshouseLevel extends Level {
 
-    private static final String mapLocation = "";
-    private static final Vector2 playerSpawn = new Vector2();
+    private static final String mapLocation = "maps/glasshouse.tmx";
+    private static final Vector2 playerSpawn = new Vector2(400, 240);
     private static final Vector2 powerSPawn = new Vector2();
 
     // Defining possible zombie spawning locations on this map

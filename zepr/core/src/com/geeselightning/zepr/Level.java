@@ -328,20 +328,24 @@ public class Level implements Screen {
                         spawnFirstBoss(this.zombieSpawnPoints);
                         bossSpawned = true;
                     }
+<<<<<<< Updated upstream
                     else if(this.getClass().equals(GlasshouseLevel.class) && !bossSpawned){
                         spawnFinalBoss(this.zombieSpawnPoints);
                         bossSpawned = true;
+=======
+                    // On computer science level, wait for a while until completion is triggered
+                    else if (this.getClass().equals(ComputerScienceLevel.class)){
+                        table.setVisible(false);
+                        if (currentWave == 500){
+                            parent.addPoints(Constant.SAFEAREAPOINTS);
+                            levelComplete();
+                        }
+>>>>>>> Stashed changes
                     }
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
                     else {
-                        isPaused = true;
-                        complete();
-                        if (parent.progress == parent.COMPLETE) {
-                            parent.setScreen(new TextScreen(parent, "Game completed."));
-                        } else {
-                            parent.setScreen(new TextScreen(parent, "Level completed."));
-                        }
+                        levelComplete();
                     }
                 } else {
                     // Update zombiesRemaining with the number of zombies of the new wave
@@ -430,6 +434,16 @@ public class Level implements Screen {
             table.add(powerupLabel);
             stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
             stage.draw();
+        }
+    }
+
+    private void levelComplete() {
+        isPaused = true;
+        complete();
+        if (parent.progress == parent.COMPLETE) {
+            parent.setScreen(new TextScreen(parent, "Game completed."));
+        } else {
+            parent.setScreen(new TextScreen(parent, "Level completed."));
         }
     }
 

@@ -12,7 +12,8 @@ public class BusStopLevel extends Level {
 
     // Defining possible zombie spawning locations on this map
     public static final ArrayList<Vector2> zombieSpawnPoints = new ArrayList<Vector2>(
-            Arrays.asList(new Vector2())
+            Arrays.asList(new Vector2(48, 288), new Vector2(752, 512),
+                    new Vector2(48, 512), new Vector2(752, 288))
     );
 
     // Defining the number of zombies to be spawned for each wave
