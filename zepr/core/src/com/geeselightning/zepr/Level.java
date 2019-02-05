@@ -175,6 +175,21 @@ public class Level implements Screen {
     }
 
     /**
+     * Used to spawn the final boss of the game
+     */
+    public void spawnFinalBoss(ArrayList<Vector2> spawnPoints){
+        Zombie zombie = new Zombie(new Sprite(new Texture("zomboss.png")),
+                spawnPoints.get(1), this);
+        zombie.health *= Constant.FINALBOSSHEALTHMODIFIER;
+        zombie.speed *= Constant.FINALBOSSSPEEDMODIFIER;
+        zombie.attackDamage *= Constant.FINALBOSSDAMAGEMODIFIER;
+        zombie.hitRange *= Constant.FINALBOSSRANGEMODIFIER;
+        aliveZombies.add(zombie);
+        zombiesRemaining++;
+        bossSpawned = true;
+    }
+
+    /**
      * Used for collision detection between the player and map
      *
      * @return boolean if the point (x, y) is in a blocked tile
@@ -309,8 +324,12 @@ public class Level implements Screen {
                 currentWave++;
                 if (currentWave > waves.length) {
                     // Spawn Boss if current level is level 3 or level 6.
-                    if(this.getClass().equals(CourtyardLevel.class) && !bossSpawned){
+                    if(this.getClass().equals(CourtyardLevel.class) && !bossSpawned) {
                         spawnFirstBoss(this.zombieSpawnPoints);
+                        bossSpawned = true;
+                    }
+                    else if(this.getClass().equals(GlasshouseLevel.class) && !bossSpawned){
+                        spawnFinalBoss(this.zombieSpawnPoints);
                         bossSpawned = true;
                     }
                     // Level completed, back to select screen and complete stage.

@@ -17,6 +17,10 @@ public final class Constant {
     public static final float ZOMBIEHITCOOLDOWN = 1;
     public static final float FIRSTBOSSSTATMODIFIER = 5f;
     public static final float FIRSTBOSSRANGEMODIFIER = 2f;
+    public static final float FINALBOSSHEALTHMODIFIER = 8f;
+    public static final float FINALBOSSSPEEDMODIFIER = 0.2f;
+    public static final float FINALBOSSRANGEMODIFIER = 2f;
+    public static final float FINALBOSSDAMAGEMODIFIER = 1.5f;
     public static final float NERDYHPMULT = 1.5f;
     public static final float NERDYDMGMULT = 1;
     public static final float NERDYSPEEDMULT = 1;
