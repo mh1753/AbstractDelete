@@ -1,47 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    <list default="true" id="126e55d5-6c8d-4e96-bcfd-92af1e8183ab" name="Default Changelist" comment="">
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <list default="true" id="01f558be-f0a2-4c64-a49b-8f7a6e4473e3" name="Default Changelist" comment="" />
-=======
-=======
->>>>>>> master
-    <list default="true" id="4f0c3306-2be9-4541-ac8a-7439a08b9703" name="Default Changelist" comment="">
->>>>>>> master
-=======
-    <list default="true" id="f8c80f8d-ad9a-4271-86c0-783602c89e4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
->>>>>>> Stashed changes
-=======
-    <list default="true" id="4fa1cafb-5041-4e1a-9adf-12518dc5f53e" name="Default Changelist" comment="">
->>>>>>> master
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Constant.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Constant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level.class" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" afterDir="false" />
-<<<<<<< Updated upstream
-=======
->>>>>>> master
-    </list>
+    <list default="true" id="4fa1cafb-5041-4e1a-9adf-12518dc5f53e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -284,73 +244,7 @@
     </findStrings>
 >>>>>>> master
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" />
-=======
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java" />
-<<<<<<< Updated upstream
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpDamage.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java" />
->>>>>>> ConflictBranch
-=======
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpDamage.java" />
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java" />
-=======
->>>>>>> master
->>>>>>> master
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java" />
->>>>>>> master
-        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java" />
-      </list>
-    </option>
-  </component>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="5" />
-    <option name="y" value="4" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
-<<<<<<< HEAD
-=======
-=======
->>>>>>> master
-=======
-      </list>
-    </option>
-  </component>
->>>>>>> Stashed changes
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1385" />
-    <option name="height" value="745" />
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-  <component name="ProjectFrameBounds" extendedState="6">
-=======
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="7">
->>>>>>> master
     <option name="x" value="5" />
     <option name="y" value="4" />
     <option name="width" value="1382" />
@@ -371,115 +265,11 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-<<<<<<< HEAD
     <panes>
-<<<<<<< Updated upstream
       <pane id="Scope" />
-=======
-      <pane id="PackagesPane" />
->>>>>>> Stashed changes
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-<<<<<<< Updated upstream
-=======
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="maps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
->>>>>>> Stashed changes
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="zepr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="desktop" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-<<<<<<< Updated upstream
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-<<<<<<< HEAD
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549372187676" />
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549293638889" />
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549300095749" />
->>>>>>> ConflictBranch
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549300095749" />
-=======
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549293638889" />
->>>>>>> master
->>>>>>> master
->>>>>>> master
-=======
-      <pane id="Scope" />
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549374023697" />
-    <property name="extract.method.default.visibility" value="private" />
->>>>>>> Stashed changes
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/assets" />
-=======
-    <panes />
->>>>>>> master
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -513,14 +303,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
