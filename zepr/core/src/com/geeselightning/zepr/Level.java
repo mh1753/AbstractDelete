@@ -178,7 +178,7 @@ public class Level implements Screen {
      * Used to spawn the final boss of the game
      */
     public void spawnFinalBoss(ArrayList<Vector2> spawnPoints){
-        Zombie zombie = new Zombie(new Sprite(new Texture("zomboss.png")),
+        Zombie zombie = new Zombie(new Sprite(new Texture("zomboss2.png")),
                 spawnPoints.get(1), this);
         zombie.health *= Constant.FINALBOSSHEALTHMODIFIER;
         zombie.speed *= Constant.FINALBOSSSPEEDMODIFIER;

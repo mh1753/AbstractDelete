@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="4fa1cafb-5041-4e1a-9adf-12518dc5f53e" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
-    <ignored path="$PROJECT_DIR$/classes/" />
-<<<<<<< HEAD
 =======
-<<<<<<< HEAD
->>>>>>> ConflictBranch
-=======
-=======
-    <list default="true" id="01f558be-f0a2-4c64-a49b-8f7a6e4473e3" name="Default Changelist" comment="" />
->>>>>>> master
->>>>>>> master
->>>>>>> master
-=======
-      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java" afterDir="false" />
+    <list default="true" id="65a0a84f-d77a-4adf-8257-40693edd2f0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/CourtyardLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/CourtyardLevel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Level.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/SelectLevelScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Zepr.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/out/production/classes/com/geeselightning/zepr/Zepr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" afterDir="false" />
     </list>
+>>>>>>> Stashed changes
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/classes/" />
->>>>>>> Stashed changes
-=======
->>>>>>> master
     <ignored path="$PROJECT_DIR$/core/.gradle/" />
     <ignored path="$PROJECT_DIR$/core/build/" />
     <ignored path="$PROJECT_DIR$/core/out/" />
@@ -40,107 +34,26 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-<<<<<<< HEAD
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
   <component name="FileEditorManager">
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
-=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-=======
-    <leaf>
->>>>>>> Stashed changes
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-<<<<<<< Updated upstream
->>>>>>> master
->>>>>>> master
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-=======
->>>>>>> master
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
->>>>>>> master
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2577">
-              <caret line="331" column="34" selection-start-line="331" selection-start-column="34" selection-end-line="331" selection-end-column="34" />
+            <state relative-caret-position="198">
+              <caret line="335" column="47" selection-start-line="335" selection-start-column="47" selection-end-line="335" selection-end-column="47" />
               <folding>
-                <element signature="e#10173#10377#0" expanded="true" />
-                <element signature="e#10376#10377#0" expanded="true" />
-                <element signature="e#17235#17236#0" expanded="true" />
+                <element signature="e#17623#17624#0" expanded="true" />
+                <element signature="e#17648#17649#0" expanded="true" />
               </folding>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSlow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
->>>>>>> ConflictBranch
-=======
->>>>>>> master
->>>>>>> master
->>>>>>> master
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/CourtyardLevel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-=======
->>>>>>> master
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-<<<<<<< HEAD
-=======
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
->>>>>>> ConflictBranch
-=======
->>>>>>> master
->>>>>>> master
-=======
->>>>>>> Stashed changes
+            <state relative-caret-position="126">
+              <caret line="28" column="50" lean-forward="true" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -148,48 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="146" column="53" lean-forward="true" selection-start-line="146" selection-start-column="53" selection-end-line="146" selection-end-column="53" />
-              <folding>
-                <element signature="e#16840#16841#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-            <state relative-caret-position="68">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="-102">
+              <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -197,53 +70,48 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="174" column="53" lean-forward="true" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-<<<<<<< HEAD
->>>>>>> ConflictBranch
-=======
-=======
+            <state relative-caret-position="-74">
+              <caret line="78" column="55" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
->>>>>>> master
->>>>>>> master
->>>>>>> master
-=======
-            <state relative-caret-position="143">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
->>>>>>> Stashed changes
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/assets/skin/pixthulhu-ui.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-<<<<<<< HEAD
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-=======
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>spawnfirst</find>
-      <find>dt</find>
-      <find>delta</find>
-      <find>getDelta</find>
-      <find>getde</find>
-      <find>spawnF</find>
-      <find>currentwave</find>
-      <find>progressstrin</find>
-      <find>progresslabel</find>
-      <find>computers</find>
-      <find>progressL</find>
-      <find>computer</find>
-      <find>com</find>
-      <find>amount</find>
+      <find>this</find>
+      <find>this yet</find>
+      <find>lol</find>
+      <find>none'</find>
+      <find>spawnfina</find>
+      <find>spawnfinal</find>
     </findStrings>
->>>>>>> master
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="5" />
     <option name="y" value="4" />
@@ -259,18 +127,111 @@
 >>>>>>> Stashed changes
 =======
 >>>>>>> master
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/CourtyardLevel.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java" />
+        <option value="$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1385" />
+    <option name="height" value="745" />
+>>>>>>> Stashed changes
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
+<<<<<<< Updated upstream
       <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="skin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="zepr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="zepr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zepr" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="desktop" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="desktop" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549375373024" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/core/assets" />
+  </component>
+>>>>>>> Stashed changes
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -283,21 +244,37 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geeselightning.zepr.desktop.DesktopLauncher" />
+      <module name="zepr.desktop.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/assets" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geeselightning.zepr.desktop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DesktopLauncher" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <changelist id="126e55d5-6c8d-4e96-bcfd-92af1e8183ab" name="Default Changelist" comment="" />
-      <created>1549369883440</created>
-=======
-      <changelist id="4fa1cafb-5041-4e1a-9adf-12518dc5f53e" name="Default Changelist" comment="" />
-      <created>1549372569474</created>
->>>>>>> master
+      <changelist id="65a0a84f-d77a-4adf-8257-40693edd2f0b" name="Default Changelist" comment="" />
+      <created>1549375089102</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< Updated upstream
       <updated>1549372569474</updated>
     </task>
     <servers />
@@ -326,86 +303,44 @@
       <option name="presentableId" value="Default" />
       <updated>1549370437701</updated>
       <workItem from="1549370439648" duration="3545000" />
+=======
+      <updated>1549375089102</updated>
+      <workItem from="1549375098260" duration="276000" />
+      <workItem from="1549375454600" duration="1545000" />
+      <workItem from="1549377349149" duration="3445000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3545000" />
+    <option name="totallyTimeSpent" value="5266000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1293" height="693" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24939272" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2574899" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Build" weight="0.3285968" />
-      <window_info anchor="bottom" id="Duplicate detector" weight="0.3285968" />
-      <window_info anchor="bottom" id="Terminal" weight="0.3285968" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3285968" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3285968" />
->>>>>>> Stashed changes
-=======
-      <window_info anchor="bottom" id="Run" order="2" />
->>>>>>> master
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3285968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-<<<<<<< Updated upstream
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Gradle" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3285968" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Designer" order="0" />
-      <window_info id="Capture Tool" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.25642964" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Messages" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="bottom" id="Find" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Gradle" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
->>>>>>> ConflictBranch
-=======
->>>>>>> master
->>>>>>> master
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -413,325 +348,67 @@
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
->>>>>>> master
-=======
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Gradle" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
->>>>>>> Stashed changes
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="180" selection-start-line="180" selection-end-line="180" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/core/assets/playerhand.png">
-      <provider selected="true" editor-type-id="images" />
-=======
->>>>>>> master
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/CourtyardLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/maps/courtyard.tmx">
-      <provider selected="true" editor-type-id="text-editor" />
-<<<<<<< HEAD
-=======
-    <entry file="file://$PROJECT_DIR$/core/assets/playerhand.png">
-      <provider selected="true" editor-type-id="images" />
->>>>>>> ConflictBranch
-=======
->>>>>>> master
->>>>>>> master
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/maps/Bus_stop.tmx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/MenuScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1207">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="-23">
+          <caret line="34" column="85" selection-start-line="34" selection-start-column="85" selection-end-line="34" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
-    <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="-74">
+          <caret line="78" column="55" selection-start-line="78" selection-start-column="55" selection-end-line="78" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/core/assets/maps/town.tmx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/maps/townmap.tmx">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
-<<<<<<< HEAD
->>>>>>> ConflictBranch
-=======
-=======
->>>>>>> master
-    <entry file="file://$PROJECT_DIR$/desktop/src/com/geeselightning/zepr/desktop/DesktopLauncher.java">
->>>>>>> master
-=======
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/ComputerScienceLevel.java">
->>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/TownLevel.java">
->>>>>>> master
->>>>>>> master
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java">
->>>>>>> Stashed changes
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1741">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< Updated upstream
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="174" column="53" lean-forward="true" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-<<<<<<< HEAD
->>>>>>> ConflictBranch
-=======
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/SelectLevelScreen.java">
->>>>>>> master
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2577">
-          <caret line="331" column="34" selection-start-line="331" selection-start-column="34" selection-end-line="331" selection-end-column="34" />
-          <folding>
-            <element signature="e#10173#10377#0" expanded="true" />
-            <element signature="e#10376#10377#0" expanded="true" />
-            <element signature="e#17235#17236#0" expanded="true" />
-          </folding>
->>>>>>> master
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="238">
-          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/core/assets/player02_attack.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/player02.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/player03.png">
-      <provider selected="true" editor-type-id="images" />
-=======
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/BusStopLevel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="10" column="66" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
->>>>>>> master
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
->>>>>>> master
-        <state relative-caret-position="68">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/PowerUpSpeed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="33" selection-end-column="5" />
-=======
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="146" column="53" lean-forward="true" selection-start-line="146" selection-start-column="53" selection-end-line="146" selection-end-column="53" />
-          <folding>
-            <element signature="e#16840#16841#0" expanded="true" />
-          </folding>
->>>>>>> Stashed changes
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< Updated upstream
-        <state relative-caret-position="323">
-          <caret line="20" column="44" lean-forward="true" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+        <state relative-caret-position="-102">
+          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/CourtyardLevel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="126">
+          <caret line="28" column="50" lean-forward="true" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/GlasshouseLevel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Zepr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+        <state relative-caret-position="102">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Constant.java">
+    <entry file="file://$PROJECT_DIR$/core/assets/skin/pixthulhu-ui.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Level.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-        </state>
-      </provider>
-<<<<<<< HEAD
->>>>>>> ConflictBranch
-=======
-=======
-        <state relative-caret-position="238">
-          <caret line="26" column="54" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/player02_attack.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/player02.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/player03.png">
-      <provider selected="true" editor-type-id="images" />
->>>>>>> master
->>>>>>> master
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/assets/player01_attack.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/geeselightning/zepr/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <state relative-caret-position="164">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
-=======
-=======
->>>>>>> master
-        <state relative-caret-position="178">
-          <caret line="170" column="50" selection-start-line="170" selection-start-column="50" selection-end-line="170" selection-end-column="50" />
+        <state relative-caret-position="198">
+          <caret line="335" column="47" selection-start-line="335" selection-start-column="47" selection-end-line="335" selection-end-column="47" />
           <folding>
-            <element signature="e#16427#16428#0" expanded="true" />
+            <element signature="e#17623#17624#0" expanded="true" />
+            <element signature="e#17648#17649#0" expanded="true" />
           </folding>
-<<<<<<< HEAD
->>>>>>> ConflictBranch
-=======
-=======
-        <state relative-caret-position="164">
-          <caret line="83" column="34" selection-start-line="83" selection-start-column="34" selection-end-line="83" selection-end-column="34" />
->>>>>>> master
->>>>>>> master
->>>>>>> master
-=======
-        <state relative-caret-position="143">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
->>>>>>> Stashed changes
         </state>
       </provider>
     </entry>
   </component>
-=======
-    </layout>
-  </component>
->>>>>>> master
 </project>
