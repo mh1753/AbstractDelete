@@ -8,7 +8,7 @@ import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 public class Player extends Character {
 
     private static final Player instance = new Player(new Sprite(new Texture("player01.png")), new Vector2(0, 0));
-    int attackDamage = Constant.PLAYERDMG;
+    public int attackDamage = Constant.PLAYERDMG;
     int hitRange = Constant.PLAYERRANGE;
     final float hitCooldown =  Constant.PLAYERHITCOOLDOWN;
     Texture mainTexture;
