@@ -85,20 +85,33 @@ public class ZombieTest {
                 originalHealth - (2 * Constant.ZOMBIEDMG), player.getHealth(), 0.1);
     }
 
+    //Change begins ; ZOMBIEHEALTHTEST
     @Test
     // Test 3.3.1
     public void zombieTypesHaveDifferentHealth() {
         assertNotEquals("Zombie1 and zombie2 should have different health.", Constant.ZOMBIEBASEMAXHP,
+                Constant.ZOMBIEBASEMAXHP / Constant.ZOMBIESTATMODIFIER, 0.1);
+        assertNotEquals("Zombie1 and zombie3 should have different health.", Constant.ZOMBIEBASEMAXHP,
                 Constant.ZOMBIEBASEMAXHP * Constant.ZOMBIESTATMODIFIER, 0.1);
         assertNotEquals("Zombie1 and Zomboss1 should have different health.", Constant.ZOMBIEBASEMAXHP,
                 Constant.ZOMBIEBASEMAXHP * Constant.FIRSTBOSSSTATMODIFIER, 0.1);
         assertNotEquals("Zombie1 and Zomboss2 should have different health.", Constant.ZOMBIEBASEMAXHP,
                 Constant.ZOMBIEBASEMAXHP * Constant.FINALBOSSHEALTHMODIFIER, 0.1);
 
+        assertNotEquals("Zombie2 and zombie3 should have different health.",
+                Constant.ZOMBIEBASEMAXHP / Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASEMAXHP * Constant.ZOMBIESTATMODIFIER, 0.1);
         assertNotEquals("Zombie2 and Zomboss1 should have different health.",
-                Constant.ZOMBIEBASEMAXHP * Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASEMAXHP / Constant.ZOMBIESTATMODIFIER,
                 Constant.ZOMBIEBASEMAXHP * Constant.FIRSTBOSSSTATMODIFIER, 0.1);
         assertNotEquals("Zombie2 and Zomboss2 should have different health.",
+                Constant.ZOMBIEBASEMAXHP / Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASEMAXHP * Constant.FINALBOSSHEALTHMODIFIER, 0.1);
+
+        assertNotEquals("Zombie3 and Zomboss1 should have different health.",
+                Constant.ZOMBIEBASEMAXHP * Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASEMAXHP * Constant.FIRSTBOSSSTATMODIFIER, 0.1);
+        assertNotEquals("Zombie3 and Zomboss2 should have different health.",
                 Constant.ZOMBIEBASEMAXHP * Constant.ZOMBIESTATMODIFIER,
                 Constant.ZOMBIEBASEMAXHP * Constant.FINALBOSSHEALTHMODIFIER, 0.1);
 
@@ -106,17 +119,24 @@ public class ZombieTest {
                 Constant.ZOMBIEBASEMAXHP * Constant.FIRSTBOSSSTATMODIFIER,
                 Constant.ZOMBIEBASEMAXHP * Constant.FINALBOSSHEALTHMODIFIER, 0.1);
     }
+    //Change ends ; Reference ZOMBIEHEALTHTEST
 
+    //Change starts ; Reference ZOMBIESPEEDTEST
     @Test
     // Test 3.3.2
     public void zombieTypesHaveDifferentSpeed() {
         assertNotEquals("Zombie1 and zombie2 should have different speed.", Constant.ZOMBIEBASESPEED,
                 Constant.ZOMBIEBASESPEED * Constant.ZOMBIESTATMODIFIER, 0.1);
+        assertNotEquals("Zombie1 and zombie2 should have different speed.", Constant.ZOMBIEBASESPEED,
+                Constant.ZOMBIEBASESPEED / Constant.ZOMBIESTATMODIFIER, 0.1);
         assertNotEquals("Zombie1 and Zomboss1 should have different speed.", Constant.ZOMBIEBASESPEED,
                 Constant.ZOMBIEBASESPEED * Constant.FIRSTBOSSSTATMODIFIER, 0.1);
         assertNotEquals("Zombie1 and Zomboss2 should have different speed.", Constant.ZOMBIEBASESPEED,
                 Constant.ZOMBIEBASESPEED * Constant.FINALBOSSSPEEDMODIFIER, 0.1);
 
+        assertNotEquals("Zombie2 and zombie3 should have different speed.",
+                Constant.ZOMBIEBASESPEED / Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASESPEED * Constant.ZOMBIESTATMODIFIER, 0.1);
         assertNotEquals("Zombie2 and Zomboss1 should have different speed.",
                 Constant.ZOMBIEBASESPEED * Constant.ZOMBIESTATMODIFIER,
                 Constant.ZOMBIEBASESPEED * Constant.FIRSTBOSSSTATMODIFIER, 0.1);
@@ -124,10 +144,18 @@ public class ZombieTest {
                 Constant.ZOMBIEBASESPEED * Constant.ZOMBIESTATMODIFIER,
                 Constant.ZOMBIEBASESPEED * Constant.FINALBOSSSPEEDMODIFIER, 0.1);
 
+        assertNotEquals("Zombie3 and Zomboss1 should have different speed.",
+                Constant.ZOMBIEBASESPEED / Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASESPEED * Constant.FIRSTBOSSSTATMODIFIER, 0.1);
+        assertNotEquals("Zombie3 and Zomboss2 should have different speed.",
+                Constant.ZOMBIEBASESPEED / Constant.ZOMBIESTATMODIFIER,
+                Constant.ZOMBIEBASESPEED * Constant.FINALBOSSSPEEDMODIFIER, 0.1);
+
         assertNotEquals("Zomboss1 and Zomboss2 should have different speed.",
                 Constant.ZOMBIEBASESPEED * Constant.FIRSTBOSSSTATMODIFIER,
                 Constant.ZOMBIEBASESPEED * Constant.FINALBOSSSPEEDMODIFIER, 0.1);
 
     }
+    //Change ends ; Reference ZOMBIESPEEDTEST
 
 }

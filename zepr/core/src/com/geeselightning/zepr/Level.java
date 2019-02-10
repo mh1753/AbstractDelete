@@ -133,22 +133,28 @@ public class Level implements Screen {
         int notSpawned = 0;
 
         for (int i = 0; i < amount; i++) {
-            //Change starts ; SPAWNRANDOMZOMBIE
+            //Change starts ; Reference SPAWNRANDOMZOMBIE
             //Gets a random number from 0 to 1 for deciding on zombie type
-            float decider = MathUtils.random();
+            float decider = MathUtils.random(3);
             Zombie zombie;
             //If statement to choose zombie type
-            if(decider <= 0.5){
+            if(decider <= 1){
                 zombie = (new Zombie(new Sprite(new Texture("zombie01.png")),
                         spawnPoints.get(i % spawnPoints.size()), this));
             }
-            else{
+            else if (decider <= 2){
                 zombie = (new Zombie(new Sprite(new Texture("zombie02.png")),
                         spawnPoints.get(i % spawnPoints.size()), this));
                 zombie.health /= Constant.ZOMBIESTATMODIFIER;
                 zombie.speed *= Constant.ZOMBIESTATMODIFIER;
             }
-            //Change ends ; SPAWNRANDOMZOMBIE
+            else{
+                zombie = (new Zombie(new Sprite(new Texture("zombie03.png")),
+                        spawnPoints.get(i % spawnPoints.size()), this));
+                zombie.health *= Constant.ZOMBIESTATMODIFIER;
+                zombie.speed /= Constant.ZOMBIESTATMODIFIER;
+            }
+            //Change ends ; Reference SPAWNRANDOMZOMBIE
 
             // Check there isn't already a zombie there, or they will be stuck
             boolean collides = false;
@@ -168,7 +174,7 @@ public class Level implements Screen {
         return notSpawned;
     }
 
-    //Change starts ; FIRSTBOSSSPAWN
+    //Change starts ; Reference FIRSTBOSSSPAWN
     /**
      * Used to spawn the first boss of the game
      */
@@ -182,8 +188,8 @@ public class Level implements Screen {
         zombiesRemaining++;
         bossSpawned = true;
     }
-    //Change ends ; FIRSTBOSSSPAWN
-    //Change starts ; FINALBOSSSPAWN
+    //Change ends ; Reference FIRSTBOSSSPAWN
+    //Change starts ; Reference FINALBOSSSPAWN
     /**
      * Used to spawn the final boss of the game
      */
@@ -198,7 +204,7 @@ public class Level implements Screen {
         zombiesRemaining++;
         bossSpawned = true;
     }
-    //Change ends ; FINALBOSSSPAWN
+    //Change ends ; Reference FINALBOSSSPAWN
 
     /**
      * Used for collision detection between the player and map

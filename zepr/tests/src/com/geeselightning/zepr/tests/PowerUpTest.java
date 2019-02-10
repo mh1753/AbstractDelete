@@ -130,6 +130,7 @@ public class PowerUpTest {
                 player.getHealth(), 0.1);
     }
 
+    //Change starts ; Reference POWERUPSLOW
     @Test
     // Test 4.5.1
     public void powerUpSlowDecreasePlayersSpeed() {
@@ -176,7 +177,9 @@ public class PowerUpTest {
         assertEquals("Player speed is reset if deactivate is used on the powerup.", originalSpeed,
                 player.speed, 0.1);
     }
+    //Change ends ; POWERUPSLOW
 
+    //Change starts ; POWERUPDAMAGE
     @Test
     // Test 4.6.1
     public void powerUpDamageIncreasePlayersAttackDamage() {
@@ -224,4 +227,5 @@ public class PowerUpTest {
         assertEquals("Player damage is reset if deactivate is used on the powerup.", originalDamage,
                 player.attackDamage, 0.1);
     }
+    //Change ends ; Reference POWERUPDAMAGE
 }
