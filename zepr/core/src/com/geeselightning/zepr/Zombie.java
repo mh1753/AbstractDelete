@@ -13,9 +13,14 @@ public class Zombie extends Character {
     public Zombie(Sprite sprite, Vector2 zombieSpawn, Level currentLevel) {
         super(sprite, zombieSpawn, currentLevel);
         //Change starts ; Reference SAFEAREADIFFICULTYINCREASE
-        if (currentLevel.parent.progress > currentLevel.parent.COMPUTERSCIENCE) {
-            this.speed = (int) (1.5 * Constant.ZOMBIEBASESPEED);
-            this.health = (int) (1.5 * Constant.ZOMBIEBASEMAXHP);
+        if(currentLevel != null) {
+            if (currentLevel.parent.progress > currentLevel.parent.COMPUTERSCIENCE) {
+                this.speed = (int) (1.5 * Constant.ZOMBIEBASESPEED);
+                this.health = (int) (1.5 * Constant.ZOMBIEBASEMAXHP);
+            } else {
+                this.speed = Constant.ZOMBIEBASESPEED;
+                this.health = Constant.ZOMBIEBASEMAXHP;
+            }
         } else {
             this.speed = Constant.ZOMBIEBASESPEED;
             this.health = Constant.ZOMBIEBASEMAXHP;
@@ -27,7 +32,9 @@ public class Zombie extends Character {
         if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
             player.takeDamage(attackDamage);
             hitRefresh = 0;
-            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            if(currentLevel != null) {
+                currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            }
         } else {
             hitRefresh += delta;
         }

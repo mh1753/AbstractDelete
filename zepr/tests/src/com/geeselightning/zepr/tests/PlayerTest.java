@@ -75,6 +75,7 @@ public class PlayerTest {
                 nerdyHealth, player.getHealth(), 0.1);
         double sportyHealth = player.getHealth();
         player.setType("stJohn");
+        player.respawn(Constant.ORIGIN, null);
         assertNotEquals("Sporty and YSJ students should have a different amount of hit points.",
                 sportyHealth, player.getHealth(), 0.1);
         assertNotEquals("Nerdy and YSJ students should have a different amount of hit points.",
@@ -96,6 +97,7 @@ public class PlayerTest {
                 nerdySpeed, player.speed);
         double sportySpeed = player.speed;
         player.setType("stJohn");
+        player.respawn(Constant.ORIGIN, null);
         assertNotEquals("Sporty and YSJ students should have a different speed.",
                 sportySpeed, player.speed, 0.1);
         assertNotEquals("Nerdy and YSJ students should have a different speed.",

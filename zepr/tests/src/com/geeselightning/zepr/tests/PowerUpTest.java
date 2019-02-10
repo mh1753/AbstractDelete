@@ -200,7 +200,7 @@ public class PowerUpTest {
         double originalDamage = player.attackDamage;
         damage.activate();
         damage.update(6);
-        assertEquals("Damage should go back to the original Damage after 5s.", originalDamage, player.speed, 0.1);
+        assertEquals("Damage should go back to the original Damage after 5s.", originalDamage, player.attackDamage, 0.1);
     }
 
     @Test
