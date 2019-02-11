@@ -45,16 +45,22 @@ public class Level implements Screen {
     Texture blank;
     Vector2 powerSpawn;
     PowerUp currentPowerUp = null;
+    //Change starts ; Reference BOSSSPAWNED
     boolean bossSpawned = false;
+    //Change ends ; Reference BOSSSPAWNED
 
     //Create labels for displaying info that player needs
     Label progressLabel = new Label("", skin);
     Label healthLabel = new Label("", skin);
     Label powerupLabel = new Label("", skin);
+    //Change starts ; Reference POINTCOUNTERLABEL
     Label pointCounter = new Label("", skin);
+    //Change ends ; Reference POINTCOUNTERLABEL
 
+    //Change starts ; Reference INITAVOIDTIMER
     //Timer until player gains points for avoiding zombies
     public float avoidTimer = 0;
+    //Change ends ; Reference INITAVOIDTIMER
 
     public Level(Zepr zepr, String mapLocation, Vector2 playerSpawn, ArrayList<Vector2> zombieSpawnPoints,
                  int[] waves, Vector2 powerSpawn) {
@@ -127,20 +133,28 @@ public class Level implements Screen {
         int notSpawned = 0;
 
         for (int i = 0; i < amount; i++) {
+            //Change starts ; Reference SPAWNRANDOMZOMBIE
             //Gets a random number from 0 to 1 for deciding on zombie type
-            float decider = MathUtils.random();
+            float decider = MathUtils.random(3);
             Zombie zombie;
             //If statement to choose zombie type
-            if(decider <= 0.5){
+            if(decider <= 1){
                 zombie = (new Zombie(new Sprite(new Texture("zombie01.png")),
                         spawnPoints.get(i % spawnPoints.size()), this));
             }
-            else{
+            else if (decider <= 2){
                 zombie = (new Zombie(new Sprite(new Texture("zombie02.png")),
                         spawnPoints.get(i % spawnPoints.size()), this));
                 zombie.health /= Constant.ZOMBIESTATMODIFIER;
                 zombie.speed *= Constant.ZOMBIESTATMODIFIER;
             }
+            else{
+                zombie = (new Zombie(new Sprite(new Texture("zombie03.png")),
+                        spawnPoints.get(i % spawnPoints.size()), this));
+                zombie.health *= Constant.ZOMBIESTATMODIFIER;
+                zombie.speed /= Constant.ZOMBIESTATMODIFIER;
+            }
+            //Change ends ; Reference SPAWNRANDOMZOMBIE
 
             // Check there isn't already a zombie there, or they will be stuck
             boolean collides = false;
@@ -160,6 +174,7 @@ public class Level implements Screen {
         return notSpawned;
     }
 
+    //Change starts ; Reference FIRSTBOSSSPAWN
     /**
      * Used to spawn the first boss of the game
      */
@@ -173,7 +188,8 @@ public class Level implements Screen {
         zombiesRemaining++;
         bossSpawned = true;
     }
-
+    //Change ends ; Reference FIRSTBOSSSPAWN
+    //Change starts ; Reference FINALBOSSSPAWN
     /**
      * Used to spawn the final boss of the game
      */
@@ -188,6 +204,7 @@ public class Level implements Screen {
         zombiesRemaining++;
         bossSpawned = true;
     }
+    //Change ends ; Reference FINALBOSSSPAWN
 
     /**
      * Used for collision detection between the player and map
@@ -304,6 +321,7 @@ public class Level implements Screen {
 
             // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
             if (zombiesRemaining == 0 && currentPowerUp == null) {
+                //Change starts ; Reference SPAWNPOWERUPS
                 int random = (int )(Math.random() * 5 + 1);
                 if (random == 1) {
                     currentPowerUp = new PowerUpHeal(this);
@@ -317,12 +335,14 @@ public class Level implements Screen {
                 } else{
                     currentPowerUp = new PowerUpDamage(this);
                 }
+                //Change ends ; Reference SPAWNPOWERUPS
             }
 
             if (zombiesRemaining == 0) {
                 // Wave complete, increment wave number
                 currentWave++;
                 if (currentWave > waves.length) {
+                    //Change starts ; Reference SPAWNBOSSES
                     // Spawn Boss if current level is level 3 or level 6.
                     if(this.getClass().equals(CourtyardLevel.class) && !bossSpawned) {
                         spawnFirstBoss(this.zombieSpawnPoints);
@@ -332,6 +352,8 @@ public class Level implements Screen {
                         spawnFinalBoss(this.zombieSpawnPoints);
                         bossSpawned = true;
                     }
+                    //Change ends ; Reference SPAWNBOSSES
+                    //Change starts ; Reference SAFEAREA
                     // On computer science level, wait for a while until completion is triggered
                     else if (this.getClass().equals(ComputerScienceLevel.class)){
                         table.setVisible(false);
@@ -340,11 +362,14 @@ public class Level implements Screen {
                             levelComplete();
                         }
                     }
+                    //Change ends ; Reference SAFEAREA
+                    //Change starts ; Reference ENDLEVEL
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
                     else {
                         levelComplete();
                     }
+                    //Change ends ; Reference ENDLEVEL
                 } else {
                     // Update zombiesRemaining with the number of zombies of the new wave
                     zombiesRemaining = waves[currentWave - 1];
@@ -381,6 +406,7 @@ public class Level implements Screen {
                 // Draw zombie health bars
                 int fillAmount = (int)( (zombie.getHealth() / 100) * 30);
                 renderer.getBatch().setColor(Color.BLACK);
+                //Change starts ; Reference BETTERHEALTHBARS
                 renderer.getBatch().draw(blank, Math.round(zombie.getX() -
                                 (32/100f * zombie.getHealth() - 32)/2f),
                         zombie.getY()+zombie.getHeight(), fillAmount + 2, 3);
@@ -388,9 +414,10 @@ public class Level implements Screen {
                 renderer.getBatch().draw(blank, Math.round(zombie.getX() -
                         (32/100f * zombie.getHealth() - 32)/2f +1),
                         zombie.getY()+zombie.getHeight() + 1, fillAmount, 1);
+                //Change ends ; Reference BETTERHEALTHBARS
                 renderer.getBatch().setColor(Color.WHITE);
             }
-
+            //Change starts ; Reference UPDATEAVOIDTIMER
             // if Player hasn't been hit lately, grant points. Else, decrease timer
             if(avoidTimer <= 0){
                 parent.addPoints(Constant.AVOIDPOINTS * delta);
@@ -398,6 +425,7 @@ public class Level implements Screen {
             else{
                 avoidTimer -= delta;
             }
+            //Change ends ; Reference UPDATEAVOIDTIMER
 
             if (currentPowerUp != null) {
                 // Activate the powerup up if the player moves over it and it's not already active
@@ -416,18 +444,24 @@ public class Level implements Screen {
 
             String progressString = ("Wave " + Integer.toString(currentWave) + ", " + Integer.toString(zombiesRemaining) + " zombies remaining.");
             String healthString = ("Health: " + Integer.toString(player.health) + "HP");
+            //Change starts ; Reference POINTCOUNTERSTRING
             String pointString = ("Points: " + Integer.toString(parent.getPoints()));
+            //Change ends ; Reference POINTCOUNTERSTRING
 
             progressLabel.setText(progressString);
             healthLabel.setText(healthString);
+            //Change starts ; Reference SETPOINTCOUNTERSTRING
             pointCounter.setText(pointString);
+            //Change ends ; Reference SETPOINTCOUNTERSTRING
 
             table.top().left();
             table.add(progressLabel).pad(10);
             table.row().pad(10);
             table.add(healthLabel).pad(10).left();
+            //Change starts ; Reference DISPLAYPOINTCOUNTER
             table.row();
             table.add(pointCounter).pad(10).left();
+            //Change ends ; Reference DISPLAYPOINTCOUNTER
             table.row();
             table.add(powerupLabel);
             stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
@@ -435,6 +469,7 @@ public class Level implements Screen {
         }
     }
 
+    //Change starts ; Reference LEVELCOMPLETE
     private void levelComplete() {
         isPaused = true;
         complete();
@@ -444,6 +479,7 @@ public class Level implements Screen {
             parent.setScreen(new TextScreen(parent, "Level completed."));
         }
     }
+    //Change ends ; Reference LEVELCOMPLETE
 
     @Override
     public void resize(int width, int height) {

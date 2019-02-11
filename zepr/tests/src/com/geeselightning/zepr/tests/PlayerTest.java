@@ -61,6 +61,7 @@ public class PlayerTest {
                 zombie.getHealth(), originalHealth, 0.1);
     }
 
+    //Change starts ; Reference PLAYERHEALTHTEST
     @Test
     // Test 2.3.1
     public void playerTypesHaveDifferentHealth() {
@@ -72,8 +73,17 @@ public class PlayerTest {
         player.respawn(Constant.ORIGIN, null);
         assertNotEquals("Sporty and nerdy students should have a different amount of hit points.",
                 nerdyHealth, player.getHealth(), 0.1);
+        double sportyHealth = player.getHealth();
+        player.setType("stJohn");
+        player.respawn(Constant.ORIGIN, null);
+        assertNotEquals("Sporty and YSJ students should have a different amount of hit points.",
+                sportyHealth, player.getHealth(), 0.1);
+        assertNotEquals("Nerdy and YSJ students should have a different amount of hit points.",
+                nerdyHealth, player.getHealth(), 0.1);
     }
+    //Change ends ; Reference PLAYERHEALTHTEST
 
+    //Change starts ; Reference PLAYERSPEEDTEST
     @Test
     // Test 2.3.2
     public void playerTypesHaveDifferentSpeed() {
@@ -83,8 +93,16 @@ public class PlayerTest {
         double nerdySpeed = player.speed;
         player.setType("sporty");
         player.respawn(Constant.ORIGIN, null);
-        assertNotEquals("Sporty and nerdy students should have a different amount of hit points.",
+        assertNotEquals("Sporty and nerdy students should have a different speed.",
                 nerdySpeed, player.speed);
+        double sportySpeed = player.speed;
+        player.setType("stJohn");
+        player.respawn(Constant.ORIGIN, null);
+        assertNotEquals("Sporty and YSJ students should have a different speed.",
+                sportySpeed, player.speed, 0.1);
+        assertNotEquals("Nerdy and YSJ students should have a different speed.",
+                nerdySpeed, player.speed, 0.1);
     }
+    //Change ends ; Reference PLAYERSPEEDTEST
 
 }

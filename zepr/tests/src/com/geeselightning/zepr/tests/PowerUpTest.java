@@ -57,7 +57,7 @@ public class PowerUpTest {
     }
 
     @Test
-    // Test 4.2.3
+    // Test 4.2.4
     public void powerUpSpeedDeactivateMethodResetsPlayerSpeed() {
         Player player = Player.getInstance();
         PowerUpSpeed speed = new PowerUpSpeed(null);
@@ -129,4 +129,103 @@ public class PowerUpTest {
         assertEquals("Player should take 30 damage afrer immunity is deactivated.", originalHealth-30,
                 player.getHealth(), 0.1);
     }
+
+    //Change starts ; Reference POWERUPSLOW
+    @Test
+    // Test 4.5.1
+    public void powerUpSlowDecreasePlayersSpeed() {
+        Player player = Player.getInstance();
+        PowerUpSlow slow = new PowerUpSlow(null);
+        double originalSpeed = player.speed;
+        slow.activate();
+        assertEquals("Slow powerup should decrease the Players speed.", originalSpeed - Constant.SLOW,
+                player.speed, 0.1);
+    }
+
+    @Test
+    // Test 4.5.2
+    public void powerUpSlowDeactivatesAfter15s() {
+        Player player = Player.getInstance();
+        PowerUpSlow slow = new PowerUpSlow(null);
+        double originalSpeed = player.speed;
+        slow.activate();
+        slow.update(16);
+        assertEquals("Speed should go back to the original speed after 15s.", originalSpeed, player.speed, 0.1);
+    }
+
+    @Test
+    // Test 4.5.3
+    public void powerUpSlowDoesNotDeactiveBefore15s() {
+        Player player = Player.getInstance();
+        PowerUpSlow slow = new PowerUpSlow(null);
+        double originalSpeed = player.speed;
+        slow.activate();
+        slow.update(9);
+        assertNotEquals("Slow powerup should decrease the Players speed.", originalSpeed,
+                player.speed);
+    }
+
+    @Test
+    // Test 4.5.4
+    public void powerUpSlowDeactivateMethodResetsPlayerSpeed() {
+        Player player = Player.getInstance();
+        PowerUpSlow slow = new PowerUpSlow(null);
+        double originalSpeed = player.speed;
+        slow.activate();
+        slow.update(5);
+        slow.deactivate();
+        assertEquals("Player speed is reset if deactivate is used on the powerup.", originalSpeed,
+                player.speed, 0.1);
+    }
+    //Change ends ; POWERUPSLOW
+
+    //Change starts ; POWERUPDAMAGE
+    @Test
+    // Test 4.6.1
+    public void powerUpDamageIncreasePlayersAttackDamage() {
+        Player player = Player.getInstance();
+        PowerUpDamage damage = new PowerUpDamage(null);
+        double originalDamage = player.attackDamage;
+        damage.activate();
+        assertEquals("Damage powerup should increase the Players attackDamage.",
+                originalDamage + Constant.DAMAGEUP,
+                player.attackDamage, 0.1);
+    }
+
+    @Test
+    // Test 4.6.2
+    public void powerUpDamageDeactivatesAfter5s() {
+        Player player = Player.getInstance();
+        PowerUpDamage damage = new PowerUpDamage(null);
+        double originalDamage = player.attackDamage;
+        damage.activate();
+        damage.update(6);
+        assertEquals("Damage should go back to the original Damage after 5s.", originalDamage, player.attackDamage, 0.1);
+    }
+
+    @Test
+    // Test 4.6.3
+    public void powerUpDamageDoesNotDeactiveBefore5s() {
+        Player player = Player.getInstance();
+        PowerUpDamage damage = new PowerUpDamage(null);
+        double originalDamage = player.attackDamage;
+        damage.activate();
+        damage.update(4);
+        assertNotEquals("Damage powerup should increase the Players damage.", originalDamage,
+                player.speed);
+    }
+
+    @Test
+    // Test 4.6.4
+    public void powerUpDamageDeactivateMethodResetsPlayerDamage() {
+        Player player = Player.getInstance();
+        PowerUpDamage damage = new PowerUpDamage(null);
+        double originalDamage = player.attackDamage;
+        damage.activate();
+        damage.update(5);
+        damage.deactivate();
+        assertEquals("Player damage is reset if deactivate is used on the powerup.", originalDamage,
+                player.attackDamage, 0.1);
+    }
+    //Change ends ; Reference POWERUPDAMAGE
 }

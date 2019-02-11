@@ -26,7 +26,9 @@ public class SelectLevelScreen implements Screen {
 
     private Zepr parent;
     private Stage stage;
+    //Change starts ; Reference SELECTLEVELPOINTLABEL
     private Label pointCounter;
+    //Change ends ; Reference SELECTLEVELPOINTLABEL
     private Label stageDescription;
     private Label characterDescription;
     private int stageLink = -1;
@@ -49,21 +51,27 @@ public class SelectLevelScreen implements Screen {
         // Importing the necessary assets for the button textures.
         Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 
+        //Change starts ; Reference INITSELECTLEVELPOINTCOUNTER
         //Creating point counter label.
         pointCounter = new Label("Points : " + Integer.toString(parent.getPoints()), skin, "subtitle");
+        //Change ends ; Reference INITSELECTLEVELPOINTCOUNTER
 
         // Creating stage buttons.
         final TextButton town = new TextButton("Town", skin);
         TextButton halifax = new TextButton("Halifax", skin);
         TextButton courtyard = new TextButton("Courtyard", skin);
+        //Change starts ; Reference INITNEWLEVELBUTTONS
         TextButton busStop = new TextButton("Bus Stop", skin);
         TextButton computerScience = new TextButton("Computer Science", skin);
         TextButton glasshouse = new TextButton("Glasshouse", skin);
+        //Change ends ; Reference INITNEWLEVELBUTTONS
 
         // Creating character buttons.
         TextButton nerdy = new TextButton("Nerdy",skin);
         TextButton sporty = new TextButton("Sporty",skin);
+        //Change starts ; Reference INITNEWCHARBUTTON
         TextButton stJohn = new TextButton("St John", skin);
+        //Change ends ; Reference INITNEWCHARBUTTON
 
         // Creating other buttons.
         TextButton play = new TextButton("Play", skin);
@@ -77,9 +85,11 @@ public class SelectLevelScreen implements Screen {
         final String townDescription = "You wake up hungover in town to discover there is a zombie apocalypse.";
         final String halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
         final String courtyardDescription = "You should go to Courtyard and get some breakfast.";
+        //Change starts ; Reference NEWLEVELDESCRIPTIONS
         final String bustStopDescription = "Lab time. Better head to campus east.";
         final String computerScienceDescription = "No one's here! Oh well, at least you got the work done.";
         final String glasshouseDecription = "Go to the pub, have a pint, and wait for all this to blow over.";
+        //Change ends ; Reference NEWLEVELDESCRIPTIONS
         final String lockedDescription = "This stage is locked until you complete the previous one.";
         final String defaultDescription ="Select a stage from the buttons above.";
         stageDescription = new Label(defaultDescription, skin);
@@ -90,7 +100,9 @@ public class SelectLevelScreen implements Screen {
         // Creating character descriptions.
         final String nerdyDescription = "All that studying let's you take more damage, for some reason.";
         final String sportyDescripton = "All that working out helps you run faster.";
+        //Change starts ; Reference NEWCHARDESCRIPTION
         final String stJohnDescription = "You might be good at something. Probably not.";
+        //Change ends ; Reference NEWCHARDESCRIPTION
         final String defaultCharacterDescription = "Select a type of student from the buttons above.";
         characterDescription = new Label(defaultCharacterDescription,skin);
         characterDescription.setWrap(true);
@@ -108,8 +120,10 @@ public class SelectLevelScreen implements Screen {
         menuBar.add(back).pad(10);
         menuBar.add(save).pad(10);
         menuBar.add(load).pad(10);
+        //Change starts ; Reference POINTCOUNTERMENUBAR
         menuBar.add(pointCounter).pad(10);
         menuBar.add(minigame).pad(10);
+        //Change ends ; Reference POINTCOUNTERMENUBAR
 
         // Adding stage selector buttons.
         Table stageSelect = new Table();
@@ -127,10 +141,12 @@ public class SelectLevelScreen implements Screen {
         stageSelect.add(halifax).pad(10);
         stageSelect.add(courtyard).pad(10);
 
+        //Change starts ; Reference DISPLAYNEWLEVELBUTTONS
         stageSelect.row().pad(0, 0, 100, 0);
         stageSelect.add(busStop).pad(10);
         stageSelect.add(computerScience).pad(10);
         stageSelect.add(glasshouse).pad(10);
+        //Change ends ; Reference DISPLAYNEWLEVELBUTTONS
 
         stageSelect.row();
         stageSelect.add(stageDescription).width(1000f).colspan(3);
@@ -139,7 +155,9 @@ public class SelectLevelScreen implements Screen {
         stageSelect.row().center();
         stageSelect.add(nerdy).pad(10);
         stageSelect.add(sporty).pad(10);
+        //Change starts ; Reference DISPLAYNEWCHARBUTTON
         stageSelect.add(stJohn).pad(10);
+        //Change ends ; Reference DISPLAYNEWCHARBUTTON
 
         stageSelect.row().center();
         stageSelect.add(characterDescription).width(1000f).colspan(3);
@@ -163,6 +181,7 @@ public class SelectLevelScreen implements Screen {
             }
         });
 
+        //Change starts ; Reference IMPLEMENTSAVE
         // Defining actions for the save button.
         save.addListener(new ChangeListener() {
             @Override
@@ -179,7 +198,9 @@ public class SelectLevelScreen implements Screen {
                 }
             }
         });
+        //Change ends ; Reference IMPLEMENTSAVE
 
+        //Change starts ; Reference IMPLEMENTLOAD
         // Defining actions for the load button.
         load.addListener(new ChangeListener() {
             @Override
@@ -196,6 +217,7 @@ public class SelectLevelScreen implements Screen {
                 }
             }
         });
+        //Change ends ; Reference IMPLEMENTLOAD
 
         minigame.addListener(new ChangeListener() {
             @Override
@@ -240,7 +262,7 @@ public class SelectLevelScreen implements Screen {
                 }
             });
         }
-
+        //Change starts ; Reference LEVELBUTTONCLICKLISTENERS
         if (parent.progress <= parent.COURTYARD) {
             busStop.setColor(Color.DARK_GRAY);
             busStop.getLabel().setColor(Color.DARK_GRAY);
@@ -280,6 +302,7 @@ public class SelectLevelScreen implements Screen {
                 }
             });
         }
+        //Change ends ; Reference LEVELBUTTONCLICKLISTENERS
 
         //Defining actions for the nerdy button.
 
@@ -299,6 +322,7 @@ public class SelectLevelScreen implements Screen {
                 playerSet = true;
             }
         });
+        //Change starts ; Reference CHARBUTTONCLICKLISTENER
         stJohn.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -307,6 +331,7 @@ public class SelectLevelScreen implements Screen {
                 playerSet = true;
             }
         });
+        //Change ends ; Reference CHARBUTTONCLICKLISTENER
 
 
         // Defining actions for the play button.
@@ -327,11 +352,13 @@ public class SelectLevelScreen implements Screen {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        //Change starts ; Reference UPDATESELECTLEVELPOINTS
         //Updates the pointCounter if the number of points has changed
         if(Integer.toString(parent.getPoints()).equals(pointCounter.getText()
                 .substring("Points : ".length() - 1))){
             pointCounter.setText("Points : " + Integer.toString(parent.getPoints()));
         }
+        //Change ends ; Reference UPDATESELECTLEVELPOINTS
 
         // Draws the stage.
         this.stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));

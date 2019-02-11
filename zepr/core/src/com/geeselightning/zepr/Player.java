@@ -8,7 +8,9 @@ import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 public class Player extends Character {
 
     private static final Player instance = new Player(new Sprite(new Texture("player01.png")), new Vector2(0, 0));
-    int attackDamage = Constant.PLAYERDMG;
+    //Change starts ; Reference PUBLICATKDAMAGE
+    public int attackDamage = Constant.PLAYERDMG;
+    //Change ends ; Reference PUBLICATKDAMAGE
     int hitRange = Constant.PLAYERRANGE;
     final float hitCooldown =  Constant.PLAYERHITCOOLDOWN;
     Texture mainTexture;
@@ -60,11 +62,13 @@ public class Player extends Character {
             HPMult = Constant.SPORTYHPMULT;
             speedMult = Constant.SPORTYSPEEDMULT;
         }
+        //Change starts ; STJOHNTYPE
         else if (playertype == "stJohn"){
             dmgMult = Constant.STJOHNDMGMULT;
             HPMult = Constant.STJOHNHPMULT;
             speedMult = Constant.STJOHNSPEEDMULT;
         }
+        //Change ends ; STJOHNTYPE
         else if (playertype == null){
             dmgMult =1;
             HPMult = 1;
@@ -79,6 +83,7 @@ public class Player extends Character {
             mainTexture = new Texture("player01.png");
             attackTexture = new Texture("player01_attack.png");
             this.setTexture(mainTexture);
+            //Change Starts ; Reference STJOHNGRAPHIC
         } else if (playertype == "sporty") {
             mainTexture = new Texture("player02.png");
             attackTexture = new Texture("player02_attack.png");
@@ -89,6 +94,7 @@ public class Player extends Character {
             attackTexture = new Texture("player03_attack.png");
             this.setTexture(mainTexture);
         }
+        //Change ends ; Reference STJOHNGRAPHIC
     }
 
     @Override

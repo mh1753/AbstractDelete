@@ -12,20 +12,29 @@ public class Zombie extends Character {
 
     public Zombie(Sprite sprite, Vector2 zombieSpawn, Level currentLevel) {
         super(sprite, zombieSpawn, currentLevel);
-        if (currentLevel.parent.progress > currentLevel.parent.COMPUTERSCIENCE) {
-            this.speed = (int) (1.5 * Constant.ZOMBIEBASESPEED);
-            this.health = (int) (1.5 * Constant.ZOMBIEBASEMAXHP);
+        //Change starts ; Reference SAFEAREADIFFICULTYINCREASE
+        if(currentLevel != null) {
+            if (currentLevel.parent.progress > currentLevel.parent.COMPUTERSCIENCE) {
+                this.speed = (int) (1.5 * Constant.ZOMBIEBASESPEED);
+                this.health = (int) (1.5 * Constant.ZOMBIEBASEMAXHP);
+            } else {
+                this.speed = Constant.ZOMBIEBASESPEED;
+                this.health = Constant.ZOMBIEBASEMAXHP;
+            }
         } else {
             this.speed = Constant.ZOMBIEBASESPEED;
             this.health = Constant.ZOMBIEBASEMAXHP;
         }
+        //Change ends ; Reference SAFEAREADIFFICULTYINCREASE
     }
 
     public void attack(Player player, float delta) {
         if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
             player.takeDamage(attackDamage);
             hitRefresh = 0;
-            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            if(currentLevel != null) {
+                currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            }
         } else {
             hitRefresh += delta;
         }
@@ -46,7 +55,9 @@ public class Zombie extends Character {
         if (health <= 0) {
             currentLevel.zombiesRemaining--;
             currentLevel.aliveZombies.remove(this);
+            //Change starts ; Reference GRANTZOMBIEPOINTS
             currentLevel.parent.addPoints(Constant.ZOMBIEKILLPOINTS);
+            //Change ends ; Reference GRANTZOMBIEPOINTS
             this.getTexture().dispose();
         }
     }

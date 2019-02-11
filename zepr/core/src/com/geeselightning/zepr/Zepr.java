@@ -9,8 +9,10 @@ public class Zepr extends Game {
 	private Level level;
 	private SelectLevelScreen selectLevelScreen;
 
+	//Change starts ; Reference POINTSVAR
 	//Stores number of points earned by player
 	private float points = 0;
+	//Change ends ; Reference POINTSVAR
 
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
 	public int progress = 3;
@@ -20,10 +22,12 @@ public class Zepr extends Game {
 	public final static int TOWN = 3;
 	public final static int HALIFAX = 4;
 	public final static int COURTYARD = 5;
+	//Change starts ; Reference LEVELPROGRESS
 	public final static int BUSSTOP = 6;
 	public final static int COMPUTERSCIENCE = 7;
 	public final static int GLASSHOUSE = 8;
 	public final static int COMPLETE = 9;
+	//Change ends ; Reference LEVELPROGRESS
 
 
 	public void changeScreen(int screen) {
@@ -48,6 +52,7 @@ public class Zepr extends Game {
 				level = new CourtyardLevel(this);
 				this.setScreen(level);
 				break;
+				//Change starts ; Reference LEVELLOAD
 			case BUSSTOP:
 				level = new BusStopLevel(this);
 				this.setScreen(level);
@@ -60,9 +65,11 @@ public class Zepr extends Game {
 				level = new GlasshouseLevel(this);
 				this.setScreen(level);
 				break;
+				//Change ends ; Reference LEVELLOAD
 		}
 	}
 
+	//Change starts ; Reference IMPLEMENTPOINTS
 	//Sets points to p
 	public void setPoints(float p) { points = p;}
 
@@ -75,6 +82,7 @@ public class Zepr extends Game {
 	public int getPoints(){
 		return Math.round(points);
 	}
+	//Change ends ; Reference IMPLEMENTPOINTS
 
 	@Override
 	public void create() {
