@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.graphics.Color;
+import com.geeselightning.zepr.Minigame.TicTacToeScreen;
 
 import javax.xml.soap.Text;
 import java.io.BufferedReader;
@@ -69,6 +70,7 @@ public class SelectLevelScreen implements Screen {
         TextButton save = new TextButton("Save", skin);
         TextButton load = new TextButton("Load", skin);
         TextButton back = new TextButton("Back", skin);
+        final TextButton minigame = new TextButton("Minigame", skin);
 
         // Creating stage descriptions.
         Label title = new Label("Choose a stage and character.", skin, "subtitle");
@@ -107,6 +109,7 @@ public class SelectLevelScreen implements Screen {
         menuBar.add(save).pad(10);
         menuBar.add(load).pad(10);
         menuBar.add(pointCounter).pad(10);
+        menuBar.add(minigame).pad(10);
 
         // Adding stage selector buttons.
         Table stageSelect = new Table();
@@ -191,6 +194,13 @@ public class SelectLevelScreen implements Screen {
                 }catch(IOException e){
                     e.printStackTrace();
                 }
+            }
+        });
+
+        minigame.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.setScreen(new TicTacToeScreen(parent));
             }
         });
 
