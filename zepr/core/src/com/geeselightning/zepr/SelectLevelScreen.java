@@ -14,9 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.graphics.Color;
-import com.geeselightning.zepr.Minigame.TicTacToeScreen;
+import com.geeselightning.zepr.minigame.TicTacToeScreen;
 
-import javax.xml.soap.Text;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -78,7 +77,7 @@ public class SelectLevelScreen implements Screen {
         TextButton save = new TextButton("Save", skin);
         TextButton load = new TextButton("Load", skin);
         TextButton back = new TextButton("Back", skin);
-        final TextButton minigame = new TextButton("Minigame", skin);
+        final TextButton minigame = new TextButton("minigame", skin);
 
         // Creating stage descriptions.
         Label title = new Label("Choose a stage and character.", skin, "subtitle");

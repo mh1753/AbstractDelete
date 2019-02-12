@@ -1,4 +1,4 @@
-package com.geeselightning.zepr.Minigame;
+package com.geeselightning.zepr.minigame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -22,13 +22,13 @@ import java.util.Arrays;
 
 public class TicTacToeScreen implements Screen {
 
-    private MinigameVars constants = new MinigameVars();
+    private MinigameVars vars = new MinigameVars();
     private Stage stage;
     private Zepr parent;
     private ArrayList<TextButton> cells = new ArrayList<TextButton>(Arrays.asList(
-            constants.b0, constants.b1, constants.b2,
-            constants.b3, constants.b4, constants.b5,
-            constants.b6, constants.b7, constants.b8)
+            vars.b0, vars.b1, vars.b2,
+            vars.b3, vars.b4, vars.b5,
+            vars.b6, vars.b7, vars.b8)
     );
     private ArrayList<TextButton> noughts = new ArrayList<TextButton>();
     private ArrayList<TextButton> crossed = new ArrayList<TextButton>();
@@ -39,7 +39,7 @@ public class TicTacToeScreen implements Screen {
         parent = game;
         this.stage = new Stage(new ScreenViewport());
 
-        turnIndicator = new Label("Turn: " + turn, constants.skin);
+        turnIndicator = new Label("Turn: " + turn, vars.skin);
     }
 
 
@@ -52,19 +52,19 @@ public class TicTacToeScreen implements Screen {
 
         Table board = new Table();
 
-        constants.initialiseEndConditions();
+        vars.initialiseEndConditions();
 
         board.setFillParent(true);
         board.center();
-        addRow(board, constants.b0, constants.b1, constants.b2);
-        addRow(board, constants.b3, constants.b4, constants.b5);
-        addRow(board, constants.b6, constants.b7, constants.b8);
+        addRow(board, vars.b0, vars.b1, vars.b2);
+        addRow(board, vars.b3, vars.b4, vars.b5);
+        addRow(board, vars.b6, vars.b7, vars.b8);
 
         for (TextButton c : cells) {
             applyButtonListener(c);
         }
 
-        TextButton exit = new TextButton("Exit", constants.skin);
+        TextButton exit = new TextButton("Exit", vars.skin);
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -93,19 +93,19 @@ public class TicTacToeScreen implements Screen {
             }
         }
 
-        for (int i = 0; i < constants.endCondition.length; i++){
-            if (noughts.contains(constants.endCondition[i].get(0)) &&
-                    noughts.contains(constants.endCondition[i].get(1)) &&
-                    noughts.contains(constants.endCondition[i].get(2))){
-                parent.addPoints(Constant.FINISHMINIGAMEPOINTS);
+        for (int i = 0; i < vars.endCondition.length; i++){
+            if (noughts.contains(vars.endCondition[i].get(0)) &&
+                    noughts.contains(vars.endCondition[i].get(1)) &&
+                    noughts.contains(vars.endCondition[i].get(2))){
                 parent.setScreen(new TextScreen(parent, "Well done, you're not a total failure"));
+                parent.addPoints(Constant.FINISHMINIGAMEPOINTS);
             }
         }
 
-        for (int i = 0; i < constants.endCondition.length; i++){
-            if (crossed.contains(constants.endCondition[i].get(0)) &&
-                    crossed.contains(constants.endCondition[i].get(1)) &&
-                    crossed.contains(constants.endCondition[i].get(2))){
+        for (int i = 0; i < vars.endCondition.length; i++){
+            if (crossed.contains(vars.endCondition[i].get(0)) &&
+                    crossed.contains(vars.endCondition[i].get(1)) &&
+                    crossed.contains(vars.endCondition[i].get(2))){
                 parent.setScreen(new TextScreen(parent, "Wow, you really suck"));
             }
         }
