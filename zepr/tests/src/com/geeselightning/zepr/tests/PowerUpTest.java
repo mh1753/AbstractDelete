@@ -155,7 +155,7 @@ public class PowerUpTest {
 
     @Test
     // Test 4.5.3
-    public void powerUpSlowDoesNotDeactiveBefore15s() {
+    public void powerUpSlowDoesNotDeactivateBefore15s() {
         Player player = Player.getInstance();
         PowerUpSlow slow = new PowerUpSlow(null);
         double originalSpeed = player.speed;
