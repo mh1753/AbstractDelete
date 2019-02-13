@@ -22,16 +22,23 @@ import java.util.Arrays;
 
 public class TicTacToeScreen implements Screen {
 
+    // load in a new instance of the game's variables
     private MinigameVars vars = new MinigameVars();
+
     private Stage stage;
     private Zepr parent;
+
+    // load textButtons into an array of cells, used to check if the cell is empty or not
     private ArrayList<TextButton> cells = new ArrayList<TextButton>(Arrays.asList(
             vars.b0, vars.b1, vars.b2,
             vars.b3, vars.b4, vars.b5,
             vars.b6, vars.b7, vars.b8)
     );
+
+    // arrays used to test the win conditions
     private ArrayList<TextButton> noughts = new ArrayList<TextButton>();
     private ArrayList<TextButton> crossed = new ArrayList<TextButton>();
+
     private int turn = 1;
     private Label turnIndicator;
 
@@ -83,6 +90,7 @@ public class TicTacToeScreen implements Screen {
 
         turnIndicator.setText("Turn: " +  turn);
 
+        // runs the AI player's turn, when the turn number is an even number
         if (turn % 2 == 0){
             if (!cells.isEmpty()) {
                 int decider = MathUtils.random(cells.size()-1);
@@ -93,6 +101,7 @@ public class TicTacToeScreen implements Screen {
             }
         }
 
+        // tests the win condition, adds points if won and sets the screen to a new TextScreen
         for (int i = 0; i < vars.endCondition.length; i++){
             if (noughts.contains(vars.endCondition[i].get(0)) &&
                     noughts.contains(vars.endCondition[i].get(1)) &&
@@ -102,6 +111,7 @@ public class TicTacToeScreen implements Screen {
             }
         }
 
+        // tests the lose condition and, if lost, sets the screen to a new TextScreen
         for (int i = 0; i < vars.endCondition.length; i++){
             if (crossed.contains(vars.endCondition[i].get(0)) &&
                     crossed.contains(vars.endCondition[i].get(1)) &&
@@ -114,7 +124,13 @@ public class TicTacToeScreen implements Screen {
         this.stage.draw();
     }
 
-    public void applyButtonListener(final TextButton b1) {
+    /**
+     * Applies a listener to a TextButton. When clicked, checks if the button is in cells (is EMPTY) and
+     * if it is, moves it to noughts and sets the text to "0"
+     *
+     * @param b1 the button to add the listener to
+     */
+    private void applyButtonListener(final TextButton b1) {
         b1.addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if (cells.contains(b1)) {
@@ -131,6 +147,16 @@ public class TicTacToeScreen implements Screen {
         });
     }
 
+    /**
+     * Adds a row of 3 buttons to a table. Used to avoid duplicate code
+     *
+     * @param table the table you wish to add the rows to
+     *
+     *              The three buttons you wish to add to the row:
+     * @param b3
+     * @param b4
+     * @param b5
+     */
     private void addRow(Table table, TextButton b3, TextButton b4, TextButton b5) {
         table.row().pad(0,0,5,0);
         table.add(b3).pad(5);

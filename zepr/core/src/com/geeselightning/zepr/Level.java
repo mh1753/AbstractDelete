@@ -177,6 +177,9 @@ public class Level implements Screen {
     //Change starts ; Reference FIRSTBOSSSPAWN
     /**
      * Used to spawn the first boss of the game
+     *
+     * @param spawnPoints the locations where zombies should be spawned on the stage, but only using
+     *                    one possible point to spawn the boss
      */
     public void spawnFirstBoss(ArrayList<Vector2> spawnPoints){
         Zombie zombie = new Zombie(new Sprite(new Texture("zomboss.png")),
@@ -192,6 +195,9 @@ public class Level implements Screen {
     //Change starts ; Reference FINALBOSSSPAWN
     /**
      * Used to spawn the final boss of the game
+     *
+     * @param spawnPoints the locations where zombies should be spawned on the stage, but only using
+     *                    one possible point to spawn the boss
      */
     public void spawnFinalBoss(ArrayList<Vector2> spawnPoints){
         Zombie zombie = new Zombie(new Sprite(new Texture("zomboss2.png")),
@@ -320,6 +326,7 @@ public class Level implements Screen {
             zombiesToSpawn = spawnZombies(zombiesToSpawn, zombieSpawnPoints);
 
             // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
+            // Randomly chosen through a random decider
             if (zombiesRemaining == 0 && currentPowerUp == null) {
                 //Change starts ; Reference SPAWNPOWERUPS
                 int random = (int )(Math.random() * 5 + 1);
@@ -355,6 +362,7 @@ public class Level implements Screen {
                     //Change ends ; Reference SPAWNBOSSES
                     //Change starts ; Reference SAFEAREA
                     // On computer science level, wait for a while until completion is triggered
+                    // The computer science level acts as a safe area
                     else if (this.getClass().equals(ComputerScienceLevel.class)){
                         table.setVisible(false);
                         if (currentWave == 500){

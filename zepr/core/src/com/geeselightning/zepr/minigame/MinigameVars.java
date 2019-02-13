@@ -10,6 +10,8 @@ import java.util.Arrays;
 public class MinigameVars {
 
     final Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+
+    // the TextButtons used as cells for the game
     TextButton b0 = new TextButton("1", skin);
     TextButton b1 = new TextButton("2", skin);
     TextButton b2 = new TextButton("3", skin);
@@ -20,6 +22,8 @@ public class MinigameVars {
     TextButton b7 = new TextButton("8", skin);
     TextButton b8 = new TextButton("9", skin);
 
+
+    // the conditions to end the game, represented as an array of ArrayList
     ArrayList[] endCondition = new ArrayList[8];
     void initialiseEndConditions(){
         endCondition[0] = new ArrayList<TextButton>(Arrays.asList(b0, b1, b2));
