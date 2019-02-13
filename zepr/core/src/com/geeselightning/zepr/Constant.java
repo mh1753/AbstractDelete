@@ -20,7 +20,7 @@ public final class Constant {
     public static final int ZOMBIERANGE = 20;
     public static final float ZOMBIEHITCOOLDOWN = 1;
     //Change starts ; Reference FIRSTBOSSSTATS
-    public static final float FIRSTBOSSSTATMODIFIER = 2f;
+    public static final float FIRSTBOSSSTATMODIFIER = 2.5f;
     public static final float FIRSTBOSSRANGEMODIFIER = 2f;
     //Change ends ; Reference FIRSTBOSSSTATS
     //Change starts ; Reference FINALBOSSSTATS
