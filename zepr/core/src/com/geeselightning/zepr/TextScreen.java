@@ -53,7 +53,6 @@ public class TextScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 parent.changeScreen(Zepr.SELECT);
-                dispose();
             }
         });
     }
