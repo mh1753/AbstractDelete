@@ -1,3 +1,4 @@
+//Change start ; Reference TICTACTOE
 package com.geeselightning.zepr.minigame;
 
 import com.badlogic.gdx.Gdx;
@@ -39,6 +40,7 @@ public class TicTacToeScreen implements Screen {
     private ArrayList<TextButton> noughts = new ArrayList<TextButton>();
     private ArrayList<TextButton> crossed = new ArrayList<TextButton>();
 
+    private Boolean win = false;
     private int turn = 1;
     private Label turnIndicator;
 
@@ -91,8 +93,8 @@ public class TicTacToeScreen implements Screen {
         turnIndicator.setText("Turn: " +  turn);
 
         // runs the AI player's turn, when the turn number is an even number
-        if (turn % 2 == 0){
-            if (!cells.isEmpty()) {
+        if (!cells.isEmpty()) {
+            if (turn % 2 == 0){
                 int decider = MathUtils.random(cells.size()-1);
                 cells.get(decider).setText("X");
                 crossed.add(cells.get(decider));
@@ -106,8 +108,10 @@ public class TicTacToeScreen implements Screen {
             if (noughts.contains(vars.endCondition[i].get(0)) &&
                     noughts.contains(vars.endCondition[i].get(1)) &&
                     noughts.contains(vars.endCondition[i].get(2))){
+                win = true;
                 parent.setScreen(new TextScreen(parent, "Well done, you're not a total failure"));
                 parent.addPoints(Constant.FINISHMINIGAMEPOINTS);
+                dispose();
             }
         }
 
@@ -116,8 +120,16 @@ public class TicTacToeScreen implements Screen {
             if (crossed.contains(vars.endCondition[i].get(0)) &&
                     crossed.contains(vars.endCondition[i].get(1)) &&
                     crossed.contains(vars.endCondition[i].get(2))){
-                parent.setScreen(new TextScreen(parent, "Wow, you really suck"));
+                if (win == false) {
+                    parent.setScreen(new TextScreen(parent, "Wow, you really suck"));
+                    dispose();
+                }
             }
+        }
+
+        if (turn == 10 && win == false){
+            parent.setScreen(new TextScreen(parent, "A draw! the most exciting of endings"));
+            dispose();
         }
 
         this.stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
@@ -186,6 +198,7 @@ public class TicTacToeScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }
+//Change ends ; Reference TICTACTOE

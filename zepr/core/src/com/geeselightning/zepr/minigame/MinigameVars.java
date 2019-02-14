@@ -1,3 +1,4 @@
+//Change start ; Reference MINIGAMEVARIABLES
 package com.geeselightning.zepr.minigame;
 
 import com.badlogic.gdx.Gdx;
@@ -37,3 +38,4 @@ public class MinigameVars {
     }
 
 }
+//Change ends ; MINIGAMEVARIABLES

@@ -85,7 +85,7 @@ public class SelectLevelScreen implements Screen {
         final String halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
         final String courtyardDescription = "You should go to Courtyard and get some breakfast.";
         //Change starts ; Reference NEWLEVELDESCRIPTIONS
-        final String bustStopDescription = "Lab time. Better head to campus east.";
+        final String bustStopDescription = "Time to go hand in your work. Better head to campus east.";
         final String computerScienceDescription = "No one's here! Oh well, at least you got the work done.";
         final String glasshouseDecription = "Go to the pub, have a pint, and wait for all this to blow over.";
         //Change ends ; Reference NEWLEVELDESCRIPTIONS
