@@ -52,6 +52,9 @@ public class TextScreen implements Screen {
         back.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                //Change starts : Reference CALLDISPOSE
+                dispose();
+                //Change ends ; Reference CALLDISPOSE
                 parent.changeScreen(Zepr.SELECT);
             }
         });
@@ -92,7 +95,9 @@ public class TextScreen implements Screen {
     @Override
     public void dispose() {
         // Dispose of assets when they are no longer needed.
-        stage.dispose();
+        //Change starts ; Reference DISPOSESKIN
+        skin.dispose();
+        //Change ends ; Reference DISPOSESKIN
     }
 }
 
