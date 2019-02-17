@@ -481,6 +481,7 @@ public class Level implements Screen {
     private void levelComplete() {
         isPaused = true;
         complete();
+        dispose();
         if (parent.progress == parent.COMPLETE) {
             parent.setScreen(new TextScreen(parent, "Game completed."));
         } else {
@@ -506,13 +507,14 @@ public class Level implements Screen {
 
     @Override
     public void hide() {
-        dispose();
+
     }
 
     @Override
     public void dispose() {
         skin.dispose();
-        stage.dispose();
+        //Change starts ; Reference REMOVESTAGEDISPOSE
+        //Change ends ; Reference REMOVESTAGEDISPOSE
         map.dispose();
         renderer.dispose();
         if (currentPowerUp != null) {
