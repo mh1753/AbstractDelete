@@ -10,6 +10,10 @@ public class Zepr extends Game {
 	private BonusLevel bonusLevel;
 	private SelectLevelScreen selectLevelScreen;
 
+	//Change starts: POINTSINIT
+	private float points = 0;
+	//Change ends: POINTSINIT
+
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
 	public int progress = 3;
 
@@ -24,6 +28,17 @@ public class Zepr extends Game {
 	public final static int CENTRALHALL = 8;
 	public final static int COMPLETE = 9;
 
+	//Change starts: GETPOINTS
+	public float getPoints(){
+		return points;
+	}
+	//Change ends: GETPOINTS
+
+	//Change starts: ADDPOINTS
+	public void addPoints(float p){
+		points += p;
+	}
+	//Change ends: ADDPOINTS
 
 	public void changeScreen(int screen) {
 		switch(screen) {

@@ -52,6 +52,9 @@ public class Level implements Screen {
     Label AbilityCooldownLabel = new Label("", skin);
     Label AbilityDurationLabel = new Label("", skin);
     Label powerupLabel = new Label("", skin);
+    //Change starts: POINTSCOUNTERLABEL
+    Label pointCounterLabel = new Label("", skin);
+    //Change ends: POINTSCOUNTERLABEL
 
     public Level(Zepr zepr, String mapLocation, Vector2 playerSpawn, ArrayList<Vector2> zombieSpawnPoints, int[] waves, Vector2 powerSpawn) {
         parent = zepr;
@@ -362,6 +365,9 @@ public class Level implements Screen {
             // Added for player abilities
             AbilityCooldownLabel.setText(abilityCooldownString);
             AbilityDurationLabel.setText(abilityDurationString);
+            //Change starts: POINTCOUNTERSET
+            pointCounterLabel.setText("Points: " + parent.getPoints());
+            //Change ends: POINTCOUNTERSET
 
             table.top().left();
             table.add(progressLabel).pad(10);
@@ -374,6 +380,10 @@ public class Level implements Screen {
             table.add(AbilityDurationLabel).pad(10).left();
             table.row();
             table.add(powerupLabel).pad(10).left();
+            //Change starts: POINTCOUNTERDISPLAY
+            table.row();
+            table.add(pointCounterLabel).pad(10).left();
+            //Change ends: POINTCOUNTERDISPLAY
             // Added to prevent the game from crashing, Stops the stage from being used after it is disposed
             if (stage != null) {
             	stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
