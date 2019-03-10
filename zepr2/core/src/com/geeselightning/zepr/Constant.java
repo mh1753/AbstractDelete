@@ -64,5 +64,8 @@ public final class Constant {
     public static final int ZOMBIEPOINTS = 100;
     public static final int AVOIDPOINTS = 5;
     public static final int SAFEZONEPOINTS = 1000;
-    //Change starts: POINTGAINCONSTANTS
+    //Change ends: POINTGAINCONSTANTS
+    //Change starts: AVOIDTIMERCONSTANT
+    public static final int AVOIDTIMER = 1;
+    //Change ends: AVOIDTIMERCONSTANT
 }

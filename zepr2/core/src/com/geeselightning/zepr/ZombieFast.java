@@ -23,6 +23,9 @@ public class ZombieFast extends Character {
     @Override
     public void attack(Character player, float delta) {
         if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
+            //Change starts: FASTZOMBIEAVOIDTIMERSET
+            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            //Change ends: FASTZOMBIEAVOIDTIMERSET
             player.takeDamage(attackDamage);
             hitRefresh = 0;
         } else {

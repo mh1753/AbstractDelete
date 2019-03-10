@@ -56,6 +56,10 @@ public class Level implements Screen {
     Label pointCounterLabel = new Label("", skin);
     //Change ends: POINTSCOUNTERLABEL
 
+    //Change starts: AVOIDTIMERINIT
+    public float avoidTimer = 0;
+    //Change ends: AVOIDTIMEINIT
+
     public Level(Zepr zepr, String mapLocation, Vector2 playerSpawn, ArrayList<Vector2> zombieSpawnPoints, int[] waves, Vector2 powerSpawn) {
         parent = zepr;
         this.mapLocation = mapLocation;
@@ -285,6 +289,13 @@ public class Level implements Screen {
 
             table.clear();
 
+            //Change starts: UPDATEAVOIDTIMER
+            if(avoidTimer < 0) {
+                avoidTimer -= delta;
+            } else{
+                parent.addPoints(Constant.AVOIDPOINTS * delta);
+            }
+
             // Try to spawn all zombies in the stage and update zombiesToSpawn with the amount that failed to spawn
             zombiesToSpawn = spawnZombies(zombiesToSpawn, zombieSpawnPoints);
 
@@ -366,7 +377,7 @@ public class Level implements Screen {
             AbilityCooldownLabel.setText(abilityCooldownString);
             AbilityDurationLabel.setText(abilityDurationString);
             //Change starts: POINTCOUNTERSET
-            pointCounterLabel.setText("Points: " + parent.getPoints());
+            pointCounterLabel.setText("Points: " + (parent.getPoints()));
             //Change ends: POINTCOUNTERSET
 
             table.top().left();

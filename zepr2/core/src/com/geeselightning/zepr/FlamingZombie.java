@@ -30,6 +30,9 @@ public class FlamingZombie extends Character {
     @Override
     public void attack(Character player, float delta) {
     	if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
+    	    //Change starts: FLAMINGZOMBIEAVOIDTIMERSET
+            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            //Change ends: FLAMINGZOMBIEAVOIDTIMERSET
             playerBurning = true;
             hitRefresh = 0;
         } else {
