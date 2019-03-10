@@ -44,6 +44,9 @@ public class Zombie extends Character {
         direction = getDirectionTo(player.getCenter());
 
         if (health <= 0) {
+            //Change starts: ZOMBIEPOINTGAIN
+            currentLevel.parent.addPoints(Constant.ZOMBIEPOINTS);
+            //Change ends: ZOMBIEPOINTGAIN
             currentLevel.zombiesRemaining--;
             currentLevel.aliveZombies.remove(this);
             // Removed disposal of texture to prevent texture glitch

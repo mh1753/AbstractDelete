@@ -62,6 +62,9 @@ public class FlamingZombie extends Character {
         direction = getDirectionTo(player.getCenter());
 
         if (health <= 0) {
+            //Change starts: FLAMINGZOMBIEPOINTGAIN
+            currentLevel.parent.addPoints(Constant.ZOMBIEPOINTS);
+            //Change ends: FLAMINGZOMBIEPOINTGAIN
             currentLevel.zombiesRemaining--;
             currentLevel.aliveZombies.remove(this);
             // Removed disposal of texture to prevent texture glitch

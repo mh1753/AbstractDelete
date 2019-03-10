@@ -59,4 +59,10 @@ public final class Constant {
     public static final float NOCOOLDOWNSTIME = 10;
     // Added for minigame
     public static final int BONUSGOAL = 10;
+    //Change starts: POINTGAINCONSTANTS
+    public static final int BONUSGAMEPOINTS = 1000;
+    public static final int ZOMBIEPOINTS = 100;
+    public static final int AVOIDPOINTS = 5;
+    public static final int SAFEZONEPOINTS = 1000;
+    //Change starts: POINTGAINCONSTANTS
 }

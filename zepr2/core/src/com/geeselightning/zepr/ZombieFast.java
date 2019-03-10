@@ -43,6 +43,9 @@ public class ZombieFast extends Character {
         direction = getDirectionTo(player.getCenter());
 
         if (health <= 0) {
+            //Change starts: FASTZOMBIEPOINTGAIN
+            currentLevel.parent.addPoints(Constant.ZOMBIEPOINTS);
+            //Change ends: FASTZOMBIEPOINTGAIN
             currentLevel.zombiesRemaining--;
             currentLevel.aliveZombies.remove(this);
             // Removed disposal of texture to prevent texture glitch

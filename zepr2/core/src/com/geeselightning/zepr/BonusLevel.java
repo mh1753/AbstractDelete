@@ -254,6 +254,9 @@ public class BonusLevel implements Screen {
         this.stage.draw();
         
         if (score == goalScore) {
+            //Change starts: ADDMINIGAMEPOINTS
+            parent.addPoints(Constant.BONUSGAMEPOINTS);
+            //Change ends: ADDMINIGAMEPOINTS
             parent.setScreen(new TextScreen(parent, "Bonus game completed."));
         }
         if (timer <= 0) {
