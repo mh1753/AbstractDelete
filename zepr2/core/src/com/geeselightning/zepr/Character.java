@@ -3,6 +3,8 @@ package com.geeselightning.zepr;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,11 +21,15 @@ public class Character extends Sprite {
     // All characters start ready to hit.
     float hitRefresh = 2;
     int maxHealth;
+    Rectangle boundRect;
 
     public Character(Sprite sprite, Vector2 spawn, Level currentLevel) {
         super(sprite);
         setX(spawn.x);
         setY(spawn.y);
+        boundRect.setPosition(spawn.x,spawn.y);
+        boundRect.setSize(sprite.getWidth(),sprite.getHeight());
+        boundRect.setCenter(this.getCenter());
         this.currentLevel = currentLevel;
     }
 
@@ -45,8 +51,10 @@ public class Character extends Sprite {
      * @param character Character to check if this collides with
      * @return boolean true if they collide, false otherwise
      */
-    public boolean collidesWith(Character character) {
+    public boolean collidesWith(Character character, boolean resolve) {
         // Circles less buggy than character.getBoundingRectangle()
+        character.boundRect.setPosition(character.getX(), character.getY());
+        boundRect.setPosition(getX(),getY());
         double diameter = 10;
         double distanceBetweenCenters = (Math.pow(getCenter().x - character.getCenter().x, 2)
                 + Math.pow(getCenter().y - character.getCenter().y, 2));
@@ -157,6 +165,7 @@ public class Character extends Sprite {
         otherCharacters.remove(this);
 
         for (Character character : otherCharacters) {
+            Intersector.MinimumTranslationVector mtv =
             if (collidesWith(character)) {
             	// Added to check X and Y collisions separately
             	if (collidesWithX(character)) {
@@ -186,6 +195,37 @@ public class Character extends Sprite {
         // Make sure non of the corners goto a blocked region of the map
         for (int n = 0; n < spritePoints.size(); n++) {
         	// Changed to check X and Y separately to improve collisions
+            if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
+                setX(oldX);
+            }
+            if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
+                setY(oldY);
+            }
+        }
+
+    }
+
+    //Change starts: KNOCKBACK
+    public void knockback(){
+        float oldX = getX(), oldY = getY();
+
+        setX(getX() - (0.1f * velocity.x));
+        setY(getY() - (0.1f * velocity.y));
+
+        ArrayList<Vector2> spritePoints = new ArrayList<Vector2>(Arrays.asList(new Vector2(getX(), getY()),
+                new Vector2(getX() + getWidth(), getY()), new Vector2(getX(), getY() + getHeight()),
+                new Vector2(getX() + getWidth(), getY() + getHeight()), new Vector2(getX() + getWidth()/2, getY() + getHeight()),
+                new Vector2(getX() + getWidth(), getY() + getHeight()/2), new Vector2(getX(), getY() + getHeight()/2),
+                new Vector2(getX() + getWidth()/2, getY())));
+
+        ArrayList<Vector2> oldPoints = new ArrayList<Vector2>(Arrays.asList(new Vector2(oldX, oldY),
+                new Vector2(oldX + getWidth(), oldY), new Vector2(oldX, oldY + getHeight()),
+                new Vector2(oldX + getWidth(), oldY + getHeight()), new Vector2(oldX + getWidth()/2, oldY + getHeight()),
+                new Vector2(oldX + getWidth(), oldY + getHeight()/2), new Vector2(oldX, oldY + getHeight()/2),
+                new Vector2(oldX + getWidth()/2, oldY)));
+
+        for (int n = 0; n < spritePoints.size(); n++) {
+            // Changed to check X and Y separately to improve collisions
             if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
                 setX(oldX);
             }

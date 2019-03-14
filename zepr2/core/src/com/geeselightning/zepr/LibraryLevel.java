@@ -20,7 +20,9 @@ public class LibraryLevel extends Level {
     );
 
     // Defining the number of zombies to be spawned for each wave
-    private static final int[] waves = new int[]{30, 35, 40};
+    //Change starts: SAFEAREAWAVES
+    private static final int[] waves = new int[]{0, 0, 0};
+    //Change ends: SAFEAREAWAVES
 
     public LibraryLevel(Zepr zepr) {
         super(zepr, mapLocation, playerSpawn, zombieSpawnPoints, waves, powerSpawn);

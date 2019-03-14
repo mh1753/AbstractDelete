@@ -1,6 +1,7 @@
 package com.geeselightning.zepr;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.math.MathUtils;
 
 public class Zepr extends Game {
 
@@ -15,7 +16,7 @@ public class Zepr extends Game {
 	//Change ends: POINTSINIT
 
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
-	public int progress = 3;
+	public int progress = 6;
 
 	public final static int MENU = 0;
 	public final static int BONUS = 1;
@@ -29,9 +30,7 @@ public class Zepr extends Game {
 	public final static int COMPLETE = 9;
 
 	//Change starts: GETPOINTS
-	public float getPoints(){
-		return points;
-	}
+	public int getPoints(){ return MathUtils.floor(points);}
 	//Change ends: GETPOINTS
 
 	//Change starts: ADDPOINTS

@@ -45,6 +45,9 @@ public class Player extends Character {
     public void attack(Character zombie, float delta) {
         if (canHitGlobal(zombie, hitRange) && hitRefresh > hitCooldown && hitDuration >= 0) {
             zombie.takeDamage(attackDamage);
+            //Change starts: APPLYKNOCKBACK
+            zombie.knockback();
+            //Change ends: APPLYKNOCKBACK
             hitRefresh = 0;
         } else {
         	hitRefresh += delta;

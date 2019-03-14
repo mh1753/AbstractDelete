@@ -46,6 +46,10 @@ public class Level implements Screen {
     Vector2 powerSpawn;
     PowerUp currentPowerUp = null;
 
+    //Change starts: SAFEAREATIMER
+    float safeAreaTimer = 20;
+    //Change ends: SAFEAREATIMER
+
     Label progressLabel = new Label("", skin);
     Label healthLabel = new Label("", skin);
     // Added for player Abilities
@@ -70,7 +74,16 @@ public class Level implements Screen {
         this.powerSpawn = powerSpawn;
 
         // Set up data for first wave of zombies
-        this.waves = waves;
+        //Change starts: SAFEAREADIFFICULTYRISE
+        this.waves = new int[2];
+        if(parent.progress >= parent.LIBRARY){
+            for(int i = 0; i < 2; i++){
+                this.waves[i] = waves[i] * 2;
+            }
+        } else {
+            this.waves = waves;
+        }
+        //Change ends : SAFEAREADIFFICULTYRISE
         this.zombiesRemaining = waves[0];
         this.zombiesToSpawn = zombiesRemaining;
 
@@ -290,11 +303,12 @@ public class Level implements Screen {
             table.clear();
 
             //Change starts: UPDATEAVOIDTIMER
-            if(avoidTimer < 0) {
+            if(avoidTimer > 0) {
                 avoidTimer -= delta;
             } else{
                 parent.addPoints(Constant.AVOIDPOINTS * delta);
             }
+            //Change ends: UPDATEAVOIDTIMER
 
             // Try to spawn all zombies in the stage and update zombiesToSpawn with the amount that failed to spawn
             zombiesToSpawn = spawnZombies(zombiesToSpawn, zombieSpawnPoints);
@@ -402,31 +416,47 @@ public class Level implements Screen {
             }
             
             if (zombiesRemaining == 0) {
-            	// Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
-            	// Moved power up logic so a power up always spawns at the end of the wave
-                if (currentPowerUp == null) {
-                    int random = (int )(Math.random() * 5 + 1);
-                    if (random == 1) {
-                        currentPowerUp = new PowerUpHeal(this);
-                    } else if (random == 2){
-                        currentPowerUp = new PowerUpSpeed(this);
-                    } else if (random == 3){
-                        currentPowerUp = new PowerUpImmunity(this);
-                    } else if (random == 4){
-                    	// added for extra power ups
-                        currentPowerUp = new PowerUpInstaKill(this);
-                    } else {
-                    	// added for extra power ups
-                        currentPowerUp = new PowerUpNoCooldowns(this);
+                //Change starts: SAFEAREAENABLE
+                if(parent.progress == parent.LIBRARY){
+                    safeAreaTimer -= delta;
+                    if(safeAreaTimer <= 0){
+                        currentWave++;
+                        safeAreaTimer = 20;
                     }
                 }
+                else {
+                    // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
+                    // Moved power up logic so a power up always spawns at the end of the wave
+                    if (currentPowerUp == null) {
+                        int random = (int) (Math.random() * 5 + 1);
+                        if (random == 1) {
+                            currentPowerUp = new PowerUpHeal(this);
+                        } else if (random == 2) {
+                            currentPowerUp = new PowerUpSpeed(this);
+                        } else if (random == 3) {
+                            currentPowerUp = new PowerUpImmunity(this);
+                        } else if (random == 4) {
+                            // added for extra power ups
+                            currentPowerUp = new PowerUpInstaKill(this);
+                        } else {
+                            // added for extra power ups
+                            currentPowerUp = new PowerUpNoCooldowns(this);
+                        }
+                    }
 
-                // Wave complete, increment wave number
-                currentWave++;
+                    // Wave complete, increment wave number
+                    currentWave++;
+                }
+                //Change ends: SAFEAREAENABLE
                 if (currentWave > waves.length) {
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
                     isPaused = true;
+                    //Change starts: SAFEPOINTGAIN
+                    if(parent.progress == parent.LIBRARY){
+                        parent.addPoints(Constant.SAFEZONEPOINTS);
+                    }
+                    //Change ends: SAFEPOINTGAIN
                     complete();
                     if (parent.progress == parent.COMPLETE) {
                         parent.setScreen(new TextScreen(parent, "Game completed."));
