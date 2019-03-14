@@ -21,14 +21,14 @@ public class Character extends Sprite {
     // All characters start ready to hit.
     float hitRefresh = 2;
     int maxHealth;
-    Rectangle boundRect;
+    Rectangle boundRect = new Rectangle();
 
     public Character(Sprite sprite, Vector2 spawn, Level currentLevel) {
         super(sprite);
         setX(spawn.x);
         setY(spawn.y);
-        boundRect.setPosition(spawn.x,spawn.y);
-        boundRect.setSize(sprite.getWidth(),sprite.getHeight());
+        boundRect.setPosition(spawn.x, spawn.y);
+        boundRect.setSize(sprite.getWidth(), sprite.getHeight());
         boundRect.setCenter(this.getCenter());
         this.currentLevel = currentLevel;
     }
@@ -51,39 +51,30 @@ public class Character extends Sprite {
      * @param character Character to check if this collides with
      * @return boolean true if they collide, false otherwise
      */
+    //Change starts: COLLISIONUPDATE
     public boolean collidesWith(Character character, boolean resolve) {
-        // Circles less buggy than character.getBoundingRectangle()
         character.boundRect.setPosition(character.getX(), character.getY());
-        boundRect.setPosition(getX(),getY());
-        double diameter = 10;
-        double distanceBetweenCenters = (Math.pow(getCenter().x - character.getCenter().x, 2)
-                + Math.pow(getCenter().y - character.getCenter().y, 2));
-        return (0 <= distanceBetweenCenters && distanceBetweenCenters <= Math.pow(diameter, 2));
+        boundRect.setPosition(getX(), getY());
+        if (resolve) {
+            Intersector.MinimumTranslationVector mtv = new Intersector.MinimumTranslationVector();
+            float[] verts1 = {boundRect.x, boundRect.y, boundRect.x + boundRect.width, boundRect.y,
+                    boundRect.x + boundRect.width, boundRect.y + boundRect.height, boundRect.x, boundRect.y + boundRect.height};
+            float[] verts2 = {character.boundRect.x, character.boundRect.y, character.boundRect.x + character.boundRect.width,
+                    character.boundRect.y, character.boundRect.x + character.boundRect.width, character.boundRect.y +
+                    character.boundRect.height, character.boundRect.x, character.boundRect.y + character.boundRect.height};
+            if (Intersector.overlapConvexPolygons(verts1, verts2, mtv)) {
+                setX(getX() + mtv.normal.x);
+                setY(getY() + mtv.normal.y);
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+            return Intersector.overlaps(boundRect,character.boundRect);
+        }
     }
-    
-    /**
-     * Added by Shaun of the Devs
-     * Uses distance between this Character and another character in the x axis to decide how they collide.
-     *
-     * @param character Character to check if this collides with
-     * @return boolean true if they collide, false otherwise
-     */
-    public boolean collidesWithX(Character character) {
-    	double distanceX = Math.pow(getCenter().x - character.getCenter().x, 2);
-    	return (0 <= distanceX);
-    }
-    
-    /**
-     * Added by Shaun of the Devs
-     * Uses distance between this Character and another character in the y axis to decide how they collide.
-     *
-     * @param character Character to check if this collides with
-     * @return boolean true if they collide, false otherwise
-     */
-    public boolean collidesWithY(Character character) {
-    	double distanceY = Math.pow(getCenter().y - character.getCenter().y, 2);
-    	return (0 <= distanceY);
-    }
+    //Change ends: COLLISIONUPDATE
 
     @Override
     public void draw(Batch batch) {
@@ -165,16 +156,7 @@ public class Character extends Sprite {
         otherCharacters.remove(this);
 
         for (Character character : otherCharacters) {
-            Intersector.MinimumTranslationVector mtv =
-            if (collidesWith(character)) {
-            	// Added to check X and Y collisions separately
-            	if (collidesWithX(character)) {
-            		setX(oldX);
-            	}
-                if (collidesWithY(character)) {
-                	setY(oldY);
-                }
-            }
+            collidesWith(character, true);
         }
 
         // List of all corners of sprite, added extra points in the centre of the edges

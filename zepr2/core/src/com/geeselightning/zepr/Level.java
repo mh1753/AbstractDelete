@@ -177,7 +177,7 @@ public class Level implements Screen {
             // Check there isn't already a zombie there, or they will be stuck
             boolean collides = false;
             for (Character otherZombie : aliveZombies) {
-                if (zombie.collidesWith(otherZombie)) {
+                if (zombie.collidesWith(otherZombie, false)) {
                     collides = true;
                     // Decrement counter as it didn't spawn.
                     notSpawned++;

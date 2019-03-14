@@ -61,7 +61,7 @@ public class BossCentralHall extends Character {
                     new Vector2(getX() + random, getY() + random), currentLevel));
             boolean collides = false;
             for (Character otherZombie : currentLevel.aliveZombies) {
-                if (zombie.collidesWith(otherZombie)) {
+                if (zombie.collidesWith(otherZombie, false)) {
                     collides = true;
                 }
             }
