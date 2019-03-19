@@ -27,11 +27,19 @@ public class Character extends Sprite {
         super(sprite);
         setX(spawn.x);
         setY(spawn.y);
-        boundRect.setPosition(spawn.x, spawn.y);
-        boundRect.setSize(sprite.getWidth(), sprite.getHeight());
-        boundRect.setCenter(this.getCenter());
+        //Change starts: INITBOUNDRECT
+        setBoundRect();
+        //Change ends: INITBOUNDRECT
         this.currentLevel = currentLevel;
     }
+
+    //Change starts: SETBOUNDRECT
+    public void setBoundRect(){
+        boundRect.setPosition(this.getX(), this.getY());
+        boundRect.setSize(this.getRegionWidth(), this.getRegionHeight());
+        boundRect.setCenter(this.getCenter());
+    }
+    //Change ends: SETBOUNDRECT
 
     public double getDirection() {
         return direction;
@@ -72,6 +80,27 @@ public class Character extends Sprite {
 
         } else {
             return Intersector.overlaps(boundRect,character.boundRect);
+        }
+    }
+
+    public boolean collidesWith(Rectangle rect, boolean resolve) {
+        boundRect.setPosition(getX(), getY());
+        if (resolve) {
+            Intersector.MinimumTranslationVector mtv = new Intersector.MinimumTranslationVector();
+            float[] verts1 = {boundRect.x, boundRect.y, boundRect.x + boundRect.width, boundRect.y,
+                    boundRect.x + boundRect.width, boundRect.y + boundRect.height, boundRect.x, boundRect.y + boundRect.height};
+            float[] verts2 = {rect.x, rect.y, rect.x + rect.width, rect.y, rect.x + rect.width, rect.y + rect.height,
+                    rect.x, rect.y + rect.height};
+            if (Intersector.overlapConvexPolygons(verts1, verts2, mtv)) {
+                setX(getX() + mtv.normal.x);
+                setY(getY() + mtv.normal.y);
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+            return Intersector.overlaps(boundRect,rect);
         }
     }
     //Change ends: COLLISIONUPDATE

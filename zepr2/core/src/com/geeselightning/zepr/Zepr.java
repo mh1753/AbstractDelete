@@ -18,6 +18,10 @@ public class Zepr extends Game {
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
 	public int progress = 6;
 
+	//Change starts: INITCURRENTSCREEN
+	public int currentScreen;
+	//Change ends: INITCURRENTSCREEN
+
 	public final static int MENU = 0;
 	public final static int BONUS = 1;
 	public final static int SELECT = 2;
@@ -40,6 +44,9 @@ public class Zepr extends Game {
 	//Change ends: ADDPOINTS
 
 	public void changeScreen(int screen) {
+		//Change starts: STORESCREEN
+		currentScreen = screen;
+		//Change ends: STORESCREEN
 		switch(screen) {
 			case MENU:
 				if (menuScreen == null) menuScreen = new MenuScreen(this);

@@ -417,7 +417,7 @@ public class Level implements Screen {
             
             if (zombiesRemaining == 0) {
                 //Change starts: SAFEAREAENABLE
-                if(parent.progress == parent.LIBRARY){
+                if(parent.currentScreen == parent.LIBRARY){
                     safeAreaTimer -= delta;
                     if(safeAreaTimer <= 0){
                         currentWave++;

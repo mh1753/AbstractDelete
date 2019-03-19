@@ -26,7 +26,18 @@ public class Player extends Character {
 
     private Player(Sprite sprite, Vector2 playerSpawn) {
         super(sprite, playerSpawn, null);
+        //Change starts: INITPLAYERBOUND
+        setBoundRect();
+        //Change ends: INITPLAYERBOUND
     }
+
+    //Change starts: SETPLAYERBOUND
+    public void setBoundRect(){
+        boundRect.setPosition(this.getX() + this.getRegionWidth()/5f, this.getY() + this.getRegionHeight()/5f);
+        boundRect.setSize(3 * this.getRegionWidth()/5f, 3 * this.getRegionHeight()/5f);
+        boundRect.setCenter(this.getCenter());
+    }
+    //Change starts: SETPLAYERBOUND
 
     public static Player getInstance(){
         return instance;
