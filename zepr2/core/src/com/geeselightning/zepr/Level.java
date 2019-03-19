@@ -75,9 +75,9 @@ public class Level implements Screen {
 
         // Set up data for first wave of zombies
         //Change starts: SAFEAREADIFFICULTYRISE
-        this.waves = new int[2];
+        this.waves = new int[3];
         if(parent.progress >= parent.LIBRARY){
-            for(int i = 0; i < 2; i++){
+            for(int i = 0; i < 3; i++){
                 this.waves[i] = waves[i] * 2;
             }
         } else {

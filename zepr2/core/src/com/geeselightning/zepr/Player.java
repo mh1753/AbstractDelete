@@ -33,8 +33,8 @@ public class Player extends Character {
 
     //Change starts: SETPLAYERBOUND
     public void setBoundRect(){
-        boundRect.setPosition(this.getX() + this.getRegionWidth()/5f, this.getY() + this.getRegionHeight()/5f);
-        boundRect.setSize(3 * this.getRegionWidth()/5f, 3 * this.getRegionHeight()/5f);
+        boundRect.setPosition(this.getX() + this.getRegionWidth()/10f, this.getY() + this.getRegionHeight()/10f);
+        boundRect.setSize(4 * this.getRegionWidth()/5f, 4 * this.getRegionHeight()/5f);
         boundRect.setCenter(this.getCenter());
     }
     //Change starts: SETPLAYERBOUND

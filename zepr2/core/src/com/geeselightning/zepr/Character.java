@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
@@ -121,7 +122,11 @@ public class Character extends Sprite {
         double directionToCharacter = this.getDirectionTo(character.getCenter());
         double angle = abs(directionToCharacter - direction);
         double distance = this.getCenter().sub(character.getCenter()).len();
-
+        //Change starts: ANGLEFIX
+        if(angle > MathUtils.PI) {
+            angle -= MathUtils.PI2;
+        }
+        //Change ends: ANGLEFIX
         if (angle < 0.8 && distance < hitRange) {
             return true;
         } else {
