@@ -56,13 +56,17 @@ public class BonusGoose extends Sprite{
         
 		if(getX() >= 925) {
 			setX(925);
+			velocityX = -velocityX;
 		} else if(getX() <= 280) {
+			velocityX = - velocityX;
 			setX(280);
 		} 
 		
 		if(getY() >= 600) {
 			setY(600);
+			velocityY = -velocityY;
 		} else if(getY() <= 250) {
+			velocityY = -velocityY;
 			setY(250);
 		}
 		

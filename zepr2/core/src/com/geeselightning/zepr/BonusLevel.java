@@ -40,6 +40,8 @@ public class BonusLevel implements Screen {
     private int target2X = (1280/2 - 100/2); 
     private int target3X = (1280/2 + 720/2) - 180;
     private int targetY = 720/4 + 210;
+    private int hitboxH =60;
+    private int hitboxW = 60;
     private float timer = 60;
 	
 	public BonusLevel(Zepr zepr) {
@@ -120,20 +122,20 @@ public class BonusLevel implements Screen {
         left.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-            	if (goose1.getX() < target1X + 48 && goose1.getX() > target1X - 48) {
-            		if (goose1.getY() < targetY + 48 && goose1.getY() > targetY - 30) {
+            	if (goose1.getX() < target1X + hitboxW && goose1.getX() > target1X - hitboxW) {
+            		if (goose1.getY() < targetY + hitboxH && goose1.getY() > targetY - hitboxH) {
                         score += 1;
             			goose1.respawn();
             		}
             	}
-            	if (goose2.getX() < target1X + 48 && goose2.getX() > target1X - 48) {
-            		if (goose2.getY() < targetY + 48 && goose2.getY() > targetY - 30) {
+            	if (goose2.getX() < target1X + hitboxW && goose2.getX() > target1X - hitboxW) {
+            		if (goose2.getY() < targetY + hitboxH && goose2.getY() > targetY - hitboxH) {
                         score += 1;
                         goose2.respawn();
             		}
             	}
-            	if (goose3.getX() < target1X + 48 && goose3.getX() > target1X - 48) {
-            		if (goose3.getY() < targetY + 48 && goose3.getY() > targetY - 25) {
+            	if (goose3.getX() < target1X + hitboxW && goose3.getX() > target1X - hitboxW) {
+            		if (goose3.getY() < targetY + hitboxH && goose3.getY() > targetY - hitboxH) {
                         score += 1;
                         goose3.respawn();
             		}
@@ -145,20 +147,20 @@ public class BonusLevel implements Screen {
         middle.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-            	if (goose1.getX() < target2X + 48 && goose1.getX() > target2X - 48) {
-            		if (goose1.getY() < targetY + 48 && goose1.getY() > targetY - 25) {
+            	if (goose1.getX() < target2X + hitboxW && goose1.getX() > target2X - hitboxW) {
+            		if (goose1.getY() < targetY + hitboxH && goose1.getY() > targetY - hitboxH) {
                         score += 1;
                         goose1.respawn();
             		}
             	}
-            	if (goose2.getX() < target2X + 48 && goose2.getX() > target2X - 48) {
-            		if (goose2.getY() < targetY + 48 && goose2.getY() > targetY - 25) {
+            	if (goose2.getX() < target2X + hitboxW && goose2.getX() > target2X - hitboxW) {
+            		if (goose2.getY() < targetY + hitboxH && goose2.getY() > targetY - hitboxH) {
                         score += 1;
             			goose2.respawn();
             		}
             	}
-            	if (goose3.getX() < target2X + 48 && goose3.getX() > target2X - 48) {
-            		if (goose3.getY() < targetY + 48 && goose3.getY() > targetY - 25) {
+            	if (goose3.getX() < target2X + hitboxW && goose3.getX() > target2X - hitboxW) {
+            		if (goose3.getY() < targetY + hitboxH && goose3.getY() > targetY - hitboxH) {
                         score += 1;
                         goose3.respawn();
             		}
@@ -170,20 +172,20 @@ public class BonusLevel implements Screen {
         right.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-            	if (goose1.getX() < target3X + 48 && goose1.getX() > target3X - 48) {
-            		if (goose1.getY() < targetY + 48 && goose1.getY() > targetY - 25) {
+            	if (goose1.getX() < target3X + hitboxW && goose1.getX() > target3X - hitboxW) {
+            		if (goose1.getY() < targetY + hitboxH && goose1.getY() > targetY - hitboxH) {
                         score += 1;
                         goose1.respawn();
             		}
             	}
-            	if (goose2.getX() < target3X + 48 && goose2.getX() > target3X - 48) {
-            		if (goose2.getY() < targetY + 48 && goose2.getY() > targetY - 25) {
+            	if (goose2.getX() < target3X + hitboxW && goose2.getX() > target3X - hitboxW) {
+            		if (goose2.getY() < targetY + hitboxH && goose2.getY() > targetY - hitboxH) {
                         score += 1;
                         goose2.respawn();
             		}
             	}
-            	if (goose3.getX() < target3X + 48 && goose3.getX() > target3X - 48) {
-            		if (goose3.getY() < targetY + 48 && goose3.getY() > targetY - 25) {
+            	if (goose3.getX() < target3X + hitboxW && goose3.getX() > target3X - hitboxW) {
+            		if (goose3.getY() < targetY + hitboxH && goose3.getY() > targetY - hitboxH) {
                         score += 1;
             			goose3.respawn();
             		}
