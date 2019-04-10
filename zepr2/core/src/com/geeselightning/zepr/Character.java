@@ -242,15 +242,18 @@ public class Character extends Sprite {
 
         for (int n = 0; n < spritePoints.size(); n++) {
             // Changed to check X and Y separately to improve collisions
-            if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
-                setX(oldX);
-            }
-            if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
-                setY(oldY);
+            if(currentLevel != null) {
+                if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
+                    setX(oldX);
+                }
+                if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
+                    setY(oldY);
+                }
             }
         }
 
     }
+    //Change ends; KNOCKBACK
 
     // Decreases health by value of dmg
     public void takeDamage(int dmg){

@@ -14,24 +14,36 @@ public class CharacterTest {
     @Test
     // Test 1.1.1
     public void charactersWithSamePositionShouldCollide() {
-        Character character = new Character(new Sprite(), new Vector2(0,0), null);
-        assertTrue("A Character should collide with itself.", character.collidesWith(character));
+        //Change starts; TESTSAMECHARCOLLIDE
+        Character character = new Character(new Sprite(new Texture("zombie01.png")),
+                new Vector2(0,0), null);
+        assertTrue("A Character should collide with itself.", character.collidesWith(character, false));
+        //Change ends; TESTSAMECHARCOLLIDE
     }
 
     @Test
     // Test 1.1.2
     public void touchingCharactersShouldCollide() {
-            Character anotherCharacter = new Character(new Sprite(), new Vector2(0,10), null);
-            Character character = new Character(new Sprite(), new Vector2(0,0), null);
-            assertTrue("Characters that touch should collide.", character.collidesWith(anotherCharacter));
+        //Change starts; TESTDIFFCHARCOLLIDE
+        Character anotherCharacter = new Character(new Sprite(new Texture("zombie01.png")),
+                new Vector2(0,10), null);
+        Character character = new Character(new Sprite(new Texture("zombie01.png")),
+                new Vector2(0,0), null);
+        assertTrue("Characters that touch should collide.", character.collidesWith(anotherCharacter, false));
+        //Change ends; TESTDIFFCHARCOLLIDE
     }
 
     @Test
     // Test 1.1.3
     public void nonTouchingCharactersShouldNotCollide() {
-        Character anotherCharacter = new Character(new Sprite(), new Vector2(20,20), null);
-        Character character = new Character(new Sprite(), new Vector2(0,0), null);
-        assertFalse("Characters that don't touch should not collide.", character.collidesWith(anotherCharacter));
+        //Change starts; TESTNOCOLLIDE
+        Character anotherCharacter = new Character(new Sprite(new Texture("zombie01.png")),
+                new Vector2(200,200), null);
+        Character character = new Character(new Sprite(new Texture("zombie01.png")),
+                new Vector2(0,0), null);
+        assertFalse("Characters that don't touch should not collide.",
+                character.collidesWith(anotherCharacter, false));
+        //Change ends; TESTNOCOLLIDE
     }
 
 

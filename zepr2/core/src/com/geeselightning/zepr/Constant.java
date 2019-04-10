@@ -42,7 +42,7 @@ public final class Constant {
     public static final float SPORTYABILITYDURATION = 10;
     public static final float SPORTYABILITYCOOLDOWN = 60;
     // Added to be used for third player type
-    public static final float DRAMAHPMULT = 1;
+    public static final float DRAMAHPMULT = 0.9f;
     public static final float DRAMADMGMULT = 2;
     public static final float DRAMASPEEDMULT = 1;
     // Added to work with player abilities

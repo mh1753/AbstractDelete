@@ -221,4 +221,22 @@ public class Player extends Character {
             health -= dmg;
         }
     }
+
+    //Change starts; PLAYERGETDAMAGE
+    public float getDamage(){
+        return attackDamage;
+    }
+    //Change ends; PLAYERGETDAMAGE
+
+    //Change starts; PLAYERGETABILITYCOOLDOWN
+    public float getAbilityCooldown(){
+        return abilityCooldown;
+    }
+    //Change ends; PLAYERGETABILITYCOOLDOWN
+
+    //Change starts; PLAYERGETABILITYDURATION
+    public float getAbilityDuration(){
+        return abilityDuration;
+    }
+    //Change ends; PLAYERGETABILITYDURATION
 }
