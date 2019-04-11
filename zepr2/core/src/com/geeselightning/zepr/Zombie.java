@@ -25,7 +25,9 @@ public class Zombie extends Character {
     public void attack(Character player, float delta) {
         if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
             //Change starts: ZOMBIEAVOIDTIMERSET
-            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            if(currentLevel != null) {
+                currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            }
             //Change ends: ZOMBIEAVOIDTIMERSET
             player.takeDamage(attackDamage);
             hitRefresh = 0;

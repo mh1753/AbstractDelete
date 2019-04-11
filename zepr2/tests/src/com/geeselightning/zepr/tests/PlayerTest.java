@@ -72,6 +72,15 @@ public class PlayerTest {
         player.respawn(Constant.ORIGIN, null);
         assertNotEquals("Sporty and nerdy students should have a different amount of hit points.",
                 nerdyHealth, player.getHealth(), 0.1);
+        //Change starts; TESTPLAYERTYPEHEALTH
+        double sportyHealth = player.getHealth();
+        player.setType("drama");
+        player.respawn(Constant.ORIGIN, null);
+        assertNotEquals("Nerdy and drama students should have a different amount of hit points.",
+                nerdyHealth, player.getHealth(), 0.1);
+        assertNotEquals("Sporty and drama students should have a different amount of hit points.",
+                sportyHealth, player.getHealth(), 0.1);
+        //Change ends; TESTPLAYERTYPEHEALTH
     }
 
     @Test
@@ -85,6 +94,15 @@ public class PlayerTest {
         player.respawn(Constant.ORIGIN, null);
         assertNotEquals("Sporty and nerdy students should have a different amount of hit points.",
                 nerdySpeed, player.speed);
+        //Change starts; TESTPLAYERTYPESPEED
+        double sportySpeed = player.speed;
+        player.setType("drama");
+        player.respawn(Constant.ORIGIN, null);
+        assertNotEquals("Nerdy and drama students should have a different amount of hit points.",
+                nerdySpeed, player.speed);
+        assertNotEquals("Sporty and drama students should have a different amount of hit points.",
+                sportySpeed, player.speed);
+        //Change ends; TESTPLAYERTYPESPEED
     }
 
 }

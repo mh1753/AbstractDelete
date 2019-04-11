@@ -26,7 +26,18 @@ public class Player extends Character {
 
     private Player(Sprite sprite, Vector2 playerSpawn) {
         super(sprite, playerSpawn, null);
+        //Change starts: INITPLAYERBOUND
+        setBoundRect();
+        //Change ends: INITPLAYERBOUND
     }
+
+    //Change starts: SETPLAYERBOUND
+    public void setBoundRect(){
+        boundRect.setPosition(this.getX() + this.getRegionWidth()/10f, this.getY() + this.getRegionHeight()/10f);
+        boundRect.setSize(4 * this.getRegionWidth()/5f, 4 * this.getRegionHeight()/5f);
+        boundRect.setCenter(this.getCenter());
+    }
+    //Change starts: SETPLAYERBOUND
 
     public static Player getInstance(){
         return instance;
@@ -210,4 +221,22 @@ public class Player extends Character {
             health -= dmg;
         }
     }
+
+    //Change starts; PLAYERGETDAMAGE
+    public float getDamage(){
+        return attackDamage;
+    }
+    //Change ends; PLAYERGETDAMAGE
+
+    //Change starts; PLAYERGETABILITYCOOLDOWN
+    public float getAbilityCooldown(){
+        return abilityCooldown;
+    }
+    //Change ends; PLAYERGETABILITYCOOLDOWN
+
+    //Change starts; PLAYERGETABILITYDURATION
+    public float getAbilityDuration(){
+        return abilityDuration;
+    }
+    //Change ends; PLAYERGETABILITYDURATION
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
@@ -27,11 +28,19 @@ public class Character extends Sprite {
         super(sprite);
         setX(spawn.x);
         setY(spawn.y);
-        boundRect.setPosition(spawn.x, spawn.y);
-        boundRect.setSize(sprite.getWidth(), sprite.getHeight());
-        boundRect.setCenter(this.getCenter());
+        //Change starts: INITBOUNDRECT
+        setBoundRect();
+        //Change ends: INITBOUNDRECT
         this.currentLevel = currentLevel;
     }
+
+    //Change starts: SETBOUNDRECT
+    public void setBoundRect(){
+        boundRect.setPosition(this.getX(), this.getY());
+        boundRect.setSize(this.getRegionWidth(), this.getRegionHeight());
+        boundRect.setCenter(this.getCenter());
+    }
+    //Change ends: SETBOUNDRECT
 
     public double getDirection() {
         return direction;
@@ -74,6 +83,27 @@ public class Character extends Sprite {
             return Intersector.overlaps(boundRect,character.boundRect);
         }
     }
+
+    public boolean collidesWith(Rectangle rect, boolean resolve) {
+        boundRect.setPosition(getX(), getY());
+        if (resolve) {
+            Intersector.MinimumTranslationVector mtv = new Intersector.MinimumTranslationVector();
+            float[] verts1 = {boundRect.x, boundRect.y, boundRect.x + boundRect.width, boundRect.y,
+                    boundRect.x + boundRect.width, boundRect.y + boundRect.height, boundRect.x, boundRect.y + boundRect.height};
+            float[] verts2 = {rect.x, rect.y, rect.x + rect.width, rect.y, rect.x + rect.width, rect.y + rect.height,
+                    rect.x, rect.y + rect.height};
+            if (Intersector.overlapConvexPolygons(verts1, verts2, mtv)) {
+                setX(getX() + mtv.normal.x);
+                setY(getY() + mtv.normal.y);
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+            return Intersector.overlaps(boundRect,rect);
+        }
+    }
     //Change ends: COLLISIONUPDATE
 
     @Override
@@ -92,7 +122,11 @@ public class Character extends Sprite {
         double directionToCharacter = this.getDirectionTo(character.getCenter());
         double angle = abs(directionToCharacter - direction);
         double distance = this.getCenter().sub(character.getCenter()).len();
-
+        //Change starts: ANGLEFIX
+        if(angle > MathUtils.PI) {
+            angle -= MathUtils.PI2;
+        }
+        //Change ends: ANGLEFIX
         if (angle < 0.8 && distance < hitRange) {
             return true;
         } else {
@@ -208,15 +242,18 @@ public class Character extends Sprite {
 
         for (int n = 0; n < spritePoints.size(); n++) {
             // Changed to check X and Y separately to improve collisions
-            if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
-                setX(oldX);
-            }
-            if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
-                setY(oldY);
+            if(currentLevel != null) {
+                if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
+                    setX(oldX);
+                }
+                if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
+                    setY(oldY);
+                }
             }
         }
 
     }
+    //Change ends; KNOCKBACK
 
     // Decreases health by value of dmg
     public void takeDamage(int dmg){

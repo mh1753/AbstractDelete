@@ -1,6 +1,7 @@
 package com.geeselightning.zepr.tests;
 
 import com.geeselightning.zepr.*;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
@@ -91,7 +92,7 @@ public class PowerUpTest {
 
     @Test
     // Test 4.4.1
-    public void powerUpImmunityStopsThePlayerTakingDamge() {
+    public void powerUpImmunityStopsThePlayerTakingDamage() {
         Player player = Player.getInstance();
         PowerUpImmunity immunity = new PowerUpImmunity(null);
         immunity.activate();
@@ -129,4 +130,80 @@ public class PowerUpTest {
         assertEquals("Player should take 30 damage afrer immunity is deactivated.", originalHealth-30,
                 player.getHealth(), 0.1);
     }
+
+    //Change starts; TESTINSTAKILLANDNOCOOLDOWNS
+    @Test
+    // Test 4.5.1
+    public void powerUpInstaKillInstaKillsEnemies(){
+        Player player = Player.getInstance();
+        PowerUpInstaKill instakill = new PowerUpInstaKill(null);
+        instakill.activate();
+        Assert.assertEquals("Player damage is modified",
+                Constant.PLAYERDMG * Constant.DRAMADMGMULT + Constant.INSTAKILL, player.getDamage(), 0);
+    }
+
+    @Test
+    // Test 4.5.2
+    public void powerUpInstaKillDeactivatesAfter10s(){
+        Player player = Player.getInstance();
+        PowerUpInstaKill instakill = new PowerUpInstaKill(null);
+        instakill.activate();
+        instakill.update(11);
+        instakill.update(0);
+        Assert.assertEquals("Player damage is not modified", Constant.PLAYERDMG  * Constant.DRAMADMGMULT
+                , player.getDamage(), 0);
+    }
+
+    @Test
+    // Test 4.5.3
+    public void powerUpInstaKillDeactivateMethodCancelsInstaKill(){
+        Player player = Player.getInstance();
+        PowerUpInstaKill instakill = new PowerUpInstaKill(null);
+        instakill.activate();
+        instakill.deactivate();
+        instakill.update(0);
+        Assert.assertEquals("Player damage is not modified", Constant.PLAYERDMG  * Constant.DRAMADMGMULT,
+                player.getDamage(), 0);
+    }
+
+    @Test
+    // Test 4.6.1
+    public void powerUpNoCooldownsRemovesCooldowns(){
+        Player player = Player.getInstance();
+        PowerUpNoCooldowns nocooldowns = new PowerUpNoCooldowns(null);
+        nocooldowns.activate();
+        nocooldowns.update(0);
+        player.activateAbility();
+        nocooldowns.update(0);
+        Assert.assertEquals("Player ability cooldown is only as long as ability takes",
+                player.getAbilityDuration(), player.getAbilityCooldown(), 0);
+
+    }
+
+    @Test
+    // Test 4.6.2
+    public void powerUpNoCooldownsDeactivatesAfter10s(){
+        Player player = Player.getInstance();
+        PowerUpNoCooldowns nocooldowns = new PowerUpNoCooldowns(null);
+        nocooldowns.activate();
+        nocooldowns.update(11);
+        player.activateAbility();
+        nocooldowns.update(0);
+        Assert.assertNotEquals("Ability cooldown is not modified",
+                player.getAbilityDuration(), player.getAbilityCooldown(), 0);
+    }
+
+    @Test
+    // Test 4.6.3
+    public void powerUpNoCooldownsDeactivateMethodCancelsNoCooldowns(){
+        Player player = Player.getInstance();
+        PowerUpNoCooldowns nocooldowns = new PowerUpNoCooldowns(null);
+        nocooldowns.activate();
+        nocooldowns.deactivate();
+        player.activateAbility();
+        nocooldowns.update(0);
+        Assert.assertNotEquals("Ability cooldown is not modified",
+                player.getAbilityDuration(), player.getAbilityCooldown(), 0);
+    }
+    //Change ends; TESTINSTAKILLANDNOCOOLDOWNS
 }
