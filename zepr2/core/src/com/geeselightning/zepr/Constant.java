@@ -12,7 +12,7 @@ public final class Constant {
     public static final float ZOMBIESPEED = 80;
     public static final int ZOMBIEMAXHP = 100;
     public static final int ZOMBIEDMG = 5;
-    public static final int ZOMBIERANGE = 25;
+    public static final int ZOMBIERANGE = 38;
     public static final float ZOMBIEHITCOOLDOWN = 1;
     // Added stats for different zombies
     public static final float ZOMBIEFASTSPEED = 150;
@@ -24,7 +24,7 @@ public final class Constant {
     public static final int FLAMINGZOMBIESPEED = 35;
     public static final int FLAMINGZOMBIEHITCOOLDOWN = 5;
     public static final float BOSSCOURTYARDSPEED = 70;
-    public static final int BOSSCOURTYARDMAXHP = 400;
+    public static final int BOSSCOURTYARDMAXHP = 350;
     public static final float BOSSCENTRALHALLSPEED = 120;
     public static final int BOSSCENTRALHALLMAXHP = 400;
     public static final float NERDYHPMULT = 1.5f;
