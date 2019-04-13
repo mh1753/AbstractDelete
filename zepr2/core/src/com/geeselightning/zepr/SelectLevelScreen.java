@@ -57,7 +57,8 @@ public class SelectLevelScreen implements Screen {
         TextButton library = new TextButton("Library", skin);
         TextButton physics = new TextButton("Physics", skin);
         TextButton centralHall = new TextButton("Central Hall", skin);
-        town.setTransform(true);
+        //Change starts: SELECTLEVELUIFIX
+        /*town.setTransform(true);
         halifax.setTransform(true);
         courtyard.setTransform(true);
         library.setTransform(true);
@@ -69,6 +70,8 @@ public class SelectLevelScreen implements Screen {
         library.setScale(0.7f);
         physics.setScale(0.7f);
         centralHall.setScale(0.7f);
+         */
+        //Change ends: SELECTLEVELUIFIX
 
         // Creating character buttons.
         TextButton nerdy = new TextButton("Nerdy",skin);
@@ -132,20 +135,23 @@ public class SelectLevelScreen implements Screen {
 
         stageSelect.center();
 
+        //Change starts: SELECTLEVELUIFIX
         stageSelect.row();
-        stageSelect.add(title).colspan(6).pad(40);
+        stageSelect.add(title).padTop(50).colspan(3);
         
-        stageSelect.row();
-        stageSelect.add(town).pad(-35);
-        stageSelect.add(halifax).pad(-35);
-        stageSelect.add(courtyard).pad(-35);
+        stageSelect.row().pad(50,0,5,0);
+        stageSelect.add(town).pad(10);
+        stageSelect.add(halifax).pad(10);
+        stageSelect.add(courtyard).pad(10);
         // Added buttons for new levels
-        stageSelect.add(library).pad(-35);
-        stageSelect.add(physics).pad(-35);
-        stageSelect.add(centralHall).pad(-35);
+        stageSelect.row().padBottom(100);
+        stageSelect.add(library).pad(10);
+        stageSelect.add(physics).pad(10);
+        stageSelect.add(centralHall).pad(10);
+        //Change ends: SELECTLEVELUIFIX
 
         stageSelect.row();
-        stageSelect.add(stageDescription).width(1000f).colspan(6).pad(40);
+        stageSelect.add(stageDescription).width(1000f).colspan(3);
 
         // Adding select character Buttons
         stageSelect.row().center();
@@ -154,8 +160,17 @@ public class SelectLevelScreen implements Screen {
         // Added to support Third Player type
         stageSelect.add(drama).pad(10);
 
-        stageSelect.row().center();
-        stageSelect.add(characterDescription).width(1000f).colspan(6);
+        //Change starts: SELECTLEVELUIFIX
+        // Add character Descriptions
+        Table charDescription = new Table();
+        charDescription.setFillParent(true);
+
+        stage.addActor(charDescription);
+
+        charDescription.center().top().padTop(630);
+        charDescription.row();
+        charDescription.add(characterDescription).width(900f).colspan(3);
+        //Change ends: SELECTLEVELUIFIX
 
         // Adding play button at the bottom.
         Table bottomTable = new Table();
@@ -163,8 +178,10 @@ public class SelectLevelScreen implements Screen {
         // bottomTable.setDebug(true); // Adds borders for the table.
         stage.addActor(bottomTable);
 
-        bottomTable.bottom();
-        bottomTable.add(play).pad(10).center();
+        //Change starts: SELECTLEVELUIFIX
+        bottomTable.bottom().right();
+        bottomTable.add(play).pad(10);
+        //Change ends: SELECTLEVELUIFIX
 
         // Adding button logic.
 

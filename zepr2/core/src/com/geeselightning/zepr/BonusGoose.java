@@ -53,7 +53,8 @@ public class BonusGoose extends Sprite{
 		    velocityY = speed;
 		    startedMovement = true;
         }
-        
+
+        //Change starts: BONUSGOOSEDIRECTIONFIX
 		if(getX() >= 925) {
 			setX(925);
 			velocityX = -velocityX;
@@ -69,6 +70,7 @@ public class BonusGoose extends Sprite{
 			velocityY = -velocityY;
 			setY(250);
 		}
+		//Change ends: BONUSGOOSEDIRECTIONFIX
 		
         // Increments timer
 		timer += delta;

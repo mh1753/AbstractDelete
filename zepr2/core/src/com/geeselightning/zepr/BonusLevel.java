@@ -40,8 +40,10 @@ public class BonusLevel implements Screen {
     private int target2X = (1280/2 - 100/2); 
     private int target3X = (1280/2 + 720/2) - 180;
     private int targetY = 720/4 + 210;
+    //Change starts: BONUSHITBOXFIX
     private int hitboxH =60;
     private int hitboxW = 60;
+    //Change ends: BONUSHITBOXFIX
     private float timer = 60;
 	
 	public BonusLevel(Zepr zepr) {
@@ -119,6 +121,7 @@ public class BonusLevel implements Screen {
         });
         
         // Defining actions for the left button.
+        //Change starts: BONUSHITBOXFIX
         left.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -192,6 +195,7 @@ public class BonusLevel implements Screen {
             	}
             }
         });
+        //Change ends: BONUSHITBOXFIX
         
 		
 	}
@@ -255,7 +259,7 @@ public class BonusLevel implements Screen {
         this.stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         this.stage.draw();
         
-        if (score == goalScore) {
+        if (score >= goalScore) {
             //Change starts: ADDMINIGAMEPOINTS
             parent.addPoints(Constant.BONUSGAMEPOINTS);
             //Change ends: ADDMINIGAMEPOINTS
