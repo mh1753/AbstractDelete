@@ -25,9 +25,11 @@ public class HalifaxLevel extends Level {
 
     @Override
     public void complete() {
-        if (parent.progress == parent.HALIFAX) {
-            parent.progress = parent.COURTYARD;
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() == parent.HALIFAX) {
+            parent.incProgress();
         }
+        //Change ends: PROGRESSFUNCS
         // The stage is being replayed
     }
 }

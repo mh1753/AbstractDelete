@@ -25,9 +25,11 @@ public class TownLevel extends Level {
 
     @Override
     public void complete() {
-        if (parent.progress == parent.TOWN) {
-            parent.progress = parent.HALIFAX;
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() == parent.TOWN) {
+            parent.incProgress();
         }
+        //Change ends: PROGRESSFUNCS
         // The stage is being replayed
     }
 

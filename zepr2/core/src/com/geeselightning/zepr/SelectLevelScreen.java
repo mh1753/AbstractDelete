@@ -33,6 +33,27 @@ public class SelectLevelScreen implements Screen {
     private boolean playerSet = false;
     Player player = Player.getInstance();
 
+    //Change starts: INITSELECTLEVELVARS
+    // Importing the necessary assets for the button textures.
+    Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+
+    private Label title = new Label("", skin, "subtitle");
+    private String townDescription = "";
+    private String halifaxDescription = "";
+    private String courtyardDescription = "";
+    private String libraryDescription = "";
+    private String physicsDescription = "";
+    private String centralHallDescription = "";
+    private String defaultDescription = "";
+
+    private TextButton town = new TextButton("", skin);
+    private TextButton halifax = new TextButton("", skin);
+    private TextButton courtyard = new TextButton("", skin);
+    private TextButton library = new TextButton("", skin);
+    private TextButton physics = new TextButton("", skin);
+    private TextButton centralHall = new TextButton("", skin);
+    //Change ends: INITSELECTLEVELVARS
+
     public SelectLevelScreen(Zepr zepr) {
 
         parent = zepr;
@@ -46,17 +67,25 @@ public class SelectLevelScreen implements Screen {
         // Send any input from the user to the stage.
         Gdx.input.setInputProcessor(stage);
 
-        // Importing the necessary assets for the button textures.
-        Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
-
         // Creating stage buttons.
-        TextButton town = new TextButton("Town", skin);
-        TextButton halifax = new TextButton("Halifax", skin);
-        TextButton courtyard = new TextButton("Courtyard", skin);
-        // Added buttons for new levels
-        TextButton library = new TextButton("Library", skin);
-        TextButton physics = new TextButton("Physics", skin);
-        TextButton centralHall = new TextButton("Central Hall", skin);
+        //Change starts: ZOMBIESTORY
+        if (parent.isZombie()){
+            town.setText("BRAIN");
+            halifax.setText("Brain");
+            courtyard.setText("Brainbrain");
+            library.setText("Brain?");
+            physics.setText("Braaaiiin");
+            centralHall.setText("Brain Brain");
+        } else {
+            town.setText("Town");
+            halifax.setText("Halifax");
+            courtyard.setText("Courtyard");
+            library.setText("Library");
+            physics.setText("Physics");
+            centralHall.setText("Central Hall");
+        }
+        //Change ends: ZOMBIESTORY
+
         //Change starts: SELECTLEVELUIFIX
         /*town.setTransform(true);
         halifax.setTransform(true);
@@ -87,16 +116,27 @@ public class SelectLevelScreen implements Screen {
         TextButton bonusGame = new TextButton("Bonus Game", skin);
 
         // Creating stage descriptions.
-        Label title = new Label("Choose a stage and character.", skin, "subtitle");
-        final String townDescription = "You wake up hungover in town to discover there is a zombie apocalypse.";
-        final String halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
-        final String courtyardDescription = "You should go to Courtyard and get some breakfast.";
-        // Added descriptions for new levels
-        final String libraryDescription = "Take a break from the zombies to study.";
-        final String physicsDescription = "You go to Physics to try and find something to help stop the zombies.";
-        final String centralHallDescription = "Stop the source of the zombie horde by beating the boss in Central hall.";
-        final String lockedDescription = "This stage is locked until you complete the previous one.";
-        final String defaultDescription ="Select a stage from the buttons above.";
+        //Change starts: ZOMBIESTORY
+        if (parent.isZombie()){
+            title.setText("Brains brain, brains.");
+            townDescription = "Brains... BRAINS!";
+            halifaxDescription = "Brains brains brains.";
+            courtyardDescription = "Brain, brain, brain.";
+            libraryDescription = "Brains... ?";
+            physicsDescription = "Braaaaaaiiiiiins.";
+            centralHallDescription = "BRAINS! Brain brain brains, brain brain.";
+            defaultDescription = "Brains brain";
+        } else {
+            title.setText("Choose a stage and character.");
+            townDescription = "You wake up hungover in town to discover there is a zombie apocalypse.";
+            halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
+            courtyardDescription = "You should go to Courtyard and get some breakfast.";
+            libraryDescription = "Take a break from the zombies to study.";
+            physicsDescription = "You go to Physics to try and find something to help stop the zombies.";
+            centralHallDescription = "Stop the source of the zombie horde by beating the boss in Central hall.";
+            defaultDescription = "Select a stage from the buttons above.";
+        }
+        //Change ends: ZOMBIESTORY
         stageDescription = new Label(defaultDescription, skin);
         stageDescription.setWrap(true);
         stageDescription.setWidth(100);
@@ -199,7 +239,9 @@ public class SelectLevelScreen implements Screen {
             public void changed(ChangeEvent event, Actor actor) {
             	try {
             		Writer writer = new FileWriter("save.txt", false);
-            		writer.write(Integer.toString(parent.progress));
+            		//Change starts: PROGRESSFUNCS
+            		writer.write(Integer.toString(parent.getProgress()));
+            		//Change ends: PROGRESSFUNCS
             		writer.close();
             	} catch (IOException e) {
 					e.printStackTrace();
@@ -216,7 +258,9 @@ public class SelectLevelScreen implements Screen {
                 	Scanner scanner = new Scanner(file);
             		int progress = scanner.nextInt();
             		scanner.close();
-            		parent.progress = progress;
+            		//Change starts: PROGRESSFUNCS
+            		parent.setProgress(progress);
+            		//Change ends: PROGRESSFUNCS
             		// Reloads page to update buttons
                     parent.changeScreen(Zepr.SELECT);
             	} catch (FileNotFoundException e) {
@@ -242,7 +286,9 @@ public class SelectLevelScreen implements Screen {
             }
         });
 
-        if (parent.progress <= parent.TOWN) {
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= parent.TOWN) {
+            //Change ends: PROGRESSFUNCS
             halifax.setColor(Color.DARK_GRAY);
             halifax.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -256,7 +302,9 @@ public class SelectLevelScreen implements Screen {
             });
         }
 
-        if (parent.progress <= parent.HALIFAX) {
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= parent.HALIFAX) {
+            //Change ends: PROGRESSFUNCS
             courtyard.setColor(Color.DARK_GRAY);
             courtyard.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -271,7 +319,9 @@ public class SelectLevelScreen implements Screen {
         }
         
         // Added for LibraryLevel
-        if (parent.progress <= parent.COURTYARD) {
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= parent.COURTYARD) {
+            //Change ends: PROGRESSFUNCS
             library.setColor(Color.DARK_GRAY);
             library.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -286,7 +336,9 @@ public class SelectLevelScreen implements Screen {
         }
         
         // Added for physicsLevel
-        if (parent.progress <= parent.LIBRARY) {
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= parent.LIBRARY) {
+            //Change ends: PROGRESSFUNCS
             physics.setColor(Color.DARK_GRAY);
             physics.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -301,7 +353,9 @@ public class SelectLevelScreen implements Screen {
         }
         
         // Added for CentralHallLevel
-        if (parent.progress <= parent.PHYSICS) {
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= parent.PHYSICS) {
+            //Change ends: PROGRESSFUNCS
             centralHall.setColor(Color.DARK_GRAY);
             centralHall.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -315,32 +369,47 @@ public class SelectLevelScreen implements Screen {
             });
         }
 
-        //Defining actions for the nerdy button.
-        nerdy.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                characterDescription.setText(nerdyDescription);
-                player.setType("nerdy");
-                playerSet = true;
-            }
-        });
-        sporty.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                characterDescription.setText(sportyDescripton);
-                player.setType("sporty");
-                playerSet = true;
-            }
-        });
-        // Added to support third player type
-        drama.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                characterDescription.setText(dramaDescripton);
-                player.setType("drama");
-                playerSet = true;
-            }
-        });
+        //Change starts: ZOMBIESTORY
+        if (parent.isZombie()){
+            nerdy.setColor(Color.DARK_GRAY);
+            nerdy.getLabel().setColor(Color.DARK_GRAY);
+            sporty.setColor(Color.DARK_GRAY);
+            sporty.getLabel().setColor(Color.DARK_GRAY);
+            drama.setColor(Color.DARK_GRAY);
+            drama.getLabel().setColor(Color.DARK_GRAY);
+            characterDescription.setText("Brains");
+            player.setType("zombie");
+            playerSet = true;
+        } else {
+            //Defining actions for the nerdy button.
+            nerdy.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    characterDescription.setText(nerdyDescription);
+                    player.setType("nerdy");
+                    playerSet = true;
+                }
+            });
+            //Defining actions for the sporty button
+            sporty.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    characterDescription.setText(sportyDescripton);
+                    player.setType("sporty");
+                    playerSet = true;
+                }
+            });
+            //Defining actions for the drama button
+            drama.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    characterDescription.setText(dramaDescripton);
+                    player.setType("drama");
+                    playerSet = true;
+                }
+            });
+        }
+        //Change ends: ZOMBIESTORY
 
         // Defining actions for the play button.
         play.addListener(new ChangeListener() {

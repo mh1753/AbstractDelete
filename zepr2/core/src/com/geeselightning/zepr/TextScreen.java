@@ -69,6 +69,10 @@ public class TextScreen implements Screen {
         this.stage.draw();
     }
 
+    public Zepr getParent(){
+        return parent;
+    }
+
     @Override
     public void resize(int width, int height) {
         // Update the screen when the window resolution is changed.

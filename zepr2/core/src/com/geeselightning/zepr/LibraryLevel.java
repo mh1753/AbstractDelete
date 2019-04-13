@@ -31,9 +31,11 @@ public class LibraryLevel extends Level {
     @Override
     public void complete() {
         // Update progress
-        if (parent.progress == parent.LIBRARY) {
-            parent.progress = parent.PHYSICS;
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() == parent.LIBRARY) {
+            parent.incProgress();
         }
+        //Change ends: PROGRESSFUNCS
         // The stage is being replayed
     }
 }

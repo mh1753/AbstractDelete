@@ -15,8 +15,12 @@ public class Zepr extends Game {
 	private float points = 0;
 	//Change ends: POINTSINIT
 
+	//Change starts: ZOMBIESTORY
+	private boolean isZombie = false;
+	//Change ends: ZOMBIESTORY
+
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
-	public int progress = 6;
+	private int progress = 3;
 
 	//Change starts: INITCURRENTSCREEN
 	public int currentScreen;
@@ -42,6 +46,12 @@ public class Zepr extends Game {
 		points += p;
 	}
 	//Change ends: ADDPOINTS
+
+	//Change starts: ZEROPOINTS
+	public void zeroPoints(){
+		points = 0;
+	}
+	//Change ends: ZEROPOINTS
 
 	public void changeScreen(int screen) {
 		//Change starts: STORESCREEN
@@ -86,6 +96,34 @@ public class Zepr extends Game {
 				break;
 		}
 	}
+
+	//Change starts: ZOMBIESTORY
+	public boolean isZombie(){
+		return isZombie;
+	}
+
+	public void setZombie(boolean b){
+		this.isZombie = b;
+	}
+	//Change ends: ZOMBIESTORY
+
+	//Change starts: PROGRESSFUNCS
+	public int getProgress(){
+		return progress;
+	}
+
+	public void setProgress(int p){
+		progress = p;
+	}
+
+	public void incProgress(){
+		progress += 1;
+	}
+
+	public void decProgress(){
+		progress -= 1;
+	}
+	//Change ends: PROGRESSFUNCS
 
 	@Override
 	public void create() {

@@ -48,6 +48,11 @@ public final class Constant {
     // Added to work with player abilities
     public static final float DRAMAABILITYDURATION = 0.25f;
     public static final float DRAMAABILITYCOOLDOWN = 40;
+    //Change starts: ZOMBIESTORY
+    public static final float ZOMBIEHPMULT = 1.5f;
+    public static final float ZOMBIEDMGMULT = 2;
+    public static final float ZOMBIESPEEDMULT = 1.5f;
+    //Change ends: ZOMBIESTORY
     public static final int HEALUP = 30;
     public static final int SPEEDUP = 50;
     // Added for extra power ups

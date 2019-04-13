@@ -3,6 +3,9 @@ package com.geeselightning.zepr;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
+import javax.xml.soap.Text;
 
 public class Player extends Character {
 
@@ -143,6 +146,12 @@ public class Player extends Character {
             HPMult = Constant.DRAMAHPMULT;
             speedMult = Constant.DRAMASPEEDMULT;
         }
+        //Change starts: ZOMBIESTORY
+        else if (playertype == "zombie"){
+            dmgMult = Constant.ZOMBIEDMGMULT;
+            HPMult = Constant.ZOMBIEHPMULT;
+            speedMult = Constant.ZOMBIESPEEDMULT;
+        }
         else if (playertype == null){
             dmgMult =1;
             HPMult = 1;
@@ -162,11 +171,16 @@ public class Player extends Character {
             attackTexture = new Texture("player02_attack.png");
             this.setTexture(mainTexture);
         } else if (playertype == "drama"){
-            // Added for third player type
             mainTexture = new Texture("player03.png");
             attackTexture = new Texture("player03_attack.png");
             this.setTexture(mainTexture);
         }
+        //Change starts: ZOMBIESTORY
+        else if (playertype == "zombie"){
+            mainTexture = new Texture("zombie01.png");
+            attackTexture = new Texture("zombie01.png");
+        }
+        //Change ends: ZOMBIESTORY
     }
 
     @Override

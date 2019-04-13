@@ -28,8 +28,9 @@ public class CentralHallLevel extends Level {
 
     @Override
     public void complete() {
-        if (parent.progress == parent.CENTRALHALL) {
-            parent.progress = parent.COMPLETE;
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() == parent.CENTRALHALL) {
+            parent.incProgress();
         }
         // The stage is being replayed
     }

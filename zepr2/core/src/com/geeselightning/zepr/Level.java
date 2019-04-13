@@ -76,7 +76,9 @@ public class Level implements Screen {
         // Set up data for first wave of zombies
         //Change starts: SAFEAREADIFFICULTYRISE
         this.waves = new int[3];
-        if(parent.progress >= parent.LIBRARY){
+        //Change starts: PROGRESSFUNCS
+        if(parent.getProgress() >= parent.LIBRARY){
+            //Change ends: PROGRESSFUNCS
             for(int i = 0; i < 3; i++){
                 this.waves[i] = waves[i] * 2;
             }
@@ -110,7 +112,13 @@ public class Level implements Screen {
      */
     public void gameOver() {
         isPaused = true;
-        parent.setScreen(new TextScreen(parent, "You died."));
+        //Change starts: ZOMBIESTORY
+        if (parent.isZombie()){
+            parent.setScreen(new GameOverScreen(parent, "Game Over", "zombie"));
+        } else {
+            parent.setScreen(new GameOverScreen(parent, "You \"died\"", "human"));
+        }
+        //Change ends: ZOMBIESTORY
     }
 
 
@@ -453,12 +461,16 @@ public class Level implements Screen {
                     // If stage is being replayed complete() will stop progress being incremented.
                     isPaused = true;
                     //Change starts: SAFEPOINTGAIN
-                    if(parent.progress == parent.LIBRARY){
+                    //Change starts: PROGRESSFUNCS
+                    if(parent.getProgress() == parent.LIBRARY){
+                        //Change ends: PROGRESSFUNCS
                         parent.addPoints(Constant.SAFEZONEPOINTS);
                     }
                     //Change ends: SAFEPOINTGAIN
                     complete();
-                    if (parent.progress == parent.COMPLETE) {
+                    //Change starts: PROGRESSFUNCS
+                    if (parent.getProgress() == parent.COMPLETE) {
+                        //Change ends: PROGRESSFUNCS
                         parent.setScreen(new TextScreen(parent, "Game completed."));
                         dispose();
                     } else {

@@ -28,9 +28,11 @@ public class PhysicsLevel extends Level {
 
     @Override
     public void complete() {
-        if (parent.progress == parent.PHYSICS) {
-            parent.progress = parent.CENTRALHALL;
+        //Change starts: PROGRESSFUNCS
+        if (parent.getProgress() == parent.PHYSICS) {
+            parent.incProgress();
         }
+        //Change ends: PROGRESSFUNCS
         // The stage is being replayed
     }
 }
