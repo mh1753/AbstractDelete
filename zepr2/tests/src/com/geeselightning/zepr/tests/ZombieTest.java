@@ -85,4 +85,64 @@ public class ZombieTest {
                 originalHealth - (2 * Constant.ZOMBIEDMG), player.getHealth(), 0.1);
     }
 
+    //Change starts; TESTZOMBIETYPES
+
+    @Test
+    // Test 3.3.1
+    public void zombieTypesHaveDifferentHealth(){
+        assertNotEquals("Zombie and Fast Zombie should have different health",
+                Constant.ZOMBIEMAXHP, Constant.ZOMBIEFASTMAXHP);
+        assertNotEquals("Zombie and Flaming Zombie should have different health",
+                Constant.ZOMBIEMAXHP, Constant.FLAMINGZOMBIEMAXHP);
+        assertNotEquals("Zombie and Courtyard Boss Zombie should have different health",
+                Constant.ZOMBIEMAXHP, Constant.BOSSCOURTYARDMAXHP);
+        assertNotEquals("Zombie and Central Hall Boss Zombie should have different health",
+                Constant.ZOMBIEMAXHP, Constant.BOSSCENTRALHALLMAXHP);
+
+        assertNotEquals("Fast Zombie and Flaming Zombie should have different health",
+                Constant.ZOMBIEFASTMAXHP, Constant.FLAMINGZOMBIEMAXHP);
+        assertNotEquals("Fast Zombie and Courtyard Boss Zombie should have different health",
+                Constant.ZOMBIEFASTMAXHP, Constant.BOSSCOURTYARDMAXHP);
+        assertNotEquals("Fast Zombie and Central Hall Boss Zombie should have different health",
+                Constant.ZOMBIEFASTMAXHP, Constant.BOSSCENTRALHALLMAXHP);
+
+        assertNotEquals("Flaming Zombie and Courtyard Boss Zombie should have different health",
+                Constant.FLAMINGZOMBIEMAXHP, Constant.BOSSCOURTYARDMAXHP);
+        assertNotEquals("Flaming Zombie and Central Hall Boss Zombie should have different health",
+                Constant.FLAMINGZOMBIEMAXHP, Constant.BOSSCENTRALHALLMAXHP);
+
+        assertNotEquals("Courtyard Boss Zombie and Central Hall Boss Zombie should have different health",
+                Constant.BOSSCOURTYARDMAXHP, Constant.BOSSCENTRALHALLMAXHP);
+    }
+
+    @Test
+    // Test 3.3.2
+    public void zombieTypesHaveDifferentSpeed(){
+        assertNotEquals("Zombie and Fast Zombie should have different speed",
+                Constant.ZOMBIESPEED, Constant.ZOMBIEFASTSPEED);
+        assertNotEquals("Zombie and Flaming Zombie should have different speed",
+                Constant.ZOMBIESPEED, Constant.FLAMINGZOMBIESPEED);
+        assertNotEquals("Zombie and Courtyard Boss Zombie should have different speed",
+                Constant.ZOMBIESPEED, Constant.BOSSCOURTYARDSPEED);
+        assertNotEquals("Zombie and Central Hall Boss Zombie should have different speed",
+                Constant.ZOMBIESPEED, Constant.BOSSCENTRALHALLSPEED);
+
+        assertNotEquals("Fast Zombie and Flaming Zombie should have different speed",
+                Constant.ZOMBIEFASTSPEED, Constant.FLAMINGZOMBIESPEED);
+        assertNotEquals("Fast Zombie and Courtyard Boss Zombie should have different speed",
+                Constant.ZOMBIEFASTSPEED, Constant.BOSSCOURTYARDSPEED);
+        assertNotEquals("Fast Zombie and Central Hall Boss Zombie should have different speed",
+                Constant.ZOMBIEFASTSPEED, Constant.BOSSCENTRALHALLSPEED);
+
+        assertNotEquals("Flaming Zombie and Courtyard Boss Zombie should have different speed",
+                Constant.FLAMINGZOMBIESPEED, Constant.BOSSCOURTYARDSPEED);
+        assertNotEquals("Flaming Zombie and Central Hall Boss Zombie should have different speed",
+                Constant.FLAMINGZOMBIESPEED, Constant.BOSSCENTRALHALLSPEED);
+
+        assertNotEquals("Courtyard Boss Zombie and Central Hall Boss Zombie should have different speed",
+                Constant.BOSSCOURTYARDSPEED, Constant.BOSSCENTRALHALLSPEED);
+    }
+
+    //Change ends; TESTZOMBIETYPES
+
 }
