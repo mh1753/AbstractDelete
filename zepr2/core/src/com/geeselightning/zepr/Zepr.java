@@ -19,6 +19,10 @@ public class Zepr extends Game {
 	private boolean isZombie = false;
 	//Change ends: ZOMBIESTORY
 
+	//Change starts: CUREZOMBIESTORY
+	private String lastKnownCharacter;
+	//Change ends: CUREZOMBIESTORY
+
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
 	private int progress = 3;
 
@@ -103,7 +107,7 @@ public class Zepr extends Game {
 	}
 
 	public void setZombie(boolean b){
-		this.isZombie = b;
+		isZombie = b;
 	}
 	//Change ends: ZOMBIESTORY
 
@@ -124,6 +128,16 @@ public class Zepr extends Game {
 		progress -= 1;
 	}
 	//Change ends: PROGRESSFUNCS
+
+	//Change starts: CUREZOMBIESTORYFUNCS
+	public String getLastKnownCharacter(){
+		return lastKnownCharacter;
+	}
+
+	public void setLastKnownCharacter(String lkc){
+		lastKnownCharacter = lkc;
+	}
+	//Change ends: CUREZOMBIESTORYFUNCS
 
 	@Override
 	public void create() {

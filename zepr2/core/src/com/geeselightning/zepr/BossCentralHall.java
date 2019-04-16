@@ -16,9 +16,11 @@ public class BossCentralHall extends Character {
     private int zombiesToSpawn = 0;
     private boolean spawningZombies = false;
     private float spawnTimer = 0;
+    private Zepr parent;
 
-    public BossCentralHall(Sprite sprite, Vector2 zombieSpawn, Level currentLevel) {
+    public BossCentralHall(Sprite sprite, Vector2 zombieSpawn, Level currentLevel, Zepr parent) {
         super(sprite, zombieSpawn, currentLevel);
+        this.parent = parent;
         this.speed = Constant.BOSSCENTRALHALLSPEED;
         this.maxHealth = Constant.BOSSCENTRALHALLMAXHP;
         this.health = maxHealth;
@@ -58,7 +60,7 @@ public class BossCentralHall extends Character {
         		random = -(random - 20);
         	}
     		Character zombie = (new FlamingZombie(new Sprite(new Texture("FlamingZombie.png")),
-                    new Vector2(getX() + random, getY() + random), currentLevel));
+                    new Vector2(getX() + random, getY() + random), currentLevel, parent));
             boolean collides = false;
             for (Character otherZombie : currentLevel.aliveZombies) {
                 if (zombie.collidesWith(otherZombie, false)) {

@@ -387,6 +387,7 @@ public class SelectLevelScreen implements Screen {
                 public void changed(ChangeEvent event, Actor actor) {
                     characterDescription.setText(nerdyDescription);
                     player.setType("nerdy");
+                    parent.setLastKnownCharacter("nerdy");
                     playerSet = true;
                 }
             });
@@ -396,6 +397,7 @@ public class SelectLevelScreen implements Screen {
                 public void changed(ChangeEvent event, Actor actor) {
                     characterDescription.setText(sportyDescripton);
                     player.setType("sporty");
+                    parent.setLastKnownCharacter("sporty");
                     playerSet = true;
                 }
             });
@@ -405,6 +407,7 @@ public class SelectLevelScreen implements Screen {
                 public void changed(ChangeEvent event, Actor actor) {
                     characterDescription.setText(dramaDescripton);
                     player.setType("drama");
+                    parent.setLastKnownCharacter("drama");
                     playerSet = true;
                 }
             });

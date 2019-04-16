@@ -114,9 +114,9 @@ public class Level implements Screen {
         isPaused = true;
         //Change starts: ZOMBIESTORY
         if (parent.isZombie()){
-            parent.setScreen(new GameOverScreen(parent, "Game Over", "zombie"));
+            parent.setScreen(new GameOverScreen(parent, "Game Over", "zombie", player));
         } else {
-            parent.setScreen(new GameOverScreen(parent, "You \"died\"", "human"));
+            parent.setScreen(new GameOverScreen(parent, "You \"died\"", "human", player));
         }
         //Change ends: ZOMBIESTORY
     }
@@ -153,13 +153,13 @@ public class Level implements Screen {
         // Added to spawn bosses
         if (amount == 100) {
         	Character boss = (new BossCourtyard(new Sprite(new Texture("bossCourtyard.png")),
-                    spawnPoints.get(1), this));
+                    spawnPoints.get(1), this, parent));
         	zombiesRemaining = 1;
         	amount = 0;
             aliveZombies.add(boss);
         } else if (amount == 150) {
         	Character boss = (new BossCentralHall(new Sprite(new Texture("bossCentralHall.png")),
-                    spawnPoints.get(1), this));
+                    spawnPoints.get(1), this, parent));
         	zombiesRemaining = 16;
         	amount = 15;
             aliveZombies.add(boss);
@@ -172,14 +172,29 @@ public class Level implements Screen {
         	// Used to determine which zombie to spawn
             int random = (int )(Math.random() * 10 + 1);
         	if (5 < random && random < 9) {
-        		zombie = (new ZombieFast(new Sprite(new Texture("FastZombie.png")),
-                        spawnPoints.get(i % spawnPoints.size()), this));
+        	    if (parent.isZombie()){
+                    zombie = (new ZombieFast(new Sprite(new Texture("player02.png")),
+                            spawnPoints.get(i % spawnPoints.size()), this, parent));
+                } else {
+                    zombie = (new ZombieFast(new Sprite(new Texture("FastZombie.png")),
+                            spawnPoints.get(i % spawnPoints.size()), this, parent));
+                }
         	} else if(random >= 9) {
-        		zombie = (new FlamingZombie(new Sprite(new Texture("FlamingZombie.png")),
-                        spawnPoints.get(i % spawnPoints.size()), this));
+        	    if (parent.isZombie()){
+                    zombie = (new FlamingZombie(new Sprite(new Texture("player03.png")),
+                            spawnPoints.get(i % spawnPoints.size()), this, parent));
+                } else {
+                    zombie = (new FlamingZombie(new Sprite(new Texture("FlamingZombie.png")),
+                            spawnPoints.get(i % spawnPoints.size()), this, parent));
+                }
         	} else {
-                zombie = (new Zombie(new Sprite(new Texture("zombie01.png")),
-                        spawnPoints.get(i % spawnPoints.size()), this));
+        	    if (parent.isZombie()){
+                    zombie = (new Zombie(new Sprite(new Texture("player01.png")),
+                            spawnPoints.get(i % spawnPoints.size()), this, parent));
+                } else {
+                    zombie = (new Zombie(new Sprite(new Texture("zombie01.png")),
+                            spawnPoints.get(i % spawnPoints.size()), this, parent));
+                }
         	}
 
             // Check there isn't already a zombie there, or they will be stuck
@@ -408,9 +423,13 @@ public class Level implements Screen {
             table.add(healthLabel).pad(10).left();
             table.row();
             // Added for player abilities
-            table.add(AbilityCooldownLabel).pad(10).left();;
+            if (!parent.isZombie()) {
+                table.add(AbilityCooldownLabel).pad(10).left();
+            }
             table.row();
-            table.add(AbilityDurationLabel).pad(10).left();
+            if (!parent.isZombie()) {
+                table.add(AbilityDurationLabel).pad(10).left();
+            }
             table.row();
             table.add(powerupLabel).pad(10).left();
             //Change starts: POINTCOUNTERDISPLAY
@@ -436,7 +455,9 @@ public class Level implements Screen {
                     // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
                     // Moved power up logic so a power up always spawns at the end of the wave
                     if (currentPowerUp == null) {
-                        int random = (int) (Math.random() * 5 + 1);
+                        //Change starts: CURE
+                        int random = (int) (Math.random() * 6 + 1);
+                        //Change ends: CURE
                         if (random == 1) {
                             currentPowerUp = new PowerUpHeal(this);
                         } else if (random == 2) {
@@ -444,8 +465,11 @@ public class Level implements Screen {
                         } else if (random == 3) {
                             currentPowerUp = new PowerUpImmunity(this);
                         } else if (random == 4) {
-                            // added for extra power ups
                             currentPowerUp = new PowerUpInstaKill(this);
+                            //Change starts: CURE
+                        } else if (random == 5) {
+                            currentPowerUp = new PowerUpCure(this, parent);
+                            //Cahnge ends: CURE
                         } else {
                             // added for extra power ups
                             currentPowerUp = new PowerUpNoCooldowns(this);
@@ -519,9 +543,6 @@ public class Level implements Screen {
             currentPowerUp.getTexture().dispose();
         }
         player.getTexture().dispose();
-        for (Character zombie : aliveZombies) {
-            zombie.getTexture().dispose();
-        }
         // Added to prevent the game from crashing, Stops the renderer from being used after it is disposed
         if (renderer != null) {
             renderer.dispose();

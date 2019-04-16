@@ -23,6 +23,9 @@ public class Character extends Sprite {
     float hitRefresh = 2;
     int maxHealth;
     Rectangle boundRect = new Rectangle();
+    //Change starts: RUNNING
+    private boolean running;
+    //Change ends: RUNNING
 
     public Character(Sprite sprite, Vector2 spawn, Level currentLevel) {
         super(sprite);
@@ -31,6 +34,7 @@ public class Character extends Sprite {
         //Change starts: INITBOUNDRECT
         setBoundRect();
         //Change ends: INITBOUNDRECT
+        this.running = false;
         this.currentLevel = currentLevel;
     }
 
@@ -49,6 +53,12 @@ public class Character extends Sprite {
     public double getHealth() {
         return health;
     }
+
+    //Change starts: SETHEALTH
+    public void setHealth(int h){
+        this.health = h;
+    }
+    //Change ends: SETHEALTH
     
     public void attack(Character character, float delta) {
     	// Implemented in higher classes
@@ -255,8 +265,22 @@ public class Character extends Sprite {
     }
     //Change ends; KNOCKBACK
 
+    //Change starts: RUNNING
+    public boolean isRunning(){
+        return running;
+    }
+
+    public void toggleRunning(){
+        if (running){
+            running = false;
+        } else {
+            running = true;
+        }
+    }
+    //Change ends: RUNNING
+
     // Decreases health by value of dmg
     public void takeDamage(int dmg){
-        health -= dmg;
+        //Implemented in subclasses
     }
 }
