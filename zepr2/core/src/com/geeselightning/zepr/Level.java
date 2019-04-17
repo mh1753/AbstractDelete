@@ -456,23 +456,23 @@ public class Level implements Screen {
                     // Moved power up logic so a power up always spawns at the end of the wave
                     if (currentPowerUp == null) {
                         //Change starts: CURE
-                        int random = (int) (Math.random() * 6 + 1);
-                        //Change ends: CURE
-                        if (random == 1) {
-                            currentPowerUp = new PowerUpHeal(this);
-                        } else if (random == 2) {
-                            currentPowerUp = new PowerUpSpeed(this);
-                        } else if (random == 3) {
-                            currentPowerUp = new PowerUpImmunity(this);
-                        } else if (random == 4) {
-                            currentPowerUp = new PowerUpInstaKill(this);
-                            //Change starts: CURE
-                        } else if (random == 5) {
+                        if (!(this instanceof CentralHallLevel) && parent.getPoints()>=5000){
                             currentPowerUp = new PowerUpCure(this, parent);
-                            //Cahnge ends: CURE
                         } else {
-                            // added for extra power ups
-                            currentPowerUp = new PowerUpNoCooldowns(this);
+                            int random = (int) (Math.random() * 5 + 1);
+                            //Change ends: CURE
+                            if (random == 1) {
+                                currentPowerUp = new PowerUpHeal(this);
+                            } else if (random == 2) {
+                                currentPowerUp = new PowerUpSpeed(this);
+                            } else if (random == 3) {
+                                currentPowerUp = new PowerUpImmunity(this);
+                            } else if (random == 4) {
+                                currentPowerUp = new PowerUpInstaKill(this);
+                            } else {
+                                // added for extra power ups
+                                currentPowerUp = new PowerUpNoCooldowns(this);
+                            }
                         }
                     }
 

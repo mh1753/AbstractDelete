@@ -4,6 +4,9 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class PowerUpCure extends PowerUp{
 
+    private Texture zombieHuman;
+    private Texture zombieFastHuman;
+    private Texture flamingZombieHuman;
     Zepr parent;
 
     public PowerUpCure(Level currentLevel,Zepr parent) {
@@ -16,24 +19,15 @@ public class PowerUpCure extends PowerUp{
     @Override
     public void activate(){
         super.activate();
-        for (Character zombie : currentLevel.aliveZombies){
-            if (!parent.isZombie()) {
-                if (zombie instanceof FlamingZombie) {
-                    zombie.setTexture(new Texture("player03.png"));
-                } else if (zombie instanceof ZombieFast) {
-                    zombie.setTexture(new Texture("player02.png"));
-                } else {
-                    zombie.setTexture(new Texture("player01.png"));
-                }
-            }
-            zombie.toggleRunning();
-        }
         if (parent.isZombie()){
             player.setType(parent.getLastKnownCharacter());
             parent.setZombie(false);
             player.respawn(player.getCenter(), currentLevel);
         }
         super.player.isImmune = true;
+        zombieHuman = new Texture("player01.png");
+        flamingZombieHuman = new Texture("player03.png");
+        zombieFastHuman = new Texture("player02.png");
         this.getTexture().dispose();
     }
 
@@ -44,6 +38,9 @@ public class PowerUpCure extends PowerUp{
         for (Character zombie : currentLevel.aliveZombies){
             zombie.setHealth(0);
         }
+        zombieHuman.dispose();
+        zombieFastHuman.dispose();
+        flamingZombieHuman.dispose();
     }
 
     @Override
@@ -52,6 +49,23 @@ public class PowerUpCure extends PowerUp{
             deactivate();
         } else if (active){
             timeRemaining -= delta;
+            for (Character zombie : currentLevel.aliveZombies){
+                if (!parent.isZombie()) {
+                    if (!zombie.isRunning() && zombie instanceof FlamingZombie) {
+                        zombie.getTexture().dispose();
+                        zombie.setTexture(flamingZombieHuman);
+                    } else if (!zombie.isRunning() && zombie instanceof ZombieFast) {
+                        zombie.getTexture().dispose();
+                        zombie.setTexture(zombieFastHuman);
+                    } else if (!zombie.isRunning()){
+                        zombie.getTexture().dispose();
+                        zombie.setTexture(zombieHuman);
+                    }
+                }
+                if (!zombie.isRunning()) {
+                    zombie.toggleRunning();
+                }
+            }
         }
     }
 

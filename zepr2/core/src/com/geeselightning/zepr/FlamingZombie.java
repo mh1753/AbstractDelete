@@ -47,20 +47,20 @@ public class FlamingZombie extends Zombie {
         } else {
             hitRefresh += delta;
         }
-    	if (hitRefresh > hitCooldown/6 && parent.isZombie()){
+    	if (this.getTexture() != humanMain && hitRefresh > hitCooldown/(hitCooldown*4) && parent.isZombie()){
     	    this.setTexture(humanMain);
         }
 
-    	// Added fire damage: A large amount of damage spread out over a longer time       
-    	timer += delta; 
+    	// Added fire damage: A large amount of damage spread out over a longer time
+    	timer += delta;
     	if(timer>1 && playerBurning) {
-    		player.takeDamage(attackDamage);  
+    		player.takeDamage(attackDamage);
         	timer = 0;
         	count += 1;
     	}
         if(count==5) {
         	playerBurning = false;
-            count = 0;	      
+            count = 0;
         }
     }
 }

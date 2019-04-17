@@ -149,7 +149,7 @@ public class Player extends Character {
         //Change starts: ZOMBIESTORY
         else if (playertype == "zombie"){
             dmgMult = Constant.ZOMBIEDMGMULT;
-            HPMult = Constant.ZOMBIEHPMULT;
+            HPMult = Constant.ZOMBIEHPMULT*100;
             speedMult = Constant.ZOMBIESPEEDMULT;
         }
         //Change ends: ZOMBIESTORY

@@ -44,7 +44,7 @@ public class Zombie extends Character {
         } else {
             hitRefresh += delta;
         }
-        if (hitRefresh > hitCooldown/6 && parent.isZombie()){
+        if (this.getTexture()!= humanMain && hitRefresh > hitCooldown/(hitCooldown*5) && parent.isZombie()){
             this.setTexture(humanMain);
         }
     }

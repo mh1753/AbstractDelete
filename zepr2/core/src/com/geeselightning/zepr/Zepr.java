@@ -12,7 +12,7 @@ public class Zepr extends Game {
 	private SelectLevelScreen selectLevelScreen;
 
 	//Change starts: POINTSINIT
-	private float points = 0;
+	private float points = 5000;
 	//Change ends: POINTSINIT
 
 	//Change starts: ZOMBIESTORY
@@ -24,7 +24,7 @@ public class Zepr extends Game {
 	//Change ends: CUREZOMBIESTORY
 
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
-	private int progress = 3;
+	private int progress = 9;
 
 	//Change starts: INITCURRENTSCREEN
 	public int currentScreen;
