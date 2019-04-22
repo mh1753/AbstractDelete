@@ -40,7 +40,7 @@ public class Level implements Screen {
     private int[] waves;
     private int currentWave = 1;
     protected int zombiesRemaining; // the number of zombies left to kill to complete the wave
-    private int zombiesToSpawn; // the number of zombies that are left to be spawned this wave
+    int zombiesToSpawn; // the number of zombies that are left to be spawned this wave
     private boolean pauseButton = false;
     Texture blank;
     Vector2 powerSpawn;
@@ -115,8 +115,10 @@ public class Level implements Screen {
         //Change starts: ZOMBIESTORY
         if (parent.isZombie()){
             parent.setScreen(new GameOverScreen(parent, "Game Over", "zombie", player));
+            dispose();
         } else {
             parent.setScreen(new GameOverScreen(parent, "You \"died\"", "human", player));
+            dispose();
         }
         //Change ends: ZOMBIESTORY
     }
@@ -456,26 +458,27 @@ public class Level implements Screen {
                     // Moved power up logic so a power up always spawns at the end of the wave
                     if (currentPowerUp == null) {
                         //Change starts: CURE
-                        if (!(this instanceof CentralHallLevel) && parent.getPoints()>=5000){
+                        if (parent.getPoints() >= 5000) {
                             currentPowerUp = new PowerUpCure(this, parent);
                         } else {
-                            int random = (int) (Math.random() * 5 + 1);
-                            //Change ends: CURE
-                            if (random == 1) {
-                                currentPowerUp = new PowerUpHeal(this);
-                            } else if (random == 2) {
-                                currentPowerUp = new PowerUpSpeed(this);
-                            } else if (random == 3) {
-                                currentPowerUp = new PowerUpImmunity(this);
-                            } else if (random == 4) {
-                                currentPowerUp = new PowerUpInstaKill(this);
-                            } else {
-                                // added for extra power ups
-                                currentPowerUp = new PowerUpNoCooldowns(this);
+                            {
+                                int random = (int) (Math.random() * 5 + 1);
+                                //Change ends: CURE
+                                if (random == 1) {
+                                    currentPowerUp = new PowerUpHeal(this);
+                                } else if (random == 2) {
+                                    currentPowerUp = new PowerUpSpeed(this);
+                                } else if (random == 3) {
+                                    currentPowerUp = new PowerUpImmunity(this);
+                                } else if (random == 4) {
+                                    currentPowerUp = new PowerUpInstaKill(this);
+                                } else {
+                                    // added for extra power ups
+                                    currentPowerUp = new PowerUpNoCooldowns(this);
+                                }
                             }
                         }
                     }
-
                     // Wave complete, increment wave number
                     currentWave++;
                 }

@@ -70,7 +70,7 @@ public class Player extends Character {
     
     // Added to implement player abilities
     public void activateAbility() {
-    	if (playertype == "nerdy") {
+    	if (playertype.equals("nerdy")) {
     		abilityCooldown = Constant.NERDYABILITYCOOLDOWN;
     		abilityDuration = Constant.NERDYABILITYDURATION;
             dmgMult = Constant.NERDYABILITYDMGMULT;
@@ -78,16 +78,14 @@ public class Player extends Character {
             mainTexture = new Texture("player01_power.png");
             attackTexture = new Texture("player01_attack_power.png");
     	}
-    	if (playertype == "sporty") {
+    	if (playertype.equals("sporty")) {
     		abilityCooldown = Constant.SPORTYABILITYCOOLDOWN;
     		abilityDuration = Constant.SPORTYABILITYDURATION;
             speedMult = Constant.SPORTYABILITYSPEEDMULT;
     		this.speed = (int)(Constant.PLAYERSPEED * speedMult);
     	}
-    	if (playertype == "drama") {
-    		if (this.health == (int)(this.HPMult * Constant.PLAYERMAXHP)) {
-    			// No effect as player has max health already
-    		}else if ((this.health + 10) > (int)(this.HPMult * Constant.PLAYERMAXHP)) {
+    	if (playertype.equals("drama")) {
+    		if ((this.health + 10) > (int)(this.HPMult * Constant.PLAYERMAXHP)) {
         		abilityCooldown = Constant.DRAMAABILITYCOOLDOWN;
         		abilityDuration = Constant.DRAMAABILITYDURATION;
     			this.health = (int)(this.HPMult * Constant.PLAYERMAXHP);
@@ -103,18 +101,17 @@ public class Player extends Character {
     
     // Added to implement player abilities
     public void deactivateAbility() {
-    	if (playertype == "nerdy") {
+    	if (playertype.equals("nerdy")) {
             dmgMult = Constant.NERDYDMGMULT;
             this.attackDamage = (int)(Constant.PLAYERDMG * dmgMult);
             mainTexture = new Texture("player01.png");
             attackTexture = new Texture("player01_attack.png");
     	}
-    	if (playertype == "sporty") {
-            speedMult = Constant.SPORTYSPEEDMULT;
+    	if (playertype.equals("sporty")) {
             speedMult = Constant.SPORTYSPEEDMULT;
     		this.speed = (int)(Constant.PLAYERSPEED * speedMult);
     	}
-    	if (playertype == "drama") {
+    	if (playertype.equals("drama")) {
             mainTexture = new Texture("player03.png");
             attackTexture = new Texture("player03_attack.png");
     	}
@@ -124,62 +121,75 @@ public class Player extends Character {
     public void respawn(Vector2 playerSpawn, Level level){
         setX(playerSpawn.x);
         setY(playerSpawn.y);
+        if (mainTexture != null){
+            mainTexture.dispose();
+        }
+        if (attackTexture != null){
+            attackTexture.dispose();
+        }
         // Added rest information below so player doesn't move and attack when they spawn
         abilityDuration = 0;
         this.deactivateAbility();
         abilityCooldown = 0;
         attack = false;
         this.velocity = new Vector2(0, 0);
-        if (playertype == "nerdy"){
+        assert playertype != null;
+        if (playertype.equals("nerdy")){
             dmgMult = Constant.NERDYDMGMULT;
             HPMult = Constant.NERDYHPMULT;
             speedMult = Constant.NERDYSPEEDMULT;
         }
-        else if (playertype == "sporty"){
+        else if (playertype.equals("sporty")){
             dmgMult = Constant.SPORTYDMGMULT;
             HPMult = Constant.SPORTYHPMULT;
             speedMult = Constant.SPORTYSPEEDMULT;
         }
         // Added for third player type
-        else if (playertype == "drama"){
+        else if (playertype.equals("drama")){
             dmgMult = Constant.DRAMADMGMULT;
             HPMult = Constant.DRAMAHPMULT;
             speedMult = Constant.DRAMASPEEDMULT;
         }
         //Change starts: ZOMBIESTORY
-        else if (playertype == "zombie"){
+        else if (playertype.equals("zombie")){
             dmgMult = Constant.ZOMBIEDMGMULT;
-            HPMult = Constant.ZOMBIEHPMULT*100;
+            HPMult = Constant.ZOMBIEHPMULT;
             speedMult = Constant.ZOMBIESPEEDMULT;
         }
         //Change ends: ZOMBIESTORY
-        else if (playertype == null){
-            dmgMult =1;
-            HPMult = 1;
-            speedMult = 1;
-        }
         this.attackDamage = (int)(Constant.PLAYERDMG * dmgMult);
         this.speed = (int)(Constant.PLAYERSPEED * speedMult);
         this.health = (int)(HPMult * Constant.PLAYERMAXHP);
         this.currentLevel = level;
 
-        if (playertype == "nerdy") {
+        if (playertype.equals("nerdy")) {
             mainTexture = new Texture("player01.png");
             attackTexture = new Texture("player01_attack.png");
             this.setTexture(mainTexture);
-        } else if (playertype == "sporty"){
+        } else if (playertype.equals("sporty")){
             mainTexture = new Texture("player02.png");
             attackTexture = new Texture("player02_attack.png");
             this.setTexture(mainTexture);
-        } else if (playertype == "drama"){
+        } else if (playertype.equals("drama")){
             mainTexture = new Texture("player03.png");
             attackTexture = new Texture("player03_attack.png");
             this.setTexture(mainTexture);
         }
         //Change starts: ZOMBIESTORY
-        else if (playertype == "zombie"){
-            mainTexture = new Texture("zombie01.png");
-            attackTexture = new Texture("zombie01.png");
+        else if (playertype.equals("zombie")){
+            if (currentLevel.parent.getLastKnownCharacter().equals("nerdy")){
+                mainTexture = new Texture("nerdZombie.png");
+                this.setTexture(mainTexture);
+            } else if (currentLevel.parent.getLastKnownCharacter().equals("sporty")){
+                mainTexture = new Texture("sportyZombie.png");
+                this.setTexture(mainTexture);
+            } else if (currentLevel.parent.getLastKnownCharacter().equals("drama")){
+                mainTexture = new Texture("dramaZombie.png");
+                this.setTexture(mainTexture);
+            } else {
+                mainTexture = new Texture("zombie01.png");
+                this.setTexture(mainTexture);
+            }
         }
         //Change ends: ZOMBIESTORY
     }
@@ -203,10 +213,14 @@ public class Player extends Character {
         	hitDuration = 0.2f;
         }
         if (hitDuration > 0) {
-            this.setTexture(attackTexture);
+            if (!currentLevel.parent.isZombie()) {
+                this.setTexture(attackTexture);
+            }
         	hitDuration -= delta;
         } else {
-        	this.setTexture(mainTexture);
+            if (!currentLevel.parent.isZombie()) {
+                this.setTexture(mainTexture);
+            }
         	attack = false;
         	hitDuration = 0;
         }

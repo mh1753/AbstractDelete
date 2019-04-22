@@ -28,6 +28,25 @@ public class PowerUpCure extends PowerUp{
         zombieHuman = new Texture("player01.png");
         flamingZombieHuman = new Texture("player03.png");
         zombieFastHuman = new Texture("player02.png");
+        currentLevel.zombiesToSpawn = 0;
+        currentLevel.zombiesRemaining = currentLevel.aliveZombies.size();
+        for (Character zombie : currentLevel.aliveZombies) {
+            if (!parent.isZombie()) {
+                if (zombie instanceof FlamingZombie) {
+                    zombie.getTexture().dispose();
+                    zombie.setTexture(flamingZombieHuman);
+                } else if (zombie instanceof ZombieFast) {
+                    zombie.getTexture().dispose();
+                    zombie.setTexture(zombieFastHuman);
+                } else {
+                    zombie.getTexture().dispose();
+                    zombie.setTexture(zombieHuman);
+                }
+            }
+            if (!zombie.isRunning()) {
+                zombie.toggleRunning();
+            }
+        }
         this.getTexture().dispose();
     }
 
@@ -47,25 +66,8 @@ public class PowerUpCure extends PowerUp{
     public void update(float delta){
         if (timeRemaining < 0){
             deactivate();
-        } else if (active){
+        } else if (active) {
             timeRemaining -= delta;
-            for (Character zombie : currentLevel.aliveZombies){
-                if (!parent.isZombie()) {
-                    if (!zombie.isRunning() && zombie instanceof FlamingZombie) {
-                        zombie.getTexture().dispose();
-                        zombie.setTexture(flamingZombieHuman);
-                    } else if (!zombie.isRunning() && zombie instanceof ZombieFast) {
-                        zombie.getTexture().dispose();
-                        zombie.setTexture(zombieFastHuman);
-                    } else if (!zombie.isRunning()){
-                        zombie.getTexture().dispose();
-                        zombie.setTexture(zombieHuman);
-                    }
-                }
-                if (!zombie.isRunning()) {
-                    zombie.toggleRunning();
-                }
-            }
         }
     }
 
