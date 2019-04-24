@@ -12,8 +12,10 @@ public class Zepr extends Game {
 	private SelectLevelScreen selectLevelScreen;
 
 	//Change starts: POINTSINIT
-	private float points = 5000;
+	private float points = 0;
 	//Change ends: POINTSINIT
+
+	private float cureProgress = 0;
 
 	//Change starts: ZOMBIESTORY
 	private boolean isZombie = false;
@@ -30,16 +32,16 @@ public class Zepr extends Game {
 	public int currentScreen;
 	//Change ends: INITCURRENTSCREEN
 
-	public final static int MENU = 0;
-	public final static int BONUS = 1;
-	public final static int SELECT = 2;
-	public final static int TOWN = 3;
-	public final static int HALIFAX = 4;
-	public final static int COURTYARD = 5;
-	public final static int LIBRARY = 6;
-	public final static int PHYSICS = 7;
-	public final static int CENTRALHALL = 8;
-	public final static int COMPLETE = 9;
+	final static int MENU = 0;
+	final static int BONUS = 1;
+	final static int SELECT = 2;
+	final static int TOWN = 3;
+	final static int HALIFAX = 4;
+	final static int COURTYARD = 5;
+	final static int LIBRARY = 6;
+	final static int PHYSICS = 7;
+	final static int CENTRALHALL = 8;
+	final static int COMPLETE = 9;
 
 	//Change starts: GETPOINTS
 	public int getPoints(){ return MathUtils.floor(points);}
@@ -56,6 +58,18 @@ public class Zepr extends Game {
 		points = 0;
 	}
 	//Change ends: ZEROPOINTS
+
+	public int getCureProg(){
+		return MathUtils.floor(cureProgress);
+	}
+
+	public void addCureProg(float p){
+		cureProgress += p;
+	}
+
+	public void zeroCureProg(){
+		cureProgress = 0;
+	}
 
 	public void changeScreen(int screen) {
 		//Change starts: STORESCREEN

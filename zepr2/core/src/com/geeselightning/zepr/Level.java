@@ -50,14 +50,14 @@ public class Level implements Screen {
     float safeAreaTimer = 20;
     //Change ends: SAFEAREATIMER
 
-    Label progressLabel = new Label("", skin);
-    Label healthLabel = new Label("", skin);
+    private Label progressLabel = new Label("", skin);
+    private Label healthLabel = new Label("", skin);
     // Added for player Abilities
-    Label AbilityCooldownLabel = new Label("", skin);
-    Label AbilityDurationLabel = new Label("", skin);
-    Label powerupLabel = new Label("", skin);
+    private Label AbilityCooldownLabel = new Label("", skin);
+    private Label AbilityDurationLabel = new Label("", skin);
+    private Label powerupLabel = new Label("", skin);
     //Change starts: POINTSCOUNTERLABEL
-    Label pointCounterLabel = new Label("", skin);
+    private Label pointCounterLabel = new Label("", skin);
     //Change ends: POINTSCOUNTERLABEL
 
     //Change starts: AVOIDTIMERINIT
@@ -77,7 +77,7 @@ public class Level implements Screen {
         //Change starts: SAFEAREADIFFICULTYRISE
         this.waves = new int[3];
         //Change starts: PROGRESSFUNCS
-        if(parent.getProgress() >= parent.LIBRARY){
+        if(parent.getProgress() >= Zepr.LIBRARY){
             //Change ends: PROGRESSFUNCS
             for(int i = 0; i < 3; i++){
                 this.waves[i] = waves[i] * 2;
@@ -130,11 +130,8 @@ public class Level implements Screen {
      * @return ArrayList containing all the characters currently in the level
      */
     public ArrayList<Character> getCharacters() {
-        ArrayList<Character> characters = new ArrayList<Character>();
 
-        for (Character zombie : aliveZombies) {
-            characters.add(zombie);
-        }
+        ArrayList<Character> characters = new ArrayList<Character>(aliveZombies);
 
         characters.add(player);
 
@@ -332,6 +329,7 @@ public class Level implements Screen {
                 avoidTimer -= delta;
             } else{
                 parent.addPoints(Constant.AVOIDPOINTS * delta);
+                parent.addCureProg(Constant.AVOIDPOINTS * delta);
             }
             //Change ends: UPDATEAVOIDTIMER
 
@@ -350,6 +348,7 @@ public class Level implements Screen {
             	renderer.getBatch().begin();
             }
 
+            assert renderer != null;
             player.draw(renderer.getBatch());
 
             // Resolve all possible attacks
@@ -369,7 +368,7 @@ public class Level implements Screen {
             		zombie.draw(renderer.getBatch());
 
             		// Draw zombie health bars
-            		// Changed health bars so that they update properly 
+            		// Changed health bars so that they update properly
             		int fillAmount = (int) ((zombie.getHealth() / zombie.maxHealth) * 30);
             		renderer.getBatch().setColor(Color.BLACK);
             		renderer.getBatch().draw(blank, zombie.getX(), zombie.getY()+32, 32, 3);
@@ -404,11 +403,11 @@ public class Level implements Screen {
             }
 
 
-            String progressString = ("Wave " + Integer.toString(currentWave) + ", " + Integer.toString(zombiesRemaining) + " zombies remaining.");
-            String healthString = ("Health: " + Integer.toString(player.health) + "HP");
+            String progressString = ("Wave " + currentWave + ", " + zombiesRemaining + " zombies remaining.");
+            String healthString = ("Health: " + player.health + "HP");
             // Added for player abilities
-            String abilityCooldownString = ("Ability Cooldown: " + Integer.toString((int) player.abilityCooldown) + "s");
-            String abilityDurationString = ("Ability Duration: " + Integer.toString((int) player.abilityDuration) + "s (Press E to use)");
+            String abilityCooldownString = ("Ability Cooldown: " + (int) player.abilityCooldown + "s");
+            String abilityDurationString = ("Ability Duration: " + (int) player.abilityDuration + "s (Press E to use)");
 
             progressLabel.setText(progressString);
             healthLabel.setText(healthString);
@@ -446,7 +445,7 @@ public class Level implements Screen {
             
             if (zombiesRemaining == 0) {
                 //Change starts: SAFEAREAENABLE
-                if(parent.currentScreen == parent.LIBRARY){
+                if(parent.currentScreen == Zepr.LIBRARY){
                     safeAreaTimer -= delta;
                     if(safeAreaTimer <= 0){
                         currentWave++;
@@ -458,8 +457,9 @@ public class Level implements Screen {
                     // Moved power up logic so a power up always spawns at the end of the wave
                     if (currentPowerUp == null) {
                         //Change starts: CURE
-                        if (parent.getPoints() >= 5000) {
+                        if (parent.getCureProg() >= 10000) {
                             currentPowerUp = new PowerUpCure(this, parent);
+                            parent.addCureProg(-10000);
                         } else {
                             {
                                 int random = (int) (Math.random() * 5 + 1);
@@ -489,14 +489,15 @@ public class Level implements Screen {
                     isPaused = true;
                     //Change starts: SAFEPOINTGAIN
                     //Change starts: PROGRESSFUNCS
-                    if(parent.getProgress() == parent.LIBRARY){
+                    if(parent.getProgress() == Zepr.LIBRARY){
                         //Change ends: PROGRESSFUNCS
                         parent.addPoints(Constant.SAFEZONEPOINTS);
+                        parent.addCureProg(Constant.SAFEZONEPOINTS);
                     }
                     //Change ends: SAFEPOINTGAIN
                     complete();
                     //Change starts: PROGRESSFUNCS
-                    if (parent.getProgress() == parent.COMPLETE) {
+                    if (parent.getProgress() == Zepr.COMPLETE) {
                         //Change ends: PROGRESSFUNCS
                         parent.setScreen(new TextScreen(parent, "Game completed."));
                         dispose();

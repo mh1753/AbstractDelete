@@ -3,8 +3,6 @@
  */
 package com.geeselightning.zepr;
 
-import javax.swing.Renderer;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -17,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
@@ -30,20 +27,13 @@ public class BonusLevel implements Screen {
     private int score;
     private int goalScore;
     private Table gameInfo;
-    private Label scoreLabel;
-    private Label goalLabel;
-    private Label timerLabel;
     private BonusGoose goose1;
     private BonusGoose goose2;
     private BonusGoose goose3;
-    private int target1X = (1280/2 - 720/2) + 80;
-    private int target2X = (1280/2 - 100/2); 
-    private int target3X = (1280/2 + 720/2) - 180;
+    private int target1X = 428;
+    private int target2X = 608;
+    private int target3X = 788;
     private int targetY = 720/4 + 210;
-    //Change starts: BONUSHITBOXFIX
-    private int hitboxH =60;
-    private int hitboxW = 60;
-    //Change ends: BONUSHITBOXFIX
     private float timer = 60;
 	
 	public BonusLevel(Zepr zepr) {
@@ -125,24 +115,21 @@ public class BonusLevel implements Screen {
         left.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-            	if (goose1.getX() < target1X + hitboxW && goose1.getX() > target1X - hitboxW) {
-            		if (goose1.getY() < targetY + hitboxH && goose1.getY() > targetY - hitboxH) {
-                        score += 1;
-            			goose1.respawn();
-            		}
-            	}
-            	if (goose2.getX() < target1X + hitboxW && goose2.getX() > target1X - hitboxW) {
-            		if (goose2.getY() < targetY + hitboxH && goose2.getY() > targetY - hitboxH) {
-                        score += 1;
-                        goose2.respawn();
-            		}
-            	}
-            	if (goose3.getX() < target1X + hitboxW && goose3.getX() > target1X - hitboxW) {
-            		if (goose3.getY() < targetY + hitboxH && goose3.getY() > targetY - hitboxH) {
-                        score += 1;
-                        goose3.respawn();
-            		}
-            	}
+                if (Math.sqrt((goose1.getX() - target1X) * (goose1.getX() - target1X) +
+                        (goose1.getY() - targetY) * (goose1.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose1.respawn();
+                }
+                if (Math.sqrt((goose2.getX() - target1X) * (goose2.getX() - target1X) +
+                        (goose2.getY() - targetY) * (goose2.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose2.respawn();
+                }
+                if (Math.sqrt((goose3.getX() - target1X) * (goose3.getX() - target1X) +
+                        (goose3.getY() - targetY) * (goose3.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose3.respawn();
+                }
             }
         });
         
@@ -150,24 +137,21 @@ public class BonusLevel implements Screen {
         middle.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-            	if (goose1.getX() < target2X + hitboxW && goose1.getX() > target2X - hitboxW) {
-            		if (goose1.getY() < targetY + hitboxH && goose1.getY() > targetY - hitboxH) {
-                        score += 1;
-                        goose1.respawn();
-            		}
-            	}
-            	if (goose2.getX() < target2X + hitboxW && goose2.getX() > target2X - hitboxW) {
-            		if (goose2.getY() < targetY + hitboxH && goose2.getY() > targetY - hitboxH) {
-                        score += 1;
-            			goose2.respawn();
-            		}
-            	}
-            	if (goose3.getX() < target2X + hitboxW && goose3.getX() > target2X - hitboxW) {
-            		if (goose3.getY() < targetY + hitboxH && goose3.getY() > targetY - hitboxH) {
-                        score += 1;
-                        goose3.respawn();
-            		}
-            	}
+            	if (Math.sqrt((goose1.getX() - target2X) * (goose1.getX() - target2X) +
+                        (goose1.getY() - targetY) * (goose1.getY() - targetY)) < (64)){
+            	    score += 1;
+            	    goose1.respawn();
+                }
+                if (Math.sqrt((goose2.getX() - target2X) * (goose2.getX() - target2X) +
+                        (goose2.getY() - targetY) * (goose2.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose2.respawn();
+                }
+                if (Math.sqrt((goose3.getX() - target2X) * (goose3.getX() - target2X) +
+                        (goose3.getY() - targetY) * (goose3.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose3.respawn();
+                }
             }
         });
         
@@ -175,24 +159,21 @@ public class BonusLevel implements Screen {
         right.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-            	if (goose1.getX() < target3X + hitboxW && goose1.getX() > target3X - hitboxW) {
-            		if (goose1.getY() < targetY + hitboxH && goose1.getY() > targetY - hitboxH) {
-                        score += 1;
-                        goose1.respawn();
-            		}
-            	}
-            	if (goose2.getX() < target3X + hitboxW && goose2.getX() > target3X - hitboxW) {
-            		if (goose2.getY() < targetY + hitboxH && goose2.getY() > targetY - hitboxH) {
-                        score += 1;
-                        goose2.respawn();
-            		}
-            	}
-            	if (goose3.getX() < target3X + hitboxW && goose3.getX() > target3X - hitboxW) {
-            		if (goose3.getY() < targetY + hitboxH && goose3.getY() > targetY - hitboxH) {
-                        score += 1;
-            			goose3.respawn();
-            		}
-            	}
+                if (Math.sqrt((goose1.getX() - target3X) * (goose1.getX() - target3X) +
+                        (goose1.getY() - targetY) * (goose1.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose1.respawn();
+                }
+                if (Math.sqrt((goose2.getX() - target3X) * (goose2.getX() - target3X) +
+                        (goose2.getY() - targetY) * (goose2.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose2.respawn();
+                }
+                if (Math.sqrt((goose3.getX() - target3X) * (goose3.getX() - target3X) +
+                        (goose3.getY() - targetY) * (goose3.getY() - targetY)) < (64)){
+                    score += 1;
+                    goose3.respawn();
+                }
             }
         });
         //Change ends: BONUSHITBOXFIX
@@ -210,7 +191,7 @@ public class BonusLevel implements Screen {
         renderer.begin();
         
         // Behind geese
-        renderer.draw(new Texture("gooseHuntBackground.png"), (1280/2 - 720/2), 720/4);
+        renderer.draw(new Texture("gooseHuntBackground.png"), 280, 180);
         
         // Geese
         goose1.draw(renderer);
@@ -218,9 +199,9 @@ public class BonusLevel implements Screen {
         goose3.draw(renderer);
         
         // In front of geese
-        renderer.draw(new Texture("cannonLeft.png"), (1280/2 - 720/2) + 100, 720/4 + 10);
-        renderer.draw(new Texture("cannonMiddle.png"), (1280/2 - 100/2), 720/4 + 10);
-        renderer.draw(new Texture("cannonRight.png"), (1280/2 + 720/2) - 200, 720/4 + 10);
+        renderer.draw(new Texture("cannon.png"), target1X-32, 720/4+10);
+        renderer.draw(new Texture("cannon.png"), target2X-32, 720/4+10);
+        renderer.draw(new Texture("cannon.png"), target3X-32, 720/4 + 10);
         renderer.draw(new Texture("target.png"), target1X, targetY);
         renderer.draw(new Texture("target.png"), target2X, targetY);
         renderer.draw(new Texture("target.png"), target3X, targetY);
@@ -235,9 +216,9 @@ public class BonusLevel implements Screen {
         String goalString = ("Goal: " + goalScore);
         String timerString = ("Timer: " + (int)timer);
         Label title = new Label("Goose Hunt", skin, "subtitle");
-        scoreLabel = new Label(scoreString, skin);
-        goalLabel = new Label(goalString, skin);
-        timerLabel = new Label(timerString, skin);  
+        Label scoreLabel = new Label(scoreString, skin);
+        Label goalLabel = new Label(goalString, skin);
+        Label timerLabel = new Label(timerString, skin);
 
         timer -= delta;
         
@@ -263,6 +244,7 @@ public class BonusLevel implements Screen {
             //Change starts: ADDMINIGAMEPOINTS
             parent.addPoints(Constant.BONUSGAMEPOINTS);
             //Change ends: ADDMINIGAMEPOINTS
+            parent.addCureProg(Constant.BONUSGAMEPOINTS);
             parent.setScreen(new TextScreen(parent, "Bonus game completed."));
         }
         if (timer <= 0) {

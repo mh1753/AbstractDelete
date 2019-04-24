@@ -73,6 +73,7 @@ public class Zombie extends Character {
             //Change starts: ZOMBIEPOINTGAIN
             currentLevel.parent.addPoints(Constant.ZOMBIEPOINTS);
             //Change ends: ZOMBIEPOINTGAIN
+            currentLevel.parent.addCureProg(Constant.ZOMBIEPOINTS);
             currentLevel.zombiesRemaining--;
             currentLevel.aliveZombies.remove(this);
             if (humanMain != null){

@@ -3,27 +3,22 @@ package com.geeselightning.zepr;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
-import javax.xml.soap.Text;
 
 public class Player extends Character {
 
     private static final Player instance = new Player(new Sprite(new Texture("player01.png")), new Vector2(0, 0));
     int attackDamage = Constant.PLAYERDMG;
-    int hitRange = Constant.PLAYERRANGE;
-    final float hitCooldown = Constant.PLAYERHITCOOLDOWN;
-    float hitDuration = 0;
-    Texture mainTexture;
-    Texture attackTexture;
+    private float hitDuration = 0;
+    private Texture mainTexture;
+    private Texture attackTexture;
     boolean attack = false;
     boolean abilityActivated = false;
     float abilityCooldown = 0;
     float abilityDuration = 0;
     float HPMult;
-    float dmgMult;
-    float speedMult;
-    String playertype;
+    private float dmgMult;
+    private float speedMult;
+    private String playertype;
     public boolean isImmune;
 
 
@@ -57,6 +52,8 @@ public class Player extends Character {
     // Changed to stop player from constantly attacking
     @Override
     public void attack(Character zombie, float delta) {
+        int hitRange = Constant.PLAYERRANGE;
+        float hitCooldown = Constant.PLAYERHITCOOLDOWN;
         if (canHitGlobal(zombie, hitRange) && hitRefresh > hitCooldown && hitDuration >= 0) {
             zombie.takeDamage(attackDamage);
             //Change starts: APPLYKNOCKBACK

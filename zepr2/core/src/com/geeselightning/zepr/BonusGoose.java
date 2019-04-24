@@ -10,11 +10,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class BonusGoose extends Sprite{
 	
 	private Texture leftOne = new Texture("gooseLeft.png");
+	private Random rand;
 	private int velocityX = 0;
 	private int velocityY = 0;
 	private int speed = 60;
 	private float timer = 0;
-	private int movementPhase = 1;
 	private int direction = 0;
 	private int directionCopy = 0;
 	private boolean startedMovement = false;
@@ -22,7 +22,7 @@ public class BonusGoose extends Sprite{
 	
 	public BonusGoose(int x, int y) {
 		super(new Sprite(new Texture("gooseLeft.png")));
-		Random rand = new Random();
+		rand = new Random();
         setX(x);
         setY(y);
 	}
@@ -35,12 +35,10 @@ public class BonusGoose extends Sprite{
 	}
 	
 	public void respawn() {
-		Random rand = new Random();
 		int randX = rand.nextInt(925);
 		int randY = rand.nextInt(600);
 		setX(randX);
         setY(randY);
-        movementPhase = 1;
 	}
 	
 	public void update(float delta) {
