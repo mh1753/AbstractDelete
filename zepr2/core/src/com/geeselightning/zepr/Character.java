@@ -203,6 +203,10 @@ public class Character extends Sprite {
             collidesWith(character, true);
         }
 
+        if(this.speed >= 300){
+            currentLevel.isBlocked(this);
+            currentLevel.isBlocked(this);
+        }
         currentLevel.isBlocked(this);
 
     }
