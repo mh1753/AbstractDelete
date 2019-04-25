@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class BonusGoose extends Sprite{
 	
 	private Texture leftOne = new Texture("gooseLeft.png");
-	private Random rand;
+	private Random rand = new Random();
 	private int velocityX = 0;
 	private int velocityY = 0;
 	private int speed = 60;
@@ -22,7 +22,6 @@ public class BonusGoose extends Sprite{
 	
 	public BonusGoose(int x, int y) {
 		super(new Sprite(new Texture("gooseLeft.png")));
-		rand = new Random();
         setX(x);
         setY(y);
 	}
