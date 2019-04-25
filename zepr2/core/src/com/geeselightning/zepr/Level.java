@@ -235,6 +235,7 @@ public class Level implements Screen {
             if(c.collidesWith(r, true)){
                 c.collidesWith(r, true);
                 c.collidesWith(r, true);
+                c.collidesWith(r, true);
             }
         }
     }
