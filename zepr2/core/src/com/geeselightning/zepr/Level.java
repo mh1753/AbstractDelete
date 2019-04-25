@@ -54,7 +54,7 @@ public class Level implements Screen {
     PowerUp currentPowerUp = null;
 
     //Change starts: SAFEAREATIMER
-    float safeAreaTimer = 20;
+    private float safeAreaTimer = 5;
     //Change ends: SAFEAREATIMER
 
     private Label progressLabel = new Label("", skin);
@@ -85,18 +85,7 @@ public class Level implements Screen {
         //Change ends: TILEDMAPOBSTACLESINIT
 
         // Set up data for first wave of zombies
-        //Change starts: SAFEAREADIFFICULTYRISE
-        this.waves = new int[3];
-        //Change starts: PROGRESSFUNCS
-        if(parent.getProgress() >= Zepr.LIBRARY){
-            //Change ends: PROGRESSFUNCS
-            for(int i = 0; i < 3; i++){
-                this.waves[i] = waves[i] * 2;
-            }
-        } else {
-            this.waves = waves;
-        }
-        //Change ends : SAFEAREADIFFICULTYRISE
+        this.waves = waves;
         this.zombiesRemaining = waves[0];
         this.zombiesToSpawn = zombiesRemaining;
 
@@ -462,7 +451,7 @@ public class Level implements Screen {
                     safeAreaTimer -= delta;
                     if(safeAreaTimer <= 0){
                         currentWave++;
-                        safeAreaTimer = 20;
+                        safeAreaTimer = 5;
                     }
                 }
                 else {

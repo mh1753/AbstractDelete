@@ -26,7 +26,7 @@ public class Zepr extends Game {
 	//Change ends: CUREZOMBIESTORY
 
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
-	private int progress = 9;
+	private int progress = 6;
 
 	//Change starts: INITCURRENTSCREEN
 	public int currentScreen;

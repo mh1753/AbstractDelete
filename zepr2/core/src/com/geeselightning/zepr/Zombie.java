@@ -25,9 +25,16 @@ public class Zombie extends Character {
         }
         // Added RNG to vary zombie speeds
         Random rand = new Random();
-        this.speed = Constant.ZOMBIESPEED + rand.nextInt(20);
-        this.maxHealth = Constant.ZOMBIEMAXHP;
+        // Change starts: SAFEAREADIFFICULTYRISE
+        if (parent.getProgress() > Zepr.LIBRARY){
+            this.speed = Constant.ZOMBIESPEED * Constant.SAFEAREAMULT + rand.nextInt(20);
+            this.maxHealth = (int) (Constant.ZOMBIEMAXHP * Constant.SAFEAREAMULT);
+        } else {
+            this.speed = Constant.ZOMBIESPEED + rand.nextInt(20);
+            this.maxHealth = Constant.ZOMBIEMAXHP;
+        }
         this.health = maxHealth;
+        // Change ends: SAFEAREADIFFICULTYRISE
     }
 
     @Override
@@ -54,18 +61,14 @@ public class Zombie extends Character {
         //move according to velocity
         super.update(delta);
 
-        // update velocity to move towards player
+        // update velocity to move towards or away from the player
+        // update direction to face towards or away from the player
         // Vector2.scl scales the vector
         if (this.isRunning()){
             velocity = getDirNormVector(player.getCenter()).rotate(180).scl(speed);
-        } else {
-            velocity = getDirNormVector(player.getCenter()).scl(speed);
-        }
-
-        // update direction to face the player
-        if (this.isRunning()){
             direction = getDirectionTo(player.getCenter())+Math.PI;
         } else {
+            velocity = getDirNormVector(player.getCenter()).scl(speed);
             direction = getDirectionTo(player.getCenter());
         }
 

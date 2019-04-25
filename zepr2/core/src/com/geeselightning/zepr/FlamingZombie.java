@@ -28,8 +28,14 @@ public class FlamingZombie extends Zombie {
             this.humanMain = new Texture("player03.png");
             this.humanAttack = new Texture("player03_attack.png");
         }
-        this.speed = Constant.FLAMINGZOMBIESPEED + rand.nextInt(10);
-        this.maxHealth = Constant.FLAMINGZOMBIEMAXHP;
+        // Change starts: SAFEAREADIFFICULTYRISE
+        if (parent.getProgress() > Zepr.LIBRARY){
+            this.speed = Constant.FLAMINGZOMBIESPEED * Constant.SAFEAREAMULT + rand.nextInt(10);
+            this.speed = Constant.FLAMINGZOMBIEMAXHP * Constant.SAFEAREAMULT;
+        } else {
+            this.speed = Constant.FLAMINGZOMBIESPEED + rand.nextInt(10);
+            this.maxHealth = Constant.FLAMINGZOMBIEMAXHP;
+        }
         this.health = maxHealth;
     }
 

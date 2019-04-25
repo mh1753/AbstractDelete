@@ -27,7 +27,7 @@ public class CourtyardLevel extends Level {
     public void complete() {
         // Update progress
         //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() == parent.COURTYARD) {
+        if (parent.getProgress() == Zepr.COURTYARD) {
             parent.incProgress();
         }
         //Change ends: PROGRESSFUNCS

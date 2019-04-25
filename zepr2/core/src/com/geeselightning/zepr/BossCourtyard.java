@@ -59,8 +59,15 @@ public class BossCourtyard extends Character {
         	if (random > 20) {
         		random = -(random - 20);
         	}
-    		Character zombie = (new ZombieFast(new Sprite(new Texture("FastZombie.png")),
-                    new Vector2(getX() + random, getY() + random), currentLevel, parent));
+        	Character zombie;
+        	if (currentLevel.parent.isZombie()){
+                zombie = (new ZombieFast(new Sprite(new Texture("player02.png")),
+                        new Vector2(getX() + random, getY() + random), currentLevel, parent));
+
+            } else {
+                zombie = (new ZombieFast(new Sprite(new Texture("FastZombie.png")),
+                        new Vector2(getX() + random, getY() + random), currentLevel, parent));
+            }
             boolean collides = false;
             for (Character otherZombie : currentLevel.aliveZombies) {
                 if (zombie.collidesWith(otherZombie, false)) {
@@ -90,5 +97,9 @@ public class BossCourtyard extends Character {
             currentLevel.aliveZombies.remove(this);
             // Removed disposal of texture to prevent texture glitch
         }
+    }
+
+    public void takeDamage(int dmg){
+        health -= dmg;
     }
 }

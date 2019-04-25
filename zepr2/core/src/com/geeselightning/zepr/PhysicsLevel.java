@@ -29,7 +29,7 @@ public class PhysicsLevel extends Level {
     @Override
     public void complete() {
         //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() == parent.PHYSICS) {
+        if (parent.getProgress() == Zepr.PHYSICS) {
             parent.incProgress();
         }
         //Change ends: PROGRESSFUNCS

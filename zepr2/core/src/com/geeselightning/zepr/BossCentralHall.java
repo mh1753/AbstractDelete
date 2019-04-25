@@ -59,8 +59,14 @@ public class BossCentralHall extends Character {
         	if (random > 20) {
         		random = -(random - 20);
         	}
-    		Character zombie = (new FlamingZombie(new Sprite(new Texture("FlamingZombie.png")),
-                    new Vector2(getX() + random, getY() + random), currentLevel, parent));
+        	Character zombie;
+        	if (currentLevel.parent.isZombie()){
+                zombie = (new FlamingZombie(new Sprite(new Texture("player03.png")),
+                        new Vector2(getX() + random, getY() + random), currentLevel, parent));
+            } else {
+                zombie = (new FlamingZombie(new Sprite(new Texture("FlamingZombie.png")),
+                        new Vector2(getX() + random, getY() + random), currentLevel, parent));
+            }
             boolean collides = false;
             for (Character otherZombie : currentLevel.aliveZombies) {
                 if (zombie.collidesWith(otherZombie, false)) {
@@ -90,5 +96,10 @@ public class BossCentralHall extends Character {
             currentLevel.aliveZombies.remove(this);
             // Removed disposal of texture to prevent texture glitch
         }
+    }
+
+    @Override
+    public void takeDamage(int dmg){
+        health -= dmg;
     }
 }

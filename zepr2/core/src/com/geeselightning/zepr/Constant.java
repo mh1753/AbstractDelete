@@ -30,6 +30,9 @@ public final class Constant {
     public static final float NERDYHPMULT = 1.5f;
     public static final float NERDYDMGMULT = 1;
     public static final float NERDYSPEEDMULT = 1;
+    // Change starts: SAFEAREADIFFICULTYRISE
+    public static final float SAFEAREAMULT = 1.5f;
+    // Change ends: SAFEAREADIFFICULTYRISE
     // Added to work with player abilities
     public static final float NERDYABILITYDMGMULT = 20;
     public static final float NERDYABILITYDURATION = 5;
