@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class LibraryLevel extends Level {
 
-    private static final String mapLocation = "maps/library.tmx";
+    private static final String mapLocation = "maps/library - new.tmx";
     private static final Vector2 playerSpawn = new Vector2(1300, 1300);
     private static final Vector2 powerSpawn = new Vector2(1400, 1400);
 

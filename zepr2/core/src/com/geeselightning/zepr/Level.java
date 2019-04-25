@@ -4,12 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -24,6 +28,9 @@ public class Level implements Screen {
 
     protected Zepr parent;
     private TiledMap map;
+    //Change starts: TILEDMAPOBSTACLES
+    private ArrayList<Rectangle> obstacles;
+    //Change ends: TILEDMAPOBSTACLES
     private OrthogonalTiledMapRenderer renderer;
     private OrthographicCamera camera;
     private Player player;
@@ -72,6 +79,10 @@ public class Level implements Screen {
         this.isPaused = false;
         this.blank = new Texture("blank.png");
         this.powerSpawn = powerSpawn;
+
+        //Change starts: TILEDMAPOBSTACLESINIT
+        this.obstacles = new ArrayList<Rectangle>();
+        //Change ends: TILEDMAPOBSTACLESINIT
 
         // Set up data for first wave of zombies
         //Change starts: SAFEAREADIFFICULTYRISE
@@ -219,20 +230,13 @@ public class Level implements Screen {
      *
      * @return boolean if the point (x, y) is in a blocked tile
      */
-    public boolean isBlocked(float x, float y) {
-        TiledMapTileLayer collisionLayer = (TiledMapTileLayer) map.getLayers().get("collisionLayer");
-        Cell cell = collisionLayer.getCell((int) (x / collisionLayer.getTileWidth()), (int) (y / collisionLayer.getTileHeight()));
-
-        // have to include this in case this cell is transparent on the collisionLayer
-        if (cell == null || cell.getTile() == null) {
-            return false;
+    public void isBlocked(Character c) {
+        for(Rectangle r : obstacles){
+            if(c.collidesWith(r, true)){
+                c.collidesWith(r, true);
+                c.collidesWith(r, true);
+            }
         }
-
-        MapProperties properties = cell.getTile().getProperties();
-        // we have to add the property now because the properties don't load from the map file
-        properties.put("solid", null);
-
-        return properties.containsKey("solid");
     }
 
 
@@ -258,6 +262,14 @@ public class Level implements Screen {
         // Loads the testmap.tmx file as map.
         TmxMapLoader loader = new TmxMapLoader();
         map = loader.load(mapLocation);
+        //Change starts : LOADCOLLISIONOBSTACLES
+        MapLayer collisionLayer = map.getLayers().get("collisionLayer");
+        MapObjects objs = collisionLayer.getObjects();
+        for(RectangleMapObject o : objs.getByType(RectangleMapObject.class)) {
+            obstacles.add(o.getRectangle());
+        }
+        System.out.println(obstacles.isEmpty());
+        //Change ends: LOADCOLLISIONOBSTACLES
 
         // renderer renders the .tmx map as an orthogonal (top-down) map.
         renderer = new OrthogonalTiledMapRenderer(map);

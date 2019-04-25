@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class CentralHallLevel extends Level {
 
-    private static final String mapLocation = "maps/Central hall.tmx";
+    private static final String mapLocation = "maps/Central hall - new.tmx";
     private static final Vector2 playerSpawn = new Vector2(300, 300);
     private static final Vector2 powerSpawn = new Vector2(550, 550);
 

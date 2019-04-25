@@ -203,31 +203,7 @@ public class Character extends Sprite {
             collidesWith(character, true);
         }
 
-        // List of all corners of sprite, added extra points in the centre of the edges
-        ArrayList<Vector2> spritePoints = new ArrayList<Vector2>(Arrays.asList(new Vector2(getX(), getY()),
-                new Vector2(getX() + getWidth(), getY()), new Vector2(getX(), getY() + getHeight()),
-                new Vector2(getX() + getWidth(), getY() + getHeight()), new Vector2(getX() + getWidth()/2, getY() + getHeight()),
-                new Vector2(getX() + getWidth(), getY() + getHeight()/2), new Vector2(getX(), getY() + getHeight()/2),
-                new Vector2(getX() + getWidth()/2, getY())));
-        
-        // Old corners
-        // Added to improve collisions by allowing better checks
-        ArrayList<Vector2> oldPoints = new ArrayList<Vector2>(Arrays.asList(new Vector2(oldX, oldY),
-                new Vector2(oldX + getWidth(), oldY), new Vector2(oldX, oldY + getHeight()),
-                new Vector2(oldX + getWidth(), oldY + getHeight()), new Vector2(oldX + getWidth()/2, oldY + getHeight()),
-                new Vector2(oldX + getWidth(), oldY + getHeight()/2), new Vector2(oldX, oldY + getHeight()/2),
-                new Vector2(oldX + getWidth()/2, oldY)));
-
-        // Make sure non of the corners goto a blocked region of the map
-        for (int n = 0; n < spritePoints.size(); n++) {
-        	// Changed to check X and Y separately to improve collisions
-            if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
-                setX(oldX);
-            }
-            if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
-                setY(oldY);
-            }
-        }
+        currentLevel.isBlocked(this);
 
     }
 
@@ -237,30 +213,6 @@ public class Character extends Sprite {
 
         setX(getX() - (0.1f * velocity.x));
         setY(getY() - (0.1f * velocity.y));
-
-        ArrayList<Vector2> spritePoints = new ArrayList<Vector2>(Arrays.asList(new Vector2(getX(), getY()),
-                new Vector2(getX() + getWidth(), getY()), new Vector2(getX(), getY() + getHeight()),
-                new Vector2(getX() + getWidth(), getY() + getHeight()), new Vector2(getX() + getWidth()/2, getY() + getHeight()),
-                new Vector2(getX() + getWidth(), getY() + getHeight()/2), new Vector2(getX(), getY() + getHeight()/2),
-                new Vector2(getX() + getWidth()/2, getY())));
-
-        ArrayList<Vector2> oldPoints = new ArrayList<Vector2>(Arrays.asList(new Vector2(oldX, oldY),
-                new Vector2(oldX + getWidth(), oldY), new Vector2(oldX, oldY + getHeight()),
-                new Vector2(oldX + getWidth(), oldY + getHeight()), new Vector2(oldX + getWidth()/2, oldY + getHeight()),
-                new Vector2(oldX + getWidth(), oldY + getHeight()/2), new Vector2(oldX, oldY + getHeight()/2),
-                new Vector2(oldX + getWidth()/2, oldY)));
-
-        for (int n = 0; n < spritePoints.size(); n++) {
-            // Changed to check X and Y separately to improve collisions
-            if(currentLevel != null) {
-                if (currentLevel.isBlocked(spritePoints.get(n).x, oldPoints.get(n).y)) {
-                    setX(oldX);
-                }
-                if (currentLevel.isBlocked(oldPoints.get(n).x, spritePoints.get(n).y)) {
-                    setY(oldY);
-                }
-            }
-        }
 
     }
     //Change ends; KNOCKBACK

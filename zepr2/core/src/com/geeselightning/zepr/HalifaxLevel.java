@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class HalifaxLevel extends Level {
 
-    private static final String mapLocation = "maps/halifaxmap.tmx";
+    private static final String mapLocation = "maps/halifaxmap - new.tmx";
     private static final Vector2 playerSpawn = new Vector2(300, 300);
     private static final Vector2 powerSpawn = new Vector2(200, 200);
 

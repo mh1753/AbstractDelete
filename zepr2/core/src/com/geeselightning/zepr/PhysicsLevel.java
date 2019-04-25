@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class PhysicsLevel extends Level {
 
-    private static final String mapLocation = "maps/Physics.tmx";
+    private static final String mapLocation = "maps/Physics - new.tmx";
     private static final Vector2 playerSpawn = new Vector2(300, 320);
     private static final Vector2 powerSpawn = new Vector2(300, 500);
 
