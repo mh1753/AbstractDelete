@@ -11,26 +11,28 @@ public class Zepr extends Game {
 	private BonusLevel bonusLevel;
 	private SelectLevelScreen selectLevelScreen;
 
-	//Change starts: POINTSINIT
+	// Change starts: POINTSINIT
 	private float points = 0;
-	//Change ends: POINTSINIT
+	// Change ends: POINTSINIT
 
+	// Change starts: CURESPAWNCONDITION
 	private float cureProgress = 0;
+	// Change ends: CURESPAWNCONDITION
 
-	//Change starts: ZOMBIESTORY
+	// Change starts: ZOMBIESTORY
 	private boolean isZombie = false;
-	//Change ends: ZOMBIESTORY
+	// Change ends: ZOMBIESTORY
 
-	//Change starts: CUREZOMBIESTORY
+	// Change starts: CUREZOMBIESTORY
 	private String lastKnownCharacter;
-	//Change ends: CUREZOMBIESTORY
+	// Change ends: CUREZOMBIESTORY
 
 	// The progress is the integer representing the last level completed. i.e. 3 for Town
-	private int progress = 6;
+	private int progress = 3;
 
-	//Change starts: INITCURRENTSCREEN
+	// Change starts: INITCURRENTSCREEN
 	public int currentScreen;
-	//Change ends: INITCURRENTSCREEN
+	// Change ends: INITCURRENTSCREEN
 
 	final static int MENU = 0;
 	final static int BONUS = 1;
@@ -43,22 +45,19 @@ public class Zepr extends Game {
 	final static int CENTRALHALL = 8;
 	final static int COMPLETE = 9;
 
-	//Change starts: GETPOINTS
+	// Change starts: POINTFUNCS
 	public int getPoints(){ return MathUtils.floor(points);}
-	//Change ends: GETPOINTS
 
-	//Change starts: ADDPOINTS
 	public void addPoints(float p){
 		points += p;
 	}
-	//Change ends: ADDPOINTS
 
-	//Change starts: ZEROPOINTS
 	public void zeroPoints(){
 		points = 0;
 	}
-	//Change ends: ZEROPOINTS
+	// Change ends: POINTFUNCS
 
+	// Change starts: CURESPAWNCONDITION
 	public int getCureProg(){
 		return MathUtils.floor(cureProgress);
 	}
@@ -70,11 +69,12 @@ public class Zepr extends Game {
 	public void zeroCureProg(){
 		cureProgress = 0;
 	}
+	// Change ends: CURESPAWNCONDITION
 
 	public void changeScreen(int screen) {
-		//Change starts: STORESCREEN
+		// Change starts: STORESCREEN
 		currentScreen = screen;
-		//Change ends: STORESCREEN
+		// Change ends: STORESCREEN
 		switch(screen) {
 			case MENU:
 				if (menuScreen == null) menuScreen = new MenuScreen(this);
@@ -115,7 +115,7 @@ public class Zepr extends Game {
 		}
 	}
 
-	//Change starts: ZOMBIESTORY
+	// Change starts: ZOMBIESTORY
 	public boolean isZombie(){
 		return isZombie;
 	}
@@ -123,9 +123,9 @@ public class Zepr extends Game {
 	public void setZombie(boolean b){
 		isZombie = b;
 	}
-	//Change ends: ZOMBIESTORY
+	// Change ends: ZOMBIESTORY
 
-	//Change starts: PROGRESSFUNCS
+	// Change starts: PROGRESSFUNCS
 	public int getProgress(){
 		return progress;
 	}
@@ -141,9 +141,9 @@ public class Zepr extends Game {
 	public void decProgress(){
 		progress -= 1;
 	}
-	//Change ends: PROGRESSFUNCS
+	// Change ends: PROGRESSFUNCS
 
-	//Change starts: CUREZOMBIESTORYFUNCS
+	// Change starts: CUREZOMBIESTORY
 	public String getLastKnownCharacter(){
 		return lastKnownCharacter;
 	}
@@ -151,7 +151,7 @@ public class Zepr extends Game {
 	public void setLastKnownCharacter(String lkc){
 		lastKnownCharacter = lkc;
 	}
-	//Change ends: CUREZOMBIESTORYFUNCS
+	// Change ends: CUREZOMBIESTORY
 
 	@Override
 	public void create() {

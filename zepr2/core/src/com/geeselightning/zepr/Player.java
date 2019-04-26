@@ -8,18 +8,20 @@ public class Player extends Character {
 
     private static final Player instance = new Player(new Sprite(new Texture("player01.png")), new Vector2(0, 0));
     int attackDamage = Constant.PLAYERDMG;
+    // Change starts: PLAYERCLASSOPTIMIZATION
     private float hitDuration = 0;
     private Texture mainTexture;
     private Texture attackTexture;
-    boolean attack = false;
-    boolean abilityActivated = false;
-    float abilityCooldown = 0;
-    float abilityDuration = 0;
     float HPMult;
     private float dmgMult;
     private float speedMult;
     private String playertype;
-    public boolean isImmune;
+    boolean isImmune;
+    // Change ends: PLAYERCLASSOPTIMIZATION
+    boolean attack = false;
+    boolean abilityActivated = false;
+    float abilityCooldown = 0;
+    float abilityDuration = 0;
 
 
     private Player(Sprite sprite, Vector2 playerSpawn) {
@@ -52,9 +54,10 @@ public class Player extends Character {
     // Changed to stop player from constantly attacking
     @Override
     public void attack(Character zombie, float delta) {
-        int hitRange = Constant.PLAYERRANGE;
-        float hitCooldown = Constant.PLAYERHITCOOLDOWN;
-        if (canHitGlobal(zombie, hitRange) && hitRefresh > hitCooldown && hitDuration >= 0) {
+        // Change starts: PLAYERCLASSOPTIMIZATION
+        if (canHitGlobal(zombie, Constant.PLAYERRANGE) &&
+                hitRefresh > Constant.PLAYERHITCOOLDOWN && hitDuration >= 0) {
+            // Change ends: PLAYERCLASSOPTIMIZATION
             zombie.takeDamage(attackDamage);
             //Change starts: APPLYKNOCKBACK
             zombie.knockback();
@@ -67,6 +70,7 @@ public class Player extends Character {
     
     // Added to implement player abilities
     public void activateAbility() {
+        // Change starts: PLAYERCLASSOPTIMIZATION
     	if (playertype.equals("nerdy")) {
     		abilityCooldown = Constant.NERDYABILITYCOOLDOWN;
     		abilityDuration = Constant.NERDYABILITYDURATION;
@@ -93,11 +97,13 @@ public class Player extends Character {
     		}
             mainTexture = new Texture("player03_heal.png");
             attackTexture = new Texture("player03_attack_heal.png");
+            // Change ends: PLAYERCLASSOPTIMIZATION
     	}
     }
     
     // Added to implement player abilities
     public void deactivateAbility() {
+        // Change starts: PLAYERCLASSOPTIMIZATION
     	if (playertype.equals("nerdy")) {
             dmgMult = Constant.NERDYDMGMULT;
             this.attackDamage = (int)(Constant.PLAYERDMG * dmgMult);
@@ -112,24 +118,19 @@ public class Player extends Character {
             mainTexture = new Texture("player03.png");
             attackTexture = new Texture("player03_attack.png");
     	}
-    	
+    	// Change ends: PLAYERCLASSOPTIMIZATION
     }
 
     public void respawn(Vector2 playerSpawn, Level level){
         setX(playerSpawn.x);
         setY(playerSpawn.y);
-        if (mainTexture != null){
-            mainTexture.dispose();
-        }
-        if (attackTexture != null){
-            attackTexture.dispose();
-        }
         // Added rest information below so player doesn't move and attack when they spawn
         abilityDuration = 0;
         this.deactivateAbility();
         abilityCooldown = 0;
         attack = false;
         this.velocity = new Vector2(0, 0);
+        // Change starts: PLAYERCLASSOPTIMIZATION
         assert playertype != null;
         if (playertype.equals("nerdy")){
             dmgMult = Constant.NERDYDMGMULT;
@@ -188,7 +189,8 @@ public class Player extends Character {
                 this.setTexture(mainTexture);
             }
         }
-        //Change ends: ZOMBIESTORY
+        // Change ends: ZOMBIESTORY
+        // Change ends: PLAYERCLASSOPTIMIZATION
     }
 
     @Override
@@ -210,14 +212,20 @@ public class Player extends Character {
         	hitDuration = 0.2f;
         }
         if (hitDuration > 0) {
+            // Change starts: ZOMBIESTORY
+            // If the player is a zombie, don't need to perform an attack animation
             if (!currentLevel.parent.isZombie()) {
                 this.setTexture(attackTexture);
             }
+            // Change ends: ZOMBIESTORY
         	hitDuration -= delta;
         } else {
+            // Change starts: ZOMBIESTORY
+            // If the player is a zombie, they will always use the main texture
             if (!currentLevel.parent.isZombie()) {
                 this.setTexture(mainTexture);
             }
+            // Change ends: ZOMBIESTORY
         	attack = false;
         	hitDuration = 0;
         }
@@ -248,21 +256,21 @@ public class Player extends Character {
         }
     }
 
-    //Change starts; PLAYERGETDAMAGE
+    // Change starts; PLAYERGETDAMAGE
     public float getDamage(){
         return attackDamage;
     }
-    //Change ends; PLAYERGETDAMAGE
+    // Change ends; PLAYERGETDAMAGE
 
-    //Change starts; PLAYERGETABILITYCOOLDOWN
+    // Change starts; PLAYERGETABILITYCOOLDOWN
     public float getAbilityCooldown(){
         return abilityCooldown;
     }
-    //Change ends; PLAYERGETABILITYCOOLDOWN
+    // Change ends; PLAYERGETABILITYCOOLDOWN
 
-    //Change starts; PLAYERGETABILITYDURATION
+    // Change starts; PLAYERGETABILITYDURATION
     public float getAbilityDuration(){
         return abilityDuration;
     }
-    //Change ends; PLAYERGETABILITYDURATION
+    // Change ends; PLAYERGETABILITYDURATION
 }

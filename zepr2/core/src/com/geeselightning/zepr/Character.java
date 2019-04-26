@@ -22,29 +22,34 @@ public class Character extends Sprite {
     // All characters start ready to hit.
     float hitRefresh = 2;
     int maxHealth;
+    // Change starts: BOUNDRECT
     Rectangle boundRect = new Rectangle();
-    //Change starts: RUNNING
+    // Change ends: BOUNDRECT
+    // Change starts: CUREEFFECT
+    // If the cure is active, indicates that this character is running away from the player
     private boolean running;
-    //Change ends: RUNNING
+    // Change ends: CUREEFFECT
 
     public Character(Sprite sprite, Vector2 spawn, Level currentLevel) {
         super(sprite);
         setX(spawn.x);
         setY(spawn.y);
-        //Change starts: INITBOUNDRECT
+        // Change starts: COLLISIONUPDATE
         setBoundRect();
-        //Change ends: INITBOUNDRECT
+        // Change ends: COLLISIONUPDATE
+        // Change starts: CUREEFFECT
         this.running = false;
+        // Change ends: CUREEFFECT
         this.currentLevel = currentLevel;
     }
 
-    //Change starts: SETBOUNDRECT
+    // Change starts: COLLISIONUPDATE
     public void setBoundRect(){
         boundRect.setPosition(this.getX(), this.getY());
         boundRect.setSize(this.getRegionWidth(), this.getRegionHeight());
         boundRect.setCenter(this.getCenter());
     }
-    //Change ends: SETBOUNDRECT
+    // Change ends: COLLISIONUPDATE
 
     public double getDirection() {
         return direction;
@@ -54,11 +59,11 @@ public class Character extends Sprite {
         return health;
     }
 
-    //Change starts: SETHEALTH
+    // Change starts: SETHEALTH
     public void setHealth(int h){
         this.health = h;
     }
-    //Change ends: SETHEALTH
+    // Change ends: SETHEALTH
     
     public void attack(Character character, float delta) {
     	// Implemented in higher classes
@@ -189,7 +194,8 @@ public class Character extends Sprite {
     public void update(float delta) {
         // Update x, y position of character.
         // New position is the old position plus the distance moved as a result of the velocity
-        float oldX = getX(), oldY = getY();
+        // Change starts: CHARACTERCLASSOPTIMIZATION
+        // Change ends: CHARACTERCLASSOPTIMIZATION
 
         setX(getX() + velocity.x * delta);
         setY(getY() + velocity.y * delta);
@@ -199,6 +205,7 @@ public class Character extends Sprite {
         // Remove this character otherwise it will collide with itself
         otherCharacters.remove(this);
 
+        // Change starts: COLLISIONUPDATE
         for (Character character : otherCharacters) {
             collidesWith(character, true);
         }
@@ -208,6 +215,7 @@ public class Character extends Sprite {
             currentLevel.isBlocked(this);
         }
         currentLevel.isBlocked(this);
+        // Change ends: COLLISIONUPDATE
 
     }
 
@@ -223,11 +231,12 @@ public class Character extends Sprite {
     }
     //Change ends; KNOCKBACK
 
-    //Change starts: RUNNING
+    //Change starts: CUREEFFECT
     public boolean isRunning(){
         return running;
     }
 
+    // When the cure is activated/deactivated, toggles running
     public void toggleRunning(){
         if (running){
             running = false;
@@ -235,7 +244,7 @@ public class Character extends Sprite {
             running = true;
         }
     }
-    //Change ends: RUNNING
+    //Change ends: CUREEFFECT
 
     // Decreases health by value of dmg
     public void takeDamage(int dmg){

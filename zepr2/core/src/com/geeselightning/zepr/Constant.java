@@ -12,7 +12,9 @@ public final class Constant {
     public static final float ZOMBIESPEED = 80;
     public static final int ZOMBIEMAXHP = 100;
     public static final int ZOMBIEDMG = 5;
+    // Change starts: COLLISIONUPDATE
     public static final int ZOMBIERANGE = 38;
+    // Change ends: COLLISIONUPDATE
     public static final float ZOMBIEHITCOOLDOWN = 1;
     // Added stats for different zombies
     public static final float ZOMBIEFASTSPEED = 150;
@@ -30,9 +32,6 @@ public final class Constant {
     public static final float NERDYHPMULT = 1.5f;
     public static final float NERDYDMGMULT = 1;
     public static final float NERDYSPEEDMULT = 1;
-    // Change starts: SAFEAREADIFFICULTYRISE
-    public static final float SAFEAREAMULT = 1.5f;
-    // Change ends: SAFEAREADIFFICULTYRISE
     // Added to work with player abilities
     public static final float NERDYABILITYDMGMULT = 20;
     public static final float NERDYABILITYDURATION = 5;
@@ -51,13 +50,13 @@ public final class Constant {
     // Added to work with player abilities
     public static final float DRAMAABILITYDURATION = 0.25f;
     public static final float DRAMAABILITYCOOLDOWN = 40;
-    //Change starts: ZOMBIESTORY
+    public static final int HEALUP = 30;
+    public static final int SPEEDUP = 50;
+    //Change starts: ZOMBIESTORYPLAYER
     public static final float ZOMBIEHPMULT = 1.5f;
     public static final float ZOMBIEDMGMULT = 2;
     public static final float ZOMBIESPEEDMULT = 1.5f;
-    //Change ends: ZOMBIESTORY
-    public static final int HEALUP = 30;
-    public static final int SPEEDUP = 50;
+    //Change ends: ZOMBIESTORYPLAYER
     // Added for extra power ups
     public static final int INSTAKILL = 100;
     public static final float SPEEDUPTIME = 10;
@@ -66,12 +65,17 @@ public final class Constant {
     public static final float INSTAKILLTIME = 10;
     public static final float NOCOOLDOWNSTIME = 10;
     // Added for minigame
-    //Change starts: BONUSGOALFIX
+    // Change starts: BONUSGAMEOPTIMIZATION
     public static final int BONUSGOAL = 20;
-    //Change ends: BONUSGOALFIX
+    // Change ends: BONUSGAMEOPTIMIZATION
+    // Change starts: POINTSSYSTEM
     public static final int BONUSGAMEPOINTS = 1000;
     public static final int ZOMBIEPOINTS = 100;
     public static final int AVOIDPOINTS = 5;
     public static final int SAFEZONEPOINTS = 1000;
     public static final int AVOIDTIMER = 1;
+    // Change ends: POINTSSYSTEM
+    // Change starts: SAFEAREADIFFICULTYRISE
+    public static final float SAFEAREAMULT = 1.5f;
+    // Change ends: SAFEAREADIFFICULTYRISE
 }

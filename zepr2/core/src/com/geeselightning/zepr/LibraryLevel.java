@@ -21,6 +21,7 @@ public class LibraryLevel extends Level {
 
     // Defining the number of zombies to be spawned for each wave
     //Change starts: SAFEAREAWAVES
+    // There are no zombies to spawn, as this is the safe area
     private static final int[] waves = new int[]{0, 0, 0};
     //Change ends: SAFEAREAWAVES
 

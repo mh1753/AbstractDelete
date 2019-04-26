@@ -1,16 +1,8 @@
 package com.geeselightning.zepr;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.Scanner;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -21,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.graphics.Color;
+
+import java.io.*;
+import java.util.Scanner;
 
 public class SelectLevelScreen implements Screen {
 
@@ -33,9 +27,9 @@ public class SelectLevelScreen implements Screen {
     private boolean playerSet = false;
     Player player = Player.getInstance();
 
-    //Change starts: INITSELECTLEVELVARS
+    // Change starts: INITSELECTLEVELVARS
     // Importing the necessary assets for the button textures.
-    Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+    private Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
 
     private Label title = new Label("", skin, "subtitle");
     private String townDescription = "";
@@ -52,7 +46,7 @@ public class SelectLevelScreen implements Screen {
     private TextButton library = new TextButton("", skin);
     private TextButton physics = new TextButton("", skin);
     private TextButton centralHall = new TextButton("", skin);
-    //Change ends: INITSELECTLEVELVARS
+    // Change ends: INITSELECTLEVELVARS
 
     public SelectLevelScreen(Zepr zepr) {
 
@@ -68,7 +62,8 @@ public class SelectLevelScreen implements Screen {
         Gdx.input.setInputProcessor(stage);
 
         // Creating stage buttons.
-        //Change starts: ZOMBIESTORY
+        // Change starts: ZOMBIESTORY
+        // If the player is a zombie, the text on the buttons will be appropriate
         if (parent.isZombie()){
             town.setText("BRAIN");
             halifax.setText("Brain");
@@ -84,9 +79,9 @@ public class SelectLevelScreen implements Screen {
             physics.setText("Physics");
             centralHall.setText("Central Hall");
         }
-        //Change ends: ZOMBIESTORY
+        // Change ends: ZOMBIESTORY
 
-        //Change starts: SELECTLEVELUIFIX
+        // Change starts: SELECTLEVELUIFIX
         /*town.setTransform(true);
         halifax.setTransform(true);
         courtyard.setTransform(true);
@@ -100,7 +95,7 @@ public class SelectLevelScreen implements Screen {
         physics.setScale(0.7f);
         centralHall.setScale(0.7f);
          */
-        //Change ends: SELECTLEVELUIFIX
+        // Change ends: SELECTLEVELUIFIX
 
         // Creating character buttons.
         TextButton nerdy = new TextButton("Nerdy",skin);
@@ -116,7 +111,8 @@ public class SelectLevelScreen implements Screen {
         TextButton bonusGame = new TextButton("Bonus Game", skin);
 
         // Creating stage descriptions.
-        //Change starts: ZOMBIESTORY
+        // Change starts: ZOMBIESTORY
+        // If the player is a zombie, descriptions will be appropriate
         if (parent.isZombie()){
             title.setText("Brains brain, brains.");
             townDescription = "Brains... BRAINS!";
@@ -136,7 +132,7 @@ public class SelectLevelScreen implements Screen {
             centralHallDescription = "Stop the source of the zombie horde by beating the boss in Central hall.";
             defaultDescription = "Select a stage from the buttons above.";
         }
-        //Change ends: ZOMBIESTORY
+        // Change ends: ZOMBIESTORY
         stageDescription = new Label(defaultDescription, skin);
         stageDescription.setWrap(true);
         stageDescription.setWidth(100);
@@ -145,9 +141,9 @@ public class SelectLevelScreen implements Screen {
         // Creating character descriptions.
         // Changed descriptions to incorporate player abilities
         final String nerdyDescription = "Construct a mech suit for yourself so you can take more hits. Ability: Power Punch (increases attack briefly)";
-        final String sportyDescripton = "Work out so you run faster. Ability: Sprint (run quickly for a short time)";
+        final String sportyDescription = "Work out so you run faster. Ability: Sprint (run quickly for a short time)";
         // Added for third player type
-        final String dramaDescripton = "Borrow a sword prop from the drama department. Ability: Fake Damage (restores 10HP)";
+        final String dramaDescription = "Borrow a sword prop from the drama department. Ability: Fake Damage (restores 10HP)";
         final String defaultCharacterDescription = "Select a type of student from the buttons above.";
         characterDescription = new Label(defaultCharacterDescription,skin);
         characterDescription.setWrap(true);
@@ -175,7 +171,7 @@ public class SelectLevelScreen implements Screen {
 
         stageSelect.center();
 
-        //Change starts: SELECTLEVELUIFIX
+        // Change starts: SELECTLEVELUIFIX
         stageSelect.row();
         stageSelect.add(title).padTop(50).colspan(3);
         
@@ -188,7 +184,7 @@ public class SelectLevelScreen implements Screen {
         stageSelect.add(library).pad(10);
         stageSelect.add(physics).pad(10);
         stageSelect.add(centralHall).pad(10);
-        //Change ends: SELECTLEVELUIFIX
+        // Change ends: SELECTLEVELUIFIX
 
         stageSelect.row();
         stageSelect.add(stageDescription).width(1000f).colspan(3);
@@ -200,7 +196,7 @@ public class SelectLevelScreen implements Screen {
         // Added to support Third Player type
         stageSelect.add(drama).pad(10);
 
-        //Change starts: SELECTLEVELUIFIX
+        // Change starts: SELECTLEVELUIFIX
         // Add character Descriptions
         Table charDescription = new Table();
         charDescription.setFillParent(true);
@@ -210,7 +206,7 @@ public class SelectLevelScreen implements Screen {
         charDescription.center().top().padTop(630);
         charDescription.row();
         charDescription.add(characterDescription).width(900f).colspan(3);
-        //Change ends: SELECTLEVELUIFIX
+        // Change ends: SELECTLEVELUIFIX
 
         // Adding play button at the bottom.
         Table bottomTable = new Table();
@@ -218,10 +214,10 @@ public class SelectLevelScreen implements Screen {
         // bottomTable.setDebug(true); // Adds borders for the table.
         stage.addActor(bottomTable);
 
-        //Change starts: SELECTLEVELUIFIX
+        // Change starts: SELECTLEVELUIFIX
         bottomTable.bottom().right();
         bottomTable.add(play).pad(10);
-        //Change ends: SELECTLEVELUIFIX
+        // Change ends: SELECTLEVELUIFIX
 
         // Adding button logic.
 
@@ -239,9 +235,9 @@ public class SelectLevelScreen implements Screen {
             public void changed(ChangeEvent event, Actor actor) {
             	try {
             		Writer writer = new FileWriter("save.txt", false);
-            		//Change starts: PROGRESSFUNCS
+            		// Change starts: PROGRESSFUNCS
             		writer.write(Integer.toString(parent.getProgress()));
-            		//Change ends: PROGRESSFUNCS
+            		// Change ends: PROGRESSFUNCS
             		writer.close();
             	} catch (IOException e) {
 					e.printStackTrace();
@@ -258,9 +254,9 @@ public class SelectLevelScreen implements Screen {
                 	Scanner scanner = new Scanner(file);
             		int progress = scanner.nextInt();
             		scanner.close();
-            		//Change starts: PROGRESSFUNCS
+            		// Change starts: PROGRESSFUNCS
             		parent.setProgress(progress);
-            		//Change ends: PROGRESSFUNCS
+            		// Change ends: PROGRESSFUNCS
             		// Reloads page to update buttons
                     parent.changeScreen(Zepr.SELECT);
             	} catch (FileNotFoundException e) {
@@ -286,9 +282,10 @@ public class SelectLevelScreen implements Screen {
             }
         });
 
-        //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() <= parent.TOWN) {
-            //Change ends: PROGRESSFUNCS
+        //Change starts: SELECTLEVELSCREENOPTIMIZATION
+        // Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= Zepr.TOWN) {
+            // Change ends: PROGRESSFUNCS
             halifax.setColor(Color.DARK_GRAY);
             halifax.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -302,9 +299,9 @@ public class SelectLevelScreen implements Screen {
             });
         }
 
-        //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() <= parent.HALIFAX) {
-            //Change ends: PROGRESSFUNCS
+        // Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= Zepr.HALIFAX) {
+            // Change ends: PROGRESSFUNCS
             courtyard.setColor(Color.DARK_GRAY);
             courtyard.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -319,9 +316,9 @@ public class SelectLevelScreen implements Screen {
         }
         
         // Added for LibraryLevel
-        //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() <= parent.COURTYARD) {
-            //Change ends: PROGRESSFUNCS
+        // Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= Zepr.COURTYARD) {
+            // Change ends: PROGRESSFUNCS
             library.setColor(Color.DARK_GRAY);
             library.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -336,9 +333,9 @@ public class SelectLevelScreen implements Screen {
         }
         
         // Added for physicsLevel
-        //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() <= parent.LIBRARY) {
-            //Change ends: PROGRESSFUNCS
+        // Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= Zepr.LIBRARY) {
+            // Change ends: PROGRESSFUNCS
             physics.setColor(Color.DARK_GRAY);
             physics.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -353,9 +350,9 @@ public class SelectLevelScreen implements Screen {
         }
         
         // Added for CentralHallLevel
-        //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() <= parent.PHYSICS) {
-            //Change ends: PROGRESSFUNCS
+        // Change starts: PROGRESSFUNCS
+        if (parent.getProgress() <= Zepr.PHYSICS) {
+            // Change ends: PROGRESSFUNCS
             centralHall.setColor(Color.DARK_GRAY);
             centralHall.getLabel().setColor(Color.DARK_GRAY);
         } else {
@@ -368,8 +365,10 @@ public class SelectLevelScreen implements Screen {
                 }
             });
         }
+        // Change ends: SELECTLEVELSCREENOPTIMIZATION
 
-        //Change starts: ZOMBIESTORY
+        // Change starts: ZOMBIESTORY
+        // If the player is a zombie, they won't be able to select a character
         if (parent.isZombie()){
             nerdy.setColor(Color.DARK_GRAY);
             nerdy.getLabel().setColor(Color.DARK_GRAY);
@@ -381,7 +380,12 @@ public class SelectLevelScreen implements Screen {
             player.setType("zombie");
             playerSet = true;
         } else {
-            //Defining actions for the nerdy button.
+            // Defining actions for the nerdy button.
+            /*
+             * Each button now sets the last known character.
+             * This is for when the player becomes a zombie.
+             * It gives the player the appropriate texture and appropriate functionality when cured.
+             */
             nerdy.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
@@ -395,7 +399,7 @@ public class SelectLevelScreen implements Screen {
             sporty.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    characterDescription.setText(sportyDescripton);
+                    characterDescription.setText(sportyDescription);
                     player.setType("sporty");
                     parent.setLastKnownCharacter("sporty");
                     playerSet = true;
@@ -405,14 +409,14 @@ public class SelectLevelScreen implements Screen {
             drama.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    characterDescription.setText(dramaDescripton);
+                    characterDescription.setText(dramaDescription);
                     player.setType("drama");
                     parent.setLastKnownCharacter("drama");
                     playerSet = true;
                 }
             });
         }
-        //Change ends: ZOMBIESTORY
+        // Change ends: ZOMBIESTORY
 
         // Defining actions for the play button.
         play.addListener(new ChangeListener() {

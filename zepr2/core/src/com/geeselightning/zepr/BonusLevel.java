@@ -20,6 +20,11 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class BonusLevel implements Screen {
 
+    // Change starts: BONUSGAMEOPTIMIZATION
+    // Importing the necessary assets for the button textures.
+    private Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+    // Change ends: BONUSGAMEOPTIMIZATION
+
 	protected Zepr parent;
     private Stage stage;
     private Stage updateStage;
@@ -27,14 +32,25 @@ public class BonusLevel implements Screen {
     private int score;
     private int goalScore;
     private Table gameInfo;
+    // Change starts: BONUSGAMEOPTIMIZATION
+    // Change ends: BONUSGAMETOPTIMIZATION
     private BonusGoose goose1;
     private BonusGoose goose2;
     private BonusGoose goose3;
+    // Change starts: BONUSGAMEOPTMIZATION
+    // Targets placed an equidistance apart
     private int target1X = 428;
     private int target2X = 608;
     private int target3X = 788;
-    private int targetY = 720/4 + 210;
+    private int targetY = 390;
+    // Change ends: BONUSGAMEOPTIMIZATION
     private float timer = 60;
+
+    // Change starts: BONUSGAMEOPTIMIZATION
+    // Load in necessary textures
+    private Texture cannonTex = new Texture("cannon.png");
+    private Texture targetTex = new Texture("target.png");
+    // Change ends: BONUSGAMEOPTIMIZATION
 	
 	public BonusLevel(Zepr zepr) {
 		this.parent = zepr;
@@ -52,7 +68,7 @@ public class BonusLevel implements Screen {
         // To render sprites for the game.
         renderer = new SpriteBatch();
         
-        // Geese settings
+        // Geese settings with arbitrary spawn points
         goose1 = new BonusGoose(target1X + 100, targetY - 50);
         goose2 = new BonusGoose(target2X + 100, targetY + 20);
         goose3 = new BonusGoose(target3X + 100, targetY + 100);
@@ -63,8 +79,8 @@ public class BonusLevel implements Screen {
         // Send any input from the user to the stage.
         Gdx.input.setInputProcessor(stage);
 
-        // Importing the necessary assets for the button textures.
-        Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+        // Change starts: BONUSGAMEOPTIMIZATION
+        // Change ends: BONUSGAMEOPTIMIZATION
         
         // Adding buttons to the screen
         TextButton back = new TextButton("Back", skin);
@@ -191,7 +207,9 @@ public class BonusLevel implements Screen {
         renderer.begin();
         
         // Behind geese
+        // Change starts: BONUSGAMEOPTIMIZATION
         renderer.draw(new Texture("gooseHuntBackground.png"), 280, 180);
+        // Change ends: BONUSGAMEOPTIMIZATION
         
         // Geese
         goose1.draw(renderer);
@@ -199,17 +217,19 @@ public class BonusLevel implements Screen {
         goose3.draw(renderer);
         
         // In front of geese
-        renderer.draw(new Texture("cannon.png"), target1X-32, 720/4+10);
-        renderer.draw(new Texture("cannon.png"), target2X-32, 720/4+10);
-        renderer.draw(new Texture("cannon.png"), target3X-32, 720/4 + 10);
-        renderer.draw(new Texture("target.png"), target1X, targetY);
-        renderer.draw(new Texture("target.png"), target2X, targetY);
-        renderer.draw(new Texture("target.png"), target3X, targetY);
+        // Change starts: BONUSGAMEOPTIMIZATION
+        renderer.draw(cannonTex, target1X-32, 720/4+10);
+        renderer.draw(cannonTex, target2X-32, 720/4+10);
+        renderer.draw(cannonTex, target3X-32, 720/4 + 10);
+        renderer.draw(targetTex, target1X, targetY);
+        renderer.draw(targetTex, target2X, targetY);
+        renderer.draw(targetTex, target3X, targetY);
+        // Change ends: BONUSGAMEOPTIMIZATION
         
         renderer.end();
 
-        // Importing the necessary assets for the button textures.
-        Skin skin = new Skin(Gdx.files.internal("skin/pixthulhu-ui.json"));
+        // Change starts: BONUSGAMEOPTIMIZATION
+        // Change ends: BONUSGAMEOPTIMIZATION
         
         // Creating game labels for gameInfo
         String scoreString = ("Score: " + score);
@@ -239,16 +259,31 @@ public class BonusLevel implements Screen {
         this.updateStage.draw();
         this.stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         this.stage.draw();
-        
+
+        // Change starts: BONUSGAMEOPTIMIZATION
+        /**
+         * Game over conditions:
+         * score >= goalScore player wins, BONUSGAMEPOINTS added to overall score, return to selectLevelScreen
+         * else player returned to the selectLevelScreen
+         */
         if (score >= goalScore) {
-            //Change starts: ADDMINIGAMEPOINTS
+            // Change ends: BONUSGAMEOPTIMIZATION
+            //Change starts: ADDBONUSGAMEPOINTS
             parent.addPoints(Constant.BONUSGAMEPOINTS);
-            //Change ends: ADDMINIGAMEPOINTS
+            // Change ends: ADDBONUSGAMEPOINTS
+            // Change starts: CURESPAWNCONDITION
             parent.addCureProg(Constant.BONUSGAMEPOINTS);
+            // Change ends: CURESPAWNCONDITION
             parent.setScreen(new TextScreen(parent, "Bonus game completed."));
+            // Change starts: BONUSGAMEOPTIMIZATION
+            dispose();
+            // Change ends: BONUSGAMEOPTIMIZATION
         }
         if (timer <= 0) {
         	parent.setScreen(new TextScreen(parent, "Bonus game failed."));
+        	// Change starts: BONUSGAMEOPTIMIZATION
+            dispose();
+        	// Change ends: BONUSGAMEOPTIMIZATION
         }
 	}
 
@@ -267,13 +302,19 @@ public class BonusLevel implements Screen {
 	@Override
 	public void hide() {
 		this.dispose();
-		
 	}
 
 	@Override
 	public void dispose() {
-		stage.clear();
-		stage.dispose();
+	    // Change starts: BONUSGAMEOPTIMIZATION
+	    skin.dispose();
+		if (stage != null){
+		    stage.dispose();
+		    stage = null;
+        }
+        cannonTex.dispose();
+        targetTex.dispose();
+        // Change ends: BONUSGAMEOPTIMIZATION
 		goose1.dispose();
 		goose2.dispose();
 		goose3.dispose();

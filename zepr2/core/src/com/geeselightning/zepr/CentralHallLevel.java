@@ -1,5 +1,5 @@
-/**
- * Added by Shaun of the Devs to meet the requirement of different 6 locations
+/*
+  Added by Shaun of the Devs to meet the requirement of different 6 locations
  */
 package com.geeselightning.zepr;
 
@@ -20,6 +20,7 @@ public class CentralHallLevel extends Level {
     );
 
     // Defining the number of zombies to be spawned for each wave
+    // Final wave of 150 indicates boss zombie
     private static final int[] waves = new int[]{23, 27, 30, 150};
 
     public CentralHallLevel(Zepr zepr) {
@@ -32,6 +33,7 @@ public class CentralHallLevel extends Level {
         if (parent.getProgress() == Zepr.CENTRALHALL) {
             parent.incProgress();
         }
+        // Change ends: PROGRESSFUNCS
         // The stage is being replayed
     }
 }

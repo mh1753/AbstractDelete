@@ -26,7 +26,7 @@ public class TownLevel extends Level {
     @Override
     public void complete() {
         //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() == parent.TOWN) {
+        if (parent.getProgress() == Zepr.TOWN) {
             parent.incProgress();
         }
         //Change ends: PROGRESSFUNCS
