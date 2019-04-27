@@ -24,21 +24,25 @@ public class Zombie extends Character {
         // Change starts: ZOMBIESTORYENEMIES
         this.parent = parent;
         // If the player is a zombie, set textures to that of the nerdy class
-        if (parent.isZombie()){
-            this.humanMain = new Texture("player01.png");
-            this.humanAttack = new Texture("player01_attack.png");
+        if (parent != null){
+            if (parent.isZombie()) {
+                this.humanMain = new Texture("player01.png");
+                this.humanAttack = new Texture("player01_attack.png");
+            }
         }
         // Change ends: ZOMBIESTORYENEMIES
         // Added RNG to vary zombie speeds
         Random rand = new Random();
         // Change starts: SAFEAREADIFFICULTYRISE
         // After the safe area, increase difficulty by increasing health and speed
-        if (parent.getProgress() > Zepr.LIBRARY){
-            this.speed = Constant.ZOMBIESPEED * Constant.SAFEAREAMULT + rand.nextInt(20);
-            this.maxHealth = (int) (Constant.ZOMBIEMAXHP * Constant.SAFEAREAMULT);
-        } else {
-            this.speed = Constant.ZOMBIESPEED + rand.nextInt(20);
-            this.maxHealth = Constant.ZOMBIEMAXHP;
+        if(parent != null) {
+            if (parent.getProgress() > Zepr.LIBRARY) {
+                this.speed = Constant.ZOMBIESPEED * Constant.SAFEAREAMULT + rand.nextInt(20);
+                this.maxHealth = (int) (Constant.ZOMBIEMAXHP * Constant.SAFEAREAMULT);
+            } else {
+                this.speed = Constant.ZOMBIESPEED + rand.nextInt(20);
+                this.maxHealth = Constant.ZOMBIEMAXHP;
+            }
         }
         // Change ends: SAFEAREADIFFICULTYRISE
         this.health = maxHealth;
@@ -52,13 +56,17 @@ public class Zombie extends Character {
             // Change ends: ZOMBIEOPTIMIZATION
             // Change ends: CUREFFECT
             // Change starts: ZOMBIEAVOIDTIMERSET
-            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            if(currentLevel != null) {
+                currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            }
             // Change ends: ZOMBIEAVOIDTIMERSET
             player.takeDamage(attackDamage);
             // Change starts: ZOMBIESTORYENEMIES
             // If the player is a zombie, perform human animations
-            if (parent.isZombie()) {
-                this.setTexture(humanAttack);
+            if(parent != null) {
+                if (parent.isZombie()) {
+                    this.setTexture(humanAttack);
+                }
             }
             // Change ends: ZOMBIESTORYENEMIES
             hitRefresh = 0;
