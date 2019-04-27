@@ -23,6 +23,7 @@ public class PowerUpCure extends PowerUp{
     public void activate(){
         // Change starts: CUREEFFECT
         super.activate();
+        parent.addCureProg(-10000);
         // Change starts: CUREZOMBIESTORY
         // If the player is a zombie, restores them to human form
         if (parent.isZombie()){

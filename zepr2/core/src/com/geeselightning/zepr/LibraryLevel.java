@@ -33,7 +33,7 @@ public class LibraryLevel extends Level {
     public void complete() {
         // Update progress
         //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() == parent.LIBRARY) {
+        if (parent.getProgress() == Zepr.LIBRARY) {
             parent.incProgress();
         }
         //Change ends: PROGRESSFUNCS

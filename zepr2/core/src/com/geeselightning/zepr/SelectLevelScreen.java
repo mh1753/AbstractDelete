@@ -377,21 +377,27 @@ public class SelectLevelScreen implements Screen {
             drama.setColor(Color.DARK_GRAY);
             drama.getLabel().setColor(Color.DARK_GRAY);
             characterDescription.setText("Brains");
+            // Change starts: ZOMBIESTORYPLAYER
             player.setType("zombie");
+            // Change ends: ZOMBIESTORYPLAYER
             playerSet = true;
-        } else {
-            // Defining actions for the nerdy button.
+        }
+        // Change ends: ZOMBIESTORY
+        else {
             /*
              * Each button now sets the last known character.
              * This is for when the player becomes a zombie.
              * It gives the player the appropriate texture and appropriate functionality when cured.
              */
+            // Defining actions for the nerdy button.
             nerdy.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     characterDescription.setText(nerdyDescription);
                     player.setType("nerdy");
+                    // Change starts: ZOMBIESTORYPLAYER
                     parent.setLastKnownCharacter("nerdy");
+                    // Change ends: ZOMBIESTORYPLAYER
                     playerSet = true;
                 }
             });
@@ -401,7 +407,9 @@ public class SelectLevelScreen implements Screen {
                 public void changed(ChangeEvent event, Actor actor) {
                     characterDescription.setText(sportyDescription);
                     player.setType("sporty");
+                    // Change starts: ZOMBIESTORYPLAYER
                     parent.setLastKnownCharacter("sporty");
+                    // Change ends: ZOMBIESTORYPLAYER
                     playerSet = true;
                 }
             });
@@ -411,12 +419,13 @@ public class SelectLevelScreen implements Screen {
                 public void changed(ChangeEvent event, Actor actor) {
                     characterDescription.setText(dramaDescription);
                     player.setType("drama");
+                    // Change starts: ZOMBIESTORYPLAYER
                     parent.setLastKnownCharacter("drama");
+                    // Change ends: ZOMBIESTORYPLAYER
                     playerSet = true;
                 }
             });
         }
-        // Change ends: ZOMBIESTORY
 
         // Defining actions for the play button.
         play.addListener(new ChangeListener() {

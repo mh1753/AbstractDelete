@@ -19,9 +19,9 @@ public class Zepr extends Game {
 	private float cureProgress = 0;
 	// Change ends: CURESPAWNCONDITION
 
-	// Change starts: ZOMBIESTORY
+	// Change starts: ZOMBIESTORYBOOL
 	private boolean isZombie = false;
-	// Change ends: ZOMBIESTORY
+	// Change ends: ZOMBIESTORYBOOL
 
 	// Change starts: CUREZOMBIESTORY
 	private String lastKnownCharacter;
@@ -115,15 +115,17 @@ public class Zepr extends Game {
 		}
 	}
 
-	// Change starts: ZOMBIESTORY
+	// Change starts: ZOMBIESTORYCHECK
 	public boolean isZombie(){
 		return isZombie;
 	}
+	// Change ends: ZOMBIESTORYCHECK
 
+	// Change starts: ZOMBIESTORYSET
 	public void setZombie(boolean b){
 		isZombie = b;
 	}
-	// Change ends: ZOMBIESTORY
+	// Change ends: ZOMBIESTORYSET
 
 	// Change starts: PROGRESSFUNCS
 	public int getProgress(){

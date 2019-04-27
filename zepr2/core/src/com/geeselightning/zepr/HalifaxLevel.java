@@ -26,7 +26,7 @@ public class HalifaxLevel extends Level {
     @Override
     public void complete() {
         //Change starts: PROGRESSFUNCS
-        if (parent.getProgress() == parent.HALIFAX) {
+        if (parent.getProgress() == Zepr.HALIFAX) {
             parent.incProgress();
         }
         //Change ends: PROGRESSFUNCS
