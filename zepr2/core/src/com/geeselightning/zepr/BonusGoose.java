@@ -10,7 +10,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 public class BonusGoose extends Sprite{
 	
 	private Texture leftOne = new Texture("gooseLeft.png");
-	private Random rand;
+	// Change starts: BONUSGAMEOPTIMIZATION
+	private Random rand = new Random();
+	// Change ends: BONUSGAMEOPTIMIZATION
 	private int velocityX = 0;
 	private int velocityY = 0;
 	private int speed = 60;
@@ -18,11 +20,16 @@ public class BonusGoose extends Sprite{
 	private int direction = 0;
 	private int directionCopy = 0;
 	private boolean startedMovement = false;
-	
-	
+
+
+	/**
+	 * Constructor for the geese in the bonus game
+	 *
+	 * @param x the initial horizontal position
+	 * @param y the initial vertical position
+	 */
 	public BonusGoose(int x, int y) {
 		super(new Sprite(new Texture("gooseLeft.png")));
-		rand = new Random();
         setX(x);
         setY(y);
 	}
@@ -33,26 +40,38 @@ public class BonusGoose extends Sprite{
         update(Gdx.graphics.getDeltaTime());
         super.draw(batch);
 	}
-	
+
+	/**
+	 * When the goose is hit:
+	 * randomly chooses a position in bounds, and places the goose there
+	 */
 	public void respawn() {
 		int randX = rand.nextInt(925);
 		int randY = rand.nextInt(600);
 		setX(randX);
         setY(randY);
 	}
-	
+
+
+	/**
+	 * Dictates actions of the goose
+	 *
+	 * @param delta change in time
+	 */
 	public void update(float delta) {
-        // Update x, y position of character.
+        // Update x, y position of goose.
         setX(getX() + velocityX * delta);
         setY(getY() + velocityY * delta);
-		
+
+        // Start goose movement
         if (!startedMovement) {
         	velocityX = -speed;
 		    velocityY = speed;
 		    startedMovement = true;
         }
 
-        //Change starts: BONUSGOOSEDIRECTIONFIX
+        // Change starts: BONUSGOOSEDIRECTIONFIX
+		// If the goose hits the boundary, reverse the direction ob the respective axis
 		if(getX() >= 925) {
 			setX(925);
 			velocityX = -velocityX;
@@ -68,13 +87,10 @@ public class BonusGoose extends Sprite{
 			velocityY = -velocityY;
 			setY(250);
 		}
-		//Change ends: BONUSGOOSEDIRECTIONFIX
+		// Change ends: BONUSGOOSEDIRECTIONFIX
 		
         // Increments timer
 		timer += delta;
-		
-		// Used to choose a random direction
-		Random rand = new Random();
 		
 		// Changes direction and increases speed every 4 seconds
 		if (timer > 4) {
@@ -89,49 +105,50 @@ public class BonusGoose extends Sprite{
 			directionCopy = direction;
 
 			switch (direction) {
-			case(0): // NW
-				velocityX = -speed;
-			    velocityY = speed;
-				break;
-			case(1): // N
+				case(1): // N
 				velocityX = 0;
 		    	velocityY = speed;
 				break;
-			case(2): // NE
+				case(2): // NE
 				velocityX = speed;
 	    		velocityY = speed;
 	    		break;
-			case(3): // E
+	    		case(3): // E
 				velocityX = +speed;
 	    		velocityY = 0;
 	    		break;
-			case(4): // SE
+	    		case(4): // SE
 				velocityX = speed;
 				velocityY = -speed;
 				break;
-			case(5): // S
+				case(5): // S
 				velocityX = 0;
 				velocityY = -speed;
 				break;
-			case(6): // SW
+				case(6): // SW
 				velocityX = -speed;
 				velocityY = -speed;
 				break;
-			case(7): // W
+				case(7): // W
 				velocityX = -speed;
 				velocityY = 0;
 				break;
-			default:
+				default: // NW
 				velocityX = -speed;
 			    velocityY = speed;
 				break;
 			}
 		} 
 	}
-		
-		
-	
+
+
+	/**
+	 * Dispose of any textures
+	 */
 	public void dispose() {
 		leftOne.dispose();
+		// Change starts: BONUSGAMEOPTIMIZATION
+		this.getTexture().dispose();
+		// Change ends: BONUSGAMEOPTIMIZATION
 	}
 }

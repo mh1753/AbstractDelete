@@ -17,6 +17,7 @@ public class CourtyardLevel extends Level {
     );
 
     // Defining the number of zombies to be spawned for each wave
+    // Final wave of 100 indicates boss zombie
     private static final int[] waves = new int[]{7, 12, 17, 100};
 
     public CourtyardLevel(Zepr zepr) {

@@ -131,7 +131,9 @@ public class Level implements Screen {
      */
     public ArrayList<Character> getCharacters() {
 
+        // Change starts: LEVELCLASSOPTIMIZATION
         ArrayList<Character> characters = new ArrayList<Character>(aliveZombies);
+        // Change starts: LEVELCLASSOPTIMIZATION
 
         characters.add(player);
 
@@ -159,8 +161,8 @@ public class Level implements Screen {
         } else if (amount == 150) {
         	Character boss = (new BossCentralHall(new Sprite(new Texture("bossCentralHall.png")),
                     spawnPoints.get(1), this, parent));
-        	zombiesRemaining = 16;
-        	amount = 15;
+        	zombiesRemaining = 3;
+        	amount = 2;
             aliveZombies.add(boss);
         }
         
@@ -169,7 +171,11 @@ public class Level implements Screen {
         	
         	// Added different zombies to spawn
         	// Used to determine which zombie to spawn
-            int random = (int )(Math.random() * 10 + 1);
+            int random = (int)(Math.random() * 10 + 1);
+            // Change starts: ZOMBIESTORYENEMIES
+            /* If the player is a zombie, load in zombies with the human version of their
+             * respective classes, else load them in as normal.
+             */
         	if (5 < random && random < 9) {
         	    if (parent.isZombie()){
                     zombie = (new ZombieFast(new Sprite(new Texture("player02.png")),
@@ -195,11 +201,14 @@ public class Level implements Screen {
                             spawnPoints.get(i % spawnPoints.size()), this, parent));
                 }
         	}
+        	// Change ends: ZOMBIESTORYENEMIES
 
             // Check there isn't already a zombie there, or they will be stuck
             boolean collides = false;
             for (Character otherZombie : aliveZombies) {
+                // Change starts: COLLISIONUPDATE
                 if (zombie.collidesWith(otherZombie, false)) {
+                    // Change ends: COLLISIONUPDATE
                     collides = true;
                     // Decrement counter as it didn't spawn.
                     notSpawned++;
@@ -214,10 +223,11 @@ public class Level implements Screen {
         return notSpawned;
     }
 
+    // Change starts: MAPOBSTACLES
     /**
-     * Used for collision detection between the player and map
+     * Checks if the character is overlaying an obstacle and whether it is resolved
      *
-     * @return boolean if the point (x, y) is in a blocked tile
+     * @param c the character to test for collision
      */
     public void isBlocked(Character c) {
         for(Rectangle r : obstacles){
@@ -228,6 +238,7 @@ public class Level implements Screen {
             }
         }
     }
+    // Change ends: MAPOBSTACLES
 
 
     /**
@@ -252,14 +263,14 @@ public class Level implements Screen {
         // Loads the testmap.tmx file as map.
         TmxMapLoader loader = new TmxMapLoader();
         map = loader.load(mapLocation);
-        //Change starts : LOADCOLLISIONOBSTACLES
+        // Change starts : LOADCOLLISIONOBSTACLES
         MapLayer collisionLayer = map.getLayers().get("collisionLayer");
         MapObjects objs = collisionLayer.getObjects();
         for(RectangleMapObject o : objs.getByType(RectangleMapObject.class)) {
             obstacles.add(o.getRectangle());
         }
         System.out.println(obstacles.isEmpty());
-        //Change ends: LOADCOLLISIONOBSTACLES
+        // Change ends: LOADCOLLISIONOBSTACLES
 
         // renderer renders the .tmx map as an orthogonal (top-down) map.
         renderer = new OrthogonalTiledMapRenderer(map);
@@ -326,14 +337,14 @@ public class Level implements Screen {
 
             table.clear();
 
-            //Change starts: UPDATEAVOIDTIMER
+            // Change starts: UPDATEAVOIDTIMER
             if(avoidTimer > 0) {
                 avoidTimer -= delta;
             } else{
                 parent.addPoints(Constant.AVOIDPOINTS * delta);
                 parent.addCureProg(Constant.AVOIDPOINTS * delta);
             }
-            //Change ends: UPDATEAVOIDTIMER
+            // Change ends: UPDATEAVOIDTIMER
 
             // Try to spawn all zombies in the stage and update zombiesToSpawn with the amount that failed to spawn
             zombiesToSpawn = spawnZombies(zombiesToSpawn, zombieSpawnPoints);
@@ -350,8 +361,10 @@ public class Level implements Screen {
             	renderer.getBatch().begin();
             }
 
+            // Change starts: LEVELCLASSOPTIMISATION
             assert renderer != null;
             player.draw(renderer.getBatch());
+            // Change ends: LEVELCLASSOPTIMISATION
 
             // Resolve all possible attacks
             if (renderer != null) {
@@ -416,9 +429,9 @@ public class Level implements Screen {
             // Added for player abilities
             AbilityCooldownLabel.setText(abilityCooldownString);
             AbilityDurationLabel.setText(abilityDurationString);
-            //Change starts: POINTCOUNTERSET
+            // Change starts: POINTCOUNTERSET
             pointCounterLabel.setText("Points: " + (parent.getPoints()));
-            //Change ends: POINTCOUNTERSET
+            // Change ends: POINTCOUNTERSET
 
             table.top().left();
             table.add(progressLabel).pad(10);
@@ -426,19 +439,25 @@ public class Level implements Screen {
             table.add(healthLabel).pad(10).left();
             table.row();
             // Added for player abilities
+            // Change starts: ZOMBIESTORY
+            // Only show ability cooldown if the player is not a zombie
             if (!parent.isZombie()) {
                 table.add(AbilityCooldownLabel).pad(10).left();
             }
+            // Change ends: ZOMBIESTORY
             table.row();
+            // Change starts: ZOMBIESTORY
+            // Only show ability duration if the player is not a zombie
             if (!parent.isZombie()) {
                 table.add(AbilityDurationLabel).pad(10).left();
             }
+            // Change ends: ZOMBIESTORY
             table.row();
             table.add(powerupLabel).pad(10).left();
-            //Change starts: POINTCOUNTERDISPLAY
+            // Change starts: POINTCOUNTERDISPLAY
             table.row();
             table.add(pointCounterLabel).pad(10).left();
-            //Change ends: POINTCOUNTERDISPLAY
+            // Change ends: POINTCOUNTERDISPLAY
             // Added to prevent the game from crashing, Stops the stage from being used after it is disposed
             if (stage != null) {
             	stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
@@ -446,7 +465,7 @@ public class Level implements Screen {
             }
             
             if (zombiesRemaining == 0) {
-                //Change starts: SAFEAREAENABLE
+                // Change starts: SAFEAREAENABLE
                 if(parent.currentScreen == Zepr.LIBRARY){
                     safeAreaTimer -= delta;
                     if(safeAreaTimer <= 0){
@@ -454,47 +473,46 @@ public class Level implements Screen {
                         safeAreaTimer = 5;
                     }
                 }
+                // Change ends: SAFEAREAENABLE
                 else {
                     // Spawn a power up and the end of a wave, if there isn't already a powerUp on the level
                     // Moved power up logic so a power up always spawns at the end of the wave
                     if (currentPowerUp == null) {
-                        //Change starts: CURE
+                        // Change starts: CURESPAWNCONDITION
                         if (parent.getCureProg() >= 10000) {
                             currentPowerUp = new PowerUpCure(this, parent);
                             parent.addCureProg(-10000);
-                        } else {
-                            {
-                                int random = (int) (Math.random() * 5 + 1);
-                                //Change ends: CURE
-                                if (random == 1) {
-                                    currentPowerUp = new PowerUpHeal(this);
-                                } else if (random == 2) {
+                        }
+                        // Change ends: CURESPAWNCONDITION
+                        else {
+                            int random = (int) (Math.random() * 5);
+                            if (random == 1) {
+                                currentPowerUp = new PowerUpHeal(this);
+                            } else if (random == 2) {
                                     currentPowerUp = new PowerUpSpeed(this);
-                                } else if (random == 3) {
-                                    currentPowerUp = new PowerUpImmunity(this);
-                                } else if (random == 4) {
-                                    currentPowerUp = new PowerUpInstaKill(this);
-                                } else {
-                                    // added for extra power ups
-                                    currentPowerUp = new PowerUpNoCooldowns(this);
-                                }
+                            } else if (random == 3) {
+                                currentPowerUp = new PowerUpImmunity(this);
+                            } else if (random == 4) {
+                                currentPowerUp = new PowerUpInstaKill(this);
+                            } else {
+                                // added for extra power ups
+                                currentPowerUp = new PowerUpNoCooldowns(this);
                             }
                         }
                     }
                     // Wave complete, increment wave number
                     currentWave++;
                 }
-                //Change ends: SAFEAREAENABLE
                 if (currentWave > waves.length) {
                     // Level completed, back to select screen and complete stage.
                     // If stage is being replayed complete() will stop progress being incremented.
                     isPaused = true;
                     //Change starts: SAFEPOINTGAIN
-                    //Change starts: PROGRESSFUNCS
-                    if(parent.getProgress() == Zepr.LIBRARY){
-                        //Change ends: PROGRESSFUNCS
+                    if(this instanceof LibraryLevel){
                         parent.addPoints(Constant.SAFEZONEPOINTS);
+                        // Change starts: CURESPAWNCONDITION
                         parent.addCureProg(Constant.SAFEZONEPOINTS);
+                        // Change ends: CURESPAWNCONDITION
                     }
                     //Change ends: SAFEPOINTGAIN
                     complete();

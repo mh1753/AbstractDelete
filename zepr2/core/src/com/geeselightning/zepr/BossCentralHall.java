@@ -1,5 +1,6 @@
-/**
- * Added by Shaun of the Devs to meet the requirement of Bosses
+/*
+  Added by Shaun of the Devs to meet the requirement of Bosses
+  Edited by Abstract Delete for functionality
  */
 package com.geeselightning.zepr;
 
@@ -10,17 +11,20 @@ import com.badlogic.gdx.math.Vector2;
 public class BossCentralHall extends Character {
 
     private Player player = Player.getInstance();
-    int attackDamage = Constant.ZOMBIEDMG;
-    public int hitRange = Constant.ZOMBIERANGE;
-    public final float hitCooldown = Constant.ZOMBIEHITCOOLDOWN;
+    // Change starts: BOSSCLASSOPTIMIZATION
+    // Change ends: BOSSCLASSOPTIMIZATION
     private int zombiesToSpawn = 0;
     private boolean spawningZombies = false;
     private float spawnTimer = 0;
+    // Change starts: ZOMBIESTORYENEMIES
     private Zepr parent;
+    // Change starts: ZOMBIESTORYENEMIES
 
     public BossCentralHall(Sprite sprite, Vector2 zombieSpawn, Level currentLevel, Zepr parent) {
         super(sprite, zombieSpawn, currentLevel);
+        // Change starts: ZOMBIESTORYENEMIES
         this.parent = parent;
+        // Change ends: ZOMBIESTORYENEMIES
         this.speed = Constant.BOSSCENTRALHALLSPEED;
         this.maxHealth = Constant.BOSSCENTRALHALLMAXHP;
         this.health = maxHealth;
@@ -28,8 +32,10 @@ public class BossCentralHall extends Character {
 
     @Override
     public void attack(Character player, float delta) {
-        if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown) {
-            player.takeDamage(attackDamage);
+        // Change starts: BOSSCLASSOPTIMIZATION
+        if (canHitGlobal(player, Constant.ZOMBIERANGE) && hitRefresh > Constant.ZOMBIEHITCOOLDOWN) {
+            player.takeDamage(Constant.ZOMBIEDMG);
+            // Change ends: BOSSCLASSOPTIMIZATION
             hitRefresh = 0;
         } else {
             hitRefresh += delta;
@@ -40,10 +46,10 @@ public class BossCentralHall extends Character {
     public void update(float delta) {
         //move according to velocity
         super.update(delta);
-        
+
         // Spawns flamming zombies near the boss when there are less than 3 zombies on the map
-        // spawns every 10 seconds for 5 seconds near the boss if there are no zombies in the way
-        if (spawnTimer <= 15) {
+        // every 10 seconds, spawns for 2 seconds near the boss if there are no zombies in the way
+        if (spawnTimer <= 12) {
         	spawnTimer += delta;
         } else {
         	spawnTimer = 0;
@@ -53,13 +59,16 @@ public class BossCentralHall extends Character {
         	zombiesToSpawn++;
         }
         
-        if (spawnTimer <= 5 && zombiesToSpawn > 0) {
+        if (spawnTimer <= 2 && zombiesToSpawn > 0) {
         	spawningZombies = true;
-            int random = (int )(Math.random() * 40 + 1);
-        	if (random > 20) {
-        		random = -(random - 20);
+            // Change starts: BOSSFUNCTIONALITYFIX
+            int random = (int)(Math.random() * 128 + 1);
+        	if (random > 64) {
+        		random = -(random - 64);
         	}
+            // Change ends: BOSSFUNCTIONALITYFIX
         	Character zombie;
+        	// Change starts: ZOMBIESTORYENEMIES
         	if (currentLevel.parent.isZombie()){
                 zombie = (new FlamingZombie(new Sprite(new Texture("player03.png")),
                         new Vector2(getX() + random, getY() + random), currentLevel, parent));
@@ -67,6 +76,7 @@ public class BossCentralHall extends Character {
                 zombie = (new FlamingZombie(new Sprite(new Texture("FlamingZombie.png")),
                         new Vector2(getX() + random, getY() + random), currentLevel, parent));
             }
+        	// Change ends: ZOMBIESTORYENEMIES
             boolean collides = false;
             for (Character otherZombie : currentLevel.aliveZombies) {
                 if (zombie.collidesWith(otherZombie, false)) {
@@ -75,21 +85,29 @@ public class BossCentralHall extends Character {
             }
             if (!collides) {
             	currentLevel.aliveZombies.add(zombie);
-            	currentLevel.zombiesRemaining++;
+                currentLevel.zombiesRemaining++;
             	zombiesToSpawn--;
             }
         }
         
-        if (spawningZombies && spawnTimer > 5) {
+        if (spawningZombies && spawnTimer > 2) {
         	spawningZombies = false;
         }
 
-        // update velocity to move towards player
+        // Change starts: CUREEFFECT
+        /* If cure powerup is active:
+         * move away and face away from the player, else:
+         * move to and face towards the player
+         */
         // Vector2.scl scales the vector
-        velocity = getDirNormVector(player.getCenter()).scl(speed);
-
-        // update direction to face the player
-        direction = getDirectionTo(player.getCenter());
+        if (this.isRunning()){
+            velocity = getDirNormVector(player.getCenter()).rotate(180).scl(speed);
+            direction = getDirectionTo(player.getCenter()) + Math.PI;
+        } else {
+            velocity = getDirNormVector(player.getCenter()).scl(speed);
+            direction = getDirectionTo(player.getCenter());
+        }
+        // Change ends: CUREEFFECT
 
         if (health <= 0) {
             currentLevel.zombiesRemaining--;
@@ -98,8 +116,10 @@ public class BossCentralHall extends Character {
         }
     }
 
+    // Change starts: BOSSFUNCTIONALITYFIX
     @Override
     public void takeDamage(int dmg){
         health -= dmg;
     }
+    // Change ends: BOSSFUNCTIONALITYFIX
 }
