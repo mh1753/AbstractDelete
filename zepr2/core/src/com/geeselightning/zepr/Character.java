@@ -217,8 +217,9 @@ public class Character extends Sprite {
 
         setX(getX() - (0.1f * velocity.x));
         setY(getY() - (0.1f * velocity.y));
-
-        currentLevel.isBlocked(this);
+        if(currentLevel != null) {
+            currentLevel.isBlocked(this);
+        }
 
     }
     //Change ends; KNOCKBACK
@@ -239,6 +240,6 @@ public class Character extends Sprite {
 
     // Decreases health by value of dmg
     public void takeDamage(int dmg){
-        //Implemented in subclasses
+        health -= dmg;
     }
 }

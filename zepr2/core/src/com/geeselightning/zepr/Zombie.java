@@ -19,19 +19,23 @@ public class Zombie extends Character {
     public Zombie(Sprite sprite, Vector2 zombieSpawn, Level currentLevel, Zepr parent) {
         super(sprite, zombieSpawn, currentLevel);
         this.parent = parent;
-        if (parent.isZombie()){
-            this.humanMain = new Texture("player01.png");
-            this.humanAttack = new Texture("player01_attack.png");
+        if (parent != null){
+            if (parent.isZombie()) {
+                this.humanMain = new Texture("player01.png");
+                this.humanAttack = new Texture("player01_attack.png");
+            }
         }
         // Added RNG to vary zombie speeds
         Random rand = new Random();
         // Change starts: SAFEAREADIFFICULTYRISE
-        if (parent.getProgress() > Zepr.LIBRARY){
-            this.speed = Constant.ZOMBIESPEED * Constant.SAFEAREAMULT + rand.nextInt(20);
-            this.maxHealth = (int) (Constant.ZOMBIEMAXHP * Constant.SAFEAREAMULT);
-        } else {
-            this.speed = Constant.ZOMBIESPEED + rand.nextInt(20);
-            this.maxHealth = Constant.ZOMBIEMAXHP;
+        if(parent != null) {
+            if (parent.getProgress() > Zepr.LIBRARY) {
+                this.speed = Constant.ZOMBIESPEED * Constant.SAFEAREAMULT + rand.nextInt(20);
+                this.maxHealth = (int) (Constant.ZOMBIEMAXHP * Constant.SAFEAREAMULT);
+            } else {
+                this.speed = Constant.ZOMBIESPEED + rand.nextInt(20);
+                this.maxHealth = Constant.ZOMBIEMAXHP;
+            }
         }
         this.health = maxHealth;
         // Change ends: SAFEAREADIFFICULTYRISE
@@ -41,11 +45,15 @@ public class Zombie extends Character {
     public void attack(Character player, float delta) {
         if (canHitGlobal(player, hitRange) && hitRefresh > hitCooldown && !isRunning()) {
             //Change starts: ZOMBIEAVOIDTIMERSET
-            currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            if(currentLevel != null) {
+                currentLevel.avoidTimer = Constant.AVOIDTIMER;
+            }
             //Change ends: ZOMBIEAVOIDTIMERSET
             player.takeDamage(attackDamage);
-            if (parent.isZombie()) {
-                this.setTexture(humanAttack);
+            if(parent != null) {
+                if (parent.isZombie()) {
+                    this.setTexture(humanAttack);
+                }
             }
             hitRefresh = 0;
         } else {

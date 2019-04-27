@@ -20,7 +20,7 @@ public class ZombieTest {
     public void zombieDoesNoDamageToPlayerWhenAtMaxRange() {
         player.respawn(Constant.ORIGIN, null);
 
-        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y - Constant.ZOMBIERANGE), null);
+        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y - Constant.ZOMBIERANGE), null, null);
         double originalHealth = player.getHealth();
         zombie.attack(player, 0);
 
@@ -33,7 +33,7 @@ public class ZombieTest {
     public void zombieDoesDamageToPlayerWhenInRange() {
         player.respawn(Constant.ORIGIN, null);
 
-        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y - Constant.ZOMBIERANGE + 5), null);
+        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y - Constant.ZOMBIERANGE + 5), null, null);
         double originalHealth = player.getHealth();
         zombie.attack(player, 0);
 
@@ -47,7 +47,7 @@ public class ZombieTest {
     public void zombieDoesNoDamageToPlayerOutOfRange() {
         player.respawn(Constant.ORIGIN, null);
 
-        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y - 100), null);
+        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y - 100), null, null);
         double originalHealth = player.getHealth();
         zombie.attack(player, 0);
 
@@ -60,7 +60,7 @@ public class ZombieTest {
     public void zombieCannotAttackBeforeCooldownComplete() {
         player.respawn(Constant.ORIGIN, null);
 
-        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y ), null);
+        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y ), null, null);
         double originalHealth = player.getHealth();
         zombie.attack(player, 0);
         zombie.attack(player, 0);
@@ -74,7 +74,7 @@ public class ZombieTest {
     public void zombieCanAttackAfterCooldownComplete() {
         player.respawn(Constant.ORIGIN, null);
 
-        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y ), null);
+        Zombie zombie = new Zombie(new Sprite(), new Vector2(player.getCenter().x, player.getCenter().y ), null, null);
         double originalHealth = player.getHealth();
         zombie.attack(player, 0);
         // zombie will not attack this go so has to be called a third time
