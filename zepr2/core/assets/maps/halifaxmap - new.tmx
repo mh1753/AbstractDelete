@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="25">
+<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="45" height="45" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="34">
  <tileset firstgid="1" source="dungeon tileset calciumtrice.tsx"/>
  <tileset firstgid="1051" source="interior.tsx"/>
  <layer id="1" name="Tile Layer 1" width="45" height="45">
@@ -120,11 +120,11 @@
   <object id="20" x="400" y="496" width="96" height="64"/>
   <object id="21" x="400" y="288" width="96" height="64"/>
   <object id="22" x="675.273" y="512.313" width="28.7273" height="191.688"/>
-  <object id="23" x="15.0909" y="661.455">
-   <polygon points="0,0 18,-0.727273 17.8182,-10.9091 46.9091,-10.9091 46.9091,-0.727273 82.7273,0 83.0909,-10.7273 111.636,-10.7273 111.455,0.545455 146.364,0.363636 146.364,-10.1818 174.364,-10.7273 174.545,1.09091 190.909,2 190.727,34 0,34.5455"/>
-  </object>
-  <object id="24" x="104.333" y="578.333">
-   <polygon points="0,0 34,-1.33333 34,14.6667 46,15.6667 45,43 34.3333,45.3333 33.3333,61.3333 0,61.3333"/>
-  </object>
+  <object id="26" x="15.5" y="663.25" width="190.5" height="40"/>
+  <object id="27" x="162.5" y="651" width="26.75" height="15.75"/>
+  <object id="29" x="98.25" y="650.75" width="27.5" height="15.5"/>
+  <object id="30" x="34" y="651" width="27.5" height="14.75"/>
+  <object id="32" x="105.25" y="578" width="32.25" height="59.5"/>
+  <object id="33" x="137.75" y="593.75" width="11.5" height="28.25"/>
  </objectgroup>
 </map>
