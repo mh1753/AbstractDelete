@@ -48,8 +48,10 @@ public class BonusLevel implements Screen {
 
     // Change starts: BONUSGAMEOPTIMIZATION
     // Load in necessary textures
-    private Texture cannonTex = new Texture("cannon.png");
-    private Texture targetTex = new Texture("target.png");
+    // Change starts: BONUSGAMENEWTEXTURES
+    private Texture cannonTex = new Texture("cannon-NEW.png");
+    private Texture targetTex = new Texture("target-NEW.png");
+    // Change ends: BONUSGAMENEWTEXTURES
     // Change ends: BONUSGAMEOPTIMIZATION
 	
 	public BonusLevel(Zepr zepr) {
@@ -208,7 +210,9 @@ public class BonusLevel implements Screen {
         
         // Behind geese
         // Change starts: BONUSGAMEOPTIMIZATION
-        renderer.draw(new Texture("gooseHuntBackground.png"), 280, 180);
+        // Change starts: BONUSGAMENEWTEXTURES
+        renderer.draw(new Texture("gooseHuntBackground-NEW.png"), 280, 180);
+        // Change ends: BONUSGAMENEWTEXTURES
         // Change ends: BONUSGAMEOPTIMIZATION
         
         // Geese

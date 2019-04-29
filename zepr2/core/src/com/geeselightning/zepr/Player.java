@@ -148,13 +148,13 @@ public class Player extends Character {
             HPMult = Constant.DRAMAHPMULT;
             speedMult = Constant.DRAMASPEEDMULT;
         }
-        //Change starts: ZOMBIESTORY
+        //Change starts: ZOMBIESTORYPLAYER
         else if (playertype.equals("zombie")){
             dmgMult = Constant.ZOMBIEDMGMULT;
             HPMult = Constant.ZOMBIEHPMULT;
             speedMult = Constant.ZOMBIESPEEDMULT;
         }
-        //Change ends: ZOMBIESTORY
+        //Change ends: ZOMBIESTORYPLAYER
         this.attackDamage = (int)(Constant.PLAYERDMG * dmgMult);
         this.speed = (int)(Constant.PLAYERSPEED * speedMult);
         this.health = (int)(HPMult * Constant.PLAYERMAXHP);
@@ -173,7 +173,7 @@ public class Player extends Character {
             attackTexture = new Texture("player03_attack.png");
             this.setTexture(mainTexture);
         }
-        //Change starts: ZOMBIESTORY
+        //Change starts: ZOMBIESTORYPLAYER
         else if (playertype.equals("zombie")){
             if (currentLevel.parent.getLastKnownCharacter().equals("nerdy")){
                 mainTexture = new Texture("nerdZombie.png");
@@ -189,7 +189,7 @@ public class Player extends Character {
                 this.setTexture(mainTexture);
             }
         }
-        // Change ends: ZOMBIESTORY
+        // Change ends: ZOMBIESTORYPLAYER
         // Change ends: PLAYERCLASSOPTIMIZATION
     }
 
@@ -212,20 +212,20 @@ public class Player extends Character {
         	hitDuration = 0.2f;
         }
         if (hitDuration > 0) {
-            // Change starts: ZOMBIESTORY
+            // Change starts: ZOMBIESTORYPLAYER
             // If the player is a zombie, don't need to perform an attack animation
             if (!currentLevel.parent.isZombie()) {
                 this.setTexture(attackTexture);
             }
-            // Change ends: ZOMBIESTORY
+            // Change ends: ZOMBIESTORYPLAYER
         	hitDuration -= delta;
         } else {
-            // Change starts: ZOMBIESTORY
+            // Change starts: ZOMBIESTORYPLAYER
             // If the player is a zombie, they will always use the main texture
             if (!currentLevel.parent.isZombie()) {
                 this.setTexture(mainTexture);
             }
-            // Change ends: ZOMBIESTORY
+            // Change ends: ZOMBIESTORYPLAYER
         	attack = false;
         	hitDuration = 0;
         }

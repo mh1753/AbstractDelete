@@ -8,8 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class BonusGoose extends Sprite{
-	
-	private Texture leftOne = new Texture("gooseLeft.png");
+
 	// Change starts: BONUSGAMEOPTIMIZATION
 	private Random rand = new Random();
 	// Change ends: BONUSGAMEOPTIMIZATION
@@ -29,7 +28,9 @@ public class BonusGoose extends Sprite{
 	 * @param y the initial vertical position
 	 */
 	public BonusGoose(int x, int y) {
-		super(new Sprite(new Texture("gooseLeft.png")));
+		// Change starts: BONUSGAMENEWTEXTURES
+		super(new Sprite(new Texture("goose-NEW.png")));
+		// Change ends: BONUSGAMENEWTEXTURES
         setX(x);
         setY(y);
 	}
@@ -70,6 +71,7 @@ public class BonusGoose extends Sprite{
 		    startedMovement = true;
         }
 
+
         // Change starts: BONUSGOOSEDIRECTIONFIX
 		// If the goose hits the boundary, reverse the direction ob the respective axis
 		if(getX() >= 925) {
@@ -86,6 +88,12 @@ public class BonusGoose extends Sprite{
 		} else if(getY() <= 250) {
 			velocityY = -velocityY;
 			setY(250);
+		}
+
+		if (!isFlipX() && velocityX > 0){
+			flip(true, false);
+		} else if (isFlipX() && velocityX < 0){
+			flip(true, false);
 		}
 		// Change ends: BONUSGOOSEDIRECTIONFIX
 		
@@ -146,7 +154,6 @@ public class BonusGoose extends Sprite{
 	 * Dispose of any textures
 	 */
 	public void dispose() {
-		leftOne.dispose();
 		// Change starts: BONUSGAMEOPTIMIZATION
 		this.getTexture().dispose();
 		// Change ends: BONUSGAMEOPTIMIZATION

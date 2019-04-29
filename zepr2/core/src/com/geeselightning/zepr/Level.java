@@ -115,7 +115,7 @@ public class Level implements Screen {
      */
     public void gameOver() {
         isPaused = true;
-        //Change starts: ZOMBIESTORY
+        //Change starts: ZOMBIESTORYGAMEOVER
         if (parent.isZombie()){
             parent.setScreen(new GameOverScreen(parent, "Game Over", "zombie", player));
             dispose();
@@ -123,7 +123,7 @@ public class Level implements Screen {
             parent.setScreen(new GameOverScreen(parent, "You \"died\"", "human", player));
             dispose();
         }
-        //Change ends: ZOMBIESTORY
+        //Change ends: ZOMBIESTORYGAMEOVER
     }
 
 
@@ -345,7 +345,9 @@ public class Level implements Screen {
                 avoidTimer -= delta;
             } else{
                 parent.addPoints(Constant.AVOIDPOINTS * delta);
+                // Change starts: CURESPAWNCONDITION
                 parent.addCureProg(Constant.AVOIDPOINTS * delta);
+                // Change ends: CURESPAWNCONDITION
             }
             // Change ends: UPDATEAVOIDTIMER
 
@@ -449,19 +451,19 @@ public class Level implements Screen {
             table.add(healthLabel).pad(10).left();
             table.row();
             // Added for player abilities
-            // Change starts: ZOMBIESTORY
+            // Change starts: ZOMBIESTORYUI
             // Only show ability cooldown if the player is not a zombie
             if (!parent.isZombie()) {
                 table.add(AbilityCooldownLabel).pad(10).left();
             }
-            // Change ends: ZOMBIESTORY
+            // Change ends: ZOMBIESTORYUI
             table.row();
-            // Change starts: ZOMBIESTORY
+            // Change starts: ZOMBIESTORYUI
             // Only show ability duration if the player is not a zombie
             if (!parent.isZombie()) {
                 table.add(AbilityDurationLabel).pad(10).left();
             }
-            // Change ends: ZOMBIESTORY
+            // Change ends: ZOMBIESTORYUI
             table.row();
             table.add(powerupLabel).pad(10).left();
             // Change starts: POINTCOUNTERDISPLAY
@@ -491,7 +493,6 @@ public class Level implements Screen {
                         // Change starts: CURESPAWNCONDITION
                         if (parent.getCureProg() >= 10000) {
                             currentPowerUp = new PowerUpCure(this, parent);
-                            parent.addCureProg(-10000);
                         }
                         // Change ends: CURESPAWNCONDITION
                         else {
