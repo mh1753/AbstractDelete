@@ -36,6 +36,9 @@ public class Level implements Screen {
     private Player player;
     // Changed a live zombies to Character to allow different zombies to be spawned
     protected ArrayList<Character> aliveZombies = new ArrayList<Character>();
+    //Change starts: ZELDACAT
+    private Character zelda = new Character(new Sprite(new Texture("KITTY.png")), new Vector2(1500,1500), this);
+    //Change ends: ZELDACAT
     private String mapLocation;
     private Vector2 playerSpawn;
     public ArrayList<Vector2> zombieSpawnPoints;
@@ -368,6 +371,13 @@ public class Level implements Screen {
 
             // Resolve all possible attacks
             if (renderer != null) {
+
+                //Change starts: ZELDACATDRAW
+                if(this instanceof LibraryLevel){
+                    zelda.draw(renderer.getBatch());
+                }
+                //Change ends: ZELDACATDRAW
+
             	for (int i = 0; i < aliveZombies.size(); i++) {
             		Character zombie = aliveZombies.get(i);
             		// Zombies will only attack if they are in range, the attack has cooled down, and they are
