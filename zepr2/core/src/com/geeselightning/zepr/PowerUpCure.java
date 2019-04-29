@@ -13,7 +13,7 @@ public class PowerUpCure extends PowerUp{
     Zepr parent;
 
     public PowerUpCure(Level currentLevel,Zepr parent) {
-        super(6, new Texture("immunity.png"), currentLevel);
+        super(6, new Texture("cure.png"), currentLevel);
         timeRemaining = 5;
         this.parent = parent;
         this.name = "Cure!";
