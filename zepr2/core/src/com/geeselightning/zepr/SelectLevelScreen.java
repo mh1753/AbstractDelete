@@ -125,7 +125,7 @@ public class SelectLevelScreen implements Screen {
         } else {
             title.setText("Choose a stage and character.");
             townDescription = "You wake up hungover in town to discover there is a zombie apocalypse.";
-            halifaxDescription = "You need to get your laptop with the work on it from your accomodation.";
+            halifaxDescription = "You need to get your laptop with the work on it from your accommodation.";
             courtyardDescription = "You should go to Courtyard and get some breakfast.";
             libraryDescription = "Take a break from the zombies to study.";
             physicsDescription = "You go to Physics to try and find something to help stop the zombies.";
