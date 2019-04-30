@@ -156,14 +156,28 @@ public class Level implements Screen {
         
         // Added to spawn bosses
         if (amount == 100) {
-        	Character boss = (new BossCourtyard(new Sprite(new Texture("bossCourtyard.png")),
-                    spawnPoints.get(1), this, parent));
+            // change starts: ZOMBIESTORYENEMIES
+            Character boss;
+            if (parent.isZombie()){
+                boss = (new BossCourtyard(new Sprite(new Texture("bossCourtH.png")),
+                        spawnPoints.get(1), this, parent));
+            } else {
+                boss = (new BossCourtyard(new Sprite(new Texture("bossCourtyard.png")),
+                        spawnPoints.get(1), this, parent));
+            }
         	zombiesRemaining = 1;
         	amount = 0;
             aliveZombies.add(boss);
         } else if (amount == 150) {
-        	Character boss = (new BossCentralHall(new Sprite(new Texture("bossCentralHall.png")),
-                    spawnPoints.get(1), this, parent));
+            Character boss;
+            if (parent.isZombie()){
+                boss = (new BossCentralHall(new Sprite(new Texture("bossCentralH.png")),
+                        spawnPoints.get(1), this, parent));
+            } else {
+                boss = (new BossCentralHall(new Sprite(new Texture("bossCentralHall.png")),
+                        spawnPoints.get(1), this, parent));
+            }
+            // change ends: ZOMBIESTORYENEMIES
         	zombiesRemaining = 3;
         	amount = 2;
             aliveZombies.add(boss);

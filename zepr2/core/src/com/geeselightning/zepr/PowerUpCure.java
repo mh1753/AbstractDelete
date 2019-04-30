@@ -48,6 +48,10 @@ public class PowerUpCure extends PowerUp{
                     zombie.setTexture(flamingZombieHuman);
                 } else if (zombie instanceof ZombieFast) {
                     zombie.setTexture(zombieFastHuman);
+                } else if (zombie instanceof BossCourtyard){
+                    zombie.setTexture(new Texture("bossCourtH.png"));
+                } else if (zombie instanceof BossCentralHall){
+                    zombie.setTexture(new Texture("bossCentralH.png"));
                 } else {
                     zombie.setTexture(zombieHuman);
                 }
