@@ -1,0 +1,24 @@
+Website (3/3): 
+Good website, thanks for the cat picture.
+
+Architecture (18/25): 
+Minor inconsistencies in class names between the diagram and the discussion (e.g. AnimateActor -> AnimatedActor, MoveActor -> MovingActor). Field names should be complete words for better readability (e.g. "vel" -> "velocity"). Setters and getters could have been omitted. Class-by-class discussion of the architecture with appropriate traceability back to requirements. More explicit links to specific methods in the diagram would have been useful.
+
+Implementation (14/20): 
+Javadoc-style comments should have been used to document non-trivial methods and fields. Moreover, complex methods such as Character.updatePlayerRot etc. could have been further documented inline (e.g. why xdiff = mx - getX() - *32*?). A logging framework such as log4j could have been used instead of System.out.println() statements so that logged messages can be redirected to logs/suppressed etc. Appropriate discussion on requirements that have not been (fully) met.
+
+Testing (20/22): 
+The summary of the testing methods is appropriate in general terms. Justification is fair, although it does not establish a clear link between the methods used and their adequacy in the context of the project in all cases (concretely, for acceptance tests).
+
+The test report is informative in general terms. There is a clear statement of which tests failed, as well as an indication of the reason. 
+
+Updates on Assessment 1 (14/20): 
+Modifications in requirements are not explained and justified in enough detail. The updates document defers to the original and updated requirements documents, without further explanation about how the highlights indicate what has been changed vs added/removed. 
+
+Method and planning updates are clearly described, although the discussion justifying the changes is almost completely missing.
+
+Risk assessment and mitigation updates are discussed in detail and well justified.
+
+Self-assessment (10/10): 
+
+

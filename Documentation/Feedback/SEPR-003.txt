@@ -1,0 +1,24 @@
+Website (5/5): 
+The updated Website for the team's project is clear and well structured. 
+It includes relevant links to:
+	- all the project-related Assessment 3 deliverables, as well as the Assessment 1 and 2 versions
+	- the executable for the game
+	- the user manual (including editable source)
+	- executable test plan and testing results
+
+Change report (30/30): 
+The general approach to change management is clearly discussed and with enough level of detail. 
+
+Even though it is a bit concise, test report changes and their rationale clearly discussed.
+
+Methods and plans discussion is is clearly discussed and with enough level of detail. 
+
+Implementation and report (43/55): 
+Well-structured discussion of additions and changes with clear references to relevant requirements. A consistent commenting scheme has been established and used to mark new/modified code files. Not all new code is documented with Javadoc-style comments (e.g. BusStoplLevel.java). A minigame has been added but could have been a bit more elaborate and challenging.
+
+Bonus marks for project selection: 
+0 marks
+
+Self-assessment (10/10): 
+All team members: 10 marks
+

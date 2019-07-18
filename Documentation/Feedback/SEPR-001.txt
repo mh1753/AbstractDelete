@@ -1,0 +1,41 @@
+Website (3/3): 
+Fine website, easy to navigate, might want to have an explicit link to a Github repo (if you're using Github). I enjoyed the cat picture.
+
+Requirements (15/22): 
+Approach: clear overview of what the team did, but there's little justification as to why this approach was used, and how well it worked (i.e., reflection). Some reference to relevant standards/techniques would help to demonstrate that some research went in to the decision to use this particular approach.
+There is some reference to the literature in justifying the importance of a statement of requirements, but this is not as helpful as an explanation for why you used your particular approach.
+
+Template: there is a clear explanation of the template format chosen; again, some justification for the template would help, e.g., by referencing the relevant IEEE standards, and by justifying why various parts of the template have been omitted.
+
+Table: the requirements specification is clear and precise, and the use of fit criteria is helpful in explaining how to test each requirement. However, some of the fit criteria (e.g., Func.Input, Func.Points) introduces some design elements that could be avoided - this is meant to be a description of what the software system should achieve, not how it will achieve it (that comes later, in your design documents). However, the individual description of requirements is clear and precise. Also, the environmental assumptions and risks is very helpful and shows good insight in to the requirements analysis process.
+
+Architecture (20/25): 
+Appropriate justification of the selected modelling notations and tools. Good split of the architecture across different diagrams. Explicit traceability links to requirements are missing. Well-structured justification of the different classes in the architecture. Missing parameters in UML operations. JJBoss and ViceBoss don't need separate attack methods (attack() should be moved to Zombie and the two subclasses can provide different implementations at the code level).
+
+Method selection and planning (10/20): 
+The overall structure of the document is adequate. It is divided into the following sections:
+
+* Software Engineering Methods. Although the team explains which methodology and framework has been chosen, and the choice is suited to the characteristics of the project, the document does not provide a clear rationale for the choices made. 
+
+Part of the problem is that there is plenty of room for improvement in the quality of the writing. The meaning of statements like the following is unclear:
+
+- "plan-driven methods which were shown to precisely depend on clear procedures".
+
+- "One example of a plan-driven method that we looked at but rejected was RUP. We rejected this methodology as, after conducting some further research, we found that certain stages in the method were overly complex and had not been well organised"
+
+As a sidenote, the text mentions several times that SCRUM is a methodology, when it is in fact a framework.
+
+* Development and collaboration tools. Although the quality of this section is fair, it is unclear whether other alternatives were considered for version control or communication. 
+
+In the specific case of communication, the rationale for the choice is only weakly justified. Were tools specifically tailored for group and developer communication like slack or flock considered as an alternative?
+
+Facebook messenger does not facilitate threads for specific tasks/subgroups, and might sometimes be far from optimal for project communications, interleaving personal/project messaging.
+
+* Project Plan. The plan is reasonable in general terms, although the group has not figured out roles and it is unclear how group organization is going to work.
+
+Risk assessment and mitigation (20/20): 
+Appropriate justification of the risk classification and presentation used in the document. Good use of color coding. Risks have owners and a monitoring process is briefly discussed.
+
+Self-assessment (10/10): 
+Equal marks assigned - self assessment form submitted
+

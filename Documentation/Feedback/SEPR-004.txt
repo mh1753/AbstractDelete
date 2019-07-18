@@ -1,0 +1,20 @@
+Evaluation and Testing Report (19/25): 
+The discussion on evaluation includes some useful comments, but little detail. It was not possible to understand how these evaluation tasks took place, what problems were identified, and whether there was any reflection on how well the evaluation processes worked during the project. 
+
+The discussion on testing is detailed, although it does not contain a clear definition of the notion of quality sought within the context of the project. Moreover, there is no mention of regression testing - was this intentional? 
+
+Although there is a detailed enumeration of the the requirements that are met, this should not be the main focus of this section, but rather, describing *how* these requirements are met. Hence, a systematic presentation that talks about techniques used to check each type of requirement, making explicit reference to specific requirements where appropriate,  would have been useful here.
+
+Implementation and Report (18/20): 
+Changes are discussed in a structured way and with fine-grained references to relevant code files and with references to related requirements. A class diagram summarising the new/changed classes and methods would have been useful.
+
+Project Review Report (19/25): 
+Detailed account of the evolution of the structure and the organisation of the team, and justification of the relevant decisions taken throughout the project.
+The "development methods and tools" section discusses methods and infrastructure, mostly focusing on communication systems, but not software development tools (e.g. IDE, modelling tools, unit testing framework).
+
+Assessed Presentation (16/20): 
+The slides were well-designed overall. Starting with a demo could have been more engaging. Good delivery overall and sensible answers to questions.
+
+Self-assessment (10/10): 
+All team members: 10 marks
+
